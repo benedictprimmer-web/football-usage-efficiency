@@ -1,37 +1,39 @@
 # Can usage rates explain failed transfers?
 
-**When an attacker's output falls after a move, is it because he got worse, or because he got less of the ball?**
+**When an attacker's output per 90 falls after a move, is it because he got worse, or because of the situation he joined?**
+
+Every number here is per 90 minutes, so playing time is taken out.
 
 ## What I found
 
-Mostly less of the ball. I looked at 760 club moves by attackers. In 356 of them the player's output (expected goals plus expected assists) fell by more than 25%, by 58% on average. I split each fall into four parts:
+Mostly the situation. I looked at 587 club moves by attackers with at least 900 minutes either side. In 119 of them the player's output per 90 (expected goals plus expected assists) fell by more than 25%, by 41% on average. I split each fall into four parts:
 
-- **79%** came from playing fewer minutes.
-- **15%** came from getting less of the ball while he was on the pitch.
-- **9%** came from worse chances per action, which is the player actually getting worse.
-- The new team creating fewer chances made no real difference (−2%).
+- **28%** came from getting less of the ball while he was on the pitch.
+- **20%** came from the new team creating fewer chances per 90.
+- **13%** came from the new team-mates' chances being worse overall.
+- **39%** came from the player doing worse than his new team-mates.
 
-So in a typical flop, around nine tenths of the drop is the player getting less of the ball, and around a tenth is him getting worse. The split is exact, as output is minutes × team chances per minute × his share of them × quality per chance.
+So in a typical flop, around six tenths of the drop is the situation and around four tenths is the player. The split is exact, as output per 90 is team chances per 90 × his share of them × team-mates' quality per chance × his quality relative to them.
 
-![Why transfers flop: share of the fall in output from each part](figures/fig0_why_transfers_flop.png)
+![Why transfers flop: share of the fall in per-90 output from each part](figures/fig0_why_transfers_flop.png)
 
-The second test backs this up. When the same attacker gets 5% more of his team's shots and shot-assists, the quality of his chances drops by only about 1.7%, and that could be nothing at all (the range runs from a 3.4% drop to a 0.1% rise). A player's quality mostly travels with him. How much of the ball he gets depends on his minutes and the club he joins.
+The second test looks at what more of the ball does to the same player. When his share of the team's shots and shot-assists while he is on the pitch rises by 5 points, his chance quality falls by about 2.0% (range 0.5% to 3.5%). Across all players, quality holds until a player takes around a fifth of the ball, and then drops by about 15%.
 
-![Chance quality against share of the ball for 4,592 attacker seasons, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
+![Chance quality against share of the ball per 90, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
 
-*The grey line is the average across 4,592 attacker seasons, and the shaded band is the range it probably sits in. The blue line is Memphis Depay.*
+*The grey line is the average across attacker seasons, and the shaded band is the range it probably sits in. The blue line is Memphis Depay.*
 
 ## Depay
 
-At United in 2015-16 Depay played 43% of the league minutes, and the quality of his chances was well below average. At Lyon he played 75%, then 86%. He took almost a fifth of the team's shots and shot-assists, and his chances got better, from 0.086 to 0.124 per action.
+Per 90, Depay's share of the ball was about the same at United and Lyon: 22% of the team's shots and shot-assists while he was on the pitch at United in 2015-16, and 24% at Lyon in 2017-18. What changed was the quality of his chances, from 0.086 per action at United to 0.107 and then 0.124 at Lyon. His United figure rests on only 69 actions, so part of that gap is likely noise.
 
-Per minute on the pitch, his share of the ball was about the same at both clubs (22% at United, 24% at Lyon). The difference was that Lyon played him. His chances per action were also worse at United, but that rests on only 69 actions, so part of it is likely noise.
+He also played far more at Lyon (43% of United's league minutes against 75% and 86% at Lyon), which is why his season totals look so different.
 
 Two more cases are in `data/case_studies.csv`. Martial's chances got worse when he moved from Monaco to United, though his Monaco figure rests on only 61 actions. Ronaldo's held up at United in 2021-22, yet the team's expected goal difference was 0.25 per 90 worse with him on the pitch, a cost that per-action numbers cannot see.
 
 ## What the terms mean
 
-- **Usage share** is a player's shots and shot-assists, as a percentage of his team's over the league season.
+- **Usage share (per 90)** is a player's shots and shot-assists as a percentage of his team's while he is on the pitch.
 - **Chance quality** (efficiency) is the expected goals plus expected assists he produces per shot or shot-assist, without penalties.
 - **xG** (expected goals) is the chance a shot is scored, based on thousands of similar shots.
 - **xA** (expected assists) is the xG of the shot a pass sets up.
@@ -66,7 +68,8 @@ For a scout, that means a player's chance quality mostly travels with him, and h
 
 **The method**
 
-- **Minutes are not fully separate from quality.** A coach can drop a player because he is playing badly, so part of the 79% may be the player getting worse in ways the chance numbers miss. The split shows where the fall happened, not who caused it.
+- **Where, not who.** The split shows where a fall in per-90 output happened. A coach also shapes a player's share of the ball, so less of the ball is not always the club's or the system's fault.
+- **Only regulars.** Every move needs 900 minutes in both seasons, so players who stopped getting picked drop out, which hides some of the worst flops.
 - **Noise and survivorship.** Chance quality on fewer than 100 actions is noisy. A pair needs 900 minutes in both seasons, so players whose role collapsed drop out, which probably hides some of the steepest falls.
 - **Coaching.** If a coach gives the ball to whoever is in form, part of the pattern reflects his choices. The control for last season's form absorbs the obvious version of this.
 - **Observational.** No experiment sits behind any of this, so it shows a pattern, not a cause.
