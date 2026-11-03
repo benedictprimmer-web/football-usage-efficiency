@@ -1,0 +1,351 @@
+{
+ "pairs": 2013,
+ "n_movers": 397,
+ "n_stayers": 1616,
+ "rtm": {
+  "raw": {
+   "d_share": {
+    "point": -0.0957,
+    "lo": -0.1294,
+    "hi": -0.063,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0671,
+    "lo": -0.1031,
+    "hi": -0.0327,
+    "p": 0.0005
+   },
+   "d_team": {
+    "point": 0.0286,
+    "lo": 0.0067,
+    "hi": 0.0504,
+    "p": 0.007
+   },
+   "d_team_ex": {
+    "point": 0.0409,
+    "lo": 0.0178,
+    "hi": 0.0646,
+    "p": 0.0005
+   },
+   "d_mates": {
+    "point": 0.0223,
+    "lo": 0.0006,
+    "hi": 0.0451,
+    "p": 0.048
+   },
+   "d_rel": {
+    "point": -0.0074,
+    "lo": -0.0446,
+    "hi": 0.0299,
+    "p": 0.695
+   },
+   "d_out": {
+    "point": -0.0522,
+    "lo": -0.1056,
+    "hi": 0.0018,
+    "p": 0.051
+   },
+   "flopf": {
+    "point": 0.0824,
+    "lo": 0.0307,
+    "hi": 0.1325,
+    "p": 0.001
+   }
+  },
+  "regression": {
+   "d_share": {
+    "point": -0.0695,
+    "lo": -0.1018,
+    "hi": -0.0388,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0496,
+    "lo": -0.0857,
+    "hi": -0.0173,
+    "p": 0.001
+   },
+   "d_team": {
+    "point": 0.0199,
+    "lo": 0.0001,
+    "hi": 0.0413,
+    "p": 0.05
+   },
+   "d_team_ex": {
+    "point": 0.0291,
+    "lo": 0.0076,
+    "hi": 0.052,
+    "p": 0.005
+   },
+   "d_mates": {
+    "point": 0.0196,
+    "lo": -0.0024,
+    "hi": 0.0427,
+    "p": 0.08
+   },
+   "d_rel": {
+    "point": -0.0146,
+    "lo": -0.0518,
+    "hi": 0.0205,
+    "p": 0.421
+   },
+   "d_out": {
+    "point": -0.0446,
+    "lo": -0.0934,
+    "hi": 0.003,
+    "p": 0.067
+   },
+   "flopf": {
+    "point": 0.0892,
+    "lo": 0.0397,
+    "hi": 0.1392,
+    "p": 0.0005
+   }
+  },
+  "reweighted": {
+   "d_share": {
+    "point": -0.0737,
+    "lo": -0.1079,
+    "hi": -0.0426,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.052,
+    "lo": -0.0906,
+    "hi": -0.0187,
+    "p": 0.0005
+   },
+   "d_team": {
+    "point": 0.0217,
+    "lo": -0.001,
+    "hi": 0.0433,
+    "p": 0.063
+   },
+   "d_team_ex": {
+    "point": 0.0312,
+    "lo": 0.0072,
+    "hi": 0.0542,
+    "p": 0.008
+   },
+   "d_mates": {
+    "point": 0.0215,
+    "lo": -0.0008,
+    "hi": 0.0452,
+    "p": 0.057
+   },
+   "d_rel": {
+    "point": -0.0155,
+    "lo": -0.0555,
+    "hi": 0.0201,
+    "p": 0.395
+   },
+   "d_out": {
+    "point": -0.046,
+    "lo": -0.0963,
+    "hi": 0.0041,
+    "p": 0.066
+   },
+   "flopf": {
+    "point": 0.0898,
+    "lo": 0.0381,
+    "hi": 0.1401,
+    "p": 0.0005
+   }
+  },
+  "corr_team_share": -0.123,
+  "corr_rel_mates": -0.219,
+  "movers_last_season": {
+   "share_movers": 0.1203,
+   "share_stayers": 0.1059,
+   "out90_movers": 0.1882,
+   "out90_stayers": 0.1834,
+   "age_movers": 25.38,
+   "age_stayers": 26.29
+  }
+ },
+ "lost_place": {
+  "lost_movers": {
+   "point": 0.3059,
+   "lo": 0.2657,
+   "hi": 0.3453
+  },
+  "lost_stayers": {
+   "point": 0.1972,
+   "lo": 0.1789,
+   "hi": 0.2182
+  },
+  "bad_movers": {
+   "point": 0.5332,
+   "lo": 0.4925,
+   "hi": 0.5704
+  },
+  "bad_stayers": {
+   "point": 0.3939,
+   "lo": 0.3725,
+   "hi": 0.4161
+  },
+  "lost_gap": {
+   "point": 0.1087,
+   "lo": 0.0672,
+   "hi": 0.1486
+  },
+  "bad_gap": {
+   "point": 0.1393,
+   "lo": 0.0945,
+   "hi": 0.1827
+  },
+  "age_adjusted": {
+   "lost_gap": {
+    "point": 0.1093,
+    "lo": 0.0658,
+    "hi": 0.1505,
+    "p": 0.0005
+   },
+   "bad_gap": {
+    "point": 0.1484,
+    "lo": 0.1004,
+    "hi": 0.1921,
+    "p": 0.0005
+   }
+  },
+  "regression": {
+   "lost_gap": {
+    "point": 0.1273,
+    "lo": 0.0835,
+    "hi": 0.1663,
+    "p": 0.0005
+   },
+   "bad_gap": {
+    "point": 0.1614,
+    "lo": 0.1143,
+    "hi": 0.2035,
+    "p": 0.0005
+   }
+  },
+  "n_movers": 572,
+  "n_stayers": 2013,
+  "n_movers_kept": 397,
+  "n_stayers_kept": 1616
+ },
+ "moves": {
+  "n_loans": 71,
+  "n_promoted_buyer": 58,
+  "n_relegated_seller": 85,
+  "without_loans": {
+   "n_movers": 326,
+   "share_gap": {
+    "point": -0.1146,
+    "lo": -0.1506,
+    "hi": -0.082
+   },
+   "out_gap": {
+    "point": -0.0555,
+    "lo": -0.112,
+    "hi": 0.0015
+   },
+   "flop_gap": {
+    "point": 0.077,
+    "lo": 0.0249,
+    "hi": 0.131
+   }
+  },
+  "without_promoted_or_relegated": {
+   "n_movers": 271,
+   "share_gap": {
+    "point": -0.0967,
+    "lo": -0.137,
+    "hi": -0.0548
+   },
+   "out_gap": {
+    "point": -0.0551,
+    "lo": -0.115,
+    "hi": 0.0078
+   },
+   "flop_gap": {
+    "point": 0.0834,
+    "lo": 0.0277,
+    "hi": 0.1404
+   }
+  },
+  "without_any": {
+   "n_movers": 218,
+   "share_gap": {
+    "point": -0.121,
+    "lo": -0.1655,
+    "hi": -0.0783
+   },
+   "out_gap": {
+    "point": -0.0585,
+    "lo": -0.1279,
+    "hi": 0.0116
+   },
+   "flop_gap": {
+    "point": 0.0761,
+    "lo": 0.0129,
+    "hi": 0.1454
+   }
+  },
+  "buying_club_strength_pre_move": {
+   "n": 339,
+   "team_actions_per_match_change": {
+    "point": 0.0392,
+    "lo": 0.0181,
+    "hi": 0.0611
+   },
+   "share_joining_stronger": {
+    "point": 0.5782,
+    "lo": 0.5271,
+    "hi": 0.6299
+   }
+  }
+ },
+ "predictor": {
+  "as_published_900_minute_movers": {
+   "train_moves": 227,
+   "test_moves": 170,
+   "test_rate": 0.324,
+   "auc": 0.656,
+   "auc_lo": 0.571,
+   "auc_hi": 0.738,
+   "p_auc_above_half": 0.0005,
+   "rate_top_fifth": 0.471,
+   "rate_rest": 0.287
+  },
+  "all_moves_flop_or_lost_place": {
+   "train_moves": 307,
+   "test_moves": 265,
+   "test_rate": 0.566,
+   "auc": 0.523,
+   "auc_lo": 0.453,
+   "auc_hi": 0.593,
+   "p_auc_above_half": 0.512,
+   "rate_top_fifth": 0.566,
+   "rate_rest": 0.566
+  },
+  "all_moves_lost_place_counted_as_not_flop": {
+   "train_moves": 307,
+   "test_moves": 265,
+   "test_rate": 0.208,
+   "auc": 0.674,
+   "auc_lo": 0.598,
+   "auc_hi": 0.747,
+   "p_auc_above_half": 0.0005,
+   "rate_top_fifth": 0.358,
+   "rate_rest": 0.17
+  },
+  "all_moves_lost_place_only": {
+   "train_moves": 307,
+   "test_moves": 265,
+   "test_rate": 0.358,
+   "auc": 0.602,
+   "auc_lo": 0.536,
+   "auc_hi": 0.67,
+   "p_auc_above_half": 0.009,
+   "rate_top_fifth": 0.472,
+   "rate_rest": 0.33
+  },
+  "n_moves_known_on_the_day": 572,
+  "n_lost_place": 175
+ }
+}

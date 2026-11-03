@@ -153,6 +153,8 @@
     "p": 0.099
    }
   },
+  "corr_team_share": -0.213,
+  "corr_rel_mates": -0.305,
   "movers_last_season": {
    "share_movers": 0.1777,
    "share_stayers": 0.1737,

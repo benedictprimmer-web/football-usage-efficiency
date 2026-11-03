@@ -1,0 +1,14 @@
+{
+ "scored_on": "2026-11-03",
+ "source": "Transfermarkt appearances to 28 June 2026",
+ "what_is_scored": "lost his place (under 900 Big-5 league minutes in 2025-26); flops wait for 2025-26 shot data",
+ "moves": 80,
+ "lost_place": 21,
+ "lost_rate": 0.263,
+ "auc_lost_place": 0.542,
+ "auc_lo": 0.397,
+ "auc_hi": 0.681,
+ "lost_rate_riskier_half": 0.3,
+ "lost_rate_safer_half": 0.225,
+ "mean_predicted_flop_or_lost": 0.404
+}

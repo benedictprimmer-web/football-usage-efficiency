@@ -160,6 +160,10 @@ def rtm(m: pd.DataFrame) -> dict:
         p, lo, hi, pv = boot_p(m, fn)
         out[name] = {y: ci(p[i], lo[i], hi[i]) | {"p": round(float(pv[i]), 4)}
                      for i, y in enumerate(ys)}
+    # the split is an identity, so credit moves between parts: his actions sit inside the
+    # team's, and his quality is measured against team-mates'
+    out["corr_team_share"] = round(float(m.d_team.corr(m.d_share)), 3)
+    out["corr_rel_mates"] = round(float(m.d_rel.corr(m.d_mates)), 3)
     # how far movers' last season sat above stayers': the selection the test removes
     out["movers_last_season"] = {
         "share_movers": round(float(m.loc[m.mover, "usage_on_pitch0"].median()), 4),

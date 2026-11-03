@@ -21,13 +21,17 @@ if [[ "${1:-}" != "--quick" ]]; then
   for s in crosswalk minutes build_panel analyse transfers; do SHOTS=opta "$PY" "analysis/$s.py"; done
   # midfielders who are not attacking midfielders, on both sources
   for sh in understat opta; do for s in analyse transfers; do SHOTS=$sh SAMPLE=mid "$PY" "analysis/$s.py"; done; done
+  # rival explanations (regression to the mean, the denominator, lost places, loans), Holm,
+  # and the predictor on every move; the Understat run also writes the frozen model
+  for sh in understat opta; do for smp in attackers mid; do SHOTS=$sh SAMPLE=$smp "$PY" analysis/robustness.py; done; done
+  "$PY" analysis/score_frozen.py   # scores the frozen 2025-26 predictions on lost places
   # more checks: MLS, FPL 2025-26, injuries and free transfers, Impect and Wyscout passes
   for s in asa fpl injuries pass_checks; do "$PY" "analysis/$s.py"; done
 fi
 "$PY" analysis/figures.py
 
 # self-checks: small synthetic cases with known answers
-for m in crosswalk minutes chemistry asa fpl injuries pass_checks; do
+for m in crosswalk minutes chemistry asa fpl injuries pass_checks robustness score_frozen; do
   (cd analysis && "$PY" "$m.py" check > /dev/null) && echo "self-check ok: $m"
 done
 for m in usage wowy understat talent; do
