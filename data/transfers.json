@@ -110,6 +110,43 @@
    "hi": 0.0685
   }
  },
+ "usage_in_flops": {
+  "movers_share_of_fall": {
+   "point": 0.2779,
+   "lo": 0.197,
+   "hi": 0.3615
+  },
+  "movers_flops_undone": {
+   "point": 0.3217,
+   "lo": 0.2368,
+   "hi": 0.4054
+  },
+  "movers_share_fell": {
+   "point": 0.7217,
+   "lo": 0.6389,
+   "hi": 0.8
+  },
+  "stayers_share_of_fall": {
+   "point": 0.2345,
+   "lo": 0.1977,
+   "hi": 0.2731
+  },
+  "stayers_flops_undone": {
+   "point": 0.355,
+   "lo": 0.3055,
+   "hi": 0.4073
+  },
+  "stayers_share_fell": {
+   "point": 0.7344,
+   "lo": 0.6873,
+   "hi": 0.7796
+  },
+  "gap_share_of_fall": {
+   "point": 0.0434,
+   "lo": -0.0451,
+   "hi": 0.1363
+  }
+ },
  "buying_club_persistence": {
   "clubs": 11,
   "spearman_early_late": -0.191,

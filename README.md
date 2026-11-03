@@ -6,11 +6,12 @@ I followed every attacker in the Big-5 leagues who played 900 league minutes in 
 
 ## What I found
 
-**Among attackers who kept a regular place, I cannot detect a difference in flop rates between movers and stayers, and a luck-only benchmark produces about as many flops as the data.**
+**Moving club costs an attacker about 5% of his share of the ball, and the better team he joins makes up for it.**
 
-- Players who moved club flopped 19% of the time and players who stayed flopped 18%, a gap of 1.4 points (95% interval −2.1 to +4.9). Movers are younger, and adjusting for age the gap is 2.7 points (−1.0 to +6.7).
-- A typical move gives the player less of the ball (−4.9%) at a team that creates more chances (+2.9%) and better ones (+3.5%). Per 90, movers end up 3.6% ahead of stayers (0.2% to 6.9%), or 3.0% after adjusting for age (−0.5% to +6.9%).
-- If each player's quality against his team-mates stayed exactly the same, and only luck moved it, the moves in this sample would flop 22% of the time, against the 19% that actually did. The benchmark runs a little high: it gives stayers 19% against a real 18%.
+- Compared with players who stayed, a mover's share of his team's shots and shot-assists falls by 4.9% (95% interval −7.0% to −2.8%).
+- His new team creates more chances (+2.9%) and better ones (+3.5%), so per 90 he ends up 3.6% ahead of stayers (0.2% to 6.9%), or 3.0% after adjusting for age (−0.5% to +6.9%).
+- Losing the ball is about a quarter of a flop. It accounts for 28% of the average fall for movers (20% to 36%) and 23% for stayers, and 32% of movers' flops would not have been flops had his share held.
+- Movers flopped 19% of the time and stayers 18%, a gap of 1.4 points (95% interval −2.1 to +4.9), or 2.7 points after adjusting for age (−1.0 to +6.7). If each player's quality against his team-mates stayed exactly the same and only luck moved it, the moves in this sample would flop 22% of the time. The benchmark runs a little high: it gives stayers 19% against a real 18%.
 
 ![A typical move: less of the ball, at a better team](figures/fig0_what_a_move_does.png)
 

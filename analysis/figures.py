@@ -391,14 +391,15 @@ def onepager(t, s, c, ws, sl, ag, ds):
     mv, nb = t["movers_vs_stayers"], t["noise_benchmark"]
     h = s["headline_pct_of_median"]
     fm, fs_ = mv["flop_rate_movers"]["point"], mv["flop_rate_stayers"]["point"]
-    answer = (f"Among attackers who kept a regular place, those who changed club flopped "
-              f"(output per 90 down by more than 25%) {pct(fm, 0, False)} of the time, against "
-              f"{pct(fs_, 0, False)} for those who stayed. If each player's quality against his "
-              f"team-mates had not changed at all, luck alone would give "
-              f"{pct(nb['flop_rate_noise_only'][0], 0, False)}. A typical move trades some of "
-              f"the ball for a better team, and per 90 the player comes out ahead.")
+    sh = mv["mean_log_gap_by_part"]["His share of the ball"]["point"]
+    answer = (f"Moving club costs an attacker about {abs(sh) * 100:.0f}% of his share of the ball, "
+              f"and the better team he joins makes up for it: per 90 he ends up "
+              f"{mv['mean_log_gap']['point'] * 100:.1f}% ahead of players who stayed. Losing the "
+              f"ball is about a quarter of a flop (output per 90 down by more than 25%). Movers "
+              f"flop {pct(fm, 0, False)} of the time against {pct(fs_, 0, False)} for stayers, and "
+              f"a luck-only benchmark gives {pct(nb['flop_rate_noise_only'][0], 0, False)}.")
     txt(15, 37, answer, width=118, fontsize=9.5, color=TEXT)
-    stats = [(f"{fm * 100:.0f}% v {fs_ * 100:.0f}%", "flop rate, moved v stayed"),
+    stats = [(f"{sh * 100:.1f}%".replace("-", MINUS), "share of the ball after a move"),
              (f"{h['point']:+.1f}%".replace("-", MINUS), "chance quality, 5 points more ball"),
              (f"{c['growth_next_season']['growth'] * 100:+.1f}%".replace("-", MINUS),
               "pair chemistry, second season v first")]

@@ -201,6 +201,23 @@ def noise_benchmark(m: pd.DataFrame, movers: bool = True, n_sims: int = 200) -> 
     }
 
 
+def usage_in_flops(m: pd.DataFrame) -> dict:
+    """How much of a flop is losing the ball: the share-of-the-ball part of the average
+    flop's fall, and the share of flops that would not have been flops had his share held."""
+    def parts(g):
+        f = g[g.flop]
+        return [f.d_share.mean() / f.d_out.mean(), ((f.d_out - f.d_share) >= FLOP).mean(),
+                (f.d_share < 0).mean()]
+
+    def stat(x):
+        return parts(x[x.mover]) + parts(x[~x.mover]) + [parts(x[x.mover])[0] - parts(x[~x.mover])[0]]
+    p, lo, hi = boot(m, stat)
+    keys = ["movers_share_of_fall", "movers_flops_undone", "movers_share_fell",
+            "stayers_share_of_fall", "stayers_flops_undone", "stayers_share_fell", "gap_share_of_fall"]
+    return {k: {"point": r3(p[i])[0], "lo": r3(lo[i])[0], "hi": r3(hi[i])[0]}
+            for i, k in enumerate(keys)}
+
+
 def age_adjusted(m: pd.DataFrame) -> dict:
     """Movers reweighted to the stayers' age mix, so the gap is not a gap in age."""
     m = m.assign(band=pd.cut(m.age0, [0, 23, 26, 29, 50], right=False, labels=False))
@@ -379,6 +396,7 @@ def main():
     res["noise_benchmark"] = noise_benchmark(m, movers=True)
     res["noise_benchmark_stayers"] = noise_benchmark(m, movers=False)
     res["age_adjusted"] = age_adjusted(m)
+    res["usage_in_flops"] = usage_in_flops(m)
     sl, mv = slices(m)
     sl.to_csv(OUT / "transfer_slices.csv", index=False, float_format="%.4f")
     ag = age_gaps(m)

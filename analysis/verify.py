@@ -49,7 +49,7 @@ def checks() -> list[tuple[str, str]]:
                 f"{r.ci_lo_pct:.1f}% to {r.ci_hi_pct:+.1f}%".replace("-", M)
                 .replace("+0.0%", "0.0%").replace("−0.0%", "0.0%"))
 
-    nbs, aa = t["noise_benchmark_stayers"], t["age_adjusted"]
+    nbs, aa, u = t["noise_benchmark_stayers"], t["age_adjusted"], t["usage_in_flops"]
 
     def band(v):  # "22% (20% to 24%)"
         return f"{p(v[0], 0)} ({p(v[1], 0)} to {p(v[2], 0)})"
@@ -60,20 +60,26 @@ def checks() -> list[tuple[str, str]]:
     out = [
         ("movers", f"{mv['n_movers']} club moves"),
         ("stayers", f"{mv['n_stayers']:,} seasons where the player stayed"),
-        ("flop movers", f"flopped {p(mv['flop_rate_movers']['point'], 0)} of the time"),
-        ("flop stayers", f"stayed flopped {p(mv['flop_rate_stayers']['point'], 0)}"),
+        ("flop movers", f"Movers flopped {p(mv['flop_rate_movers']['point'], 0)} of the time"),
+        ("flop stayers", f"and stayers {p(mv['flop_rate_stayers']['point'], 0)}, a gap"),
         ("flop gap", f"gap of {mv['flop_rate_gap']['point'] * 100:.1f} points (95% interval "
                      f"{n(mv['flop_rate_gap']['lo'])} to {mv['flop_rate_gap']['hi'] * 100:+.1f})"),
-        ("age-adjusted gap", f"adjusting for age the gap is {aa['flop_rate_gap']['point'] * 100:.1f} points "
+        ("age-adjusted gap", f"or {aa['flop_rate_gap']['point'] * 100:.1f} points after adjusting for age "
                              f"({n(aa['flop_rate_gap']['lo'])} to {aa['flop_rate_gap']['hi'] * 100:+.1f})"),
-        ("share part", f"less of the ball ({gi(g['His share of the ball'])[0]})"),
+        ("share part", f"falls by {abs(g['His share of the ball']['point']) * 100:.1f}% (95% interval "
+                       f"{gi(g['His share of the ball'])[1]})"),
+        ("usage movers", f"accounts for {p(u['movers_share_of_fall']['point'], 0)} of the average fall for movers "
+                         f"({p(u['movers_share_of_fall']['lo'], 0)} to {p(u['movers_share_of_fall']['hi'], 0)})"),
+        ("usage stayers", f"and {p(u['stayers_share_of_fall']['point'], 0)} for stayers"),
+        ("usage undone", f"{p(u['movers_flops_undone']['point'], 0)} of movers' flops would not have been flops"),
         ("team part", f"creates more chances ({gi(g['Team chances per 90'])[0]})"),
         ("mates part", f"better ones ({gi(g['Team-mates' + chr(39) + ' chance quality'])[0]})"),
-        ("net", f"movers end up {p(mv['mean_log_gap']['point'])} ahead of stayers "
+        ("net", f"he ends up {p(mv['mean_log_gap']['point'])} ahead of stayers "
                 f"({p(mv['mean_log_gap']['lo'])} to {p(mv['mean_log_gap']['hi'])})"),
         ("net age-adjusted", f"or {p(aa['mean_log_gap']['point'])} after adjusting for age "
                              f"({p(aa['mean_log_gap']['lo'], 1, True)} to {p(aa['mean_log_gap']['hi'], 1, True)})"),
         ("luck headline", f"would flop {p(nb['flop_rate_noise_only'][0], 0)} of the time"),
+        ("luck stayers", f"it gives stayers {p(nbs['flop_rate_noise_only'][0], 0)} against a real {p(nbs['flop_rate_observed'], 0)}"),
         ("luck movers row", f"| Moved club | {p(nb['flop_rate_observed'], 0)} | {band(nb['flop_rate_noise_only'])} | "
                             f"{p(nb['player_share_observed'], 0)} | {band(nb['player_share_noise_only'])} |"),
         ("luck stayers row", f"| Stayed | {p(nbs['flop_rate_observed'], 0)} | {band(nbs['flop_rate_noise_only'])} | "
