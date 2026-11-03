@@ -60,7 +60,7 @@ def checks() -> list[tuple[str, str]]:
     out = [
         ("movers", f"{mv['n_movers']} club moves"),
         ("stayers", f"{mv['n_stayers']:,} seasons where the player stayed"),
-        ("flop movers", f"Movers flopped {p(mv['flop_rate_movers']['point'], 0)} of the time"),
+        ("flop movers", f"Attackers who moved flopped {p(mv['flop_rate_movers']['point'], 0)} of the time"),
         ("flop stayers", f"and stayers {p(mv['flop_rate_stayers']['point'], 0)}, a gap"),
         ("flop gap", f"gap of {mv['flop_rate_gap']['point'] * 100:.1f} points (95% interval "
                      f"{n(mv['flop_rate_gap']['lo'])} to {mv['flop_rate_gap']['hi'] * 100:+.1f})"),
@@ -182,6 +182,16 @@ def checks() -> list[tuple[str, str]]:
                              f"to {p(-s_['mean_change']['lo'], 0)}) and {p(s_['flop_rate']['point'], 0)} of them flopped"),
             ("selling player", f"unchanged ({p(s_['player_change']['point'], 1, True)}, "
                                f"{p(s_['player_change']['lo'], 1, True)} to {p(s_['player_change']['hi'], 1, True)})"),
+        ]
+    md = OUT / "mid" / "transfers.json"
+    if md.exists():  # midfielders (SAMPLE=mid)
+        mi = json.loads(md.read_text())["movers_vs_stayers"]
+        sh, net = mi["mean_log_gap_by_part"]["His share of the ball"], mi["mean_log_gap"]
+        out += [
+            ("mid share", f"| {p(sh['point'], 1, True)} ({p(sh['lo'], 1, True)} to {p(sh['hi'], 1, True)}) |"),
+            ("mid net", f"ends up {p(-net['point'])} behind players who stayed ({p(net['lo'], 1, True)} "
+                        f"to {p(net['hi'], 1, True)})"),
+            ("mid moves", f"| {mi['n_movers']} / {mi['n_stayers']:,} |"),
         ]
     return out
 

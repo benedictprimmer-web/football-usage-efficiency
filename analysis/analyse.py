@@ -17,7 +17,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import WORK, OUT, MIN_MINUTES, SEED, N_BOOT, CASES
+from config import WORK, OUT, MIN_MINUTES, SEED, N_BOOT, CASES, GROUP
 
 STEP = 0.05          # report slopes per +5 percentage points of usage share
 
@@ -49,7 +49,7 @@ def cluster_boot(df: pd.DataFrame, stat, n_boot: int = N_BOOT, seed: int = SEED)
 def sample(panel: pd.DataFrame) -> pd.DataFrame:
     """Attacking players (Transfermarkt 'Attack' or attacking midfield) with at
     least MIN_MINUTES league minutes in the season."""
-    return panel[panel.attacker & (panel.minutes >= MIN_MINUTES)].copy()
+    return panel[panel[GROUP] & (panel.minutes >= MIN_MINUTES)].copy()
 
 
 # ------------------------------------------------------------------ 1. reliability
@@ -57,7 +57,7 @@ def sample(panel: pd.DataFrame) -> pd.DataFrame:
 def reliability(panel: pd.DataFrame) -> pd.DataFrame:
     """Split-half (odd v even matches) correlation, Spearman-Brown stepped up to
     a full season. This is what sets the minutes floor."""
-    a = panel[panel.attacker].copy()
+    a = panel[panel[GROUP]].copy()
     a["band"] = pd.cut(a.minutes, [0, 450, 900, 1800, 5000],
                        labels=["<450", "450-899", "900-1799", "1800+"], right=False)
     rows = []

@@ -22,6 +22,7 @@ All aggregates, plus season numbers for three case-study players.
 | `summary.json` | Sample sizes and the within-player headline |
 | `case_studies.csv` | Season numbers for Depay, Martial and Ronaldo |
 | `opta/` | The same tables rebuilt on FBref/Opta shots for seven leagues (`SHOTS=opta`) |
+| `mid/`, `opta/mid/` | The same tables for midfielders who are not attacking midfielders (`SAMPLE=mid`) |
 
 ## What you need to supply
 

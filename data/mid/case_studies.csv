@@ -1,0 +1,27 @@
+player,season,league,team,minutes,actions,usage_share,minutes_share,usage_on_pitch,efficiency,mates_eff
+Anthony Martial,2014-2015,FRA-Ligue 1,Monaco,1822.0000,61.0000,0.0773,0.5327,0.1517,0.1921,0.1172
+Anthony Martial,2015-2016,ENG-Premier League,Manchester United,2632.0000,94.0000,0.1274,0.7696,0.1741,0.1431,0.1005
+Anthony Martial,2016-2017,ENG-Premier League,Manchester United,1560.0000,66.0000,0.0640,0.4561,0.1602,0.1058,0.0954
+Anthony Martial,2017-2018,ENG-Premier League,Manchester United,1583.0000,81.0000,0.0914,0.4629,0.2010,0.1355,0.1087
+Anthony Martial,2018-2019,ENG-Premier League,Manchester United,1623.0000,74.0000,0.0827,0.4746,0.1927,0.1411,0.1166
+Anthony Martial,2019-2020,ENG-Premier League,Manchester United,2640.0000,109.0000,0.1173,0.7719,0.1594,0.1569,0.0923
+Anthony Martial,2020-2021,ENG-Premier League,Manchester United,1487.0000,59.0000,0.0638,0.4348,0.1603,0.1699,0.1009
+Anthony Martial,2022-2023,ENG-Premier League,Manchester United,980.0000,38.0000,0.0356,0.2865,0.1387,0.2190,0.1225
+Anthony Martial,2023-2024,ENG-Premier League,Manchester United,444.0000,12.0000,0.0123,0.1298,0.1081,0.1111,0.0904
+Cristiano Ronaldo,2014-2015,ESP-La Liga,Real Madrid,3099.0000,285.0000,0.2353,0.9061,0.2681,0.1544,0.1190
+Cristiano Ronaldo,2015-2016,ESP-La Liga,Real Madrid,3185.0000,268.0000,0.2122,0.9313,0.2339,0.1399,0.1185
+Cristiano Ronaldo,2016-2017,ESP-La Liga,Real Madrid,2544.0000,185.0000,0.1570,0.7439,0.2189,0.1300,0.1250
+Cristiano Ronaldo,2017-2018,ESP-La Liga,Real Madrid,2298.0000,214.0000,0.1724,0.6719,0.2468,0.1381,0.1147
+Cristiano Ronaldo,2018-2019,ITA-Serie A,Juventus,2689.0000,216.0000,0.2015,0.7863,0.2517,0.1109,0.0941
+Cristiano Ronaldo,2019-2020,ITA-Serie A,Juventus,2919.0000,246.0000,0.2110,0.8535,0.2654,0.1041,0.0912
+Cristiano Ronaldo,2020-2021,ITA-Serie A,Juventus,2803.0000,195.0000,0.1855,0.8196,0.2327,0.1416,0.1342
+Cristiano Ronaldo,2021-2022,ENG-Premier League,Manchester United,2459.0000,133.0000,0.1462,0.7190,0.1970,0.1455,0.0966
+Cristiano Ronaldo,2022-2023,ENG-Premier League,Manchester United,520.0000,31.0000,0.0290,0.1520,0.2366,0.0790,0.1028
+Memphis Depay,2015-2016,ENG-Premier League,Manchester United,1478.0000,69.0000,0.0935,0.4322,0.2262,0.0863,0.1124
+Memphis Depay,2016-2017,FRA-Ligue 1,Lyon,1099.0000,78.0000,0.0798,0.3300,0.2415,0.1406,0.1141
+Memphis Depay,2017-2018,FRA-Ligue 1,Lyon,2471.0000,179.0000,0.1812,0.7225,0.2660,0.1075,0.1114
+Memphis Depay,2018-2019,FRA-Ligue 1,Lyon,2737.0000,219.0000,0.1898,0.8003,0.2425,0.1030,0.0958
+Memphis Depay,2019-2020,FRA-Ligue 1,Lyon,1022.0000,72.0000,0.1163,0.4056,0.2869,0.0904,0.0797
+Memphis Depay,2020-2021,FRA-Ligue 1,Lyon,2932.0000,196.0000,0.1858,0.8573,0.2295,0.1237,0.1332
+Memphis Depay,2021-2022,ESP-La Liga,Barcelona,1848.0000,101.0000,0.1105,0.5404,0.2469,0.1269,0.1157
+Memphis Depay,2023-2024,ESP-La Liga,Atletico Madrid,887.0000,51.0000,0.0614,0.2594,0.2318,0.1658,0.1272

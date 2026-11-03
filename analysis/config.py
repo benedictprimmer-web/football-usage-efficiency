@@ -14,6 +14,12 @@ OPTA = os.environ.get("SHOTS", "understat") == "opta"
 WORK = ROOT / "data" / ("work_opta" if OPTA else "work")   # per-player intermediates, gitignored
 OUT = ROOT / "data" / "opta" if OPTA else ROOT / "data"    # small aggregate outputs, committed
 FIG = ROOT / "figures"
+# SAMPLE=mid reruns the tests on midfielders who are not attacking midfielders
+# (central, defensive and wide), as a second sample next to the attackers
+MID = os.environ.get("SAMPLE", "attackers") == "mid"
+GROUP = "midfielder" if MID else "attacker"
+if MID:
+    OUT = OUT / "mid"
 SHOTS_FILE = ("opta" if OPTA else "understat") + "/shots.parquet"
 
 # Transfermarkt league competition ids for the six Understat leagues

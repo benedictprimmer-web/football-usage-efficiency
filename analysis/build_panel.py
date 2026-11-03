@@ -102,6 +102,7 @@ def build() -> pd.DataFrame:
     dob = pd.to_datetime(u.date_of_birth, errors="coerce")
     u["age"] = (pd.to_datetime(u.season.str[:4] + "-09-01") - dob).dt.days / 365.25
     u["attacker"] = (u.position.eq("Attack") | u.sub_position.eq("Attacking Midfield"))
+    u["midfielder"] = u.position.eq("Midfield") & ~u.sub_position.eq("Attacking Midfield")
     WORK.mkdir(parents=True, exist_ok=True)
     out = WORK / "panel.parquet"
     u.to_parquet(out, index=False)

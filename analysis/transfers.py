@@ -25,7 +25,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import OUT, SOURCE, WORK, SEED, N_BOOT, MIN_MINUTES, SHOTS_FILE
+from config import OUT, SOURCE, WORK, SEED, N_BOOT, MIN_MINUTES, SHOTS_FILE, GROUP
 
 PARTS = {
     "d_team": "Team chances per 90",
@@ -41,9 +41,10 @@ MIN_ACTIONS = 20
 # ------------------------------------------------------------------ the pairs
 
 def season_pairs() -> pd.DataFrame:
-    """Every attacker with 900+ measured minutes in two consecutive seasons."""
+    """Every attacker (or midfielder, SAMPLE=mid) with 900+ measured minutes in two
+    consecutive seasons."""
     d = pd.read_parquet(WORK / "panel.parquet")
-    d = d[d.attacker & (d.minutes >= MIN_MINUTES) & (d.actions >= MIN_ACTIONS)
+    d = d[d[GROUP] & (d.minutes >= MIN_MINUTES) & (d.actions >= MIN_ACTIONS)
           & (d.mates_eff > 0) & (d.usage_on_pitch > 0)].copy()
     d["yr"] = d.season.str[:4].astype(int)
     d["out90"] = d.value / d.minutes * 90

@@ -19,6 +19,8 @@ if [[ "${1:-}" != "--quick" ]]; then
   # the same tests on FBref/Opta shots for the Big-5 plus Portugal and the Eredivisie
   "$PY" analysis/fbref.py
   for s in crosswalk minutes build_panel analyse transfers; do SHOTS=opta "$PY" "analysis/$s.py"; done
+  # midfielders who are not attacking midfielders, on both sources
+  for sh in understat opta; do for s in analyse transfers; do SHOTS=$sh SAMPLE=mid "$PY" "analysis/$s.py"; done; done
 fi
 "$PY" analysis/figures.py
 

@@ -11,7 +11,8 @@ I followed every attacker in the Big-5 leagues who played 900 league minutes in 
 - Compared with players who stayed, a mover's share of his team's shots and shot-assists falls by 4.9% (95% interval −7.0% to −2.8%).
 - His new team creates more chances (+2.9%) and better ones (+3.5%), so per 90 he ends up 3.6% ahead of stayers (0.2% to 6.9%), or 3.0% after adjusting for age (−0.5% to +6.9%).
 - Losing the ball is about a quarter of a flop. It accounts for 28% of the average fall for movers (20% to 36%) and 23% for stayers, and 32% of movers' flops would not have been flops had his share held.
-- Movers flopped 19% of the time and stayers 18%, a gap of 1.4 points (95% interval −2.1 to +4.9), or 2.7 points after adjusting for age (−1.0 to +6.7). If each player's quality against his team-mates stayed exactly the same and only luck moved it, the moves in this sample would flop 22% of the time. The benchmark runs a little high: it gives stayers 19% against a real 18%.
+- Midfielders pay more: a move costs them about 10% of their share of the ball, the better team does not make up for it, and they flop more often than midfielders who stay ([below](#midfielders-pay-more-for-a-move)).
+- Attackers who moved flopped 19% of the time and stayers 18%, a gap of 1.4 points (95% interval −2.1 to +4.9), or 2.7 points after adjusting for age (−1.0 to +6.7). If each player's quality against his team-mates stayed exactly the same and only luck moved it, the moves in this sample would flop 22% of the time. The benchmark runs a little high: it gives stayers 19% against a real 18%.
 
 ![A typical move: less of the ball, at a better team](figures/fig0_what_a_move_does.png)
 
@@ -45,6 +46,23 @@ On stayers the benchmark comes within a point of the real flop rate, so it is cl
 - **Can you see it coming?** Using only what is known on the day of the move, a simple model trained on moves into 2015-16 to 2019-20 and tested on 2020-21 onwards scores an AUC (the chance it ranks a random flop above a random non-flop) of 0.62 (0.54 to 0.70). The fifth of moves it rates riskiest flop 23% of the time, against 16% for the rest. The strongest warning sign is a big season just before the move, which is partly regression to the mean.
 
 <br clear="right">
+
+## Midfielders pay more for a move
+
+I reran everything on midfielders who are not attacking midfielders (central, defensive and wide), with the same 900-minute and 20-action floors. Shots and shot-assists see less of a midfielder's game, so this is a rougher measure for them, and the result is still the clearest contrast in the study.
+
+| | Attackers, Understat | Midfielders, Understat | Midfielders, Opta |
+|---|---|---|---|
+| Moves / stays | 601 / 2,075 | 397 / 1,616 | 277 / 1,233 |
+| His share of the ball, movers v stayers | −4.9% (−7.0% to −2.8%) | −9.6% (−12.9% to −6.3%) | −12.0% (−16.3% to −7.8%) |
+| Output per 90, net | +3.6% (+0.2% to +6.9%) | −5.2% (−10.6% to +0.2%) | −9.3% (−15.8% to −2.5%) |
+| Flop rate, moved v stayed | 19% v 18% | 33% v 24% | 36% v 23% |
+| Flop gap, adjusted for age | +2.7 points (−1.0 to +6.7) | +9.5 points (+4.0 to +14.5) | +12.6 points (+6.2 to +19.1) |
+| Flop rate, luck only (movers) | 22% | 30% | 32% |
+| Losing the ball, share of a mover's flop | 28% | 44% | 49% |
+| Same player, 5 points more of the ball | −1.7% (−3.0% to −0.5%) | +1.9% (−0.2% to +4.1%) | +2.0% (−0.2% to +4.1%) |
+
+A midfielder who moves loses about twice as much of the ball as an attacker (−9.6%), and the better team does not make up for it: per 90 he ends up 5.2% behind players who stayed (−10.6% to +0.2%), and 9.3% behind on Opta (−15.8% to −2.5%). Movers flop more often than stayers even after adjusting for age, more often than luck alone would give, and losing the ball is close to half of a midfielder's flop. Unlike attackers, a midfielder's chances show no sign of getting worse when he has more of the ball (+1.9%, −0.2% to +4.1%), so for him the cost of a move is the lost involvement itself.
 
 ## A second source: Opta xG in seven leagues
 
