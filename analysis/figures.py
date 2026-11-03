@@ -64,7 +64,7 @@ MEDIAN_EFF_KEY = "median_efficiency"
 
 def fig_curve():
     cv = pd.read_csv(OUT / "curve_bins.csv")
-    cv = cv[cv.usage_measure == "usage_share"]
+    cv = cv[(cv.usage_measure == "usage_on_pitch") & (cv.n_player_seasons >= 50)]
     cs = pd.read_csv(OUT / "case_studies.csv")
     n = json.loads((OUT / "summary.json").read_text())["n_player_seasons"]
 
@@ -72,13 +72,13 @@ def fig_curve():
     x = cv.usage_mean * 100
     ax.fill_between(x, cv.eff_lo, cv.eff_hi, color=BAND, lw=0, zorder=1)
     ax.plot(x, cv.efficiency, color=INK2, lw=2, zorder=2)
-    ax.text(3.0, cv.efficiency.iloc[0] + 0.008, f"Average of {n:,} attacker seasons",
+    ax.text(8.5, 0.139, f"Average of {n:,} attacker seasons",
             color=INK2, fontsize=10.5, va="bottom")
 
     # Depay, the focus: label each season with his share of the club's league minutes
     path = [("2015-2016", "United 15/16"), ("2017-2018", "Lyon 17/18"), ("2020-2021", "Lyon 20/21")]
     dp = cs[cs.player == "Memphis Depay"].set_index("season").loc[[s for s, _ in path]]
-    px, py = dp.usage_share * 100, dp.efficiency
+    px, py = dp.usage_on_pitch * 100, dp.efficiency
     ax.plot(px, py, color=ACCENT, lw=2.2, zorder=4)
     ax.scatter(px, py, s=80, color=ACCENT, edgecolor=BG, linewidth=1.5, zorder=5)
     offs = {"2015-2016": (10, -4), "2017-2018": (10, -8), "2020-2021": (10, 8)}
@@ -90,13 +90,13 @@ def fig_curve():
     ax.annotate("Depay", (px.iloc[0], py.iloc[0]), xytext=(-10, 0), textcoords="offset points",
                 fontsize=12, color=ACCENT, fontweight="bold", ha="right", va="center")
 
-    ax.set_xlim(2, 25)
+    ax.set_xlim(7, 27)
     ax.set_ylim(0.075, 0.145)
-    ax.set_xlabel("Share of his team's shots and shot-assists (%)")
+    ax.set_xlabel("Share of his team's shots and shot-assists while he is on the pitch (%)")
     ax.set_ylabel("Chance quality per action (xG + xA)")
     ax.grid(axis="y", color=BAND, lw=0.8)
-    _title(fig, ax, "More of the ball, the same quality of chances",
-           "Depay played more at Lyon, got more of the ball, and his chances got better.")
+    _title(fig, ax, "Chance quality holds until a player takes over a fifth of the ball",
+           "Per 90, Depay's share of the ball barely changed. His chance quality did.")
     _save(fig, "fig1_usage_efficiency")
 
 
@@ -176,7 +176,7 @@ def fig_flops():
     ci = [[v * 100 for v in j["share_ci95"][k]] for k in labels]
     fig, ax = plt.subplots(figsize=(7.2, 3.9))
     y = list(range(len(labels)))[::-1]
-    colors = [ACCENT, ACCENT, INK2, MUTED]
+    colors = [ACCENT, ACCENT, ACCENT, INK2]
     ax.barh(y, vals, color=colors, height=0.56, zorder=2)
     for yi, v, (lo, hi) in zip(y, vals, ci):
         ax.plot([lo, hi], [yi, yi], color=INK, lw=1.2, zorder=3)
@@ -186,13 +186,13 @@ def fig_flops():
     ax.set_yticklabels(labels, fontsize=11.5)
     ax.tick_params(axis="y", length=0)
     ax.axvline(0, color=MUTED, lw=1)
-    ax.set_xlim(-8, 100)
+    ax.set_xlim(0, 60)
     ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter())
-    ax.set_xlabel("Share of the fall in output (black line: 95% range)")
+    ax.set_xlabel("Share of the fall in per-90 output (black line: 95% range)")
     ax.grid(axis="x", color=BAND, lw=0.8)
     ax.spines["left"].set_visible(False)
-    _title(fig, ax, "When a transfer flops, it is mostly less of the ball",
-           f"{j['flops']} club moves where an attacker's output fell by more than 25%")
+    _title(fig, ax, "When a transfer flops, six tenths is the situation",
+           f"{j['flops']} club moves where an attacker's output per 90 fell by more than 25%")
     _save(fig, "fig0_why_transfers_flop")
 
 
