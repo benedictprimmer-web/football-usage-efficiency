@@ -1,12 +1,21 @@
 # Can usage rates explain failed transfers?
 
-**A player's output is how much of the ball he gets times what he does with it. This tests whether the second part changes when the first does.**
+**When an attacker's output falls after a move, is it because he got worse, or because he got less of the ball?**
 
 ## What I found
 
-Barely. When the same attacker gets 5% more of his team's shots and shot-assists, the quality of his chances drops by about 1.7%. That could be nothing at all, as the range runs from a 3.4% drop to a 0.1% rise.
+Mostly less of the ball. I looked at 760 club moves by attackers. In 356 of them the player's output (expected goals plus expected assists) fell by more than 25%, by 58% on average. I split each fall into four parts:
 
-That means a player's quality mostly travels with him, while how much of the ball he gets depends on his minutes and the club he joins. So a transfer that looks like a flop can partly be a player who simply got less of the ball.
+- **79%** came from playing fewer minutes.
+- **15%** came from getting less of the ball while he was on the pitch.
+- **9%** came from worse chances per action, which is the player actually getting worse.
+- The new team creating fewer chances made no real difference (−2%).
+
+So in a typical flop, around nine tenths of the drop is the player getting less of the ball, and around a tenth is him getting worse. The split is exact, as output is minutes × team chances per minute × his share of them × quality per chance.
+
+![Why transfers flop: share of the fall in output from each part](figures/fig0_why_transfers_flop.png)
+
+The second test backs this up. When the same attacker gets 5% more of his team's shots and shot-assists, the quality of his chances drops by only about 1.7%, and that could be nothing at all (the range runs from a 3.4% drop to a 0.1% rise). A player's quality mostly travels with him. How much of the ball he gets depends on his minutes and the club he joins.
 
 ![Chance quality against share of the ball for 4,592 attacker seasons, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
 
@@ -57,6 +66,7 @@ For a scout, that means a player's chance quality mostly travels with him, and h
 
 **The method**
 
+- **Minutes are not fully separate from quality.** A coach can drop a player because he is playing badly, so part of the 79% may be the player getting worse in ways the chance numbers miss. The split shows where the fall happened, not who caused it.
 - **Noise and survivorship.** Chance quality on fewer than 100 actions is noisy. A pair needs 900 minutes in both seasons, so players whose role collapsed drop out, which probably hides some of the steepest falls.
 - **Coaching.** If a coach gives the ball to whoever is in form, part of the pattern reflects his choices. The control for last season's form absorbs the obvious version of this.
 - **Observational.** No experiment sits behind any of this, so it shows a pattern, not a cause.

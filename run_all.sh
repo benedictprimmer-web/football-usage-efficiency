@@ -5,4 +5,5 @@ cd "$(dirname "$0")"
 PY="${PYTHON:-.venv/bin/python}"
 "$PY" analysis/build_panel.py
 "$PY" analysis/analyse.py
+"$PY" analysis/decompose.py
 "$PY" analysis/figures.py

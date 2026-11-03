@@ -169,7 +169,35 @@ def fig_bins():
     _save(fig, "fig3_within_bins")
 
 
+def fig_flops():
+    j = json.loads((OUT / "flop_decomposition.json").read_text())
+    labels = list(j["share_of_fall"])
+    vals = [j["share_of_fall"][k] * 100 for k in labels]
+    ci = [[v * 100 for v in j["share_ci95"][k]] for k in labels]
+    fig, ax = plt.subplots(figsize=(7.2, 3.9))
+    y = list(range(len(labels)))[::-1]
+    colors = [ACCENT, ACCENT, INK2, MUTED]
+    ax.barh(y, vals, color=colors, height=0.56, zorder=2)
+    for yi, v, (lo, hi) in zip(y, vals, ci):
+        ax.plot([lo, hi], [yi, yi], color=INK, lw=1.2, zorder=3)
+        ax.text(max(v, hi) + 2, yi, f"{v + 1e-9:.0f}%".replace("-", "\u2212"), va="center", fontsize=12, color=INK,
+                fontweight="bold" if v > 50 else "normal")
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels, fontsize=11.5)
+    ax.tick_params(axis="y", length=0)
+    ax.axvline(0, color=MUTED, lw=1)
+    ax.set_xlim(-8, 100)
+    ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter())
+    ax.set_xlabel("Share of the fall in output (black line: 95% range)")
+    ax.grid(axis="x", color=BAND, lw=0.8)
+    ax.spines["left"].set_visible(False)
+    _title(fig, ax, "When a transfer flops, it is mostly less of the ball",
+           f"{j['flops']} club moves where an attacker's output fell by more than 25%")
+    _save(fig, "fig0_why_transfers_flop")
+
+
 if __name__ == "__main__":
+    fig_flops()
     fig_curve()
     fig_slopes()
     fig_bins()

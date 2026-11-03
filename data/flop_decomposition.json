@@ -1,0 +1,30 @@
+{
+ "moves": 760,
+ "players": 530,
+ "flops": 356,
+ "flop_mean_output_change": -0.577,
+ "share_of_fall": {
+  "Played fewer minutes": 0.785,
+  "Less of the ball while on the pitch": 0.145,
+  "Worse chances per action": 0.089,
+  "New team created fewer chances": -0.019
+ },
+ "share_ci95": {
+  "Played fewer minutes": [
+   0.74,
+   0.829
+  ],
+  "Less of the ball while on the pitch": [
+   0.114,
+   0.176
+  ],
+  "Worse chances per action": [
+   0.056,
+   0.123
+  ],
+  "New team created fewer chances": [
+   -0.044,
+   0.005
+  ]
+ }
+}
