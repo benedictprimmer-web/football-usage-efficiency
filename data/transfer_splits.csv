@@ -1,0 +1,17 @@
+group,split,part,share,lo,hi,n,flops
+movers,flop tail,Team chances per 90,0.2183,0.1553,0.2826,601,115
+movers,flop tail,His share of the ball,0.2779,0.2006,0.3673,601,115
+movers,flop tail,Team-mates' chance quality,0.1120,0.0381,0.1840,601,115
+movers,flop tail,His quality relative to team-mates,0.3919,0.3075,0.4819,601,115
+movers,variance,Team chances per 90,0.2155,0.1773,0.2512,601,115
+movers,variance,His share of the ball,0.2163,0.1652,0.2678,601,115
+movers,variance,Team-mates' chance quality,0.1940,0.1434,0.2378,601,115
+movers,variance,His quality relative to team-mates,0.3741,0.3239,0.4239,601,115
+stayers,flop tail,Team chances per 90,0.1886,0.1594,0.2183,2075,369
+stayers,flop tail,His share of the ball,0.2345,0.1998,0.2732,2075,369
+stayers,flop tail,Team-mates' chance quality,0.1524,0.1160,0.1890,2075,369
+stayers,flop tail,His quality relative to team-mates,0.4245,0.3787,0.4680,2075,369
+stayers,variance,Team chances per 90,0.1778,0.1593,0.1980,2075,369
+stayers,variance,His share of the ball,0.2478,0.2254,0.2706,2075,369
+stayers,variance,Team-mates' chance quality,0.1661,0.1433,0.1916,2075,369
+stayers,variance,His quality relative to team-mates,0.4083,0.3780,0.4384,2075,369

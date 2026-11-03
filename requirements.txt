@@ -3,5 +3,6 @@ pandas==3.1.0
 numpy==2.5.4
 matplotlib==3.11.2
 pyarrow==26.0.1
-# optional: rdata (rebuild shots.parquet with src/usage_model/understat.py),
-# scikit-learn (talent.py self-check)
+qrcode==8.2        # the QR code on the one-pager
+rdata==1.1.0       # reads the Understat .rds archive
+# optional: scikit-learn (talent.py self-check)

@@ -1,0 +1,42 @@
+{
+ "matches": 1517,
+ "of_statsbomb_matches": 1517,
+ "players_mapped": 2135,
+ "players_in_lineups": 2547,
+ "minutes": {
+  "player_matches": 41061,
+  "minutes_corr": 0.9972,
+  "median_abs_diff_minutes": 0.0,
+  "within_2_minutes": 0.9948,
+  "sub_on_minute_within_1": 0.9856
+ },
+ "pass_growth": {
+  "new": {
+   "pairs": 2065,
+   "passes": 233400,
+   "growth": -0.0006,
+   "lo": -0.0166,
+   "hi": 0.0148
+  },
+  "established": {
+   "pairs": 1108,
+   "passes": 159966,
+   "growth": 0.0005,
+   "lo": -0.0202,
+   "hi": 0.0211
+  },
+  "new_minus_established": {
+   "gap": -0.0011,
+   "lo": -0.0286,
+   "hi": 0.0257
+  }
+ },
+ "links_agree": {
+  "pairs": 3120,
+  "unordered_pairs": 2042,
+  "corr": 0.2062,
+  "null_95": 0.0355,
+  "shot_ratio_top_fifth_pass_links": 1.1128,
+  "shot_ratio_rest": 0.9612
+ }
+}

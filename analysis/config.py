@@ -14,6 +14,9 @@ FIG = ROOT / "figures"
 
 # Transfermarkt league competition ids for the six Understat leagues
 LEAGUE_COMPS = {"GB1", "ES1", "IT1", "L1", "FR1", "RU1"}
+# the Big-5, whose line-ups and substitutions Transfermarkt covers in full
+TM_LEAGUES = {"GB1": "ENG-Premier League", "ES1": "ESP-La Liga", "IT1": "ITA-Serie A",
+              "L1": "GER-Bundesliga", "FR1": "FRA-Ligue 1"}
 
 MIN_MINUTES = 900                      # ten full matches; see README for why
 SEED = 0

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="345.6pt" height="432pt" viewBox="0 0 345.6 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-03T18:36:02.085586</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 345.6 432 
+L 345.6 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 24.912 241.8309 
+L 320.688 241.8309 
+L 320.688 161.1315 
+L 24.912 161.1315 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 74.208 191.124777 
+L 172.8 182.20301 
+L 271.392 190.385033 
+" clip-path="url(#pe358472db9)" style="fill: none; stroke: #1d1d1b; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_2"/>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3"/>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_4"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_5">
+    <defs>
+     <path id="mcec5704328" d="M 0 5 
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
+C 4.473168 2.597899 5 1.326016 5 0 
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
+C 2.597899 -4.473168 1.326016 -5 0 -5 
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
+C -4.473168 -2.597899 -5 -1.326016 -5 0 
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
+C -2.597899 4.473168 -1.326016 5 0 5 
+z
+" style="stroke: #1d1d1b; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pe358472db9)">
+     <use xlink:href="#mcec5704328" x="74.208" y="191.124777" style="fill: #ffffff; stroke: #1d1d1b; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <defs>
+     <path id="m9a8701994a" d="M 0 5 
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
+C 4.473168 2.597899 5 1.326016 5 0 
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
+C 2.597899 -4.473168 1.326016 -5 0 -5 
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
+C -4.473168 -2.597899 -5 -1.326016 -5 0 
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
+C -2.597899 4.473168 -1.326016 5 0 5 
+z
+" style="stroke: #1d1d1b; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pe358472db9)">
+     <use xlink:href="#m9a8701994a" x="172.8" y="182.20301" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <g clip-path="url(#pe358472db9)">
+     <use xlink:href="#m9a8701994a" x="271.392" y="190.385033" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 24.912 241.8309 
+L 320.688 241.8309 
+" style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="74.208" y="184.668825" transform="rotate(-0 74.208 184.668825)">23%</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="172.8" y="175.747058" transform="rotate(-0 172.8 175.747058)">27%</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="271.392" y="183.92908" transform="rotate(-0 271.392 183.92908)">23%</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="24.912" y="155.1315" transform="rotate(-0 24.912 155.1315)">His share of the team's shots and shot-assists</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 24.912 362.88 
+L 320.688 362.88 
+L 320.688 282.1806 
+L 24.912 282.1806 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 74.208 321.913187 
+L 172.8 311.849497 
+L 271.392 304.159319 
+" clip-path="url(#p5627e32814)" style="fill: none; stroke: #1b64c2; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_4">
+     <g id="line2d_9"/>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(58.74675 376.523)">United</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(54.653391 389.0495)">2015-16</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_10"/>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(161.518242 376.523)">Lyon</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(153.245391 389.0495)">2017-18</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(260.110242 376.523)">Lyon</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(251.837391 389.0495)">2020-21</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_12">
+    <defs>
+     <path id="m447f5fbaa5" d="M 0 5 
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
+C 4.473168 2.597899 5 1.326016 5 0 
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
+C 2.597899 -4.473168 1.326016 -5 0 -5 
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
+C -4.473168 -2.597899 -5 -1.326016 -5 0 
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
+C -2.597899 4.473168 -1.326016 5 0 5 
+z
+" style="stroke: #1b64c2; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#p5627e32814)">
+     <use xlink:href="#m447f5fbaa5" x="74.208" y="321.913187" style="fill: #ffffff; stroke: #1b64c2; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="line2d_13">
+    <defs>
+     <path id="mea5cf4dc40" d="M 0 5 
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
+C 4.473168 2.597899 5 1.326016 5 0 
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
+C 2.597899 -4.473168 1.326016 -5 0 -5 
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534 
+C -4.473168 -2.597899 -5 -1.326016 -5 0 
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534 
+C -2.597899 4.473168 -1.326016 5 0 5 
+z
+" style="stroke: #1b64c2; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#p5627e32814)">
+     <use xlink:href="#mea5cf4dc40" x="172.8" y="311.849497" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="line2d_14">
+    <g clip-path="url(#p5627e32814)">
+     <use xlink:href="#mea5cf4dc40" x="271.392" y="304.159319" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
+    </g>
+   </g>
+   <g id="patch_5">
+    <path d="M 24.912 362.88 
+L 320.688 362.88 
+" style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="74.208" y="315.457235" transform="rotate(-0 74.208 315.457235)">0.086</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="172.8" y="305.393545" transform="rotate(-0 172.8 305.393545)">0.107</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="271.392" y="297.703367" transform="rotate(-0 271.392 297.703367)">0.124</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="74.208" y="338.527769" transform="rotate(-0 74.208 338.527769)">only 69 actions</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="24.912" y="276.1806" transform="rotate(-0 24.912 276.1806)">His chance quality (xG+xA per action)</text>
+   </g>
+  </g>
+  <g id="patch_6">
+   <path d="M 18 15.84 
+L 54 15.84 
+L 54 12.96 
+L 18 12.96 
+z
+" style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Depay had the same share of the</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">ball at United and Lyon. His</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">chances got better</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 101.931406)">Memphis Depay, measured over the minutes he was on the pitch.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 116.543906)">Hollow: a small sample</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>
+   <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe358472db9">
+   <rect x="24.912" y="161.1315" width="295.776" height="80.6994"/>
+  </clipPath>
+  <clipPath id="p5627e32814">
+   <rect x="24.912" y="282.1806" width="295.776" height="80.6994"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,26 @@
+club_id1,n,mean,team,league,shrunk
+1050,12,-0.1247,Villarreal,ESP-La Liga,0.0040
+430,10,-0.0780,Fiorentina,ITA-Serie A,0.0075
+150,11,-0.0698,Real Betis,ESP-La Liga,0.0076
+29,14,-0.0471,Everton,ENG-Premier League,0.0080
+46,10,-0.0572,Inter,ITA-Serie A,0.0086
+583,12,-0.0448,Paris Saint Germain,FRA-Ligue 1,0.0087
+873,8,-0.0706,Crystal Palace,ENG-Premier League,0.0087
+3709,8,-0.0629,Getafe,ESP-La Liga,0.0090
+681,8,-0.0291,Real Sociedad,ESP-La Liga,0.0104
+131,8,-0.0171,Barcelona,ESP-La Liga,0.0108
+5,12,-0.0048,AC Milan,ITA-Serie A,0.0110
+631,10,-0.0077,Chelsea,ENG-Premier League,0.0110
+368,12,0.0008,Sevilla,ESP-La Liga,0.0114
+281,9,-0.0023,Manchester City,ENG-Premier League,0.0114
+416,8,0.0016,Torino,ITA-Serie A,0.0116
+379,9,0.0050,West Ham,ENG-Premier League,0.0117
+12,12,0.0071,Roma,ITA-Serie A,0.0117
+969,10,0.0196,Montpellier,FRA-Ligue 1,0.0124
+506,11,0.0284,Juventus,ITA-Serie A,0.0129
+6574,9,0.0855,Sassuolo,ITA-Serie A,0.0153
+82,8,0.1099,Wolfsburg,GER-Bundesliga,0.0159
+1038,9,0.1226,Sampdoria,ITA-Serie A,0.0170
+800,9,0.1256,Atalanta,ITA-Serie A,0.0171
+985,8,0.1807,Manchester United,ENG-Premier League,0.0188
+13,13,0.1581,Atletico Madrid,ESP-La Liga,0.0213

@@ -1,196 +1,222 @@
 # Why do transfers fail? A look at usage rates in football
 
-**When an attacker's output falls after a move, is it because he got worse, or because of the situation he joined?**
+**When an attacker's output falls after a move, did he get worse, or did the move change his situation?**
 
-Everything here is per 90 minutes, so playing time is taken out.
+I followed every attacker in the Big-5 leagues who played 900 league minutes in two seasons in a row, from 2014-15 to 2024-25: 601 club moves and 2,075 seasons where the player stayed. Output is expected goals plus expected assists per 90 minutes (xG+xA: the chance a shot is scored, plus the xG of the shots he set up), counted only over the minutes he was on the pitch. Usage is his share of the ball: his shots and shot-assists as a share of his team's while he is on. A flop is a season where output per 90 falls by more than 25%.
 
 ## What I found
 
-Mostly the situation. Of 587 club moves by attackers with 900 league minutes either side, 119 saw output per 90 (expected goals plus expected assists) fall by more than 25%, by 41% on average. I split each fall into four parts:
+**Among attackers who kept a regular place, a move barely changes the odds of a flop, and most flops look like luck.**
 
-- **28%** came from getting less of the ball while he was on the pitch.
-- **20%** came from the new team creating fewer chances per 90.
-- **13%** came from the new team-mates' chances being worse.
-- **39%** came from the player doing worse than his new team-mates.
+- Players who moved club flopped 19% of the time and players who stayed flopped 18%, a gap of 1.4 points (95% interval −2.1 to +4.9). Movers are younger, and adjusting for age the gap is 2.7 points (−1.0 to +6.7).
+- A typical move gives the player less of the ball (−4.9%) at a team that creates more chances (+2.9%) and better ones (+3.5%). Per 90, movers end up 3.6% ahead of stayers (0.2% to 6.9%), or 3.0% after adjusting for age (−0.5% to +6.9%).
+- If each player's quality against his team-mates stayed exactly the same, and only luck moved it, the moves in this sample would flop 22% of the time. That is more than the 19% that actually did.
 
-So around six tenths of a typical flop is the situation and four tenths is the player. The parts multiply back to output per 90 exactly: team chances per 90 × his share of them × team-mates' quality per chance × his quality relative to them.
+![A typical move: less of the ball, at a better team](figures/fig0_what_a_move_does.png)
 
-![When a transfer flops, six tenths is the situation](figures/fig0_why_transfers_flop.png)
-
-The second test asks what more of the ball does to the same player. When his per-90 share of the team's shots and shot-assists rises by 5 points, his chance quality falls by about 2.0% (95% interval −3.5% to −0.5%). Across all players, quality peaks at 12–16% share and drops off above 20%.
-
-![Chance quality against share of the ball per 90, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
-
-*Every 95% interval here comes from a bootstrap that resamples whole players.*
-
-## Depay and Ronaldo
-
-Per 90, Depay's share of the ball was about the same at both clubs: 22% at United in 2015-16 and 24% at Lyon in 2017-18. His chance quality changed, from 0.086 per action at United to 0.107 and then 0.124 at Lyon, though the United figure rests on only 69 actions. He also played far more at Lyon (75% and 86% of league minutes, against 43% at United), which is why his season totals look so different.
-
-Ronaldo is the opposite case. His own chance quality held up at United in 2021-22 (0.146 per action, against 0.142 at Juventus), yet United's expected goal difference was 0.25 per 90 worse with him on the pitch. Per-action numbers cannot see that cost, which is why usage matters: the touches he took came out of his team-mates' share. It is one season, so treat it as a pointer rather than proof.
-
-## Terms
-
-- **Share of the ball** (usage): his shots and shot-assists as a share of his team's while he is on the pitch.
-- **Chance quality**: expected goals (xG, the chance a shot is scored) plus expected assists (xA, the xG of the shot a pass sets up) per shot or shot-assist, without penalties.
+*Four parts multiply to output per 90: the chances his team creates, his share of them, the quality of team-mates' chances, and his own quality against team-mates. Each bar is movers minus stayers.*
 
 ## Why it matters
 
-A team only creates so many chances, so share of the ball works like a conserved quantity: one player's rise comes out of his team-mates'. A signing helps only if his chances beat the ones he takes over.
+One season of chances is a small sample. A club that reads a bad first season as a bad signing can end up selling a player whose quality has not changed, and the second test below shows how much of that first season is luck.
 
-## How I tested it
+## Flops look like luck
 
-The second test follows the same player from one season to the next: 2,646 pairs of seasons from 883 players, 592 of them club changes.
+Picking moves by a big fall also picks bad luck, so I measured how much luck alone produces. For each pair of seasons I kept the real change of team and role, fixed the player's quality against his team-mates, and redrew his chance quality from his own shots, 200 times.
 
-- **Playing time.** A player in form plays more, which inflates season totals. On season totals the effect reads as zero (−0.1%); per 90 it is −2.0%.
-- **Shared noise.** One speculative shot raises his share and lowers his quality at once. Measuring share and quality on different matches gives −1.7%.
-- **Regression to the mean.** Controlling for last season's quality leaves −1.7% unchanged.
-- **Team context.** Club changers show a 2.8% fall, which disappears (+0.6%) against their new team-mates.
-- **Minimum minutes.** Below 900 minutes most of a player's chance quality is noise.
+| | Flop rate, data | Flop rate, luck only | Player's part of a flop, data | Player's part, luck only |
+|---|--:|--:|--:|--:|
+| Moved club | 19% | 22% (20% to 24%) | 39% | 33% (28% to 38%) |
+| Stayed | 18% | 19% (17% to 20%) | 42% | 39% (36% to 41%) |
 
-![Four versions of the within-player test, with the per-90 headline highlighted](figures/fig2_within_player.png)
+On stayers the benchmark comes within a point of the real flop rate, so it is close to calibrated. For movers, luck alone produces more flops than the data, and only slightly less of the player's part. About 70% of the spread in a mover's change of quality against team-mates is what sampling noise alone would give. A flop on its own says little about whether the player got worse.
 
-For a scout, that means a player's chance quality mostly travels with him.
+![Transfers flop about as often as luck alone would predict](figures/fig1_flops_look_like_luck.png)
+
+## Who flops
+
+<img src="figures/fig2_age.png" width="420" align="right" alt="Flop rate by age, movers against stayers">
+
+- **Age.** Movers aged 26 to 28 flop 28% of the time, against 19% for stayers of the same age (gap +9 points, +1 to +17), and movers aged 29 and over 26%. Under 23 the movers do slightly better than the stayers. The 26–28 band is the only one of four with an interval clear of zero, so it is a lead to test on new seasons.
+- **League.** Players who move to a new league flop 22% of the time, against 17% for those who stay in the same league.
+- **Fee.** I found no clear pattern: 20% of moves over €30m flop, 17% at €10–30m, 13% under €10m and 19% of free or loan moves, and every interval overlaps. 149 moves have no fee on record in Transfermarkt.
+- **Buying club.** I cannot tell whether some clubs' signings do better. After shrinking each club's record towards the average the spread between clubs is close to zero, and only 11 clubs made enough signings to compare 2015–19 with 2020–25 (rank correlation −0.19, p = 0.57).
+- **Can you see it coming?** Using only what is known on the day of the move, a simple model trained on moves into 2015-16 to 2019-20 and tested on 2020-21 onwards scores an AUC (the chance it ranks a random flop above a random non-flop) of 0.62 (0.54 to 0.70). The fifth of moves it rates riskiest flop 23% of the time, against 16% for the rest. The strongest warning sign is a big season just before the move, which is regression to the mean and would warn about stayers too.
+
+<br clear="right">
+
+## The same player with more of the ball
+
+The second test follows one player from one season to the next: 2,693 pairs of seasons from 897 players. Seasons where his share of the team's shots and shot-assists was 5 points higher came with chance quality **1.7%** lower (95% interval −3.0% to −0.5%).
+
+That headline measures his share on odd matches and his quality on even matches (and the reverse). One speculative shot raises his share and lowers his quality in the same match, and splitting the matches removes that shared noise. Measuring minutes match by match is what makes this per-90 version possible.
+
+![With 5 more points of the ball, a player's chances are about 1.7% worse](figures/fig3_within_player.png)
+
+Every version points the same way, apart from season totals, where playing time hides the effect, and movers measured against their new team-mates, where the sample is small. The effect is small next to a flop: the typical move cuts a player's share by about 0.8 points (4.9% of a 17% share), which on this slope is worth about 0.3% in chance quality.
+
+## Chemistry
+
+Do two team-mates link up more the longer they play together? For every pair I counted the open-play shots one set up for the other, and compared that with what their own habits and their minutes together predict. That expected rate comes from a model with one term for how much the passer sets up and one for how much the receiver finishes from set-ups, fitted club by club and season by season.
+
+- **I found no sign that time together helps.** New pairs set up 0.4% more in the second half of their first season than the first (−1.0% to +1.9%, 20,786 pairs). The same pair a season later: +0.5% (−0.2% to +1.2%).
+- **Some pairs do link up more than expected, season after season.** A pair's excess set-ups in one season predict the next (correlation 0.10, against 0.01 at the 95th percentile when pairs are shuffled). That looks like fit between two players' roles and positions, which is there from the start.
+- **Old team-mates reunited at a new club** start 2.3% ahead of new pairs (−2.3% to +6.8%), within the noise.
+
+![No sign that time together makes team-mates link up more](figures/fig4_chemistry.png)
+
+The pairs that beat their expected rate most over their time together, after shrinking small samples towards average:
+
+| Pair | Minutes together | Set-ups | Expected | Ratio, shrunk |
+|---|--:|--:|--:|--:|
+| Lionel Messi & Neymar | 9,681 | 189 | 154 | 1.09 |
+| Marek Hamšík & Lorenzo Insigne | 8,873 | 165 | 135 | 1.09 |
+| Gonzalo Higuaín & Paulo Dybala | 4,305 | 72 | 51 | 1.08 |
+| Marco Reus & Pierre-Emerick Aubameyang | 4,001 | 60 | 41 | 1.08 |
+| Luis Alberto & Mattia Zaccagni | 4,575 | 49 | 31 | 1.07 |
+
+### Checked against StatsBomb passes
+
+StatsBomb's free event data covers 2015-16 in the Premier League, La Liga, Serie A and Ligue 1 (1,517 matches), with every pass, its receiver and every substitution.
+
+- **The minutes hold up.** For substitutes, Transfermarkt's minute on agrees with StatsBomb's within a minute in 99% of cases.
+- **Passing does not grow either.** Passes give about 40 times as many events as shot assists. From the first half of 2015-16 to the second, passing between new pairs changed by −0.1% and between established pairs by +0.1%, a gap of −0.1% (−2.9% to +2.6%).
+- **The two sources see the same pairs.** Pairs who pass to each other more than expected also set up more shots for each other than expected (correlation 0.21, against 0.04 by chance). The fifth with the strongest passing links set up 11% more shots than expected.
+
+## Depay and Ronaldo
+
+<img src="figures/fig5_depay.png" width="360" align="right" alt="Depay's share of the ball and chance quality at United and Lyon">
+
+Memphis Depay is the standard example of a flop who came good. Measured over his minutes on the pitch, his share of the ball was similar at United in 2015-16 (23%) and Lyon in 2017-18 (27%). His chance quality rose from 0.086 per action to 0.107, and to 0.124 in 2020-21, though the United figure rests on only 69 actions. He mainly played more: 43% of United's league minutes, against 72% and 86% at Lyon.
+
+Ronaldo went the other way. His chance quality held up at United in 2021-22 (0.145 per action, against 0.142 at Juventus the season before) on a smaller share (20%, against 23%). One season cannot say whether his share cost his team-mates.
+
+<br clear="right">
 
 ## Limitations
 
-- **Data.** Understat covers the Big-5 and Russia from 2014-15 to 4 January 2025, so selling leagues (Depay's PSV) are invisible. Only shots and shot-assists count, so this suits attackers.
-- **Where, not who.** The split shows where a fall happened. A coach also sets a player's share.
-- **Luck in the flops.** Picking moves by a big fall also picks bad luck, which lands mostly in the player's part. Moves where output rose by over a third split much the same way (36% the player), so part of the 39% is noise.
-- **Share on the pitch is estimated** from season share and minutes played, assuming the team creates chances at the same rate with him on or off.
-- **Team context.** Against team-mates the per-90 slope halves to −1.0% (−2.5% to +0.4%).
-- **Only regulars.** The 900-minute floor drops players who stopped being picked, hiding some of the worst flops.
-- **Observational.** It shows a pattern and cannot prove a cause.
+- **Shots and shot-assists only.** Carries, pressing and build-up passes are invisible, so this suits attackers.
+- **Regulars only.** Both seasons need 900 league minutes, which drops players who stopped being picked, often the worst flops.
+- **Big-5 only.** Understat covers the Big-5 to September 2025, so moves from the Eredivisie, Portugal or the Championship are invisible.
+- **Observational.** It shows patterns and cannot prove causes. A coach also decides a player's share.
+- **Name matching.** Understat and Transfermarkt are joined by matching names within each league-season, using club to settle clashes. All 20,002 fixtures match. A few players may be mismatched.
+- **Many slices.** I looked at age, league, fee, buying club and a predictor, so treat any single slice as a lead.
 
-## How this fits the wider model
+## What would change my mind
 
-This is one question from a private transfer valuation model, whose data cannot be shared. It asks how good a player is (price-blind), what he is worth to a given club and what he will cost. This result supports its assumption that chance quality travels with the player.
+- If a better luck benchmark (one that also redraws his share of the ball) gave far fewer flops than the data, flops would be about the player after all.
+- If chemistry kept rising beyond a season together on richer data, time together would matter.
+- If the age gap at 26–28 disappears on new seasons, it was noise.
 
 ## Reproduce
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
-export SOURCE_DATA=/path/to/your/raw/data    # layout in data/DATA.md
-./run_all.sh
+./run_all.sh --quick                                # figures from the shipped tables, about 20 seconds
+export SOURCE_DATA=/path/to/your/raw/data          # layout in data/DATA.md
+./run_all.sh                                        # everything from raw data
 ```
 
-This rebuilds every number and figure and runs the self-checks in `src/`, in about two minutes (Python 3.14).
+The full run rebuilds every number and figure, runs the self-checks, and checks the headline numbers quoted in this README against the tables in `data/` (`analysis/verify.py` prints PASS or FAIL for each). It takes about 13 minutes on a laptop, most of it reading the StatsBomb files. Python 3.14, versions pinned in `requirements.txt`.
 
 ## Data and licences
 
-Shot xG from [Understat](https://understat.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (Jason Zivkovic); minutes and positions from [Transfermarkt](https://www.transfermarkt.com) via [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (David Cariboo). Both are for non-commercial research, so `data/` holds only aggregates and three players' season numbers. Code is MIT-licensed.
+- **Shots and xG:** [Understat](https://understat.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (Jason Zivkovic), 2014-15 to 15 September 2025.
+- **Minutes, line-ups, substitutions, transfers:** [Transfermarkt](https://www.transfermarkt.com) via [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (David Cariboo).
+- **Passes:** [StatsBomb open data](https://github.com/statsbomb/open-data), 2015-16.
+
+None of the raw data is in this repository. `data/` holds aggregates and three players' season numbers. Code is MIT-licensed.
 
 ## About
 
 Ben Rimmer, First-class BSc Economics, University of Exeter. benedict.p.rimmer@gmail.com
 
+A one-page summary is in [`onepager.pdf`](onepager.pdf).
+
 <details>
 <summary>Full method and tables</summary>
 
-### Where the question comes from
+### Minutes on the pitch
 
-Basketball has studied this for 20 years. Dean Oliver's usage rate measures the share of a team's possessions a player ends while he is on the floor, and his skill curves show that most players get less efficient as they are asked to do more.
+Transfermarkt line-ups give the starters, and its match events give every substitution and red card, so each player has an on and off minute in every league match (573,444 player-matches in 20,002 games). Understat gives the minute of every shot. Together they say which shots and shot-assists his team made while he was on. The first version of this repo estimated this from season totals; the measured share correlates 0.95 with that estimate.
 
-### Definitions and sample
+### The four parts
 
-The definitions are the ones the wider model uses (`src/usage_model/usage.py`), applied unchanged. Penalties and own goals are excluded. An assisted shot counts as an action for both the shooter and the passer, each credited with its xG, so team totals count that xG twice; team-mates' quality is built the same way, so the comparison is like for like.
+Output per 90 is exactly
 
-The per-90 share is the season share (his actions over the team's) divided by the share of the team's league minutes he played. Minutes and positions come from Transfermarkt, joined to Understat through an id crosswalk.
+team actions per 90 while he is on × his share of them × team-mates' xG+xA per action × his xG+xA per action relative to team-mates
 
-I kept forwards and attacking midfielders (Transfermarkt position "Attack" or "Attacking Midfield") with at least 900 league minutes in a season: 4,592 player-seasons from 1,436 players. Positions are fixed across a player's career. Russian seasons appear only for players the crosswalk could match through a Big-5 season (99 player-seasons). When a player changes club mid-season, I keep the club that holds at least 80% of his actions and drop the season otherwise. That keeps Ronaldo's 2021-22 (one Juventus match, then United).
+so the log change from one season to the next is the sum of four log changes. An action is a shot or a shot-assist. Penalties and own goals are excluded. An assisted shot counts for both players, each credited with its xG. The transfer tests need 20 actions in each season as well as 900 minutes, which is why they have 601 moves and the within-player tests have 605.
+
+| Part | Movers minus stayers | 95% interval |
+|---|--:|--:|
+| His share of the ball | −4.9% | −7.0% to −2.8% |
+| Chances his team creates | +2.9% | +1.2% to +4.8% |
+| Quality of team-mates' chances | +3.5% | +1.8% to +5.4% |
+| His own quality against team-mates | +2.0% | −0.4% to +4.3% |
+| Output per 90 | +3.6% | +0.2% to +6.9% |
+
+*Differences in mean log change. Intervals from 2,000 bootstrap draws resampling whole players. Tables in `data/transfers.json` and `data/transfer_splits.csv`.*
+
+Among flops, the player's part is 39% for movers and 42% for stayers. Across all seasons, measured as each part's share of the variance in output changes, it is 37% for movers and 41% for stayers.
 
 ### Why 900 minutes
 
-I split each team's league matches into odd and even, measured each player's chance quality on each half, and correlated the two.
+I split each team's league matches into odd and even, measured each player on each half, and correlated the two (stepped up to a full season).
 
 | League minutes | Seasons | Chance quality reliability | Usage reliability |
 |---|--:|--:|--:|
-| under 450 | 2,116 | 0.11 | 0.66 |
-| 450 to 899 | 1,391 | 0.34 | 0.71 |
-| 900 to 1,799 | 2,363 | 0.58 | 0.83 |
-| 1,800 and over | 2,229 | 0.73 | 0.87 |
+| under 450 | 2,539 | 0.19 | 0.88 |
+| 450 to 899 | 1,322 | 0.34 | 0.50 |
+| 900 to 1,799 | 2,305 | 0.59 | 0.73 |
+| 1,800 and over | 2,411 | 0.73 | 0.86 |
 
-*Reliability is the split-half correlation stepped up to a full season (Spearman-Brown).*
+Below 900 minutes most of the variation in chance quality is noise.
 
-Below 900 minutes most of the variation in chance quality is noise. Above it, more than half is signal. Usage is measured more reliably than chance quality at every level.
+### Within-player tests
 
-### The flop split in detail
+Each pair of seasons is weighted by the precision of its change in quality, `1 / (1/actions₁ + 1/actions₂)`. Percentages are of the median chance quality (0.116 xG+xA per action), per 5 points of share. Full table in `data/within_slopes.csv`.
 
-A move counts if the player has 900 league minutes and 20 actions in both seasons, at different clubs. Each part's share is its mean log change over the mean log change in output per 90, so the four shares add up to 100%.
-
-| Part | Flops (119, −41%) | 95% interval | Risers (140, +71%) |
+| Specification | Pairs | Per +5 points of share | 95% interval |
 |---|--:|--:|--:|
-| Share of the ball on the pitch | 27.9% | 19.5% to 36.1% | 19.5% |
-| Team chances per 90 | 20.0% | 14.1% to 26.5% | 22.4% |
-| Team-mates' chance quality | 12.8% | 6.0% to 19.7% | 21.8% |
-| Player relative to team-mates | 39.3% | 30.7% to 47.5% | 36.3% |
+| **Per 90, split-half (headline)** | 2,693 | **−1.7%** | **−3.0% to −0.5%** |
+| Per 90, same matches | 2,693 | −2.5% | −4.1% to −0.9% |
+| Per 90, against team-mates | 2,693 | −1.9% | −3.6% to −0.2% |
+| Season share split-half, plus last season's quality | 2,693 | −2.0% | −4.0% to −0.2% |
+| Season share, minutes held fixed | 2,693 | −3.5% | −5.9% to −1.1% |
+| Season share, nothing held fixed | 2,693 | −0.3% | −1.5% to +0.9% |
+| Per 90, same club both seasons | 2,088 | −1.9% | −3.8% to 0.0% |
+| Per 90, changed club | 605 | −2.0% | −4.8% to +0.9% |
+| Per 90, changed club, against new team-mates | 605 | −0.1% | −2.7% to +2.6% |
 
-*Risers are moves where output per 90 rose by more than a third, the mirror image of a flop. Full output in `data/flop_decomposition.json`.*
+### The luck benchmark
 
-### Across players: the curve
+For each pair of seasons, the three situation parts stay as observed. The change in his quality against team-mates is replaced by pure sampling noise: his actions in each season are redrawn with replacement from his own pooled actions over both seasons, so his true quality is the same in both, and the noise is the log change in the mean. Flops are then selected and split exactly as in the data. 200 runs each for movers and stayers; draws in `data/noise_benchmark_draws_*.csv`. The benchmark keeps the observed change in his share of the ball, so it ignores the negative link between share and quality within a season. That makes it a little too noisy, which is why it gives stayers one point more flops than the data.
 
-I binned player-seasons by per-90 share and computed total value over total actions in each bin, leaving out bins with fewer than 50 seasons. Chance quality peaks at about 0.128 per action at 12% to 16% share and falls to about 0.105 above 22%. On season-total share the same curve is flat at about 0.12 up to 14% (`data/curve_bins.csv` has both). This comparison mixes two things (better players get more of the ball, and better teams make better chances), so the test that matters is the one within players.
+### The flop predictor
 
-### Within players: the full specification
+A ridge-penalised logistic regression on six standardised inputs known on the day of the move: age, output per 90, quality against team-mates, share of the ball, share of minutes played, and whether the move changes league. Trained on moves where the first season starts in 2018 or earlier, tested once on the rest.
 
-I took every pair of consecutive seasons where the player passed the 900-minute floor in both and regressed the change in chance quality on the change in share. Each pair is weighted by the precision of its change in quality, `1 / (1/actions₁ + 1/actions₂)`, so a pair built on 300 actions counts for more than one built on 60.
+### Chemistry model
 
-Season share is roughly (share of the season played) × (share of play while on the pitch), and the two correlate at 0.85 here, which is why season totals mislead. Holding minutes fixed in the regression gives −2.9%. The per-90 headline is −0.0023 xG+xA per action per 5 points of share, or −2.0% of the median chance quality of 0.115.
-
-The split-half version cannot be run per 90, because minutes are not split by match, so it holds minutes fixed instead. Removing the shared noise cuts the minutes-fixed slope from −2.9% to −1.7%, by about two fifths. The regression-to-the-mean control uses last season's quality measured on the other half of the matches.
-
-| Specification | Pairs | Change per +5 points of share | 95% interval |
-|---|--:|--:|--:|
-| Season share, nothing fixed | 2,646 | −0.1% | −1.3% to +1.1% |
-| Season share, minutes held fixed | 2,646 | −2.9% | −5.2% to −0.6% |
-| **Per 90 (headline)** | 2,646 | **−2.0%** | **−3.5% to −0.5%** |
-| Split-half, minutes fixed (shared noise removed) | 2,646 | −1.7% | −3.4% to +0.1% |
-| Split-half plus last season's quality | 2,646 | −1.7% | −3.4% to +0.1% |
-| Per 90, same club both seasons | 2,054 | −0.9% | −2.7% to +0.9% |
-| Per 90, changed club | 592 | −2.8% | −5.6% to −0.1% |
-| Per 90, changed club, against new team-mates | 592 | +0.6% | −1.9% to +3.1% |
-| Per 90, everyone against team-mates | 2,646 | −1.0% | −2.5% to +0.4% |
-
-*Percentages are of the median chance quality (0.115 npxG+xA per action). Intervals come from 2,000 bootstrap draws resampling whole players. Full table in `data/within_slopes.csv`.*
-
-Players who stay at the same club show no clear drop (−0.9%). Club changers fall by 2.8%, and that goes when they are measured against their new team-mates. Against team-mates the pooled slope halves to −1.0%, so part of the headline is the team around the player.
-
-Binned into tenths by the change in per-90 share (`data/within_bins.csv`), losing the ball helps more than gaining it hurts. In the three tenths where share fell most, chance quality rose by 0.004 to 0.006 per action. In the tenth where it rose most, quality barely moved (+0.001).
-
-### The three players in more detail
-
-Season numbers are in `data/case_studies.csv`. Depay's per-90 share barely moved across United and Lyon (22%, 24%, 22%), and he played 86% of Lyon's minutes in 2020-21. At United he was short of minutes and never short of the ball.
-
-Martial's per-90 share was about the same at Monaco in 2014-15 and United in 2015-16 (14% and 15%), and his chance quality fell from 0.192 to 0.143, though the Monaco figure rests on only 61 actions. His United team-mates averaged 0.098 per action, against 0.109 for Monaco's. Over the next five seasons at United he sat between 0.106 and 0.170 at 14% to 20% per-90 share, with no clear pattern.
-
-Ronaldo's chance quality held up at United in 2021-22 (0.146, against 0.142 at Juventus the season before) on a slightly smaller per-90 share (20% against 23%). The wider model's on/off measure has United's xG difference 0.25 per 90 worse with him on the pitch. On a shuffled-identity test that result sits at the 18th percentile, so one season is not enough to call it significant.
-
-### More limitations
-
-- The full usage definition in the wider model adds turnovers, but that data comes from a frozen FBref/Opta snapshot that cannot be shared.
-- Russian seasons are thin (99 player-seasons), and there is no Eredivisie, Primeira Liga or Championship, so Antony's Ajax seasons are also invisible.
-- Minutes and positions come from Transfermarkt, which is crowd-maintained, and are joined to Understat through a name-matched crosswalk, so a few players may be mismatched or missing. Minutes for 2024-25 are counted to the same date as the shot data.
-- If a coach gives the ball to whoever is in form, part of the pattern reflects his choices. The control for last season's quality absorbs the obvious version of this, but not subtler ones.
-
-### The wider model
-
-The model keeps three questions apart:
-
-1. **How good is he?** A talent score built price-blind: market value, wage and fee are never inputs, and the code refuses to fit if a price-like column appears (`src/usage_model/talent.py`, reference copy).
-2. **What is he worth to this club?** A club-specific value that turns expected xG difference into league position and then into revenue, including the step in revenue that comes with Champions League qualification.
-3. **What will he cost?** A fee model trained on disclosed transfer fees, validated season by season on later seasons only.
-
-The numbers below come from the private repository and cannot be rebuilt from this one. An earlier test found that a usage-weighted efficiency gap predicts the change in a team's xG difference after 2,364 transfers, with a small effect (r = +0.083, interval +0.042 to +0.123).
-
-Out of time, the talent model's undervalued-player screen picked players whose market value doubled within two years at 23.5%, against a base rate of 13.2% (1,806 players screened). It passes two of its four pre-registered tests and fails two. It reads Haaland's injury-shortened 2021-22 at Dortmund as an ordinary season, because it cannot tell a star's injury from a fringe player's time on the bench, and Antony could not be scored at all, because his Ajax season is in the Eredivisie. Its decile test points the right way (the top tenth outgrows the bottom tenth, with an interval clear of zero) but only 5 of 9 steps rise, against a bar of 6. The tests were set before the results were seen and have not been loosened.
+For each ordered pair (A sets up, B shoots) in a club-season, the expected count is minutes together × a passer term for A × a receiver term for B, fitted by iterative proportional fitting so each player's expected totals match his actual totals. This is the maximum-likelihood fit of a Poisson model with passer and receiver effects. Chemistry is observed over expected, summed over pairs. Pair counts are unordered (A to B and B to A count once) and intervals resample whole pairs. Understat names the assister without an id, so assisters are matched by name within the team-season; 87% of assisted shots have both players matched. Pairs from 2014-15 are left out of the "new pair" tests, because their earlier seasons are not in the data. The top-pairs ranking shrinks each pair's ratio with a gamma-Poisson empirical-Bayes prior.
 
 ### Scripts
 
 | Script | What it does |
 |---|---|
-| `analysis/build_panel.py` | Builds the player-season panel from raw data into `data/work/` (gitignored) |
-| `analysis/analyse.py` | Computes the within-player tests, the curve and the reliability table, and writes the small tables in `data/` |
-| `analysis/decompose.py` | Splits each club move's change in per-90 output into four parts (`data/flop_decomposition.json`) |
-| `analysis/figures.py` | Draws the three figures from those tables, as PNG and SVG |
+| `analysis/crosswalk.py` | Joins Understat and Transfermarkt matches and players |
+| `analysis/minutes.py` | On and off minutes for every player in every league match, and minutes together for every pair |
+| `analysis/build_panel.py` | The player-season panel, in `data/work/` (gitignored) |
+| `analysis/analyse.py` | Within-player tests, reliability, the usage curve |
+| `analysis/transfers.py` | Movers against stayers, the luck benchmark, slices, the flop predictor |
+| `analysis/chemistry.py` | Pair chemistry from shot assists |
+| `analysis/statsbomb.py`, `analysis/sb_check.py` | StatsBomb 2015-16 checks |
+| `analysis/figures.py` | Every figure and the one-pager |
+| `analysis/verify.py` | Checks the README's headline numbers against `data/` |
+
+### The wider model
+
+This repo is one question from a private transfer valuation model built on data that cannot be shared. That model asks how good a player is (price-blind), what he is worth to a given club, and what he will cost.
 
 </details>

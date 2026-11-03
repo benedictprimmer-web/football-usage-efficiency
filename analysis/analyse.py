@@ -150,6 +150,19 @@ def spec_split_half(p):
     return float(np.mean(out)) * STEP
 
 
+def spec_on_pitch_split_half(p):
+    """Per 90 with the shared noise removed: share while on the pitch measured on odd
+    matches, chance quality on even matches (and the reverse; the two are averaged).
+    Possible now that minutes on the pitch are measured match by match."""
+    out = []
+    for hu, he in ((0, 1), (1, 0)):
+        q = p.dropna(subset=[f"efficiency_h{he}_1", f"efficiency_h{he}_2",
+                             f"usage_on_pitch_h{hu}_1", f"usage_on_pitch_h{hu}_2"])
+        out.append(wls([_d(q, "usage_on_pitch", f"_h{hu}")],
+                       _d(q, "efficiency", f"_h{he}"), q[f"w_h{he}"].to_numpy())[1])
+    return float(np.mean(out)) * STEP
+
+
 def spec_baseline(p):
     """As spec_split_half, plus last season's efficiency from the other half as a
     control. Players coming off a lucky season drift back down whatever happens
@@ -173,12 +186,13 @@ def spec_vs_teammates(p):
     return wls([_d(p, "usage_on_pitch")], y, p.w.to_numpy())[1] * STEP
 
 
-HEADLINE = "on_pitch"
+HEADLINE = "on_pitch_split_half"
 SPECS = [
     ("naive", "Season usage share, nothing held fixed", spec_naive, "all"),
     ("minutes", "Season usage share, minutes held fixed", spec_minutes, "all"),
-    ("on_pitch", "Per 90: share while on the pitch (headline)", spec_on_pitch, "all"),
-    ("split_half", "Split-half, minutes fixed (shared noise removed)", spec_split_half, "all"),
+    ("on_pitch", "Per 90: share while on the pitch", spec_on_pitch, "all"),
+    ("on_pitch_split_half", "Per 90, split-half: shared noise removed (headline)", spec_on_pitch_split_half, "all"),
+    ("split_half", "Season share split-half, minutes fixed", spec_split_half, "all"),
     ("baseline", "Split-half plus last season's efficiency", spec_baseline, "all"),
     ("stayers", "Per 90, same club both seasons", spec_on_pitch, "stayers"),
     ("movers", "Per 90, club changers", spec_on_pitch, "movers"),

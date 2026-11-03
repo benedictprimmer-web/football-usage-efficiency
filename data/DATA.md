@@ -1,18 +1,26 @@
 # Data
 
-No raw third-party data is in this repository. This file says where each source comes from, what licence it carries, and where the scripts expect to find it.
+No raw third-party data is in this repository. This file says what is here, where each source comes from, what licence it carries, and where the scripts expect to find it.
 
 ## What is here
 
+All aggregates, plus season numbers for three case-study players.
+
 | File | What it holds |
 |---|---|
-| `flop_decomposition.json` | The four-part split of the change in per-90 output for club moves that flopped (and, for comparison, those that rose), with 95% intervals. |
-| `curve_bins.csv` | Chance quality by usage bin, on season share and on per-90 (on-pitch) share, with 95% intervals. Aggregates only. |
-| `within_slopes.csv` | Within-player slopes under each specification, with 95% intervals. |
-| `within_bins.csv` | Season-to-season changes in per-90 share and chance quality, binned into tenths. |
-| `reliability.csv` | Split-half reliability of chance quality and usage by minutes band. |
-| `summary.json` | Sample sizes and the headline (per-90) numbers quoted in the README. |
-| `case_studies.csv` | Season-level usage, minutes share and efficiency for Depay, Martial and Ronaldo. Derived statistics, no market values. |
+| `transfers.json` | Movers against stayers: flop rates, the four-part gap, the luck benchmark, buying-club persistence and the flop predictor, with 95% intervals |
+| `transfer_splits.csv` | The four-part split for movers and stayers, among flops and across all seasons |
+| `transfer_slices.csv` | Flop rate and mean change by age, fee and league path |
+| `age_gaps.csv` | Movers minus stayers by age band |
+| `buying_clubs.csv` | Each buying club's record (8+ signings), raw and shrunk |
+| `noise_benchmark_draws.csv` | The 200 runs of the luck benchmark |
+| `within_slopes.csv`, `within_bins.csv` | Within-player tests under each specification |
+| `curve_bins.csv` | Chance quality by share of the ball |
+| `reliability.csv` | Split-half reliability by minutes band |
+| `chemistry.json`, `chemistry_dose.csv`, `chemistry_top_pairs.csv` | Pair chemistry tests and the top pairs |
+| `sb_check.json` | StatsBomb checks: minutes, pass-level chemistry, agreement of pass and shot links |
+| `summary.json` | Sample sizes and the within-player headline |
+| `case_studies.csv` | Season numbers for Depay, Martial and Ronaldo |
 
 ## What you need to supply
 
@@ -20,29 +28,31 @@ Point `SOURCE_DATA` at a folder laid out like this:
 
 ```
 $SOURCE_DATA/
-  understat/shots.parquet          tidy Understat shots, 2014-15 to 4 Jan 2025
-  transfermarkt/players.csv.gz     positions
-  transfermarkt/appearances.csv.gz league minutes
-  transfermarkt/games.csv.gz       season and date of each match
-  crosswalk/players.csv            Understat player id -> Transfermarkt player id
+  understat/shots.parquet              tidy Understat shots, 2014-15 to 15 Sep 2025
+  transfermarkt/games.csv.gz           every match: date, clubs, competition
+  transfermarkt/game_lineups.csv.gz    starters and substitutes
+  transfermarkt/game_events.csv.gz     substitutions and cards, with the minute
+  transfermarkt/appearances.csv.gz     who played, for the player crosswalk
+  transfermarkt/players.csv.gz         position, date of birth, name
+  transfermarkt/clubs.csv.gz           club names
+  transfermarkt/transfers.csv.gz       transfer dates and fees
+  statsbomb/                           filled by analysis/statsbomb.py on first run
 ```
+
+The crosswalk between the two sources is built from these files by `analysis/crosswalk.py`.
 
 ### Understat shots
 
-- **Source:** [understat.com](https://understat.com), via the static `.rds` archive in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (`data/understat_shots/`), Big-5 leagues plus the Russian Premier League.
-- **How:** `src/usage_model/understat.py` downloads the six files and writes `shots.parquet` (`pip install rdata`, then `PYTHONPATH=src python -c "from usage_model.understat import read_shots; read_shots()"`), caching to `data/raw/understat/` (gitignored). Copy `shots.parquet` to `$SOURCE_DATA/understat/`.
-- **Licence:** Understat publishes no open licence. The owner has said the data is free for non-commercial use with attribution. Commercial use needs Understat's permission. The archive's own licence covers its code and packaging only.
+- **Source:** [understat.com](https://understat.com), via the `.rds` archive in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `understat_shots`, last updated 18 September 2025, when the project was archived). Big-5 leagues plus the Russian Premier League; Russia is not used here, because Transfermarkt line-ups cover the Big-5.
+- **How:** download the six `.rds` files from the release, then `src/usage_model/understat.py` turns them into `shots.parquet` (`tidy_shots` on each file, then concatenate).
+- **Licence:** Understat publishes no open licence. The owner has said the data is free for non-commercial use with attribution.
 
 ### Transfermarkt tables
 
-- **Source:** [transfermarkt.com](https://www.transfermarkt.com), via [dcaribou/transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (also on Kaggle as `davidcariboo/player-scores`). The project README links the current download location for `players`, `appearances` and `games`.
-- **Licence:** the mirror is tagged CC0. The underlying data is Transfermarkt's, and Transfermarkt's terms restrict automated collection and commercial reuse. Treat it as research use only.
+- **Source:** [transfermarkt.com](https://www.transfermarkt.com), via [dcaribou/transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets). The project README links the current download location; the copy used here was built on 5 September 2026.
+- **Licence:** the mirror is tagged CC0. The underlying data is Transfermarkt's, whose terms restrict automated collection and commercial reuse. Treat it as research use only.
 
-### Player crosswalk
+### StatsBomb open data
 
-- **What:** one row per Understat player matched to a Transfermarkt id (`us_player_id`, `tm_player_id`). The analysis reads only those two columns.
-- **How:** built in the private repo by matching normalised names within each league-season, using club to break ties, then taking the Transfermarkt id that wins the most seasons. About 6,400 players match. It is not shipped because it is derived from both sources above; the method is simple to rebuild.
-
-## Data not used here
-
-The wider model also uses StatsBomb open data (non-commercial licence, attribution required) and a frozen FBref/Opta snapshot (proprietary, removed from FBref in January 2025). Neither feeds any number in this repository.
+- **Source:** [statsbomb/open-data](https://github.com/statsbomb/open-data), 2015-16 Premier League, La Liga, Serie A and Ligue 1 (the Bundesliga file holds only Leverkusen and is left out).
+- **Licence:** free for non-commercial research with attribution to StatsBomb. Raw data is not redistributed here.

@@ -1,10 +1,11 @@
 spec,label,subset,n_pairs,n_players,slope_per_5pp,ci_lo,ci_hi,pct_of_median,ci_lo_pct,ci_hi_pct
-naive,"Season usage share, nothing held fixed",all,2646,883,-0.00012,-0.00153,0.00125,-0.10636,-1.32538,1.09013
-minutes,"Season usage share, minutes held fixed",all,2646,883,-0.00334,-0.00594,-0.00073,-2.90178,-5.15803,-0.63654
-on_pitch,Per 90: share while on the pitch (headline),all,2646,883,-0.00232,-0.00405,-0.00055,-2.01646,-3.52139,-0.48064
-split_half,"Split-half, minutes fixed (shared noise removed)",all,2646,883,-0.00190,-0.00389,0.00014,-1.65193,-3.37842,0.12290
-baseline,Split-half plus last season's efficiency,all,2646,883,-0.00190,-0.00387,0.00014,-1.65149,-3.36488,0.12264
-stayers,"Per 90, same club both seasons",stayers,2054,793,-0.00107,-0.00313,0.00101,-0.93112,-2.71850,0.88121
-movers,"Per 90, club changers",movers,592,424,-0.00326,-0.00648,-0.00013,-2.83646,-5.63106,-0.11049
-movers_vs_mates,"Per 90, club changers against new team-mates",movers,592,424,0.00064,-0.00224,0.00359,0.55707,-1.94431,3.12422
-all_vs_mates,"Per 90, everyone against team-mates",all,2646,883,-0.00121,-0.00284,0.00042,-1.04863,-2.46967,0.36447
+naive,"Season usage share, nothing held fixed",all,2693,897,-0.00037,-0.00180,0.00106,-0.31632,-1.54890,0.90955
+minutes,"Season usage share, minutes held fixed",all,2693,897,-0.00402,-0.00686,-0.00124,-3.46510,-5.91729,-1.06979
+on_pitch,Per 90: share while on the pitch,all,2693,897,-0.00291,-0.00481,-0.00102,-2.50487,-4.14860,-0.88147
+on_pitch_split_half,"Per 90, split-half: shared noise removed (headline)",all,2693,897,-0.00201,-0.00350,-0.00057,-1.73189,-3.02118,-0.49089
+split_half,"Season share split-half, minutes fixed",all,2693,897,-0.00240,-0.00460,-0.00029,-2.07023,-3.96344,-0.25233
+baseline,Split-half plus last season's efficiency,all,2693,897,-0.00237,-0.00459,-0.00027,-2.04621,-3.95361,-0.23351
+stayers,"Per 90, same club both seasons",stayers,2088,805,-0.00222,-0.00438,-0.00000,-1.91496,-3.77262,-0.00062
+movers,"Per 90, club changers",movers,605,431,-0.00235,-0.00559,0.00099,-2.02273,-4.81830,0.85498
+movers_vs_mates,"Per 90, club changers against new team-mates",movers,605,431,-0.00009,-0.00311,0.00305,-0.07918,-2.68259,2.62859
+all_vs_mates,"Per 90, everyone against team-mates",all,2693,897,-0.00220,-0.00419,-0.00021,-1.89860,-3.61323,-0.17774

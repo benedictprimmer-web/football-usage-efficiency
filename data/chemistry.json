@@ -1,0 +1,37 @@
+{
+ "assisted_shots": 254187,
+ "pair_matches": 7006468,
+ "growth_within_first_season": {
+  "pairs": 20786,
+  "growth": 0.0042,
+  "lo": -0.0099,
+  "hi": 0.0192,
+  "ratio_first_half": 1.0005,
+  "ratio_second_half": 1.0047
+ },
+ "growth_next_season": {
+  "pair_seasons": 86150,
+  "growth": 0.0052,
+  "lo": -0.002,
+  "hi": 0.0119
+ },
+ "persistence": {
+  "pair_seasons": 86150,
+  "corr_next_season": 0.1016,
+  "null_mean": -0.0003,
+  "null_95": 0.0076
+ },
+ "reunions": {
+  "reunited_pairs": 1718,
+  "new_pairs": 147694,
+  "reunited": 1.02,
+  "new": 0.9973,
+  "gap": 0.0228,
+  "lo": -0.023,
+  "hi": 0.0684
+ },
+ "long_pairs": {
+  "pairs_3000_minutes": 13806,
+  "sd_true_chemistry": 0.0683
+ }
+}

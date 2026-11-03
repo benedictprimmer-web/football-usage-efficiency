@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="345.6pt" height="432pt" viewBox="0 0 345.6 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-03T18:36:01.000823</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 345.6 432 
+L 345.6 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 121.68 319.75 
+L 327.6 319.75 
+L 327.6 164.23 
+L 121.68 164.23 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="165.805714" y="333.246" transform="rotate(-0 165.805714 333.246)">15%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="239.348571" y="333.246" transform="rotate(-0 239.348571 333.246)">20%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="312.891429" y="333.246" transform="rotate(-0 312.891429 333.246)">25%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_4">
+    <path d="M 183.014743 190.701489 
+L 272.589943 190.701489 
+" clip-path="url(#p50c311356f)" style="fill: none; stroke: #1d1d1b; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <defs>
+     <path id="m1f39dccef1" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #1d1d1b"/>
+    </defs>
+    <g clip-path="url(#p50c311356f)">
+     <use xlink:href="#m1f39dccef1" x="226.552114" y="190.701489" style="fill: #1d1d1b; stroke: #1d1d1b"/>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 233.9064 223.790851 
+L 304.9488 223.790851 
+" clip-path="url(#p50c311356f)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <defs>
+     <path id="m7ccc0173e5" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #1b64c2"/>
+    </defs>
+    <g clip-path="url(#p50c311356f)">
+     <use xlink:href="#m7ccc0173e5" x="265.824" y="223.790851" style="fill: #1b64c2; stroke: #1b64c2"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 183.603086 266.807021 
+L 229.788 266.807021 
+" clip-path="url(#p50c311356f)" style="fill: none; stroke: #767671; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="m0abf6a2e81" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #767671"/>
+    </defs>
+    <g clip-path="url(#p50c311356f)">
+     <use xlink:href="#m0abf6a2e81" x="206.695543" y="266.807021" style="fill: #767671; stroke: #767671"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 200.370857 299.896383 
+L 237.289371 299.896383 
+" clip-path="url(#p50c311356f)" style="fill: none; stroke: #6fa2e3; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_11">
+    <defs>
+     <path id="m1f2b9c205a" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #6fa2e3"/>
+    </defs>
+    <g clip-path="url(#p50c311356f)">
+     <use xlink:href="#m1f2b9c205a" x="220.962857" y="299.896383" style="fill: #6fa2e3; stroke: #6fa2e3"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 121.68 319.75 
+L 327.6 319.75 
+" style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="226.552114" y="180.373043" transform="rotate(-0 226.552114 180.373043)">19%</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="194.396489" transform="rotate(-0 121.68 194.396489)">Moved club  </text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="265.824" y="213.462404" transform="rotate(-0 265.824 213.462404)">22%</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="227.485851" transform="rotate(-0 121.68 227.485851)">Moved, luck only  </text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="206.695543" y="256.478574" transform="rotate(-0 206.695543 256.478574)">18%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="270.502021" transform="rotate(-0 121.68 270.502021)">Stayed  </text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #6fa2e3" x="220.962857" y="289.567936" transform="rotate(-0 220.962857 289.567936)">19%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="303.591383" transform="rotate(-0 121.68 303.591383)">Stayed, luck only  </text>
+   </g>
+  </g>
+  <g id="patch_4">
+   <path d="M 18 15.84 
+L 54 15.84 
+L 54 12.96 
+L 18 12.96 
+z
+" style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
+  </g>
+  <g id="text_12">
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Transfers flop about as often as</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">luck alone would predict</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 81.390781)">Share of seasons where output per 90 fell by more than 25%.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 95.898594)">For "luck only", each season keeps its real change of team</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 110.47125)">and role, and the player's chance quality is redrawn from his</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 125.068125)">own shots with his quality against team-mates fixed (200</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 139.690781)">runs). Bands: 95% intervals</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>
+   <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 364.648398)">The player's own part of the average flop is 39% in the</text>
+   <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 379.985781)">data. Luck alone gives 33% (28% to 38%). On stayers the</text>
+   <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 395.292813)">benchmark lands within a point of the data.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p50c311356f">
+   <rect x="121.68" y="164.23" width="205.92" height="155.52"/>
+  </clipPath>
+ </defs>
+</svg>
