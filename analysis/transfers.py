@@ -176,10 +176,11 @@ def noise_benchmark(m: pd.DataFrame, movers: bool = True, n_sims: int = 200) -> 
     ok = np.array(ok)
     sit = g.loc[ok, "d_situation"].to_numpy()
     parts_sit = g.loc[ok, SITUATION].to_numpy()
-    rows = []
+    rows, sds = [], []
     for _ in range(n_sims):
         d_rel = np.array([np.log(rng.choice(pool, n1).mean()) - np.log(rng.choice(pool, n0).mean())
                           for pool, (n0, n1) in zip(pools, sizes)])
+        sds.append(d_rel.std())
         d_out = sit + d_rel
         f = d_out < FLOP
         rows.append([f.mean()] + [parts_sit[f, j].mean() / d_out[f].mean() for j in range(3)]
@@ -195,7 +196,7 @@ def noise_benchmark(m: pd.DataFrame, movers: bool = True, n_sims: int = 200) -> 
         "flop_rate_observed": r3(obs.flop.mean())[0],
         "player_share_noise_only": r3(np.percentile(r[:, 4], [50, 2.5, 97.5])),
         "player_share_observed": r3(obs.loc[obs.flop, "d_rel"].mean() / obs.loc[obs.flop, "d_out"].mean())[0],
-        "sd_d_rel_noise_only": r3(np.std(d_rel))[0],
+        "sd_d_rel_noise_only": r3(np.mean(sds))[0],
         "sd_d_rel_observed": r3(obs.d_rel.std())[0],
     }
 

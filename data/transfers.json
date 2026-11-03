@@ -76,7 +76,7 @@
    0.3814
   ],
   "player_share_observed": 0.3919,
-  "sd_d_rel_noise_only": 0.2315,
+  "sd_d_rel_noise_only": 0.2269,
   "sd_d_rel_observed": 0.2739
  },
  "noise_benchmark_stayers": {
@@ -95,7 +95,7 @@
    0.4122
   ],
   "player_share_observed": 0.4245,
-  "sd_d_rel_noise_only": 0.2166,
+  "sd_d_rel_noise_only": 0.2162,
   "sd_d_rel_observed": 0.2359
  },
  "age_adjusted": {

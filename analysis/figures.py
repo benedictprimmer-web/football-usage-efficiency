@@ -228,7 +228,7 @@ def draw_age(ax, sl, ag, fs=1.0):
 
 def fig_age(sl, ag):
     g = ag[ag.age_band == "26–28"].iloc[0]
-    fig, top = frame("From age 26, moves go wrong more often than staying put",
+    fig, top = frame("Moves at 26 to 28 flop more often than stays",
                      "Flop rate (output per 90 down by more than 25%) after a club move, "
                      "against players of the same age who stayed. Age on 1 September of the "
                      "first season")
@@ -282,7 +282,7 @@ def draw_within(ax, ws, fs=1.0):
 
 def fig_within(ws, s):
     h = s["headline_pct_of_median"]
-    fig, top = frame(f"With 5 more points of the ball, a player's chances are about "
+    fig, top = frame(f"Five more points of the ball comes with chances about "
                      f"{abs(h['point']):.1f}% worse",
                      f"Same player, consecutive seasons: change in xG+xA per shot or "
                      f"shot-assist for 5 more points of his share of the team's, while on the "
@@ -348,8 +348,8 @@ def draw_depay(axes, cs, fs=1.0):
 
 
 def fig_depay(cs):
-    fig, top = frame("Depay had the same share of the ball at United and Lyon. His chances "
-                     "got better",
+    fig, top = frame("Depay's share of the ball rose a little at Lyon, and his chances got "
+                     "much better",
                      "Memphis Depay, measured over the minutes he was on the pitch. Hollow: "
                      "a small sample")
     gap = (top - 0.16) / 2

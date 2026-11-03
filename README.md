@@ -6,11 +6,11 @@ I followed every attacker in the Big-5 leagues who played 900 league minutes in 
 
 ## What I found
 
-**Among attackers who kept a regular place, a move barely changes the odds of a flop, and most flops look like luck.**
+**Among attackers who kept a regular place, I cannot detect a difference in flop rates between movers and stayers, and a luck-only benchmark produces about as many flops as the data.**
 
 - Players who moved club flopped 19% of the time and players who stayed flopped 18%, a gap of 1.4 points (95% interval −2.1 to +4.9). Movers are younger, and adjusting for age the gap is 2.7 points (−1.0 to +6.7).
 - A typical move gives the player less of the ball (−4.9%) at a team that creates more chances (+2.9%) and better ones (+3.5%). Per 90, movers end up 3.6% ahead of stayers (0.2% to 6.9%), or 3.0% after adjusting for age (−0.5% to +6.9%).
-- If each player's quality against his team-mates stayed exactly the same, and only luck moved it, the moves in this sample would flop 22% of the time. That is more than the 19% that actually did.
+- If each player's quality against his team-mates stayed exactly the same, and only luck moved it, the moves in this sample would flop 22% of the time, against the 19% that actually did. The benchmark runs a little high: it gives stayers 19% against a real 18%.
 
 ![A typical move: less of the ball, at a better team](figures/fig0_what_a_move_does.png)
 
@@ -18,7 +18,7 @@ I followed every attacker in the Big-5 leagues who played 900 league minutes in 
 
 ## Why it matters
 
-One season of chances is a small sample. A club that reads a bad first season as a bad signing can end up selling a player whose quality has not changed, and the second test below shows how much of that first season is luck.
+One season of chances is a small sample. A club that reads a bad first season as a bad signing can end up selling a player whose quality has not changed, and the next section shows how much of that first season luck alone can produce.
 
 ## Flops look like luck
 
@@ -29,7 +29,7 @@ Picking moves by a big fall also picks bad luck, so I measured how much luck alo
 | Moved club | 19% | 22% (20% to 24%) | 39% | 33% (28% to 38%) |
 | Stayed | 18% | 19% (17% to 20%) | 42% | 39% (36% to 41%) |
 
-On stayers the benchmark comes within a point of the real flop rate, so it is close to calibrated. For movers, luck alone produces more flops than the data, and only slightly less of the player's part. About 70% of the spread in a mover's change of quality against team-mates is what sampling noise alone would give. A flop on its own says little about whether the player got worse.
+On stayers the benchmark comes within a point of the real flop rate, so it is close to calibrated, if a little high. For movers it gives about as many flops as the data, so a flop rate on its own cannot show that players got worse. The player's own part of a flop is a little larger in the data (39%) than from luck alone (28% to 38%), so some real change in quality does show through. About 70% of the spread in a mover's change of quality against team-mates is what sampling noise alone would give.
 
 ![Transfers flop about as often as luck alone would predict](figures/fig1_flops_look_like_luck.png)
 
@@ -38,10 +38,10 @@ On stayers the benchmark comes within a point of the real flop rate, so it is cl
 <img src="figures/fig2_age.png" width="420" align="right" alt="Flop rate by age, movers against stayers">
 
 - **Age.** Movers aged 26 to 28 flop 28% of the time, against 19% for stayers of the same age (gap +9 points, +1 to +17), and movers aged 29 and over 26%. Under 23 the movers do slightly better than the stayers. The 26–28 band is the only one of four with an interval clear of zero, so it is a lead to test on new seasons.
-- **League.** Players who move to a new league flop 22% of the time, against 17% for those who stay in the same league.
+- **League.** Players who move to a new league flop 22% of the time, against 17% for movers within the same league.
 - **Fee.** I found no clear pattern: 20% of moves over €30m flop, 17% at €10–30m, 13% under €10m and 19% of free or loan moves, and every interval overlaps. 149 moves have no fee on record in Transfermarkt.
 - **Buying club.** I cannot tell whether some clubs' signings do better. After shrinking each club's record towards the average the spread between clubs is close to zero, and only 11 clubs made enough signings to compare 2015–19 with 2020–25 (rank correlation −0.19, p = 0.57).
-- **Can you see it coming?** Using only what is known on the day of the move, a simple model trained on moves into 2015-16 to 2019-20 and tested on 2020-21 onwards scores an AUC (the chance it ranks a random flop above a random non-flop) of 0.62 (0.54 to 0.70). The fifth of moves it rates riskiest flop 23% of the time, against 16% for the rest. The strongest warning sign is a big season just before the move, which is regression to the mean and would warn about stayers too.
+- **Can you see it coming?** Using only what is known on the day of the move, a simple model trained on moves into 2015-16 to 2019-20 and tested on 2020-21 onwards scores an AUC (the chance it ranks a random flop above a random non-flop) of 0.62 (0.54 to 0.70). The fifth of moves it rates riskiest flop 23% of the time, against 16% for the rest. The strongest warning sign is a big season just before the move, which is partly regression to the mean.
 
 <br clear="right">
 
@@ -51,7 +51,7 @@ The second test follows one player from one season to the next: 2,693 pairs of s
 
 That headline measures his share on odd matches and his quality on even matches (and the reverse). One speculative shot raises his share and lowers his quality in the same match, and splitting the matches removes that shared noise. Measuring minutes match by match is what makes this per-90 version possible.
 
-![With 5 more points of the ball, a player's chances are about 1.7% worse](figures/fig3_within_player.png)
+![Five more points of the ball comes with chances about 1.7% worse](figures/fig3_within_player.png)
 
 Every version points the same way, apart from season totals, where playing time hides the effect, and movers measured against their new team-mates, where the sample is small. The effect is small next to a flop: the typical move cuts a player's share by about 0.8 points (4.9% of a 17% share), which on this slope is worth about 0.3% in chance quality.
 
@@ -60,7 +60,7 @@ Every version points the same way, apart from season totals, where playing time 
 Do two team-mates link up more the longer they play together? For every pair I counted the open-play shots one set up for the other, and compared that with what their own habits and their minutes together predict. That expected rate comes from a model with one term for how much the passer sets up and one for how much the receiver finishes from set-ups, fitted club by club and season by season.
 
 - **I found no sign that time together helps.** New pairs set up 0.4% more in the second half of their first season than the first (−1.0% to +1.9%, 20,786 pairs). The same pair a season later: +0.5% (−0.2% to +1.2%).
-- **Some pairs do link up more than expected, season after season.** A pair's excess set-ups in one season predict the next (correlation 0.10, against 0.01 at the 95th percentile when pairs are shuffled). That looks like fit between two players' roles and positions, which is there from the start.
+- **Some pairs do link up more than expected, season after season.** A pair's excess set-ups in one season predict the next (correlation 0.10, against 0.01 at the 95th percentile when pairs are shuffled). It could reflect how two players' roles and positions fit together, which this test cannot separate from other lasting traits of a pair.
 - **Old team-mates reunited at a new club** start 2.3% ahead of new pairs (−2.3% to +6.8%), within the noise.
 
 ![No sign that time together makes team-mates link up more](figures/fig4_chemistry.png)
@@ -87,7 +87,7 @@ StatsBomb's free event data covers 2015-16 in the Premier League, La Liga, Serie
 
 <img src="figures/fig5_depay.png" width="360" align="right" alt="Depay's share of the ball and chance quality at United and Lyon">
 
-Memphis Depay is the standard example of a flop who came good. Measured over his minutes on the pitch, his share of the ball was similar at United in 2015-16 (23%) and Lyon in 2017-18 (27%). His chance quality rose from 0.086 per action to 0.107, and to 0.124 in 2020-21, though the United figure rests on only 69 actions. He mainly played more: 43% of United's league minutes, against 72% and 86% at Lyon.
+Memphis Depay is the standard example of a flop who came good. Measured over his minutes on the pitch, his share of the ball was similar at United in 2015-16 (23%) and Lyon in 2017-18 (27%). His chance quality rose from 0.086 per action to 0.107, and to 0.124 in 2020-21, though the United figure rests on only 69 actions. He also played far more: 43% of United's league minutes, against 72% and 86% at Lyon.
 
 Ronaldo went the other way. His chance quality held up at United in 2021-22 (0.145 per action, against 0.142 at Juventus the season before) on a smaller share (20%, against 23%). One season cannot say whether his share cost his team-mates.
 
@@ -96,7 +96,7 @@ Ronaldo went the other way. His chance quality held up at United in 2021-22 (0.1
 ## Limitations
 
 - **Shots and shot-assists only.** Carries, pressing and build-up passes are invisible, so this suits attackers.
-- **Regulars only.** Both seasons need 900 league minutes, which drops players who stopped being picked, often the worst flops.
+- **Regulars only.** Both seasons need 900 league minutes, which drops players who stopped being picked and may hide some of the worst flops.
 - **Big-5 only.** Understat covers the Big-5 to September 2025, so moves from the Eredivisie, Portugal or the Championship are invisible.
 - **Observational.** It shows patterns and cannot prove causes. A coach also decides a player's share.
 - **Name matching.** Understat and Transfermarkt are joined by matching names within each league-season, using club to settle clashes. All 20,002 fixtures match. A few players may be mismatched.
@@ -125,7 +125,9 @@ The full run rebuilds every number and figure, runs the self-checks, and checks 
 - **Minutes, line-ups, substitutions, transfers:** [Transfermarkt](https://www.transfermarkt.com) via [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (David Cariboo).
 - **Passes:** [StatsBomb open data](https://github.com/statsbomb/open-data), 2015-16.
 
-None of the raw data is in this repository. `data/` holds aggregates and three players' season numbers. Code is MIT-licensed.
+None of the raw data is in this repository. `data/` holds aggregates and three players' season numbers. Code is MIT-licensed. The aggregates in `data/`, the figures and the one-pager come from Understat, Transfermarkt and StatsBomb data, and are for non-commercial use with credit to those sources.
+
+<img src="figures/statsbomb_logo.png" width="160" alt="StatsBomb">
 
 ## About
 

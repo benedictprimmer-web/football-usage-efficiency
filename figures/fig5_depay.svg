@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-03T18:36:02.085586</dc:date>
+    <dc:date>2026-11-03T18:43:07.048279</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -41,7 +41,7 @@ z
     <path d="M 74.208 191.124777 
 L 172.8 182.20301 
 L 271.392 190.385033 
-" clip-path="url(#pe358472db9)" style="fill: none; stroke: #1d1d1b; stroke-width: 2.2; stroke-linecap: square"/>
+" clip-path="url(#pc054ab5ffb)" style="fill: none; stroke: #1d1d1b; stroke-width: 2.2; stroke-linecap: square"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -57,7 +57,7 @@ L 271.392 190.385033
    <g id="matplotlib.axis_2"/>
    <g id="line2d_5">
     <defs>
-     <path id="mcec5704328" d="M 0 5 
+     <path id="m2ac0ea056b" d="M 0 5 
 C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
 C 4.473168 2.597899 5 1.326016 5 0 
 C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
@@ -69,13 +69,13 @@ C -2.597899 4.473168 -1.326016 5 0 5
 z
 " style="stroke: #1d1d1b; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#pe358472db9)">
-     <use xlink:href="#mcec5704328" x="74.208" y="191.124777" style="fill: #ffffff; stroke: #1d1d1b; stroke-width: 2"/>
+    <g clip-path="url(#pc054ab5ffb)">
+     <use xlink:href="#m2ac0ea056b" x="74.208" y="191.124777" style="fill: #ffffff; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_6">
     <defs>
-     <path id="m9a8701994a" d="M 0 5 
+     <path id="m0c802d3461" d="M 0 5 
 C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
 C 4.473168 2.597899 5 1.326016 5 0 
 C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
@@ -87,13 +87,13 @@ C -2.597899 4.473168 -1.326016 5 0 5
 z
 " style="stroke: #1d1d1b; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#pe358472db9)">
-     <use xlink:href="#m9a8701994a" x="172.8" y="182.20301" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+    <g clip-path="url(#pc054ab5ffb)">
+     <use xlink:href="#m0c802d3461" x="172.8" y="182.20301" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_7">
-    <g clip-path="url(#pe358472db9)">
-     <use xlink:href="#m9a8701994a" x="271.392" y="190.385033" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+    <g clip-path="url(#pc054ab5ffb)">
+     <use xlink:href="#m0c802d3461" x="271.392" y="190.385033" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_3">
@@ -127,7 +127,7 @@ z
     <path d="M 74.208 321.913187 
 L 172.8 311.849497 
 L 271.392 304.159319 
-" clip-path="url(#p5627e32814)" style="fill: none; stroke: #1b64c2; stroke-width: 2.2; stroke-linecap: square"/>
+" clip-path="url(#p8b25f9b429)" style="fill: none; stroke: #1b64c2; stroke-width: 2.2; stroke-linecap: square"/>
    </g>
    <g id="matplotlib.axis_3">
     <g id="xtick_4">
@@ -155,7 +155,7 @@ L 271.392 304.159319
    <g id="matplotlib.axis_4"/>
    <g id="line2d_12">
     <defs>
-     <path id="m447f5fbaa5" d="M 0 5 
+     <path id="mc3239ca173" d="M 0 5 
 C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
 C 4.473168 2.597899 5 1.326016 5 0 
 C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
@@ -167,13 +167,13 @@ C -2.597899 4.473168 -1.326016 5 0 5
 z
 " style="stroke: #1b64c2; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p5627e32814)">
-     <use xlink:href="#m447f5fbaa5" x="74.208" y="321.913187" style="fill: #ffffff; stroke: #1b64c2; stroke-width: 2"/>
+    <g clip-path="url(#p8b25f9b429)">
+     <use xlink:href="#mc3239ca173" x="74.208" y="321.913187" style="fill: #ffffff; stroke: #1b64c2; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_13">
     <defs>
-     <path id="mea5cf4dc40" d="M 0 5 
+     <path id="ma9a1184051" d="M 0 5 
 C 1.326016 5 2.597899 4.473168 3.535534 3.535534 
 C 4.473168 2.597899 5 1.326016 5 0 
 C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534 
@@ -185,13 +185,13 @@ C -2.597899 4.473168 -1.326016 5 0 5
 z
 " style="stroke: #1b64c2; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p5627e32814)">
-     <use xlink:href="#mea5cf4dc40" x="172.8" y="311.849497" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
+    <g clip-path="url(#p8b25f9b429)">
+     <use xlink:href="#ma9a1184051" x="172.8" y="311.849497" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_14">
-    <g clip-path="url(#p5627e32814)">
-     <use xlink:href="#mea5cf4dc40" x="271.392" y="304.159319" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
+    <g clip-path="url(#p8b25f9b429)">
+     <use xlink:href="#ma9a1184051" x="271.392" y="304.159319" style="fill: #1b64c2; stroke: #1b64c2; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_5">
@@ -224,9 +224,9 @@ z
 " style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
   </g>
   <g id="text_13">
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Depay had the same share of the</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">ball at United and Lyon. His</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">chances got better</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Depay's share of the ball rose a</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">little at Lyon, and his chances</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">got much better</text>
   </g>
   <g id="text_14">
    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 101.931406)">Memphis Depay, measured over the minutes he was on the pitch.</text>
@@ -238,10 +238,10 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pe358472db9">
+  <clipPath id="pc054ab5ffb">
    <rect x="24.912" y="161.1315" width="295.776" height="80.6994"/>
   </clipPath>
-  <clipPath id="p5627e32814">
+  <clipPath id="p8b25f9b429">
    <rect x="24.912" y="282.1806" width="295.776" height="80.6994"/>
   </clipPath>
  </defs>
