@@ -16,6 +16,9 @@ if [[ "${1:-}" != "--quick" ]]; then
   "$PY" analysis/chemistry.py      # pair chemistry from shot assists
   "$PY" analysis/statsbomb.py      # StatsBomb 2015-16 passes and minutes (downloads once)
   "$PY" analysis/sb_check.py       # minutes check, pass-level chemistry, links agreement
+  # the same tests on FBref/Opta shots for the Big-5 plus Portugal and the Eredivisie
+  "$PY" analysis/fbref.py
+  for s in crosswalk minutes build_panel analyse transfers; do SHOTS=opta "$PY" "analysis/$s.py"; done
 fi
 "$PY" analysis/figures.py
 

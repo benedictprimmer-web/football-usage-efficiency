@@ -31,7 +31,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import OUT, SOURCE, WORK, SEED, N_BOOT
+from config import OUT, SOURCE, WORK, SEED, N_BOOT, SHOTS_FILE
 
 MIN_TOGETHER = 450  # minutes together in the unit being compared (five full matches)
 
@@ -40,12 +40,12 @@ MIN_TOGETHER = 450  # minutes together in the unit being compared (five full mat
 
 def assisted_shots() -> pd.DataFrame:
     """Open-play assisted shots with Transfermarkt ids for both players."""
-    s = pd.read_parquet(SOURCE / "understat" / "shots.parquet")
+    s = pd.read_parquet(SOURCE / SHOTS_FILE)
     s = s[(s.league != "RUS-Premier League") & (s.situation == "OpenPlay")
           & s.player_assisted.notna() & (s.result != "OwnGoal")]
     s = s[s.player != s.player_assisted]
     px = pd.read_parquet(WORK / "crosswalk_players.parquet")
-    shots_all = pd.read_parquet(SOURCE / "understat" / "shots.parquet",
+    shots_all = pd.read_parquet(SOURCE / SHOTS_FILE,
                                 columns=["league", "season", "team_shot", "player", "player_id"])
     # Understat gives the assister by name only; name -> id within the team-season
     nm = (shots_all.dropna(subset=["player_id"])

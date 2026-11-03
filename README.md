@@ -46,6 +46,27 @@ On stayers the benchmark comes within a point of the real flop rate, so it is cl
 
 <br clear="right">
 
+## A second source: Opta xG in seven leagues
+
+Understat covers only the Big-5. FBref carried Opta's shot-level xG for many more leagues until January 2026, and the [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) archive kept it, so I reran every test on Opta's numbers for the Big-5 plus Portugal and the Eredivisie, 2017-18 to 2024-25. A different xG model, different shot-assist definitions and two more leagues give a fair test of whether the results hold.
+
+| | Understat, Big-5, 2014–2025 | Opta, seven leagues, 2017–2025 |
+|---|---|---|
+| Moves / stays | 601 / 2,075 | 469 / 1,716 |
+| His share of the ball, movers v stayers | −4.9% (−7.0% to −2.8%) | −7.2% (−9.6% to −4.8%) |
+| Chances his team creates | +2.9% (+1.2% to +4.8%) | +3.9% (+1.8% to +6.0%) |
+| Output per 90, net | +3.6% (+0.2% to +6.9%) | +0.4% (−3.4% to +4.1%) |
+| Flop rate, moved v stayed | 19% v 18% | 24% v 20% |
+| Flop gap, adjusted for age | +2.7 points (−1.0 to +6.7) | +4.8 points (+0.5 to +9.6) |
+| Flop rate, luck only (movers) | 22% | 25% |
+| Losing the ball, share of a mover's flop | 28% | 32% |
+| Same player, 5 points more of the ball | −1.7% | −1.2% |
+| Flop predictor AUC, out of time | 0.62 | 0.70 (0.64 to 0.76) |
+
+The usage cost holds and is larger on Opta. The better team makes up for it on Understat; on Opta it roughly breaks even. On Opta movers flop a little more often than stayers once age is accounted for, and the predictor does better.
+
+**Stepping up from Portugal or the Eredivisie.** 38 attackers moved from those leagues into the Big-5 with 900 minutes either side. Their output per 90 fell by 28% (21% to 35%) and 53% of them flopped. The whole fall came from the situation (−29%): against their new team-mates their quality was unchanged (+0.6%, −6.7% to +7.9%). A stronger league means fewer chances and less of the ball, and the player is as good as he was. It is a small sample.
+
 ## The same player with more of the ball
 
 The second test follows one player from one season to the next: 2,693 pairs of seasons from 897 players. Seasons where his share of the team's shots and shot-assists was 5 points higher came with chance quality **1.7%** lower (95% interval −3.0% to −0.5%).
@@ -98,7 +119,7 @@ Ronaldo went the other way. His chance quality held up at United in 2021-22 (0.1
 
 - **Shots and shot-assists only.** Carries, pressing and build-up passes are invisible, so this suits attackers.
 - **Regulars only.** Both seasons need 900 league minutes, which drops players who stopped being picked and may hide some of the worst flops.
-- **Big-5 only.** Understat covers the Big-5 to September 2025, so moves from the Eredivisie, Portugal or the Championship are invisible.
+- **Leagues.** Understat covers the Big-5 to September 2025. The Opta rerun adds Portugal and the Eredivisie to early 2025, so moves from the Championship, Belgium or Brazil are still invisible.
 - **Observational.** It shows patterns and cannot prove causes. A coach also decides a player's share.
 - **Name matching.** Understat and Transfermarkt are joined by matching names within each league-season, using club to settle clashes. All 20,002 fixtures match. A few players may be mismatched.
 - **Many slices.** I looked at age, league, fee, buying club and a predictor, so treat any single slice as a lead.
@@ -125,6 +146,7 @@ The full run rebuilds every number and figure, runs the self-checks, and checks 
 - **Shots and xG:** [Understat](https://understat.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (Jason Zivkovic), 2014-15 to 15 September 2025.
 - **Minutes, line-ups, substitutions, transfers:** [Transfermarkt](https://www.transfermarkt.com) via [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (David Cariboo).
 - **Passes:** [StatsBomb open data](https://github.com/statsbomb/open-data), 2015-16.
+- **Opta xG, seven leagues:** [FBref](https://fbref.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data), 2017-18 to early 2025.
 
 None of the raw data is in this repository. `data/` holds aggregates and three players' season numbers. Code is MIT-licensed. The aggregates in `data/`, the figures and the one-pager come from Understat, Transfermarkt and StatsBomb data, and are for non-commercial use with credit to those sources.
 
@@ -215,6 +237,7 @@ For each ordered pair (A sets up, B shoots) in a club-season, the expected count
 | `analysis/transfers.py` | Movers against stayers, the luck benchmark, slices, the flop predictor |
 | `analysis/chemistry.py` | Pair chemistry from shot assists |
 | `analysis/statsbomb.py`, `analysis/sb_check.py` | StatsBomb 2015-16 checks |
+| `analysis/fbref.py` | FBref/Opta shots for seven leagues, for the `SHOTS=opta` rerun |
 | `analysis/figures.py` | Every figure and the one-pager |
 | `analysis/verify.py` | Checks the README's headline numbers against `data/` |
 

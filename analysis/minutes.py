@@ -19,7 +19,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from config import SOURCE, WORK
+from config import SOURCE, WORK, SHOTS_FILE
 from crosswalk import tm_games
 
 TM = SOURCE / "transfermarkt"
@@ -109,7 +109,7 @@ def pair_minutes(iv: pd.DataFrame) -> pd.DataFrame:
 
 
 def build():
-    shots = pd.read_parquet(SOURCE / "understat" / "shots.parquet")
+    shots = pd.read_parquet(SOURCE / SHOTS_FILE)
     shots = shots.assign(half=halves(shots))
     mx = pd.read_parquet(WORK / "crosswalk_matches.parquet")
     # only matches both sources hold, so minutes and shots cover the same games

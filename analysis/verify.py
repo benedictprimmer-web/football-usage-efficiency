@@ -166,6 +166,23 @@ def checks() -> list[tuple[str, str]]:
             ("sb links", f"correlation {b['links_agree']['corr']:.2f}, against {b['links_agree']['null_95']:.2f} by chance"),
             ("sb top fifth", f"set up {p(b['links_agree']['shot_ratio_top_fifth_pass_links'] - 1, 0)} more shots"),
         ]
+    op = OUT / "opta" / "transfers.json"
+    if op.exists():  # the Opta rerun on seven leagues (SHOTS=opta)
+        o = json.loads(op.read_text())
+        mo, s_ = o["movers_vs_stayers"], o["selling_leagues_into_big5"]
+        sh = mo["mean_log_gap_by_part"]["His share of the ball"]
+        out += [
+            ("opta moves", f"| Moves / stays | {mv['n_movers']} / {mv['n_stayers']:,} | "
+                           f"{mo['n_movers']} / {mo['n_stayers']:,} |"),
+            ("opta share", f"{p(sh['point'], 1, True)} ({p(sh['lo'], 1, True)} to {p(sh['hi'], 1, True)}) |"),
+            ("opta auc", f"{o['predict_flops']['auc']:.2f} ({o['predict_flops']['auc_lo']:.2f} to "
+                         f"{o['predict_flops']['auc_hi']:.2f})"),
+            ("selling moves", f"{s_['moves']} attackers moved from those leagues into the Big-5"),
+            ("selling fall", f"fell by {p(-s_['mean_change']['point'], 0)} ({p(-s_['mean_change']['hi'], 0)} "
+                             f"to {p(-s_['mean_change']['lo'], 0)}) and {p(s_['flop_rate']['point'], 0)} of them flopped"),
+            ("selling player", f"unchanged ({p(s_['player_change']['point'], 1, True)}, "
+                               f"{p(s_['player_change']['lo'], 1, True)} to {p(s_['player_change']['hi'], 1, True)})"),
+        ]
     return out
 
 

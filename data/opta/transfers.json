@@ -1,0 +1,198 @@
+{
+ "pairs": 2185,
+ "players": 866,
+ "seasons": "2017-2018 to 2024-2025",
+ "movers_vs_stayers": {
+  "flop_rate_movers": {
+   "point": 0.2367,
+   "lo": 0.2008,
+   "hi": 0.2757
+  },
+  "flop_rate_stayers": {
+   "point": 0.1952,
+   "lo": 0.1777,
+   "hi": 0.2141
+  },
+  "flop_rate_gap": {
+   "point": 0.0415,
+   "lo": -0.0011,
+   "hi": 0.0873
+  },
+  "mean_change_movers": {
+   "point": -0.0134,
+   "lo": -0.0432,
+   "hi": 0.0184
+  },
+  "mean_change_stayers": {
+   "point": -0.0177,
+   "lo": -0.0309,
+   "hi": -0.0055
+  },
+  "mean_log_gap": {
+   "point": 0.0043,
+   "lo": -0.0338,
+   "hi": 0.0407
+  },
+  "n_movers": 469,
+  "n_stayers": 1716,
+  "n_flops_movers": 111,
+  "n_flops_stayers": 335,
+  "mean_log_gap_by_part": {
+   "Team chances per 90": {
+    "point": 0.0391,
+    "lo": 0.0178,
+    "hi": 0.0597
+   },
+   "His share of the ball": {
+    "point": -0.0717,
+    "lo": -0.0961,
+    "hi": -0.0478
+   },
+   "Team-mates' chance quality": {
+    "point": 0.0205,
+    "lo": -0.0002,
+    "hi": 0.0411
+   },
+   "His quality relative to team-mates": {
+    "point": 0.0164,
+    "lo": -0.0074,
+    "hi": 0.0411
+   }
+  }
+ },
+ "noise_benchmark": {
+  "group": "movers",
+  "pairs": 469,
+  "sims": 200,
+  "flop_rate_noise_only": [
+   0.2495,
+   0.226,
+   0.2751
+  ],
+  "flop_rate_observed": 0.2367,
+  "player_share_noise_only": [
+   0.2695,
+   0.2131,
+   0.3154
+  ],
+  "player_share_observed": 0.2211,
+  "sd_d_rel_noise_only": 0.2173,
+  "sd_d_rel_observed": 0.2407
+ },
+ "noise_benchmark_stayers": {
+  "group": "stayers",
+  "pairs": 1715,
+  "sims": 200,
+  "flop_rate_noise_only": [
+   0.2023,
+   0.1883,
+   0.2164
+  ],
+  "flop_rate_observed": 0.1953,
+  "player_share_noise_only": [
+   0.3537,
+   0.3211,
+   0.3831
+  ],
+  "player_share_observed": 0.3735,
+  "sd_d_rel_noise_only": 0.2109,
+  "sd_d_rel_observed": 0.2293
+ },
+ "age_adjusted": {
+  "flop_rate_gap": {
+   "point": 0.0484,
+   "lo": 0.005,
+   "hi": 0.0958
+  },
+  "mean_log_gap": {
+   "point": -0.0,
+   "lo": -0.0397,
+   "hi": 0.0378
+  }
+ },
+ "usage_in_flops": {
+  "movers_share_of_fall": {
+   "point": 0.3246,
+   "lo": 0.2477,
+   "hi": 0.4011
+  },
+  "movers_flops_undone": {
+   "point": 0.4234,
+   "lo": 0.3333,
+   "hi": 0.5133
+  },
+  "movers_share_fell": {
+   "point": 0.7568,
+   "lo": 0.678,
+   "hi": 0.832
+  },
+  "stayers_share_of_fall": {
+   "point": 0.3023,
+   "lo": 0.2665,
+   "hi": 0.3383
+  },
+  "stayers_flops_undone": {
+   "point": 0.4119,
+   "lo": 0.3616,
+   "hi": 0.4641
+  },
+  "stayers_share_fell": {
+   "point": 0.7731,
+   "lo": 0.7288,
+   "hi": 0.8171
+  },
+  "gap_share_of_fall": {
+   "point": 0.0223,
+   "lo": -0.0653,
+   "hi": 0.1127
+  }
+ },
+ "selling_leagues_into_big5": {
+  "flop_rate": {
+   "point": 0.5263,
+   "lo": 0.359,
+   "hi": 0.6842
+  },
+  "mean_change": {
+   "point": -0.2845,
+   "lo": -0.353,
+   "hi": -0.2059
+  },
+  "situation_change": {
+   "point": -0.2887,
+   "lo": -0.3621,
+   "hi": -0.2042
+  },
+  "player_change": {
+   "point": 0.0058,
+   "lo": -0.0672,
+   "hi": 0.0791
+  },
+  "moves": 38,
+  "moves_touching_selling_leagues": 88
+ },
+ "buying_club_persistence": {
+  "clubs": 0,
+  "spearman_early_late": NaN,
+  "perm_p": 0.0,
+  "tau": 0.001
+ },
+ "predict_flops": {
+  "train_moves": 139,
+  "test_moves": 330,
+  "test_flop_rate": 0.224,
+  "auc": 0.703,
+  "auc_lo": 0.638,
+  "auc_hi": 0.764,
+  "flop_rate_top_fifth_of_risk": 0.409,
+  "flop_rate_rest": 0.178,
+  "coefficients": {
+   "age": 0.123,
+   "log out per 90 last season": 1.354,
+   "log quality vs team-mates": -0.328,
+   "log share of the ball": 0.03,
+   "share of minutes played": 0.017,
+   "changed league": 0.003
+  }
+ }
+}

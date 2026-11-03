@@ -25,7 +25,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import OUT, SOURCE, WORK, SEED, N_BOOT, MIN_MINUTES
+from config import OUT, SOURCE, WORK, SEED, N_BOOT, MIN_MINUTES, SHOTS_FILE
 
 PARTS = {
     "d_team": "Team chances per 90",
@@ -141,7 +141,7 @@ def splits(m: pd.DataFrame) -> pd.DataFrame:
 
 def player_actions() -> pd.DataFrame:
     """Every action (shot or shot-assist, no penalties) with its xG, per player-team-season."""
-    s = pd.read_parquet(SOURCE / "understat" / "shots.parquet",
+    s = pd.read_parquet(SOURCE / SHOTS_FILE,
                         columns=["season", "team_shot", "player", "player_assisted",
                                  "xg", "result", "situation"])
     s = s[(s.result != "OwnGoal") & (s.situation != "Penalty")]
@@ -216,6 +216,23 @@ def usage_in_flops(m: pd.DataFrame) -> dict:
             "stayers_share_of_fall", "stayers_flops_undone", "stayers_share_fell", "gap_share_of_fall"]
     return {k: {"point": r3(p[i])[0], "lo": r3(lo[i])[0], "hi": r3(hi[i])[0]}
             for i, k in enumerate(keys)}
+
+
+def selling_leagues(m: pd.DataFrame) -> dict | None:
+    """Moves from Portugal or the Eredivisie into the Big-5 (Opta run only)."""
+    sell = ("POR", "NED")
+    mv = m[m.mover]
+    up = mv[mv.league0.str[:3].isin(sell) & ~mv.league1.str[:3].isin(sell)]
+    if len(up) < 20:
+        return None
+    p, lo, hi = boot(up, lambda x: [x.flop.mean(), np.exp(x.d_out.mean()) - 1,
+                                    np.exp(x.d_situation.mean()) - 1, np.exp(x.d_rel.mean()) - 1])
+    keys = ["flop_rate", "mean_change", "situation_change", "player_change"]
+    out = {k: {"point": r3(p[i])[0], "lo": r3(lo[i])[0], "hi": r3(hi[i])[0]} for i, k in enumerate(keys)}
+    out["moves"] = int(len(up))
+    out["moves_touching_selling_leagues"] = int((mv.league0.str[:3].isin(sell)
+                                                 | mv.league1.str[:3].isin(sell)).sum())
+    return out
 
 
 def age_adjusted(m: pd.DataFrame) -> dict:
@@ -301,7 +318,7 @@ def buying_clubs(mv: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     j = j[(j.size_e >= 4) & (j.size_l >= 4)]
     rho = float(j.mean_e.corr(j.mean_l, method="spearman")) if len(j) > 5 else float("nan")
     rng = np.random.default_rng(SEED)
-    null = [j.mean_e.corr(pd.Series(rng.permutation(j.mean_l.to_numpy()), index=j.index),
+    null = [j.mean_e.corr(pd.Series(rng.permutation(j.mean_l.to_numpy().copy()), index=j.index),
                           method="spearman") for _ in range(2000)]
     persist = {"clubs": int(len(j)), "spearman_early_late": round(rho, 3),
                "perm_p": round(float(np.mean(np.abs(null) >= abs(rho))), 3),
@@ -397,6 +414,9 @@ def main():
     res["noise_benchmark_stayers"] = noise_benchmark(m, movers=False)
     res["age_adjusted"] = age_adjusted(m)
     res["usage_in_flops"] = usage_in_flops(m)
+    sl_up = selling_leagues(m)
+    if sl_up:
+        res["selling_leagues_into_big5"] = sl_up
     sl, mv = slices(m)
     sl.to_csv(OUT / "transfer_slices.csv", index=False, float_format="%.4f")
     ag = age_gaps(m)

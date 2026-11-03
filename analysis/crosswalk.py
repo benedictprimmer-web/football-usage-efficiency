@@ -29,7 +29,7 @@ import unicodedata
 
 import pandas as pd
 
-from config import SOURCE, WORK, TM_LEAGUES
+from config import SOURCE, WORK, TM_LEAGUES, SHOTS_FILE
 
 # tokens that carry no club identity once case and punctuation are gone;
 # 1-2 character tokens and pure digits are dropped too (FC, AC, 04)
@@ -187,7 +187,7 @@ def player_crosswalk(shots: pd.DataFrame, games: pd.DataFrame) -> pd.DataFrame:
 
 
 def build():
-    shots = pd.read_parquet(SOURCE / "understat" / "shots.parquet")
+    shots = pd.read_parquet(SOURCE / SHOTS_FILE)
     shots = shots[shots.league != "RUS-Premier League"]  # Transfermarkt line-ups: Big-5 only
     games = tm_games()
     mx = match_crosswalk(shots, games)

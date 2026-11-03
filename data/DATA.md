@@ -13,7 +13,7 @@ All aggregates, plus season numbers for three case-study players.
 | `transfer_slices.csv` | Flop rate and mean change by age, fee and league path |
 | `age_gaps.csv` | Movers minus stayers by age band |
 | `buying_clubs.csv` | Each buying club's record (8+ signings), raw and shrunk |
-| `noise_benchmark_draws.csv` | The 200 runs of the luck benchmark |
+| `noise_benchmark_draws_movers.csv`, `_stayers.csv` | The 200 runs of the luck benchmark |
 | `within_slopes.csv`, `within_bins.csv` | Within-player tests under each specification |
 | `curve_bins.csv` | Chance quality by share of the ball |
 | `reliability.csv` | Split-half reliability by minutes band |
@@ -21,6 +21,7 @@ All aggregates, plus season numbers for three case-study players.
 | `sb_check.json` | StatsBomb checks: minutes, pass-level chemistry, agreement of pass and shot links |
 | `summary.json` | Sample sizes and the within-player headline |
 | `case_studies.csv` | Season numbers for Depay, Martial and Ronaldo |
+| `opta/` | The same tables rebuilt on FBref/Opta shots for seven leagues (`SHOTS=opta`) |
 
 ## What you need to supply
 
@@ -37,6 +38,8 @@ $SOURCE_DATA/
   transfermarkt/clubs.csv.gz           club names
   transfermarkt/transfers.csv.gz       transfer dates and fees
   statsbomb/                           filled by analysis/statsbomb.py on first run
+  fbref/<LEAGUE>_M_1st_match_shooting.csv  FBref/Opta shots (ENG, ESP, ITA, GER, FRA, POR, NED)
+  opta/                                written by analysis/fbref.py
 ```
 
 The crosswalk between the two sources is built from these files by `analysis/crosswalk.py`.
@@ -56,3 +59,8 @@ The crosswalk between the two sources is built from these files by `analysis/cro
 
 - **Source:** [statsbomb/open-data](https://github.com/statsbomb/open-data), 2015-16 Premier League, La Liga, Serie A and Ligue 1 (the Bundesliga file holds only Leverkusen and is left out).
 - **Licence:** free for non-commercial research with attribution to StatsBomb. Raw data is not redistributed here.
+
+### FBref/Opta shots
+
+- **Source:** Opta xG as published by [FBref](https://fbref.com) until January 2026, archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017-18, Portugal and the Eredivisie from 2018-19, to early 2025.
+- **Licence:** FBref's data is Opta's (Stats Perform). Use for non-commercial research with credit to FBref and Opta; the raw files are not redistributed here.

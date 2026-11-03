@@ -1,0 +1,13 @@
+player,season,league,team,minutes,actions,usage_share,minutes_share,usage_on_pitch,efficiency,mates_eff
+Anthony Martial,2017-2018,ENG-Premier League,Manchester Utd,1583.0000,81.0000,0.0909,0.4629,0.2015,0.1307,0.1001
+Anthony Martial,2018-2019,ENG-Premier League,Manchester Utd,1623.0000,75.0000,0.0819,0.4746,0.1948,0.1191,0.0959
+Anthony Martial,2019-2020,ENG-Premier League,Manchester Utd,2640.0000,112.0000,0.1193,0.7719,0.1635,0.1367,0.0869
+Anthony Martial,2020-2021,ENG-Premier League,Manchester Utd,1487.0000,64.0000,0.0687,0.4348,0.1725,0.1352,0.0896
+Anthony Martial,2022-2023,ENG-Premier League,Manchester Utd,980.0000,38.0000,0.0358,0.2865,0.1434,0.1811,0.1237
+Anthony Martial,2023-2024,ENG-Premier League,Manchester Utd,444.0000,17.0000,0.0141,0.1298,0.0994,0.0600,0.0864
+Cristiano Ronaldo,2017-2018,ESP-La Liga,Real Madrid,2298.0000,210.0000,0.1680,0.6719,0.2445,0.1292,0.1050
+Cristiano Ronaldo,2018-2019,ITA-Serie A,Juventus,2689.0000,216.0000,0.2011,0.7863,0.2538,0.0970,0.0874
+Cristiano Ronaldo,2019-2020,ITA-Serie A,Juventus,2919.0000,244.0000,0.2089,0.8535,0.2670,0.1002,0.0882
+Cristiano Ronaldo,2020-2021,ITA-Serie A,Juventus,2803.0000,194.0000,0.1869,0.8196,0.2369,0.1297,0.1125
+Cristiano Ronaldo,2021-2022,ENG-Premier League,Manchester Utd,2459.0000,132.0000,0.1455,0.7190,0.1997,0.1389,0.0959
+Cristiano Ronaldo,2022-2023,ENG-Premier League,Manchester Utd,520.0000,30.0000,0.0282,0.1520,0.2239,0.0737,0.0841

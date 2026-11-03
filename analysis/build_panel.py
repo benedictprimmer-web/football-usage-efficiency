@@ -16,7 +16,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from config import SOURCE, WORK
+from config import SOURCE, WORK, SHOTS_FILE
 
 from minutes import halves
 from usage_model.usage import usage_efficiency  # noqa: E402
@@ -37,7 +37,7 @@ def club_ids(mx: pd.DataFrame) -> pd.DataFrame:
 
 
 def build() -> pd.DataFrame:
-    shots = pd.read_parquet(SOURCE / "understat" / "shots.parquet")
+    shots = pd.read_parquet(SOURCE / SHOTS_FILE)
     shots = shots[shots.league != "RUS-Premier League"]  # no Transfermarkt line-ups
     print(f"shots: {len(shots):,} to {shots.date.max()}")
 
