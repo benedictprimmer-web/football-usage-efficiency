@@ -85,6 +85,24 @@ The usage cost holds and is larger on Opta. The better team makes up for it on U
 
 **Stepping up from Portugal or the Eredivisie.** 38 attackers moved from those leagues into the Big-5 with 900 minutes either side. Their output per 90 fell by 28% (21% to 35%) and 53% of them flopped. The whole fall came from the situation (−29%): against their new team-mates their quality was unchanged (+0.6%, −6.7% to +7.9%). A stronger league means fewer chances and less of the ball, and the player is as good as he was. It is a small sample.
 
+## More checks
+
+**MLS, a league with no ladder to climb.** [American Soccer Analysis](https://www.americansocceranalysis.com) publishes MLS player-seasons from 2013 (CC BY-SA 4.0). With share of the ball estimated from season totals, as in this repo's first version, 153 attacker moves show the same usage cost: a mover's share falls by 3.8% (−7.3% to −0.4%). MLS has no richer clubs to move up to, so the new team does not create more chances (−0.6%), and movers flop more often than stayers (25% against 18%, a gap of +8.0 points, +0.8 to +15.7). The within-player slope holds too: 5 more points of the ball comes with chance quality 2.6% lower (−5.1% to −0.3%).
+
+**2025-26 in the Premier League.** The Fantasy Premier League archive ([vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League), MIT) has Opta xG and xA per player per match, but no shots, so it can show output and flops and cannot show share of the ball. From 2024-25 to 2025-26, 18 forwards and midfielders changed Premier League club with 900 minutes either side: 33% flopped against 26% of 93 who stayed. The sample is too small to say more than that the pattern has not reversed.
+
+**Injuries and free transfers.** From a Transfermarkt data lake ([salimt/football-datasets](https://github.com/salimt/football-datasets)): movers who missed 30 or more days in their first season at the new club flopped 21% of the time (236 moves), against 18% for those who stayed fit, a gap of +3.4 points (−3.4 to +9.8). Moves on a zero fee (free or loan) flopped 19% of the time, against 16% where a fee was paid. Neither gap is clear of noise, and the 900-minute floor hides the worst injuries.
+
+**Passes on two more providers.** The chemistry test again, on completed passes between new and established pairs from the first half of a season to the second:
+
+| | Impect, Bundesliga 2023-24 | Wyscout, Big-5 2017-18 |
+|---|---|---|
+| New pairs | 370, −0.5% (−4.6% to +3.9%) | 1,918, −1.1% (−2.8% to +0.8%) |
+| Established pairs | 255, +0.1% | 1,531, −0.4% |
+| Gap | −0.6% (−7.9% to +6.3%) | −0.7% (−3.5% to +2.1%) |
+
+Three providers and three seasons now agree: new pairs do not pass to each other more as a season goes on. Wyscout does not record who received a pass, so the receiver is the next player on the same team to touch the ball (92% of accurate open-play passes).
+
 ## The same player with more of the ball
 
 The second test follows one player from one season to the next: 2,693 pairs of seasons from 897 players. Seasons where his share of the team's shots and shot-assists was 5 points higher came with chance quality **1.7%** lower (95% interval −3.0% to −0.5%).
@@ -164,11 +182,12 @@ The full run rebuilds every number and figure, runs the self-checks, and checks 
 - **Shots and xG:** [Understat](https://understat.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (Jason Zivkovic), 2014-15 to 15 September 2025.
 - **Minutes, line-ups, substitutions, transfers:** [Transfermarkt](https://www.transfermarkt.com) via [transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets) (David Cariboo).
 - **Passes:** [StatsBomb open data](https://github.com/statsbomb/open-data), 2015-16.
+- **More checks:** [American Soccer Analysis](https://www.americansocceranalysis.com) (MLS, CC BY-SA 4.0), [Fantasy Premier League archive](https://github.com/vaastav/Fantasy-Premier-League) (MIT), [salimt/football-datasets](https://github.com/salimt/football-datasets) (injuries), [Impect open data](https://github.com/ImpectAPI/open-data) (Bundesliga 2023-24, non-commercial, credit Impect) and the [Wyscout public dataset](https://figshare.com/collections/Soccer_match_event_dataset/4415000) (Pappalardo et al. 2019, CC BY 4.0).
 - **Opta xG, seven leagues:** [FBref](https://fbref.com) via [worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data), 2017-18 to early 2025.
 
 None of the raw data is in this repository. `data/` holds aggregates and three players' season numbers. Code is MIT-licensed. The aggregates in `data/`, the figures and the one-pager come from Understat, Transfermarkt and StatsBomb data, and are for non-commercial use with credit to those sources.
 
-<img src="figures/statsbomb_logo.png" width="160" alt="StatsBomb">
+<img src="figures/statsbomb_logo.png" width="160" alt="StatsBomb"> &nbsp; <img src="figures/impect_logo.svg" width="120" alt="Impect">
 
 ## About
 

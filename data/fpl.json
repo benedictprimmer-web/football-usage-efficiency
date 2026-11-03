@@ -1,0 +1,199 @@
+{
+ "source": "vaastav/Fantasy-Premier-League (MIT licence), FPL xG and xA from Opta",
+ "min_minutes": 900,
+ "flop": "xG+xA per 90 down by more than 25%",
+ "mover": "main club (most minutes) differs between the two seasons",
+ "pairs": {
+  "2023-24 -> 2024-25": {
+   "FWD": {
+    "n_movers": 3,
+    "n_stayers": 18,
+    "n_flops_movers": 0,
+    "n_flops_stayers": 4,
+    "note": "too few movers or stayers for an interval"
+   },
+   "MID": {
+    "n_movers": 7,
+    "n_stayers": 82,
+    "n_flops_movers": 2,
+    "n_flops_stayers": 13,
+    "flop_rate_movers": {
+     "point": 0.2857,
+     "lo": 0.0,
+     "hi": 0.6667
+    },
+    "flop_rate_stayers": {
+     "point": 0.1585,
+     "lo": 0.0833,
+     "hi": 0.2439
+    },
+    "flop_rate_gap": {
+     "point": 0.1272,
+     "lo": -0.1905,
+     "hi": 0.5391
+    },
+    "mean_change_movers": {
+     "point": -0.0074,
+     "lo": -0.3475,
+     "hi": 0.4985
+    },
+    "mean_change_stayers": {
+     "point": -0.0386,
+     "lo": -0.0981,
+     "hi": 0.023
+    },
+    "mean_log_gap": {
+     "point": 0.032,
+     "lo": -0.4029,
+     "hi": 0.4519
+    }
+   },
+   "FWD+MID": {
+    "n_movers": 10,
+    "n_stayers": 100,
+    "n_flops_movers": 2,
+    "n_flops_stayers": 17,
+    "flop_rate_movers": {
+     "point": 0.2,
+     "lo": 0.0,
+     "hi": 0.5
+    },
+    "flop_rate_stayers": {
+     "point": 0.17,
+     "lo": 0.101,
+     "hi": 0.25
+    },
+    "flop_rate_gap": {
+     "point": 0.03,
+     "lo": -0.2059,
+     "hi": 0.33
+    },
+    "mean_change_movers": {
+     "point": 0.0302,
+     "lo": -0.2368,
+     "hi": 0.3697
+    },
+    "mean_change_stayers": {
+     "point": -0.0468,
+     "lo": -0.0997,
+     "hi": 0.0079
+    },
+    "mean_log_gap": {
+     "point": 0.0777,
+     "lo": -0.2288,
+     "hi": 0.3773
+    }
+   }
+  },
+  "2024-25 -> 2025-26": {
+   "FWD": {
+    "n_movers": 5,
+    "n_stayers": 12,
+    "n_flops_movers": 0,
+    "n_flops_stayers": 4,
+    "flop_rate_movers": {
+     "point": 0.0,
+     "lo": 0.0,
+     "hi": 0.0
+    },
+    "flop_rate_stayers": {
+     "point": 0.3333,
+     "lo": 0.0833,
+     "hi": 0.6
+    },
+    "flop_rate_gap": {
+     "point": -0.3333,
+     "lo": -0.6,
+     "hi": -0.0833
+    },
+    "mean_change_movers": {
+     "point": 0.0279,
+     "lo": -0.1535,
+     "hi": 0.2277
+    },
+    "mean_change_stayers": {
+     "point": -0.1129,
+     "lo": -0.2436,
+     "hi": 0.0361
+    },
+    "mean_log_gap": {
+     "point": 0.1473,
+     "lo": -0.0932,
+     "hi": 0.3847
+    }
+   },
+   "MID": {
+    "n_movers": 13,
+    "n_stayers": 81,
+    "n_flops_movers": 6,
+    "n_flops_stayers": 20,
+    "flop_rate_movers": {
+     "point": 0.4615,
+     "lo": 0.1667,
+     "hi": 0.75
+    },
+    "flop_rate_stayers": {
+     "point": 0.2469,
+     "lo": 0.1585,
+     "hi": 0.3418
+    },
+    "flop_rate_gap": {
+     "point": 0.2146,
+     "lo": -0.0871,
+     "hi": 0.5143
+    },
+    "mean_change_movers": {
+     "point": -0.193,
+     "lo": -0.3527,
+     "hi": 0.0197
+    },
+    "mean_change_stayers": {
+     "point": 0.0148,
+     "lo": -0.0751,
+     "hi": 0.1238
+    },
+    "mean_log_gap": {
+     "point": -0.2291,
+     "lo": -0.476,
+     "hi": 0.0292
+    }
+   },
+   "FWD+MID": {
+    "n_movers": 18,
+    "n_stayers": 93,
+    "n_flops_movers": 6,
+    "n_flops_stayers": 24,
+    "flop_rate_movers": {
+     "point": 0.3333,
+     "lo": 0.1176,
+     "hi": 0.5714
+    },
+    "flop_rate_stayers": {
+     "point": 0.2581,
+     "lo": 0.172,
+     "hi": 0.3505
+    },
+    "flop_rate_gap": {
+     "point": 0.0753,
+     "lo": -0.1687,
+     "hi": 0.3206
+    },
+    "mean_change_movers": {
+     "point": -0.1369,
+     "lo": -0.2823,
+     "hi": 0.0239
+    },
+    "mean_change_stayers": {
+     "point": -0.0027,
+     "lo": -0.0802,
+     "hi": 0.0994
+    },
+    "mean_log_gap": {
+     "point": -0.1445,
+     "lo": -0.3395,
+     "hi": 0.0441
+    }
+   }
+  }
+ }
+}

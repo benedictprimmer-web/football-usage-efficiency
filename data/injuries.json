@@ -1,0 +1,270 @@
+{
+ "pairs": 2676,
+ "movers": 601,
+ "stayers": 2075,
+ "injury_coverage": {
+  "players_with_any_spell": 0.9697,
+  "pairs_with_spell_in_season2": 0.6895,
+  "spells_file_last_spell": "2026-09-28"
+ },
+ "injuries": {
+  "definition": "injured = 30+ days out in Aug to Jun of season 2",
+  "share_injured": {
+   "movers": 0.3927,
+   "stayers": 0.4019
+  },
+  "movers_injured": {
+   "n": 236,
+   "flops": 50,
+   "mean_days_out": 71.1144,
+   "flop_rate": {
+    "point": 0.2119,
+    "lo": 0.1607,
+    "hi": 0.2667
+   },
+   "mean_change": {
+    "point": 0.0076,
+    "lo": -0.0401,
+    "hi": 0.0553
+   },
+   "mean_log_change": {
+    "point": 0.0076,
+    "lo": -0.041,
+    "hi": 0.0538
+   }
+  },
+  "movers_fit": {
+   "n": 365,
+   "flops": 65,
+   "mean_days_out": 7.1479,
+   "flop_rate": {
+    "point": 0.1781,
+    "lo": 0.1417,
+    "hi": 0.219
+   },
+   "mean_change": {
+    "point": 0.0565,
+    "lo": 0.0141,
+    "hi": 0.1006
+   },
+   "mean_log_change": {
+    "point": 0.0549,
+    "lo": 0.014,
+    "hi": 0.0959
+   }
+  },
+  "stayers_injured": {
+   "n": 834,
+   "flops": 156,
+   "mean_days_out": 72.9281,
+   "flop_rate": {
+    "point": 0.1871,
+    "lo": 0.1632,
+    "hi": 0.2134
+   },
+   "mean_change": {
+    "point": -0.0121,
+    "lo": -0.0318,
+    "hi": 0.0093
+   },
+   "mean_log_change": {
+    "point": -0.0122,
+    "lo": -0.0323,
+    "hi": 0.0093
+   }
+  },
+  "stayers_fit": {
+   "n": 1241,
+   "flops": 213,
+   "mean_days_out": 7.6873,
+   "flop_rate": {
+    "point": 0.1716,
+    "lo": 0.1514,
+    "hi": 0.1909
+   },
+   "mean_change": {
+    "point": 0.008,
+    "lo": -0.0069,
+    "hi": 0.0235
+   },
+   "mean_log_change": {
+    "point": 0.008,
+    "lo": -0.0069,
+    "hi": 0.0233
+   }
+  },
+  "gap_movers__flop_rate": {
+   "point": 0.0338,
+   "lo": -0.0339,
+   "hi": 0.0984
+  },
+  "gap_movers__mean_log_change": {
+   "point": -0.0473,
+   "lo": -0.1116,
+   "hi": 0.0134
+  },
+  "gap_stayers__flop_rate": {
+   "point": 0.0154,
+   "lo": -0.0145,
+   "hi": 0.0488
+  },
+  "gap_stayers__mean_log_change": {
+   "point": -0.0202,
+   "lo": -0.0473,
+   "hi": 0.0064
+  },
+  "movers_gap_minus_stayers_gap__flop_rate": {
+   "point": 0.0184,
+   "lo": -0.0575,
+   "hi": 0.0923
+  },
+  "movers_gap_minus_stayers_gap__mean_log_change": {
+   "point": -0.0272,
+   "lo": -0.0968,
+   "hi": 0.0408
+  }
+ },
+ "contracts": {
+  "definition": "free = Transfermarkt fee of 0 (free transfer or loan; the file cannot tell them apart); free_at_turn = fee 0 dated 06-25 to 07-05",
+  "free_movers": {
+   "n": 190,
+   "flops": 37,
+   "mean_age": 25.2299,
+   "flop_rate": {
+    "point": 0.1947,
+    "lo": 0.1405,
+    "hi": 0.2545
+   },
+   "mean_change": {
+    "point": 0.0332,
+    "lo": -0.0191,
+    "hi": 0.0917
+   },
+   "mean_log_change": {
+    "point": 0.0326,
+    "lo": -0.0193,
+    "hi": 0.0878
+   }
+  },
+  "free_at_turn_movers": {
+   "n": 55,
+   "flops": 9,
+   "mean_age": 24.9597,
+   "flop_rate": {
+    "point": 0.1636,
+    "lo": 0.0652,
+    "hi": 0.275
+   },
+   "mean_change": {
+    "point": 0.0703,
+    "lo": -0.0367,
+    "hi": 0.1927
+   },
+   "mean_log_change": {
+    "point": 0.068,
+    "lo": -0.0374,
+    "hi": 0.1762
+   }
+  },
+  "paid_movers": {
+   "n": 262,
+   "flops": 43,
+   "mean_age": 24.0419,
+   "flop_rate": {
+    "point": 0.1641,
+    "lo": 0.1236,
+    "hi": 0.209
+   },
+   "mean_change": {
+    "point": 0.0823,
+    "lo": 0.0338,
+    "hi": 0.1349
+   },
+   "mean_log_change": {
+    "point": 0.0791,
+    "lo": 0.0332,
+    "hi": 0.1266
+   }
+  },
+  "no_fee_record_movers": {
+   "n": 149,
+   "flops": 35,
+   "mean_age": 26.6549,
+   "flop_rate": {
+    "point": 0.2349,
+    "lo": 0.1667,
+    "hi": 0.3013
+   },
+   "mean_change": {
+    "point": -0.0335,
+    "lo": -0.0951,
+    "hi": 0.0337
+   },
+   "mean_log_change": {
+    "point": -0.0341,
+    "lo": -0.0999,
+    "hi": 0.0332
+   }
+  },
+  "stayers": {
+   "n": 2075,
+   "flops": 369,
+   "mean_age": 25.9991,
+   "flop_rate": {
+    "point": 0.1778,
+    "lo": 0.1621,
+    "hi": 0.1935
+   },
+   "mean_change": {
+    "point": -0.0001,
+    "lo": -0.011,
+    "hi": 0.0115
+   },
+   "mean_log_change": {
+    "point": -0.0001,
+    "lo": -0.011,
+    "hi": 0.0115
+   }
+  },
+  "gap_to_stayers_free_movers__flop_rate": {
+   "point": 0.0169,
+   "lo": -0.0386,
+   "hi": 0.078
+  },
+  "gap_to_stayers_free_movers__mean_log_change": {
+   "point": 0.0328,
+   "lo": -0.0221,
+   "hi": 0.0875
+  },
+  "gap_to_stayers_free_at_turn_movers__flop_rate": {
+   "point": -0.0142,
+   "lo": -0.1146,
+   "hi": 0.1016
+  },
+  "gap_to_stayers_free_at_turn_movers__mean_log_change": {
+   "point": 0.0681,
+   "lo": -0.0382,
+   "hi": 0.1762
+  },
+  "gap_to_stayers_paid_movers__flop_rate": {
+   "point": -0.0137,
+   "lo": -0.0587,
+   "hi": 0.0349
+  },
+  "gap_to_stayers_paid_movers__mean_log_change": {
+   "point": 0.0792,
+   "lo": 0.0294,
+   "hi": 0.13
+  },
+  "free_minus_paid__flop_rate": {
+   "point": 0.0306,
+   "lo": -0.0389,
+   "hi": 0.102
+  },
+  "free_minus_paid__mean_log_change": {
+   "point": -0.0464,
+   "lo": -0.1166,
+   "hi": 0.0255
+  }
+ }
+}

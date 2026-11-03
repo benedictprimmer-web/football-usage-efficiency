@@ -22,6 +22,7 @@ All aggregates, plus season numbers for three case-study players.
 | `summary.json` | Sample sizes and the within-player headline |
 | `case_studies.csv` | Season numbers for Depay, Martial and Ronaldo |
 | `opta/` | The same tables rebuilt on FBref/Opta shots for seven leagues (`SHOTS=opta`) |
+| `asa.json`, `fpl.json`, `injuries.json`, `pass_checks.json` | MLS replication, FPL 2025-26 check, injuries and free transfers, Impect and Wyscout pass checks |
 | `mid/`, `opta/mid/` | The same tables for midfielders who are not attacking midfielders (`SAMPLE=mid`) |
 
 ## What you need to supply
@@ -65,3 +66,11 @@ The crosswalk between the two sources is built from these files by `analysis/cro
 
 - **Source:** Opta xG as published by [FBref](https://fbref.com) until January 2026, archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017-18, Portugal and the Eredivisie from 2018-19, to early 2025.
 - **Licence:** FBref's data is Opta's (Stats Perform). Use for non-commercial research with credit to FBref and Opta; the raw files are not redistributed here.
+
+### Sources for the extra checks
+
+- **American Soccer Analysis** API (MLS, 2013 on): CC BY-SA 4.0, credit ASA. Fetched by `analysis/asa.py` into `$SOURCE_DATA/asa/`.
+- **Fantasy Premier League archive**, [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) (MIT): `merged_gw.csv`, `players_raw.csv`, `teams.csv` for 2023-24 to 2025-26 in `$SOURCE_DATA/fpl/<season>/`.
+- **salimt/football-datasets** (Transfermarkt injuries; no licence stated, so research use only, not redistributed): `$SOURCE_DATA/salimt/`.
+- **Impect open data**, Bundesliga 2023-24 ([ImpectAPI/open-data](https://github.com/ImpectAPI/open-data)): non-commercial, no redistribution, credit Impect with its logo. `$SOURCE_DATA/impect/`.
+- **Wyscout public dataset**, Pappalardo et al. 2019 ([figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000), CC BY 4.0): 2017-18 Big-5 events and matches in `$SOURCE_DATA/wyscout/`.

@@ -1,0 +1,63 @@
+{
+ "source": "American Soccer Analysis public API, CC BY-SA 4.0; MLS regular seasons",
+ "seasons": [
+  2013,
+  2026
+ ],
+ "share_is_estimated_from_season_totals": true,
+ "positions": [
+  "AM",
+  "ST",
+  "W"
+ ],
+ "min_minutes": 900,
+ "player_seasons": 1771,
+ "team_seasons": 346,
+ "team_shots_check_ratio": 1.0,
+ "movers_vs_stayers": {
+  "share_of_ball": {
+   "point": -0.0376,
+   "lo": -0.0732,
+   "hi": -0.0041
+  },
+  "team_chances_per90": {
+   "point": -0.006,
+   "lo": -0.0298,
+   "hi": 0.0204
+  },
+  "output_per90": {
+   "point": -0.0251,
+   "lo": -0.0814,
+   "hi": 0.0349
+  },
+  "flop_rate_movers": {
+   "point": 0.2549,
+   "lo": 0.1897,
+   "hi": 0.3247
+  },
+  "flop_rate_stayers": {
+   "point": 0.1751,
+   "lo": 0.1519,
+   "hi": 0.2011
+  },
+  "flop_rate_gap": {
+   "point": 0.0798,
+   "lo": 0.0079,
+   "hi": 0.1573
+  },
+  "n_movers": 153,
+  "n_stayers": 754,
+  "n_players": 396
+ },
+ "within_player": {
+  "per_5_points": {
+   "point": -0.0259,
+   "lo": -0.0505,
+   "hi": -0.003
+  },
+  "median_quality": 0.122,
+  "n_pairs": 907,
+  "n_players": 396,
+  "mean_share": 0.1779
+ }
+}

@@ -193,6 +193,25 @@ def checks() -> list[tuple[str, str]]:
                         f"to {p(net['hi'], 1, True)})"),
             ("mid moves", f"| {mi['n_movers']} / {mi['n_stayers']:,} |"),
         ]
+    extra = {k: OUT / f"{k}.json" for k in ("asa", "fpl", "injuries", "pass_checks")}
+    if all(f.exists() for f in extra.values()):
+        a_, f_, i_, pc = (json.loads(f.read_text()) for f in extra.values())
+        am, aw = a_["movers_vs_stayers"], a_["within_player"]["per_5_points"]
+        f5 = f_["pairs"]["2024-25 -> 2025-26"]["FWD+MID"]
+        gi_ = i_["injuries"]["gap_movers__flop_rate"]
+        wy = pc["wyscout"]["pass_growth"]["new_minus_established"]
+        out += [
+            ("mls share", f"share falls by {p(-am['share_of_ball']['point'])} ({p(am['share_of_ball']['lo'], 1, True)} "
+                          f"to {p(am['share_of_ball']['hi'], 1, True)})"),
+            ("mls flop", f"({p(am['flop_rate_movers']['point'], 0)} against {p(am['flop_rate_stayers']['point'], 0)}, "
+                         f"a gap of {am['flop_rate_gap']['point'] * 100:+.1f} points"),
+            ("mls within", f"chance quality {p(-aw['point'])} lower ({p(aw['lo'], 1, True)} to {p(aw['hi'], 1, True)})"),
+            ("fpl", f"{f5['n_movers']} forwards and midfielders changed Premier League club with 900 minutes either "
+                    f"side: {p(f5['flop_rate_movers']['point'], 0)} flopped against {p(f5['flop_rate_stayers']['point'], 0)}"),
+            ("injury gap", f"a gap of {gi_['point'] * 100:+.1f} points ({gi_['lo'] * 100:+.1f} to "
+                           f"{gi_['hi'] * 100:+.1f})".replace("-", M)),
+            ("wyscout gap", f"{p(wy['gap'], 1, True)} ({p(wy['lo'], 1, True)} to {p(wy['hi'], 1, True)}) |"),
+        ]
     return out
 
 

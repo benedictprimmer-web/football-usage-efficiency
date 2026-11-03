@@ -1,0 +1,82 @@
+{
+ "impect": {
+  "matches": 306,
+  "passes_counted": 212012,
+  "players_on_pitch": 494,
+  "players_mapped": 487,
+  "share_pair_minutes_mapped": 0.9999,
+  "teams_matched_to_a_club": "18 of 18",
+  "teams_used": 16,
+  "teams_dropped_no_previous_season_record": 2,
+  "source": "Impect open data (github.com/ImpectAPI/open-data), Bundesliga 2023-24",
+  "established": "900+ minutes together in 2022-23 (Transfermarkt pair_minutes)",
+  "receiver": "recorded",
+  "pass_growth": {
+   "new": {
+    "pairs": 370,
+    "passes": 43896,
+    "growth": -0.0049,
+    "lo": -0.0464,
+    "hi": 0.0385,
+    "ratio_first_half": 0.9946,
+    "ratio_second_half": 0.9898
+   },
+   "established": {
+    "pairs": 255,
+    "passes": 31714,
+    "growth": 0.0008,
+    "lo": -0.0504,
+    "hi": 0.058,
+    "ratio_first_half": 0.9982,
+    "ratio_second_half": 0.999
+   },
+   "new_minus_established": {
+    "gap": -0.0057,
+    "lo": -0.0791,
+    "hi": 0.0632
+   },
+   "pairs_between_0_and_900_dropped": 100
+  }
+ },
+ "wyscout": {
+  "matches": 1826,
+  "passes_counted": 1189930,
+  "players_on_pitch": 2570,
+  "players_mapped": 2540,
+  "share_pair_minutes_mapped": 0.9854,
+  "teams_matched_to_a_club": "98 of 98",
+  "teams_used": 84,
+  "teams_dropped_no_previous_season_record": 14,
+  "source": "Wyscout public dataset, Pappalardo et al. 2019 (figshare, CC BY 4.0), Big-5 leagues 2017-18",
+  "established": "900+ minutes together in 2016-17 (Transfermarkt pair_minutes)",
+  "receiver": "inferred: next event's player, same team and half, accurate pass",
+  "accurate_open_play_passes": 1296476,
+  "share_with_inferred_receiver": 0.9178,
+  "pass_growth": {
+   "new": {
+    "pairs": 1918,
+    "passes": 217426,
+    "growth": -0.0108,
+    "lo": -0.0282,
+    "hi": 0.0079,
+    "ratio_first_half": 1.0005,
+    "ratio_second_half": 0.9897
+   },
+   "established": {
+    "pairs": 1531,
+    "passes": 207476,
+    "growth": -0.0042,
+    "lo": -0.0239,
+    "hi": 0.018,
+    "ratio_first_half": 0.994,
+    "ratio_second_half": 0.9898
+   },
+   "new_minus_established": {
+    "gap": -0.0066,
+    "lo": -0.0353,
+    "hi": 0.0211
+   },
+   "pairs_between_0_and_900_dropped": 723
+  }
+ }
+}
