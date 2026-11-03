@@ -101,12 +101,12 @@ def fig_curve():
 
 
 def fig_slopes():
-    """Four plain-language versions of the within-player test."""
+    """Four plain-language versions of the within-player test, per 90 as the headline."""
     ws = pd.read_csv(OUT / "within_slopes.csv").set_index("spec")
     rows = [  # spec, label, note
-        ("naive", "Raw comparison", "same player, next season, nothing held fixed"),
-        ("minutes", "Same minutes", "change in minutes held fixed"),
-        ("split_half", "Clean test (headline)", "same minutes, usage and quality from different matches"),
+        ("naive", "Season totals", "same player, next season, playing time not taken out"),
+        ("on_pitch", "Per 90 (headline)", "share of the ball while on the pitch"),
+        ("split_half", "Shared noise removed", "usage and quality from different matches"),
         ("movers_vs_mates", "Club changers vs new team-mates", "quality measured against the new team"),
     ]
     fig, ax = plt.subplots(figsize=(7.2, 4.9))
@@ -114,7 +114,7 @@ def fig_slopes():
     for i, (spec, lab, note) in enumerate(rows):
         r = ws.loc[spec]
         yi = len(rows) - 1 - i
-        head = spec == "split_half"
+        head = spec == "on_pitch"
         c = ACCENT if head else INK2
         ax.plot([r.ci_lo_pct, r.ci_hi_pct], [yi, yi], color=c, lw=3 if head else 2.2,
                 solid_capstyle="round", zorder=2)
@@ -139,8 +139,8 @@ def fig_slopes():
     ax.set_xticklabels([f"{t:+d}%".replace("-", "\u2212") if t else "0" for t in range(-6, 5, 2)])
     ax.set_xlabel("% change in chance quality per +5 points of usage\n(dot: best estimate; line: 95% interval)")
     ax.grid(axis="x", color=BAND, lw=0.8)
-    _title(fig, ax, "Same player, more of the ball: a small cost at most",
-           "The clean test finds \u22121.7%, and its range just reaches zero.")
+    _title(fig, ax, "Same player, more of the ball: a small cost",
+           "Per 90, about \u22122% per 5 extra points of share.")
     _save(fig, "fig2_within_player")
 
 

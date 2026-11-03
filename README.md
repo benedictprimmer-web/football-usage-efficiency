@@ -1,4 +1,4 @@
-# Can usage rates explain failed transfers?
+# Why do transfers fail? A look at usage rates in football
 
 **When an attacker's output per 90 falls after a move, is it because he got worse, or because of the situation he joined?**
 
@@ -44,15 +44,15 @@ A team only creates so many chances in a season, so usage works like a conserved
 
 ## How I tested it
 
-I followed the same player from one season to the next: 2,646 pairs of seasons from 883 players, 592 of them club changes. Each step below names a trap and the fix.
+For the second test I followed the same player from one season to the next: 2,646 pairs of seasons from 883 players, 592 of them club changes. Each step below names a trap and the fix.
 
-- **Minutes.** Usage share counts minutes, and a player in form plays more. I held the change in minutes fixed. Without that, the effect reads as zero (−0.1%).
-- **Shared noise.** One speculative shot raises a player's usage and lowers his chance quality at the same time, which builds a false trade-off. I measured usage on odd-numbered matches and chance quality on even ones, then the reverse. This gives the headline of −1.7%, and I chose it as the headline before running it.
-- **Regression to the mean.** A player coming off a lucky season tends to drift back whatever happens to his role. Controlling for last season's chance quality leaves the result at −1.7%.
-- **Team context.** A move changes the chances everyone on the team gets. Club changers show a 4.4% fall, and it disappears (−0.3%) when I measure them against their new team-mates. A player who moves into a bigger role often joins a team that makes worse chances for everyone.
+- **Playing time.** A player in form plays more, which inflates any season total. Measuring his share of the ball per 90 (while he is on the pitch) takes playing time out. This gives the headline of −2.0%. On season totals the effect reads as zero (−0.1%).
+- **Shared noise.** One speculative shot raises a player's share of the ball and lowers his chance quality at the same time, which builds a false trade-off. Measuring share on odd-numbered matches and quality on even ones (then the reverse) gives −1.7%, close to the headline.
+- **Regression to the mean.** A player coming off a lucky season tends to drift back whatever happens to his role. Controlling for last season's chance quality leaves the result unchanged.
+- **Team context.** A move changes the chances everyone on the team gets. Club changers show a 4.4% fall, and it disappears (−0.3%) when I measure them against their new team-mates.
 - **Minimum minutes.** Below 900 league minutes, most of a player's chance quality is noise, so every season in the sample has at least 900.
 
-![Four versions of the within-player test, with the headline highlighted](figures/fig2_within_player.png)
+![Four versions of the within-player test, with the per-90 headline highlighted](figures/fig2_within_player.png)
 
 For a scout, that means a player's chance quality mostly travels with him, and his share of the ball is set largely by the club he joins.
 
@@ -69,8 +69,7 @@ For a scout, that means a player's chance quality mostly travels with him, and h
 **The method**
 
 - **Where, not who.** The split shows where a fall in per-90 output happened. A coach also shapes a player's share of the ball, so less of the ball is not always the club's or the system's fault.
-- **Only regulars.** Every move needs 900 minutes in both seasons, so players who stopped getting picked drop out, which hides some of the worst flops.
-- **Noise and survivorship.** Chance quality on fewer than 100 actions is noisy. A pair needs 900 minutes in both seasons, so players whose role collapsed drop out, which probably hides some of the steepest falls.
+- **Only regulars.** Every season needs 900 minutes, so players who stopped getting picked drop out, which hides some of the worst flops. Chance quality on fewer than 100 actions is also noisy.
 - **Coaching.** If a coach gives the ball to whoever is in form, part of the pattern reflects his choices. The control for last season's form absorbs the obvious version of this.
 - **Observational.** No experiment sits behind any of this, so it shows a pattern, not a cause.
 
@@ -129,7 +128,7 @@ Below 900 minutes, most of the variation in a player's chance quality is noise. 
 
 ### Across players: the curve
 
-I binned player-seasons by usage share and computed total value over total actions in each bin. The 95% intervals come from a bootstrap that resamples whole players, because a player's seasons are not independent. The curve is flat at about 0.12 per action from 4% to 14% usage and sits about 8% lower above 18%. This comparison mixes two things (better players get more of the ball, and better teams make better chances), so the test that matters is the one within players.
+I binned player-seasons by share of the ball while on the pitch and computed total value over total actions in each bin, dropping bins with fewer than 50 seasons. The 95% intervals come from a bootstrap that resamples whole players, because a player's seasons are not independent. Chance quality peaks at about 0.128 per action at 12% to 16% share and falls to about 0.105 above 22%. On season-total usage share the same curve is flat at about 0.12 from 4% to 14% (`data/curve_bins.csv` has both). This comparison mixes two things (better players get more of the ball, and better teams make better chances), so the test that matters is the one within players.
 
 ### Within players: the full specification
 
@@ -137,14 +136,14 @@ I took every pair of consecutive seasons where the player passed the 900-minute 
 
 The repo's usage share uses the whole season as its denominator, so it is roughly (share of the season played) × (share of play while on the pitch). Usage share and share of the season played correlate at 0.85 here. Using usage per minute on the pitch, in place of holding minutes fixed, gives −2.0%, and the two approaches agree.
 
-The headline in absolute terms is −0.0019 xG+xA per action per 5 points of usage, or −1.7% of the median efficiency of 0.115 (interval −3.4% to +0.1%). Removing the shared noise shrinks the slope by about a third. The regression-to-the-mean control uses last season's efficiency measured on the other half of the matches.
+The per-90 headline in absolute terms is −0.0023 xG+xA per action per 5 points of share, or −2.0% of the median efficiency of 0.115. The split-half version cannot be run per 90, because minutes are not split by match, so it holds minutes fixed instead (−1.7%, interval −3.4% to +0.1%). Removing the shared noise shrinks the minutes-fixed slope by about a third. The regression-to-the-mean control uses last season's efficiency measured on the other half of the matches.
 
 | Specification | Pairs | Change per +5 points of usage | 95% interval |
 |---|--:|--:|--:|
 | Usage share as defined, nothing fixed | 2,646 | −0.1% | −1.3% to +1.1% |
 | Holding minutes fixed | 2,646 | −2.9% | −5.2% to −0.6% |
-| Usage per minute on the pitch | 2,646 | −2.0% | −3.5% to −0.5% |
-| **Split-half, minutes fixed (headline)** | 2,646 | **−1.7%** | **−3.4% to +0.1%** |
+| **Usage per minute on the pitch (per 90, headline)** | 2,646 | **−2.0%** | **−3.5% to −0.5%** |
+| Split-half, minutes fixed (shared noise removed) | 2,646 | −1.7% | −3.4% to +0.1% |
 | Split-half plus last season's efficiency | 2,646 | −1.7% | −3.4% to +0.1% |
 | Same club both seasons | 2,054 | −0.9% | −3.6% to +1.8% |
 | Changed club | 592 | −4.4% | −8.6% to −0.1% |
@@ -193,7 +192,8 @@ Out of time, the talent model's undervalued-player screen picked players whose m
 | Script | What it does |
 |---|---|
 | `analysis/build_panel.py` | Builds the player-season panel from raw data into `data/work/` (gitignored) |
-| `analysis/analyse.py` | Computes every number above and writes the small tables in `data/` |
-| `analysis/figures.py` | Draws the three figures from those tables, as PNG and SVG |
+| `analysis/analyse.py` | Computes the within-player tests and the curve, and writes the small tables in `data/` |
+| `analysis/decompose.py` | Splits each club move's change in per-90 output into four parts (`data/flop_decomposition.json`) |
+| `analysis/figures.py` | Draws the four figures from those tables, as PNG and SVG |
 
 </details>
