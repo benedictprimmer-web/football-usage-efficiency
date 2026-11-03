@@ -1,12 +1,12 @@
-# Usage and efficiency in football
+# Can usage rates explain failed transfers?
 
-**When a footballer gets more of the ball, do his chances get worse?**
+**A player's output is how much of the ball he gets times what he does with it. This tests whether the second part changes when the first does.**
 
 ## What I found
 
 Barely. When the same attacker gets 5% more of his team's shots and shot-assists, the quality of his chances drops by about 1.7%. That could be nothing at all, as the range runs from a 3.4% drop to a 0.1% rise.
 
-That means a player's quality mostly travels with him. How much of the ball he gets depends on his minutes and the club he joins.
+That means a player's quality mostly travels with him, while how much of the ball he gets depends on his minutes and the club he joins. So a transfer that looks like a flop can partly be a player who simply got less of the ball.
 
 ![Chance quality against share of the ball for 4,592 attacker seasons, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
 
@@ -16,7 +16,7 @@ That means a player's quality mostly travels with him. How much of the ball he g
 
 At United in 2015-16 Depay played 43% of the league minutes, and the quality of his chances was well below average. At Lyon he played 75%, then 86%. He took almost a fifth of the team's shots and shot-assists, and his chances got better, from 0.086 to 0.124 per action.
 
-Per minute on the pitch, his share of the ball was about the same at both clubs (22% at United, 24% at Lyon). The difference was that Lyon played him.
+Per minute on the pitch, his share of the ball was about the same at both clubs (22% at United, 24% at Lyon). The difference was that Lyon played him. His chances per action were also worse at United, but that rests on only 69 actions, so part of it is likely noise.
 
 Two more cases are in `data/case_studies.csv`. Martial's chances got worse when he moved from Monaco to United, though his Monaco figure rests on only 61 actions. Ronaldo's held up at United in 2021-22, yet the team's expected goal difference was 0.25 per 90 worse with him on the pitch, a cost that per-action numbers cannot see.
 
@@ -47,12 +47,19 @@ For a scout, that means a player's chance quality mostly travels with him, and h
 
 ## Limitations
 
-- **Coverage.** Understat covers the Big-5 leagues and the Russian Premier League from 2014-15. Selling-league seasons, such as Depay's at PSV, are invisible.
-- **Attackers only.** The measure counts shots and the pass before a shot, so it says nothing useful about defenders or deep midfielders. It is also blind to finishing skill above xG, carries that do not end in a shot, turnovers and defending.
+**The data**
+
+- **Leagues.** Understat covers only the Big-5 leagues and the Russian Premier League, from 2014-15. Selling-league seasons are invisible, including Depay's at PSV before he joined United.
+- **Dates.** The shot data stops on 4 January 2025, halfway through 2024-25.
+- **What counts as an action.** Only shots and the pass before a shot. Dribbles, carries, pressing and defending are not in it, so it only suits attackers.
+- **Minutes.** Minutes and positions come from Transfermarkt and are joined to the shot data by name and club, so a few players may be mismatched or missing.
+- **Licences.** The underlying data is for non-commercial research only, so this repo ships code and summary tables, not the raw data (see `data/DATA.md`).
+
+**The method**
+
 - **Noise and survivorship.** Chance quality on fewer than 100 actions is noisy. A pair needs 900 minutes in both seasons, so players whose role collapsed drop out, which probably hides some of the steepest falls.
-- **Coaching.** If a coach hands the ball to whoever is in form, part of the pattern reflects his choices. The baseline control absorbs the obvious version of this.
-- **Observational.** No experiment sits behind any of this.
-- **Frozen data.** The shot data stops on 4 January 2025, halfway through 2024-25.
+- **Coaching.** If a coach gives the ball to whoever is in form, part of the pattern reflects his choices. The control for last season's form absorbs the obvious version of this.
+- **Observational.** No experiment sits behind any of this, so it shows a pattern, not a cause.
 
 ## How this fits the wider model
 
