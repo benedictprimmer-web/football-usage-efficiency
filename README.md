@@ -23,9 +23,11 @@ The second test asks what more of the ball does to the same player. When his per
 
 *Every 95% interval here comes from a bootstrap that resamples whole players.*
 
-## Depay
+## Depay and Ronaldo
 
 Per 90, Depay's share of the ball was about the same at both clubs: 22% at United in 2015-16 and 24% at Lyon in 2017-18. His chance quality changed, from 0.086 per action at United to 0.107 and then 0.124 at Lyon, though the United figure rests on only 69 actions. He also played far more at Lyon (75% and 86% of league minutes, against 43% at United), which is why his season totals look so different.
+
+Ronaldo is the opposite case. His own chance quality held up at United in 2021-22 (0.146 per action, against 0.142 at Juventus), yet United's expected goal difference was 0.25 per 90 worse with him on the pitch. Per-action numbers cannot see that cost, which is why usage matters: the touches he took came out of his team-mates' share. It is one season, so treat it as a pointer rather than proof.
 
 ## Terms
 
@@ -161,7 +163,7 @@ Season numbers are in `data/case_studies.csv`. Depay's per-90 share barely moved
 
 Martial's per-90 share was about the same at Monaco in 2014-15 and United in 2015-16 (14% and 15%), and his chance quality fell from 0.192 to 0.143, though the Monaco figure rests on only 61 actions. His United team-mates averaged 0.098 per action, against 0.109 for Monaco's. Over the next five seasons at United he sat between 0.106 and 0.170 at 14% to 20% per-90 share, with no clear pattern.
 
-Ronaldo's chance quality held up at United in 2021-22 (0.146, against 0.142 at Juventus the season before) on a slightly smaller per-90 share (20% against 23%). The private model's on/off measure has United's xG difference 0.25 per 90 worse with him on the pitch, but on a shuffled-identity test that sits at only the 18th percentile, so one season cannot show it is real.
+Ronaldo's chance quality held up at United in 2021-22 (0.146, against 0.142 at Juventus the season before) on a slightly smaller per-90 share (20% against 23%). The wider model's on/off measure has United's xG difference 0.25 per 90 worse with him on the pitch. On a shuffled-identity test that result sits at the 18th percentile, so one season is not enough to call it significant.
 
 ### More limitations
 
