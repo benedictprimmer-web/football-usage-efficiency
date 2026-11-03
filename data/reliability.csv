@@ -1,0 +1,5 @@
+minutes_band,n,efficiency_split_half_r,efficiency_reliability,usage_share_split_half_r,usage_share_reliability
+<450,2116,0.0555,0.1052,0.4894,0.6572
+450-899,1391,0.2055,0.3409,0.5536,0.7127
+900-1799,2363,0.4127,0.5843,0.7165,0.8348
+1800+,2229,0.5735,0.7289,0.7644,0.8665
