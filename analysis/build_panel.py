@@ -6,7 +6,7 @@ the same two numbers on odd and even matches separately (for the split-half chec
 league minutes and position from Transfermarkt.
 
 Reads raw third-party data from $SOURCE_DATA (default: ./data/raw). See data/DATA.md
-for how to get each file. Writes the panel to $SOURCE_DATA/../work/panel.parquet,
+for how to get each file. Writes the panel to data/work/panel.parquet,
 which is gitignored: it holds per-player rows and is not redistributed.
 
     python analysis/build_panel.py

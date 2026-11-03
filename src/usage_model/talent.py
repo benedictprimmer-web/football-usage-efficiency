@@ -286,7 +286,12 @@ def build() -> pd.DataFrame:
 
 def _check() -> None:
     """Offline synthetic self-check. Proves the code RUNS and the guardrails BITE - it does NOT
-    prove the model is correct (that is validate/talent_gate.py's job). Never gate on this alone."""
+    prove the model is correct (the private repo's validation gates do that)."""
+    try:
+        import sklearn  # noqa: F401
+    except ImportError:
+        print("skipped: the talent self-check needs scikit-learn (pip install scikit-learn)")
+        return
     rng = np.random.default_rng(0)
     n = 800
     panel = pd.DataFrame({

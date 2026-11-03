@@ -1,18 +1,16 @@
-"""Usage and efficiency - the engine's core definitions (SPEC layer 2).
+"""Usage and efficiency: the core definitions of the wider model.
 
 usage_i      = player's share of his team's terminal actions
-efficiency_i = value produced per terminal action  (travels with the player)
+efficiency_i = value produced per terminal action
 
 From Understat shots alone, terminal actions = shots taken + shot-assists
-(`player_assisted`), value = xG + assisted-xG. Turnovers (dispossessed,
-miscontrols) join later from StatsBomb where covered; usage here is therefore
-attacking usage. ponytail: denominator is team season totals, not
-on-pitch-only minutes - MODELS.md accepts that bias at first; revisit via the
-crosswalk once minutes are joined.
+(`player_assisted`), and value = xG + assisted xG, so usage here is attacking
+usage. The denominator is the team's season total; analysis/build_panel.py
+divides by the share of the season played to get the per-90 (on-pitch) share.
 
-Stage-2 gate (run: `python -m usage_model.usage ronaldo`): Man Utd 2021-22 -
-Ronaldo's shot share highest in the squad, efficiency below the players he
-displaced. Definitions are wrong if this fails; do not loosen it.
+Real-data check (`python -m usage_model.usage ronaldo`, downloads the archive):
+Man Utd 2021-22, Ronaldo's shot share is the highest in the squad and his
+efficiency is below that of the players he displaced.
 """
 import numpy as np
 import pandas as pd
@@ -23,7 +21,7 @@ KEY = ["league", "season", "team"]
 def usage_efficiency(shots: pd.DataFrame, min_actions: int = 0) -> pd.DataFrame:
     """Per (league, season, team, player): usage share and efficiency.
 
-    shots: the ingest.understat tidy schema (team_shot, player,
+    shots: the tidy schema from usage_model.understat (team_shot, player,
     player_assisted, xg, result). Own goals excluded - an OG credits the
     scorer to the *other* team's attack and is not a chosen terminal action.
     """
@@ -56,9 +54,8 @@ def usage_efficiency(shots: pd.DataFrame, min_actions: int = 0) -> pd.DataFrame:
 def merge_turnovers(usage: pd.DataFrame, turnovers: pd.DataFrame) -> pd.DataFrame:
     """Full-spec usage: terminal actions = attacking actions + turnovers.
 
-    turnovers: ingest.fbref_snapshot.read_turnovers() schema (league, season,
-    team, player, n90s, turnovers). Exact-name join; the crosswalk agent's
-    normalizer upgrades this later. Rows without turnover data keep attacking
+    turnovers: (league, season, team, player, n90s, turnovers), from a private
+    FBref/Opta snapshot that is not used in this repo. Exact-name join. Rows without turnover data keep attacking
     usage with turnovers=NaN - flagged, never silently zeroed.
     """
     keep = [c for c in ["league", "season", "team", "player",
@@ -78,8 +75,8 @@ def displacement_check(squad: pd.DataFrame, player: str, top_n: int = 6,
     """Is `player`'s efficiency below the usage-weighted mean efficiency of
     the other top-`top_n` usage players (the ones his volume displaces)?
 
-    ponytail: 'who he displaces' is really role overlap (SPEC layer 2);
-    top-usage teammates is the first-cut proxy until replacement.py exists.
+    'Who he displaces' is really role overlap; the top-usage team-mates are a
+    first-cut proxy for it.
     Returns (player_row, displaced_frame, weighted_mean_efficiency, verdict).
     """
     sq = squad.sort_values(usage_col, ascending=False).reset_index(drop=True)
@@ -141,7 +138,7 @@ def _check():
 
 
 def _ronaldo():
-    """The Stage-2 gate, on real data."""
+    """The Ronaldo check, on real data."""
     from usage_model.understat import read_shots
     shots = read_shots()
     t = usage_efficiency(shots)

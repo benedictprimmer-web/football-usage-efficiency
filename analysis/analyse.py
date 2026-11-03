@@ -3,6 +3,7 @@
 Writes small aggregate tables to data/:
     curve_bins.csv        efficiency by usage-share bin, with 95% CIs
     within_slopes.csv     within-player slopes under each specification, with 95% CIs
+    within_bins.csv       season-to-season changes in per-90 share, binned into tenths
     reliability.csv       split-half reliability of efficiency and usage by minutes band
     case_studies.csv      season rows for the three case-study players (derived stats only)
     summary.json          the headline numbers quoted in the README
@@ -102,13 +103,6 @@ def curve(a: pd.DataFrame, x: str = "usage_share") -> pd.DataFrame:
     })
 
 
-def cross_section_slope(a: pd.DataFrame) -> tuple:
-    def stat(d):
-        return wls([d.usage_share.to_numpy()], d.efficiency.to_numpy(),
-                   d.actions.to_numpy())[1] * STEP
-    return cluster_boot(a, stat)
-
-
 # ------------------------------------------------------------------ 3. within player
 
 def pairs(a: pd.DataFrame) -> pd.DataFrame:
@@ -172,22 +166,24 @@ def spec_baseline(p):
 
 
 def spec_vs_teammates(p):
-    """As spec_minutes, with the outcome measured against team-mates' efficiency
-    that season, so a move to a team that makes better or worse chances cancels."""
+    """As spec_on_pitch (per 90), with the outcome measured against team-mates'
+    efficiency that season, so a move to a team that makes better or worse
+    chances cancels."""
     y = ((p.efficiency_2 - p.mates_eff_2) - (p.efficiency_1 - p.mates_eff_1)).to_numpy()
-    return wls([_d(p, "usage_share"), _d(p, "minutes_share")], y, p.w.to_numpy())[1] * STEP
+    return wls([_d(p, "usage_on_pitch")], y, p.w.to_numpy())[1] * STEP
 
 
+HEADLINE = "on_pitch"
 SPECS = [
-    ("naive", "Repo usage share, nothing held fixed", spec_naive, "all"),
-    ("minutes", "Holding minutes fixed", spec_minutes, "all"),
-    ("on_pitch", "Usage per minute on the pitch", spec_on_pitch, "all"),
-    ("split_half", "Split-half, minutes fixed (headline)", spec_split_half, "all"),
+    ("naive", "Season usage share, nothing held fixed", spec_naive, "all"),
+    ("minutes", "Season usage share, minutes held fixed", spec_minutes, "all"),
+    ("on_pitch", "Per 90: share while on the pitch (headline)", spec_on_pitch, "all"),
+    ("split_half", "Split-half, minutes fixed (shared noise removed)", spec_split_half, "all"),
     ("baseline", "Split-half plus last season's efficiency", spec_baseline, "all"),
-    ("movers", "Club changers only", spec_minutes, "movers"),
-    ("stayers", "Same club both seasons", spec_minutes, "stayers"),
-    ("movers_vs_mates", "Club changers, efficiency relative to team-mates", spec_vs_teammates, "movers"),
-    ("all_vs_mates", "Everyone, efficiency relative to team-mates", spec_vs_teammates, "all"),
+    ("stayers", "Per 90, same club both seasons", spec_on_pitch, "stayers"),
+    ("movers", "Per 90, club changers", spec_on_pitch, "movers"),
+    ("movers_vs_mates", "Per 90, club changers against new team-mates", spec_vs_teammates, "movers"),
+    ("all_vs_mates", "Per 90, everyone against team-mates", spec_vs_teammates, "all"),
 ]
 
 
@@ -203,16 +199,10 @@ def within(p: pd.DataFrame) -> pd.DataFrame:
 
 
 def within_bins(p: pd.DataFrame) -> pd.DataFrame:
-    """Binned picture of the headline spec: Δefficiency (minutes partialled out)
-    against Δusage share, for the supporting figure."""
-    dm = _d(p, "minutes_share")
-    w = p.w.to_numpy()
-    resid = {}
-    for col in ("usage_share", "efficiency"):
-        y = _d(p, col)
-        b = wls([dm], y, w)
-        resid[col] = y - b[0] - b[1] * dm
-    d = p[["tm_player_id", "w", "mover"]].assign(du=resid["usage_share"], de=resid["efficiency"])
+    """Binned picture of the headline spec: Δefficiency against Δ(per-90 share),
+    in tenths of the pairs."""
+    d = p[["tm_player_id", "w", "mover"]].assign(du=_d(p, "usage_on_pitch"),
+                                                 de=_d(p, "efficiency"))
     d["bin"] = pd.qcut(d.du, 10, labels=False)
 
     def stat(x):
@@ -256,15 +246,15 @@ def main():
          "minutes_share", "usage_on_pitch", "efficiency", "mates_eff"]]
     cs.to_csv(OUT / "case_studies.csv", index=False, float_format="%.4f")
 
-    xs = cross_section_slope(a)
-    head = ws.set_index("spec").loc["split_half"]
+    head = ws.set_index("spec").loc[HEADLINE]
     summary = dict(
         min_minutes=MIN_MINUTES,
         n_player_seasons=int(len(a)), n_players=int(a.tm_player_id.nunique()),
         n_pairs=int(len(p)), n_mover_pairs=int(p.mover.sum()),
         seasons=f"{a.season.min()} to {a.season.max()}",
-        median_efficiency=med, median_usage_share=float(a.usage_share.median()),
-        cross_section_slope_per_5pp=dict(zip(["point", "lo", "hi"], map(float, xs))),
+        n_russian_player_seasons=int(a.league.str.startswith("RUS").sum()),
+        median_efficiency=med, median_usage_on_pitch=float(a.usage_on_pitch.median()),
+        headline_spec=HEADLINE,
         headline_slope_per_5pp=dict(point=float(head.slope_per_5pp),
                                     lo=float(head.ci_lo), hi=float(head.ci_hi)),
         headline_pct_of_median=dict(point=float(head.slope_per_5pp / med * 100),

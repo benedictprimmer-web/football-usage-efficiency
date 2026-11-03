@@ -18,7 +18,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from config import OUT
+from config import OUT, WORK, SEED, N_BOOT
 
 PARTS = {
     "d_share": "Less of the ball while on the pitch",
@@ -26,11 +26,19 @@ PARTS = {
     "d_mates": "New team-mates' chances were worse",
     "d_rel": "Player did worse than new team-mates",
 }
+# the same four parts, named without a direction, for the rises
+NEUTRAL = {
+    "d_share": "Share of the ball while on the pitch",
+    "d_team": "Team chances per 90",
+    "d_mates": "Team-mates' chance quality",
+    "d_rel": "Player relative to team-mates",
+}
 FLOP = np.log(0.75)  # per-90 output fell by more than 25%
+RISE = -FLOP         # per-90 output rose by more than a third (the mirror image)
 
 
 def moves() -> pd.DataFrame:
-    d = pd.read_parquet(OUT / "work" / "panel.parquet")
+    d = pd.read_parquet(WORK / "panel.parquet")
     d = d[d.attacker & (d.club_share >= 0.8) & (d.minutes_share < 1) & (d.mates_eff > 0)].copy()
     d["yr"] = d.season.str[:4].astype(int)
     d["team_ap90"] = d.team_actions / d.team_games
@@ -53,22 +61,38 @@ def moves() -> pd.DataFrame:
     return m
 
 
+def split(g: pd.DataFrame, names: dict = PARTS) -> tuple[dict, dict]:
+    """Share of the mean log change from each part, with a 95% interval from a
+    bootstrap that resamples whole players."""
+    share = {p: float(g[p].mean() / g.d_out.mean()) for p in PARTS}
+    rng = np.random.default_rng(SEED)
+    ids = g.tm_player_id.unique()
+    g2 = g.set_index("tm_player_id")
+    boot = np.array([[x[p].mean() / x.d_out.mean() for p in PARTS]
+                     for x in (g2.loc[rng.choice(ids, len(ids))] for _ in range(N_BOOT))])
+    ci = {names[p]: [round(float(np.percentile(boot[:, i], 2.5)), 3),
+                     round(float(np.percentile(boot[:, i], 97.5)), 3)]
+          for i, p in enumerate(PARTS)}
+    return {names[p]: round(share[p], 3) for p in PARTS}, ci
+
+
 def main():
     m = moves()
-    fl = m[m.d_out < FLOP]
-    share = {p: float(fl[p].mean() / fl.d_out.mean()) for p in PARTS}
-    rng = np.random.default_rng(1)
-    ids = fl.tm_player_id.unique()
-    f2 = fl.set_index("tm_player_id")
-    boot = np.array([[x[p].mean() / x.d_out.mean() for p in PARTS]
-                     for x in (f2.loc[rng.choice(ids, len(ids))] for _ in range(2000))])
+    fl, up = m[m.d_out < FLOP], m[m.d_out > RISE]
+    share, ci = split(fl)
+    up_share, up_ci = split(up, NEUTRAL)
     out = {
         "moves": int(len(m)), "players": int(m.tm_player_id.nunique()), "flops": int(len(fl)),
         "flop_mean_per90_change": round(float(np.exp(fl.d_out.mean()) - 1), 3),
-        "share_of_fall": {PARTS[p]: round(share[p], 3) for p in PARTS},
-        "share_ci95": {PARTS[p]: [round(float(np.percentile(boot[:, i], 2.5)), 3),
-                                  round(float(np.percentile(boot[:, i], 97.5)), 3)]
-                       for i, p in enumerate(PARTS)},
+        "share_of_fall": share,
+        "share_ci95": ci,
+        # the mirror image: moves where per-90 output rose by more than a third.
+        # Selecting on a big change also selects on luck, which lands mostly in
+        # the last part; this shows how much of it to expect.
+        "risers": int(len(up)),
+        "riser_mean_per90_change": round(float(np.exp(up.d_out.mean()) - 1), 3),
+        "share_of_rise": up_share,
+        "share_of_rise_ci95": up_ci,
     }
     (OUT / "flop_decomposition.json").write_text(json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))

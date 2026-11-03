@@ -6,11 +6,11 @@ RFPL, 2014/15 onward. See data/DATA.md.
 
 Static .rds files on GitHub (raw), read with `rdata` (pure-Python, no compile).
 Verified reachable + parseable from this environment 2026-07-11 (EPL = 102,257
-shots). Files cache to data/understat/.
+shots). Files cache to data/raw/understat/ (gitignored).
 
-Tidy output feeds impact/wowy.py's shots schema (game_id, team_shot, minute, xg)
-and carries the extra columns (player, player_assisted, season) that stage 2's
-usage/efficiency needs.
+Tidy output feeds wowy.py's shots schema (game_id, team_shot, minute, xg)
+and carries the extra columns (player, player_assisted, season) that usage.py
+needs.
 """
 from __future__ import annotations
 from pathlib import Path
@@ -33,7 +33,7 @@ LEAGUE_FILES = {
 
 
 def download(leagues=tuple(LEAGUE_FILES), force=False) -> list[Path]:
-    """Fetch missing .rds dumps into data/understat/. Idempotent."""
+    """Fetch missing .rds dumps into data/raw/understat/. Idempotent."""
     import urllib.request
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     out = []
@@ -112,7 +112,7 @@ def read_shots(leagues=tuple(LEAGUE_FILES), cache=True) -> pd.DataFrame:
     """Download (if needed) + tidy all requested leagues into one shots frame.
 
     rdata's pure-python .rds parse takes minutes, so the tidy frame is cached
-    once to data/understat/shots.parquet and reloaded in ~1s thereafter. Parquet
+    once to data/raw/understat/shots.parquet and reloaded in ~1s thereafter. Parquet
     (not pickle) so the cache survives a numpy/pandas bump and DuckDB can read it.
     """
     pq = DATA_DIR / "shots.parquet"
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     if "build" in sys.argv[1:]:
         shots = read_shots()
         cov = coverage(shots)
-        out = Path(__file__).resolve().parent.parent / "data" / "coverage.csv"
+        out = DATA_DIR / "coverage.csv"
         cov.to_csv(out, index=False)
         print(cov.to_string(index=False))
         print(f"\n{len(shots):,} shots; wrote {out}")

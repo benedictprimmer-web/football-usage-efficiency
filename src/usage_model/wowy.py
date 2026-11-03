@@ -5,7 +5,7 @@ with him on. This measures the second thing.
 
 Core is pure pandas over a tidy schema so it can be tested without network.
 The Ronaldo 2021-22 run joins Understat shot minutes to Transfermarkt lineups;
-that join lives in the private repo (validate/ronaldo.py).
+that join lives in the private repo.
 """
 import numpy as np
 import pandas as pd
@@ -17,7 +17,7 @@ SHRINK_K = 600.0  # off-pitch minutes at which we trust the raw number ~half
 def intervals(lineups: pd.DataFrame) -> pd.DataFrame:
     """game_id, team, player, is_starter, minutes -> on/off minute window.
 
-    ponytail: starters run [0, minutes], subs run [90-minutes, 90]. Wrong only
+    Approximation: starters run [0, minutes], subs run [90-minutes, 90]. Wrong only
     for the rare player subbed on AND off again. Upgrade path is parsing the
     match report event feed; not worth it until the error shows up.
     """

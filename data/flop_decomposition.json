@@ -12,19 +12,45 @@
  "share_ci95": {
   "Less of the ball while on the pitch": [
    0.195,
-   0.36
+   0.361
   ],
   "New team created fewer chances": [
-   0.14,
-   0.269
+   0.141,
+   0.265
   ],
   "New team-mates' chances were worse": [
-   0.065,
-   0.195
+   0.06,
+   0.197
   ],
   "Player did worse than new team-mates": [
-   0.311,
-   0.474
+   0.307,
+   0.475
+  ]
+ },
+ "risers": 140,
+ "riser_mean_per90_change": 0.705,
+ "share_of_rise": {
+  "Share of the ball while on the pitch": 0.195,
+  "Team chances per 90": 0.224,
+  "Team-mates' chance quality": 0.218,
+  "Player relative to team-mates": 0.363
+ },
+ "share_of_rise_ci95": {
+  "Share of the ball while on the pitch": [
+   0.119,
+   0.274
+  ],
+  "Team chances per 90": [
+   0.17,
+   0.28
+  ],
+  "Team-mates' chance quality": [
+   0.159,
+   0.277
+  ],
+  "Player relative to team-mates": [
+   0.287,
+   0.439
   ]
  }
 }
