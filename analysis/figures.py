@@ -359,9 +359,33 @@ def fig_depay(cs):
     save(fig, "fig5_depay")
 
 
+def draw_positions(ax, t, tm, fs=1.0):
+    """Attackers against midfielders after a move: share of the ball and net output."""
+    rows = []
+    for lab, key in (("Share of the ball", "share"), ("Output per 90, net", "net")):
+        for who, x, c in (("Attackers", t, PLAYER), ("Midfielders", tm, BLUE)):
+            mv = x["movers_vs_stayers"]
+            v = mv["mean_log_gap_by_part"]["His share of the ball"] if key == "share" else mv["mean_log_gap"]
+            rows.append((lab, who, v, c))
+    ys = [3.6, 2.9, 1.2, 0.5]
+    for y, (lab, who, v, c) in zip(ys, rows):
+        ax.plot([v["lo"] * 100, v["hi"] * 100], [y, y], color=c, lw=2, alpha=0.5)
+        ax.plot(v["point"] * 100, y, "o", ms=7, color=c)
+        ax.text(0, y, who + "  ", transform=ax.get_yaxis_transform(), ha="right", va="center",
+                fontsize=9.5 * fs, color=c)
+        ax.text(14, y, pct(v["point"]), ha="right", va="center", fontsize=9.5 * fs,
+                fontweight="bold", color=c)
+    for y, lab in ((4.25, "Share of the ball"), (1.85, "Output per 90, net")):
+        ax.text(-14, y, lab, fontsize=9 * fs, color=TEXT2, va="center")
+    ax.axvline(0, color=TEXT, lw=0.8)
+    ax.set_xlim(-14, 14)
+    ax.set_ylim(-0.1, 4.6)
+    flat(ax, [-10, -5, 0, 5], [f"{MINUS}10", f"{MINUS}5", "0", "+5%"])
+
+
 # ------------------------------------------------------------------ one-pager
 
-def onepager(t, s, c, ws, sl, ag, ds):
+def onepager(t, s, c, ws, sl, ag, ds, tm):
     """A4 portrait summary, built from the same draw_* functions."""
     import qrcode
     mm = 1 / 25.4
@@ -397,7 +421,8 @@ def onepager(t, s, c, ws, sl, ag, ds):
               f"{mv['mean_log_gap']['point'] * 100:.1f}% ahead of players who stayed. Losing the "
               f"ball is about a quarter of a flop (output per 90 down by more than 25%). Movers "
               f"flop {pct(fm, 0, False)} of the time against {pct(fs_, 0, False)} for stayers, and "
-              f"a luck-only benchmark gives {pct(nb['flop_rate_noise_only'][0], 0, False)}.")
+              f"a luck-only benchmark gives {pct(nb['flop_rate_noise_only'][0], 0, False)}. "
+              f"Midfielders pay about twice as much of the ball and end up behind.")
     txt(15, 37, answer, width=118, fontsize=9.5, color=TEXT)
     stats = [(f"{sh * 100:.1f}%".replace("-", MINUS), "share of the ball after a move"),
              (f"{h['point']:+.1f}%".replace("-", MINUS), "chance quality, 5 points more ball"),
@@ -418,8 +443,8 @@ def onepager(t, s, c, ws, sl, ag, ds):
 
     head(15, 222, "Flop rate by age: moved v stayed")
     draw_age(box(40, 229, 55, 36), sl, ag, fs=0.85)
-    head(110, 222, "Chemistry by minutes already together")
-    draw_chem(box(140, 229, 55, 36), ds, fs=0.85)
+    head(110, 222, "After a move: attackers v midfielders")
+    draw_positions(box(140, 229, 55, 36), t, tm, fs=0.85)
 
     fig.lines.append(plt.Line2D([15 / 210, 195 / 210], [1 - 274 / 297] * 2, color=RULE, lw=0.8,
                                 transform=fig.transFigure))
@@ -457,7 +482,8 @@ def main():
     fig_within(ws, s)
     fig_chem(ds, c)
     fig_depay(cs)
-    onepager(t, s, c, ws, sl, ag, ds)
+    tm = json.loads((OUT / "mid" / "transfers.json").read_text())
+    onepager(t, s, c, ws, sl, ag, ds, tm)
     print("figures written to", FIG)
 
 
