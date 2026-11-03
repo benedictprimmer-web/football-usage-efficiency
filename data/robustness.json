@@ -1,0 +1,480 @@
+{
+ "pairs": 2676,
+ "n_movers": 601,
+ "n_stayers": 2075,
+ "rtm": {
+  "raw": {
+   "d_share": {
+    "point": -0.0486,
+    "lo": -0.0697,
+    "hi": -0.0282,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0193,
+    "lo": -0.0429,
+    "hi": 0.0025,
+    "p": 0.079
+   },
+   "d_team": {
+    "point": 0.0293,
+    "lo": 0.012,
+    "hi": 0.0476,
+    "p": 0.001
+   },
+   "d_team_ex": {
+    "point": 0.0404,
+    "lo": 0.0207,
+    "hi": 0.0605,
+    "p": 0.0005
+   },
+   "d_mates": {
+    "point": 0.0355,
+    "lo": 0.0175,
+    "hi": 0.0538,
+    "p": 0.0005
+   },
+   "d_rel": {
+    "point": 0.0203,
+    "lo": -0.0041,
+    "hi": 0.0434,
+    "p": 0.099
+   },
+   "d_out": {
+    "point": 0.0364,
+    "lo": 0.0025,
+    "hi": 0.0688,
+    "p": 0.035
+   },
+   "flopf": {
+    "point": 0.0135,
+    "lo": -0.0208,
+    "hi": 0.0494,
+    "p": 0.445
+   }
+  },
+  "regression": {
+   "d_share": {
+    "point": -0.0423,
+    "lo": -0.0597,
+    "hi": -0.0248,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0249,
+    "lo": -0.0467,
+    "hi": -0.0048,
+    "p": 0.02
+   },
+   "d_team": {
+    "point": 0.0174,
+    "lo": -0.0001,
+    "hi": 0.0353,
+    "p": 0.052
+   },
+   "d_team_ex": {
+    "point": 0.0273,
+    "lo": 0.0087,
+    "hi": 0.046,
+    "p": 0.003
+   },
+   "d_mates": {
+    "point": 0.0301,
+    "lo": 0.0118,
+    "hi": 0.048,
+    "p": 0.002
+   },
+   "d_rel": {
+    "point": 0.0072,
+    "lo": -0.0169,
+    "hi": 0.0301,
+    "p": 0.522
+   },
+   "d_out": {
+    "point": 0.0123,
+    "lo": -0.019,
+    "hi": 0.0439,
+    "p": 0.444
+   },
+   "flopf": {
+    "point": 0.0316,
+    "lo": -0.0034,
+    "hi": 0.0673,
+    "p": 0.077
+   }
+  },
+  "reweighted": {
+   "d_share": {
+    "point": -0.0434,
+    "lo": -0.0614,
+    "hi": -0.0243,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0214,
+    "lo": -0.044,
+    "hi": 0.0014,
+    "p": 0.067
+   },
+   "d_team": {
+    "point": 0.0221,
+    "lo": 0.0037,
+    "hi": 0.0411,
+    "p": 0.023
+   },
+   "d_team_ex": {
+    "point": 0.0321,
+    "lo": 0.0124,
+    "hi": 0.0522,
+    "p": 0.0005
+   },
+   "d_mates": {
+    "point": 0.0312,
+    "lo": 0.0106,
+    "hi": 0.0495,
+    "p": 0.003
+   },
+   "d_rel": {
+    "point": 0.0071,
+    "lo": -0.0161,
+    "hi": 0.0325,
+    "p": 0.49
+   },
+   "d_out": {
+    "point": 0.017,
+    "lo": -0.0154,
+    "hi": 0.0514,
+    "p": 0.299
+   },
+   "flopf": {
+    "point": 0.032,
+    "lo": -0.0056,
+    "hi": 0.0672,
+    "p": 0.099
+   }
+  },
+  "movers_last_season": {
+   "share_movers": 0.1777,
+   "share_stayers": 0.1737,
+   "out90_movers": 0.4232,
+   "out90_stayers": 0.4441,
+   "age_movers": 25.07,
+   "age_stayers": 26.0
+  }
+ },
+ "lost_place": {
+  "lost_movers": {
+   "point": 0.3052,
+   "lo": 0.2728,
+   "hi": 0.3349
+  },
+  "lost_stayers": {
+   "point": 0.1901,
+   "lo": 0.1745,
+   "hi": 0.2067
+  },
+  "bad_movers": {
+   "point": 0.4382,
+   "lo": 0.4065,
+   "hi": 0.47
+  },
+  "bad_stayers": {
+   "point": 0.3341,
+   "lo": 0.3155,
+   "hi": 0.3537
+  },
+  "lost_gap": {
+   "point": 0.1151,
+   "lo": 0.0788,
+   "hi": 0.1485
+  },
+  "bad_gap": {
+   "point": 0.104,
+   "lo": 0.0669,
+   "hi": 0.1399
+  },
+  "age_adjusted": {
+   "lost_gap": {
+    "point": 0.1225,
+    "lo": 0.0834,
+    "hi": 0.1572,
+    "p": 0.0005
+   },
+   "bad_gap": {
+    "point": 0.1184,
+    "lo": 0.079,
+    "hi": 0.1567,
+    "p": 0.0005
+   }
+  },
+  "regression": {
+   "lost_gap": {
+    "point": 0.1137,
+    "lo": 0.077,
+    "hi": 0.1469,
+    "p": 0.0005
+   },
+   "bad_gap": {
+    "point": 0.1176,
+    "lo": 0.0799,
+    "hi": 0.1543,
+    "p": 0.0005
+   }
+  },
+  "n_movers": 865,
+  "n_stayers": 2562,
+  "n_movers_kept": 601,
+  "n_stayers_kept": 2075
+ },
+ "moves": {
+  "n_loans": 109,
+  "n_promoted_buyer": 52,
+  "n_relegated_seller": 114,
+  "without_loans": {
+   "n_movers": 492,
+   "share_gap": {
+    "point": -0.053,
+    "lo": -0.0751,
+    "hi": -0.0312
+   },
+   "out_gap": {
+    "point": 0.0294,
+    "lo": -0.0089,
+    "hi": 0.0662
+   },
+   "flop_gap": {
+    "point": 0.0173,
+    "lo": -0.0198,
+    "hi": 0.0569
+   }
+  },
+  "without_promoted_or_relegated": {
+   "n_movers": 453,
+   "share_gap": {
+    "point": -0.0461,
+    "lo": -0.0683,
+    "hi": -0.0239
+   },
+   "out_gap": {
+    "point": 0.0172,
+    "lo": -0.022,
+    "hi": 0.0559
+   },
+   "flop_gap": {
+    "point": 0.0231,
+    "lo": -0.0157,
+    "hi": 0.0653
+   }
+  },
+  "without_any": {
+   "n_movers": 368,
+   "share_gap": {
+    "point": -0.0482,
+    "lo": -0.0727,
+    "hi": -0.0247
+   },
+   "out_gap": {
+    "point": 0.0115,
+    "lo": -0.0298,
+    "hi": 0.055
+   },
+   "flop_gap": {
+    "point": 0.0287,
+    "lo": -0.0155,
+    "hi": 0.0729
+   }
+  },
+  "buying_club_strength_pre_move": {
+   "n": 549,
+   "team_actions_per_match_change": {
+    "point": 0.0285,
+    "lo": 0.012,
+    "hi": 0.0441
+   },
+   "share_joining_stronger": {
+    "point": 0.541,
+    "lo": 0.5018,
+    "hi": 0.5792
+   }
+  }
+ },
+ "predictor": {
+  "as_published_900_minute_movers": {
+   "train_moves": 320,
+   "test_moves": 280,
+   "test_rate": 0.175,
+   "auc": 0.62,
+   "auc_lo": 0.539,
+   "auc_hi": 0.699,
+   "p_auc_above_half": 0.002,
+   "rate_top_fifth": 0.232,
+   "rate_rest": 0.161
+  },
+  "all_moves_flop_or_lost_place": {
+   "train_moves": 464,
+   "test_moves": 400,
+   "test_rate": 0.422,
+   "auc": 0.643,
+   "auc_lo": 0.589,
+   "auc_hi": 0.696,
+   "p_auc_above_half": 0.0005,
+   "rate_top_fifth": 0.575,
+   "rate_rest": 0.384
+  },
+  "all_moves_lost_place_counted_as_not_flop": {
+   "train_moves": 464,
+   "test_moves": 400,
+   "test_rate": 0.122,
+   "auc": 0.627,
+   "auc_lo": 0.549,
+   "auc_hi": 0.708,
+   "p_auc_above_half": 0.004,
+   "rate_top_fifth": 0.175,
+   "rate_rest": 0.109
+  },
+  "all_moves_lost_place_only": {
+   "train_moves": 464,
+   "test_moves": 400,
+   "test_rate": 0.3,
+   "auc": 0.674,
+   "auc_lo": 0.617,
+   "auc_hi": 0.732,
+   "p_auc_above_half": 0.0005,
+   "rate_top_fifth": 0.5,
+   "rate_rest": 0.25
+  },
+  "n_moves_known_on_the_day": 865,
+  "n_lost_place": 264
+ },
+ "benchmark_share_redrawn": {
+  "movers": {
+   "pairs": 601,
+   "flop_rate_observed": 0.1913,
+   "flop_rate_role_and_quality_fixed": [
+    0.2013,
+    0.1764,
+    0.228
+   ]
+  },
+  "stayers": {
+   "pairs": 2075,
+   "flop_rate_observed": 0.1778,
+   "flop_rate_role_and_quality_fixed": [
+    0.1918,
+    0.1773,
+    0.2058
+   ]
+  }
+ },
+ "luck_spread_share": 0.686,
+ "slice_family": {
+  "predictor: AUC above 0.5": {
+   "estimate": null,
+   "p": 0.002,
+   "p_holm": 0.022,
+   "survives": true
+  },
+  "age 26\u201328: movers v stayers": {
+   "estimate": {
+    "point": 0.0907,
+    "lo": 0.008,
+    "hi": 0.1732
+   },
+   "p": 0.029,
+   "p_holm": 0.29,
+   "survives": false
+  },
+  "fee Under \u20ac10m: v other movers": {
+   "estimate": {
+    "point": -0.074,
+    "lo": -0.1499,
+    "hi": 0.0045
+   },
+   "p": 0.07,
+   "p_holm": 0.63,
+   "survives": false
+  },
+  "league: changed v same": {
+   "estimate": {
+    "point": 0.0508,
+    "lo": -0.0135,
+    "hi": 0.116
+   },
+   "p": 0.115,
+   "p_holm": 0.92,
+   "survives": false
+  },
+  "age 29 and over: movers v stayers": {
+   "estimate": {
+    "point": 0.046,
+    "lo": -0.0566,
+    "hi": 0.1572
+   },
+   "p": 0.362,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "age Under 23: movers v stayers": {
+   "estimate": {
+    "point": -0.0281,
+    "lo": -0.0859,
+    "hi": 0.0305
+   },
+   "p": 0.37,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "fee \u20ac10m\u201330m: v other movers": {
+   "estimate": {
+    "point": -0.0277,
+    "lo": -0.109,
+    "hi": 0.0573
+   },
+   "p": 0.484,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "buying clubs: early v late record": {
+   "estimate": null,
+   "p": 0.57,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "fee Over \u20ac30m: v other movers": {
+   "estimate": {
+    "point": 0.0099,
+    "lo": -0.0812,
+    "hi": 0.1067
+   },
+   "p": 0.852,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "fee Free or loan: v other movers": {
+   "estimate": {
+    "point": 0.005,
+    "lo": -0.0606,
+    "hi": 0.0708
+   },
+   "p": 0.895,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "age 23\u201325: movers v stayers": {
+   "estimate": {
+    "point": 0.0001,
+    "lo": -0.0573,
+    "hi": 0.0583
+   },
+   "p": 1.0,
+   "p_holm": 1.0,
+   "survives": false
+  }
+ },
+ "luck_spread_share_ci": {
+  "point": 0.6861,
+  "lo": 0.6045,
+  "hi": 0.7873
+ },
+ "predictions_2025_26": 80
+}

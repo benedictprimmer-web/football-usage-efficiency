@@ -1,0 +1,81 @@
+tm_player_id,player,age,from_team,to_club,to_league,transfer_date,p_flop_or_lost_place
+188888,Sheraldo Becker,29.6,Real Sociedad,CA Osasuna,ESP,2025-09-01,0.6699
+225122,Gonçalo Guedes,27.8,Wolverhampton Wanderers,Real Sociedad,ESP,2025-08-04,0.6591
+344381,Christopher Nkunku,26.8,Chelsea,AC Milan,ITA,2025-08-30,0.6398
+197838,Jamie Vardy,37.6,Leicester,Cremonese,ITA,2025-09-01,0.6115
+216569,Jeremie Boga,27.7,Nice,Juventus,ITA,2026-02-01,0.6112
+434990,Alex Sola,25.2,Getafe,Granada CF,ESP,2025-09-01,0.6011
+88755,Kevin De Bruyne,33.2,Manchester City,Napoli,ITA,2025-07-01,0.5892
+184892,Florian Thauvin,31.6,Udinese,Lens,FRA,2025-08-08,0.5887
+401922,Samuel Chukwueze,25.3,AC Milan,Fulham,ENG,2025-09-01,0.5873
+139435,Dani Rodríguez,36.2,Mallorca,CD Leganés,ESP,2026-01-21,0.5842
+405885,Giacomo Raspadori,24.5,Napoli,Atlético,ESP,2025-08-11,0.5841
+804219,Léo Scienza,26.0,FC Heidenheim,Southampton,ENG,2025-09-01,0.5737
+306024,Dominic Calvert-Lewin,27.5,Everton,Leeds,ENG,2025-08-15,0.5722
+387626,Leon Bailey,27.1,Aston Villa,Roma,ITA,2025-08-20,0.5679
+234523,Antonio Sanabria,28.5,Torino,Cremonese,ITA,2025-08-21,0.5662
+496857,Edon Zhegrova,25.4,Lille,Juventus,ITA,2025-09-01,0.546
+746695,Kamaldeen Sulemana,22.5,Southampton,Atalanta,ITA,2025-07-02,0.5361
+658536,Simon Adingra,22.7,Brighton,Sunderland,ENG,2025-07-10,0.5164
+461607,Esteban Lepaul,24.4,Angers,Stade Rennais,FRA,2025-08-28,0.5132
+729814,Georges Mikautadze,23.8,Lyon,Villarreal,ESP,2025-09-01,0.5096
+608832,Merlin Röhl,22.2,Freiburg,Everton,ENG,2025-09-01,0.5095
+480883,Miguel De la Fuente,25.0,Leganes,UD Almería,ESP,2026-01-14,0.5061
+93936,Kike García,34.8,Alaves,Espanyol,ESP,2025-07-01,0.5008
+656681,Victor Boniface,23.7,Bayer Leverkusen,Werder Bremen,GER,2025-09-01,0.4906
+204103,Adama Traoré,28.6,Fulham,West Ham,ENG,2026-01-28,0.4883
+116088,Marius Bülter,31.4,Hoffenheim,1.FC Köln,GER,2025-07-31,0.4822
+288340,Phillip Tietz,27.1,Augsburg,Mainz,GER,2026-01-02,0.4578
+407098,Jakub Kaminski,22.2,Wolfsburg,1.FC Köln,GER,2025-07-04,0.4507
+633668,Giovanni Fabbian,21.6,Bologna,Fiorentina,ITA,2026-01-21,0.4503
+1190411,Jesús Rodriguez,18.8,Real Betis,Como,ITA,2025-07-02,0.4449
+265078,Patrick Cutrone,26.7,Como,Parma,ITA,2025-08-29,0.4417
+393238,Zakaria Aboukhlal,24.5,Toulouse,Torino,ITA,2025-07-29,0.4306
+628366,Lucas Beltrán,23.4,Fiorentina,Valencia,ESP,2025-09-01,0.4152
+904662,Louis Mouton,22.2,Saint-Etienne,Angers SCO,FRA,2025-07-01,0.4137
+365108,Dan Ndoye,23.9,Bologna,Nott'm Forest,ENG,2025-07-31,0.4113
+610442,Rasmus Højlund,21.6,Manchester United,Napoli,ITA,2025-09-01,0.4105
+749552,Alieu Fadera,22.8,Como,Sassuolo,ITA,2025-07-28,0.4038
+707242,Badredine Bouanani,19.7,Nice,Stuttgart,GER,2025-08-31,0.4019
+550580,Shuto Machino,24.9,Holstein Kiel,Mönchengladbach,GER,2025-07-26,0.3948
+237662,Breel Embolo,27.5,Monaco,Stade Rennais,FRA,2025-09-01,0.3897
+455661,Nick Woltemade,22.5,VfB Stuttgart,Newcastle,ENG,2025-08-30,0.3873
+823231,Dango Ouattara,22.6,Bournemouth,Brentford,ENG,2025-08-16,0.376
+776890,Nicolas Jackson,23.2,Chelsea,Bayern Munich,GER,2025-09-01,0.37
+572265,Lorenzo Lucca,24.0,Udinese,Napoli,ITA,2025-07-18,0.3615
+480692,Luis Díaz,27.6,Liverpool,Bayern Munich,GER,2025-07-30,0.3457
+763182,Josué Casimir,22.9,Le Havre,AJ Auxerre,FRA,2025-07-01,0.3442
+626724,João Pedro,22.9,Brighton,Chelsea,ENG,2025-07-02,0.3423
+937941,Thierno Barry,21.9,Villarreal,Everton,ENG,2025-07-09,0.3401
+654982,Bilal El Khannouss,20.3,Leicester,Stuttgart,GER,2025-09-01,0.3371
+333647,Jonathan Burkardt,24.1,Mainz 05,Frankfurt,GER,2025-07-04,0.3298
+470607,Brennan Johnson,23.3,Tottenham,Crystal Palace,ENG,2026-01-02,0.329
+616344,Tiago Tomás,22.2,Wolfsburg,Stuttgart,GER,2025-08-16,0.3283
+1124005,Christantus Uche,21.3,Getafe,Crystal Palace,ENG,2025-09-01,0.3249
+566931,Xavi Simons,21.4,RasenBallsport Leipzig,Tottenham,ENG,2025-08-29,0.3239
+274862,Moses Simon,29.1,Nantes,Paris FC,FRA,2025-07-01,0.3206
+517894,Matheus Cunha,25.3,Wolverhampton Wanderers,Man Utd,ENG,2025-07-01,0.3175
+388165,Yoane Wissa,28.0,Brentford,Newcastle,ENG,2025-09-01,0.3121
+368887,Loïs Openda,24.5,RasenBallsport Leipzig,Juventus,ITA,2025-09-01,0.3099
+866655,Tyler Dibling,18.5,Southampton,Everton,ENG,2025-08-25,0.302
+613393,Gaetano Oristanio,21.9,Venezia,Parma,ITA,2025-08-28,0.3017
+503987,Noni Madueke,22.5,Chelsea,Arsenal,ENG,2025-07-18,0.2976
+811779,Alejandro Garnacho,20.2,Manchester United,Chelsea,ENG,2025-08-30,0.2856
+543499,Mohammed Kudus,24.1,West Ham,Tottenham,ENG,2025-07-10,0.2805
+434433,Nikola Krstovic,24.4,Lecce,Atalanta,ITA,2025-08-20,0.2801
+583189,Anthony Elanga,22.3,Nottingham Forest,Newcastle,ENG,2025-07-11,0.2736
+627442,Benjamin Sesko,21.3,RasenBallsport Leipzig,Man Utd,ENG,2025-08-09,0.272
+479999,Eberechi Eze,26.2,Crystal Palace,Arsenal,ENG,2025-08-23,0.2693
+827734,Ange-Yoan Bonny,20.9,Parma Calcio 1913,Inter,ITA,2025-07-05,0.2669
+349066,Alexander Isak,24.9,Newcastle United,Liverpool,ENG,2025-09-01,0.2667
+598577,Florian Wirtz,21.3,Bayer Leverkusen,Liverpool,ENG,2025-07-01,0.2652
+709726,Hugo Ekitike,22.2,Eintracht Frankfurt,Liverpool,ENG,2025-07-23,0.2605
+500689,Evann Guessand,23.2,Nice,Aston Villa,ENG,2025-08-08,0.2582
+540664,Dilane Bakwa,22.0,Strasbourg,Nott'm Forest,ENG,2025-09-01,0.2452
+741238,Omari Hutchinson,20.8,Ipswich,Nott'm Forest,ENG,2025-08-16,0.2416
+453870,Benedict Hollerbach,23.3,Union Berlin,Mainz,GER,2025-07-01,0.2388
+548111,Álex Baena,23.1,Villarreal,Atlético,ESP,2025-07-02,0.2352
+733576,Alberto Moleiro,20.9,Las Palmas,Villarreal,ESP,2025-07-01,0.2307
+358504,Ritsu Doan,26.2,Freiburg,Frankfurt,GER,2025-08-07,0.2165
+583255,Antoine Semenyo,24.7,Bournemouth,Man City,ENG,2026-01-09,0.2039
+413039,Bryan Mbeumo,25.1,Brentford,Man Utd,ENG,2025-07-21,0.1771

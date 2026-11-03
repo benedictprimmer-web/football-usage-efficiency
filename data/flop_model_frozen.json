@@ -1,0 +1,41 @@
+{
+ "frozen_on": "2026-11-03",
+ "what": "ridge logistic (lambda 1) for P(flop or lost his place) after a club move",
+ "outcome": "output per 90 (xG+xA) down by more than 25%, or under 900 league minutes or 20 actions the next season; Understat attackers, Big-5",
+ "trained_on_moves_into": "2015-16 to 2024-25",
+ "n_train": 864,
+ "features": [
+  "age",
+  "log out per 90 last season",
+  "log quality vs team-mates",
+  "log share of the ball",
+  "share of minutes played",
+  "changed league"
+ ],
+ "mean": [
+  25.228702,
+  -0.918888,
+  0.151033,
+  -1.742222,
+  0.570013,
+  0.369213
+ ],
+ "sd": [
+  3.626589,
+  0.395051,
+  0.293192,
+  0.208371,
+  0.193718,
+  0.482871
+ ],
+ "intercept": -0.261343,
+ "coefficients": [
+  0.252729,
+  -0.161847,
+  0.218469,
+  0.134662,
+  -0.441104,
+  0.111257
+ ],
+ "how_to_score": "z = (x - mean) / sd; p = 1 / (1 + exp(-(intercept + z . coefficients)))"
+}
