@@ -1,33 +1,35 @@
 # Usage and efficiency in football
 
-**When a footballer gets more of his team's ball, does the quality of his chances fall?**
+**When a footballer gets more of the ball, do his chances get worse?**
 
-## The answer
+## What I found
 
-Only a little, if at all. When the same attacker's share of his team's shots and shot-assists rises by 5 percentage points, with his minutes held fixed, his chance quality per action (npxG + xA per action) falls by about 1.7%. The range runs from a 3.4% fall to a 0.1% rise, so the cleanest test cannot rule out no effect.
+Barely. When the same attacker gets 5% more of his team's shots and shot-assists, the quality of his chances drops by about 1.7%. That could be nothing at all, as the range runs from a 3.4% drop to a 0.1% rise.
 
-![Chance quality against usage share for 4,592 attacker seasons, with Depay, Martial and Ronaldo traced on top](figures/fig1_usage_efficiency.png)
+That means a player's quality mostly travels with him. How much of the ball he gets depends on his minutes and the club he joins.
 
-*How to read it: the grey line is the average chance quality of attackers at each share of their team's play, and the shaded band is its 95% interval. Big-5 leagues and Russia, 2014-15 to January 2025.*
+![Chance quality against share of the ball for 4,592 attacker seasons, with Memphis Depay's career on top](figures/fig1_usage_efficiency.png)
+
+*The grey line is the average across 4,592 attacker seasons, and the shaded band is the range it probably sits in. The blue line is Memphis Depay.*
+
+## Depay
+
+At United in 2015-16 Depay played 43% of the league minutes, and the quality of his chances was well below average. At Lyon he played 75%, then 86%. He took almost a fifth of the team's shots and shot-assists, and his chances got better, from 0.086 to 0.124 per action.
+
+Per minute on the pitch, his share of the ball was about the same at both clubs (22% at United, 24% at Lyon). The difference was that Lyon played him.
+
+Two more cases are in `data/case_studies.csv`. Martial's chances got worse when he moved from Monaco to United, though his Monaco figure rests on only 61 actions. Ronaldo's held up at United in 2021-22, yet the team's expected goal difference was 0.25 per 90 worse with him on the pitch, a cost that per-action numbers cannot see.
 
 ## What the terms mean
 
-- **Usage share** is a player's shots plus shot-assists, as a percentage of his team's total over the league season.
-- **Efficiency** (chance quality per action) is the non-penalty xG plus xA he produces for each of those shots and shot-assists.
-- **xG** (expected goals) is the chance that a shot is scored, based on thousands of similar shots.
-- **xA** (expected assists) is the xG of the shot that a pass sets up.
+- **Usage share** is a player's shots and shot-assists, as a percentage of his team's over the league season.
+- **Chance quality** (efficiency) is the expected goals plus expected assists he produces per shot or shot-assist, without penalties.
+- **xG** (expected goals) is the chance a shot is scored, based on thousands of similar shots.
+- **xA** (expected assists) is the xG of the shot a pass sets up.
 
-A 95% interval is the range the true value probably sits in.
+## Why it matters
 
-Usage behaves like a conserved quantity: a team creates a roughly fixed number of attacking actions in a season, so the shares sum to one and one player's rise comes out of his team-mates' shares. If chance quality fell steeply as usage rose, a signing who takes the ball off better-placed team-mates would make the team worse even while his own numbers looked good.
-
-## Three players
-
-**Memphis Depay** went from 9.3% usage at Manchester United in 2015-16 to 18.1% at Lyon in 2017-18. On the chart that looks like a player handed twice the ball. Almost all of the rise came from minutes: he played 43% of United's league minutes and 75% of Lyon's. His chance quality rose, from 0.086 to 0.107 and then 0.124 in 2020-21.
-
-**Anthony Martial** moved from Monaco (7.7% usage, 0.192) to United in 2015-16 (12.7%, 0.143). That 25% fall is the trade-off at its sharpest. His Monaco figure rests on 61 actions, so part of it is likely luck, and United's attackers as a whole made worse chances than Monaco's that season.
-
-**Cristiano Ronaldo** went from 18.6% usage at Juventus to 14.6% at United in 2021-22, and his chance quality held (0.142, then 0.146), well above his United team-mates (0.102). Even so, United's xG difference was 0.25 per 90 worse with him on the pitch. Per-action numbers cannot see that cost, which is why the wider model also checks team outcomes.
+A team only creates so many chances in a season, so usage works like a conserved quantity. The shares add up to 100%, and one player's rise comes out of his team-mates'. If chance quality fell steeply as a player got more of the ball, a signing could make the team worse while his own numbers looked good.
 
 ## How I tested it
 

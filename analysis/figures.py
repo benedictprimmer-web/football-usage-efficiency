@@ -68,51 +68,35 @@ def fig_curve():
     cs = pd.read_csv(OUT / "case_studies.csv")
     n = json.loads((OUT / "summary.json").read_text())["n_player_seasons"]
 
-    fig, ax = plt.subplots(figsize=(7.2, 6.4))
+    fig, ax = plt.subplots(figsize=(7.2, 5.6))
     x = cv.usage_mean * 100
     ax.fill_between(x, cv.eff_lo, cv.eff_hi, color=BAND, lw=0, zorder=1)
     ax.plot(x, cv.efficiency, color=INK2, lw=2, zorder=2)
-    ax.text(2.6, cv.eff_lo.iloc[0] - 0.004,
-            f"All attackers, {n:,} seasons\n(average and 95% interval)",
-            color=INK2, fontsize=10.5, va="top")
+    ax.text(3.0, cv.efficiency.iloc[0] + 0.008, f"Average of {n:,} attacker seasons",
+            color=INK2, fontsize=10.5, va="bottom")
 
-    # light bracket over the flat stretch of the curve
-    yb = 0.1335
-    ax.plot([4, 14], [yb, yb], color=MUTED, lw=1)
-    for xe in (4, 14):
-        ax.plot([xe, xe], [yb - 0.0018, yb], color=MUTED, lw=1)
-    ax.text(9, yb + 0.0012, "flat from 4% to 14%", color=INK2, fontsize=10,
-            ha="center", va="bottom")
-
-    for name, path in CASE_PATH.items():
-        p = cs[cs.player == name].set_index("season").loc[[s for s, _ in path]]
-        px, py = p.usage_share * 100, p.efficiency
-        ax.plot(px, py, color=ACCENT, lw=1.6, alpha=0.55, zorder=3)
-        ax.scatter(px, py, s=64, marker=MARKER[name], color=ACCENT,
-                   edgecolor=BG, linewidth=1.5, zorder=4)
-        for (season, lab), xi, yi in zip(path, px, py):
-            dx, dy = OFFS[(name, season)]
-            ax.annotate(lab, (xi, yi), xytext=(dx, dy), textcoords="offset points",
-                        fontsize=10, color=INK, ha="left" if dx > 0 else "right", va="center")
-        ax.annotate(name.split()[-1], (px.iloc[0], py.iloc[0]),
-                    xytext={"Depay": (-10, 0), "Martial": (8, 14),
-                            "Ronaldo": (8, 16)}[name.split()[-1]],
-                    textcoords="offset points", fontsize=11, color=ACCENT,
-                    fontweight="bold", va="center",
-                    ha="right" if name.endswith("Depay") else "left")
-
-    ax.annotate("Team 0.25 xGD/90 worse\nwith him on the pitch",
-                (14.6, 0.146), xytext=(19.5, 0.172), textcoords="data",
-                fontsize=10, color=INK2, ha="center",
-                arrowprops=dict(arrowstyle="-", color=MUTED, lw=1))
+    # Depay, the focus: label each season with his share of the club's league minutes
+    path = [("2015-2016", "United 15/16"), ("2017-2018", "Lyon 17/18"), ("2020-2021", "Lyon 20/21")]
+    dp = cs[cs.player == "Memphis Depay"].set_index("season").loc[[s for s, _ in path]]
+    px, py = dp.usage_share * 100, dp.efficiency
+    ax.plot(px, py, color=ACCENT, lw=2.2, zorder=4)
+    ax.scatter(px, py, s=80, color=ACCENT, edgecolor=BG, linewidth=1.5, zorder=5)
+    offs = {"2015-2016": (10, -4), "2017-2018": (10, -8), "2020-2021": (10, 8)}
+    for (season, lab), xi, yi, mins in zip(path, px, py, dp.minutes_share):
+        dx, dy = offs[season]
+        ax.annotate(f"{lab}\nplayed {mins:.0%} of minutes", (xi, yi), xytext=(dx, dy),
+                    textcoords="offset points", fontsize=10, color=INK,
+                    ha="left" if dx > 0 else "right", va="center")
+    ax.annotate("Depay", (px.iloc[0], py.iloc[0]), xytext=(-10, 0), textcoords="offset points",
+                fontsize=12, color=ACCENT, fontweight="bold", ha="right", va="center")
 
     ax.set_xlim(2, 25)
-    ax.set_ylim(0.075, 0.205)
-    ax.set_xlabel("Usage share: player's % of his team's shots and shot-assists")
-    ax.set_ylabel("Chance quality per action (npxG + xA)")
+    ax.set_ylim(0.075, 0.145)
+    ax.set_xlabel("Share of his team's shots and shot-assists (%)")
+    ax.set_ylabel("Chance quality per action (xG + xA)")
     ax.grid(axis="y", color=BAND, lw=0.8)
-    _title(fig, ax, "More of the ball, about the same chance quality",
-           "Flat up to 14% usage, about 8% lower above 18%. Three careers on top.")
+    _title(fig, ax, "More of the ball, the same quality of chances",
+           "Depay played more at Lyon, got more of the ball, and his chances got better.")
     _save(fig, "fig1_usage_efficiency")
 
 
