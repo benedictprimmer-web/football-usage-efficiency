@@ -1,4 +1,4 @@
-"""Check every number quoted in the README and docs/side_studies.md against data/.
+"""Check every number quoted in the README, docs/more_results.md and docs/side_studies.md against data/.
 
 Each check builds the exact text the README (or the side studies) should contain from the
 data, and looks for it. Prints PASS or FAIL per line and exits non-zero on any failure, so
@@ -135,34 +135,51 @@ def checks() -> list[tuple[str, str]]:
         ("headline", f"about {round(lp['regression']['bad_gap']['point'] * 100)} points more likely to flop or lose his place"),
         ("headline share", f"is about {round(-reg['d_share']['point'] * 100)}% lower"),
         ("bad matched", f"Flop or lost place: {pts(lp['regression']['bad_gap'])}".replace("points (", "points (95% interval ")),
-        ("fee paid", f"Where a fee was paid the gap is {pts(lc['by_fee_band']['Any fee paid']['badf'])}; after free or loan "
-                     f"moves it is {pts(lc['by_fee_band']['Free or loan']['badf'], False).split(' (')[0]}, and where Transfermarkt "
-                     f"has no fee, {pts(lc['by_fee_band']['No fee on record']['badf'], False).split(' (')[0]}"),
-        ("starts", f"Starts: {p(lc['starts_in_first_10_rates']['movers'], 0)} of his new club's first 10 league matches, against "
-                   f"{p(lc['starts_in_first_10_rates']['stayers'], 0)} for stayers, a matched gap of "
-                   f"{pts(lc['starts_in_first_10_matches']['starts10'])}"),
-        ("share matched", f"Share of shots and shot-assists: {iv(reg['d_share'])}"),
-        ("open share", f"In open play alone it is {iv(rv['own_split']['d_share_open'])}; the rest is set pieces"),
-        ("output first", f"Output per 90: {iv(reg['d_out'])} for the {lp['n_movers_kept']} of {lp['n_movers']} movers"),
-        ("lee", f"bounds for that selection run from {p(rv['lee_bounds']['d_out']['lower']['point'], 1, True)} to "
-                f"{p(rv['lee_bounds']['d_out']['upper']['point'], 1, True)}"),
         ("sample", f"{lp['n_movers']} moves and {lp['n_stayers']:,} stays"),
-        ("dropped", f"how the {rv['survival']['no_big5_row_next_season']} seasons with no Big-5 row next season are counted "
-                    f"moves the gap from {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} to "
-                    f"{pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
+        ("fee bands", f"By fee: {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid, "
+                      f"{pts(lc['by_fee_band']['Free or loan']['badf'], False)} after free or loan moves, "
+                      f"{pts(lc['by_fee_band']['No fee on record']['badf'], False)} where Transfermarkt has no fee"),
+        ("no history", f"{lc['no_fee_audit']['no_transfer_history_at_all']} of those {lc['no_fee_audit']['movers']} no-fee movers"),
+        ("starts j", f"Starts: {p(lc['starts_after_joining_rates']['movers'], 0)} of his new club's first 10 league matches after "
+                     f"he joins its squad, against {p(lc['starts_after_joining_rates']['stayers'], 0)} for stayers, a matched gap of "
+                     f"{pts(lc['starts_in_first_10_after_joining']['starts10j'])}"),
+        ("share kept", f"for the {lp['n_movers_kept']} of {lp['n_movers']} movers who keep 900 minutes: {iv(reg['d_share'])}"),
+        ("lee share", f"run from {p(rv['lee_bounds']['d_share']['lower']['point'], 1, True)} to "
+                      f"{p(rv['lee_bounds']['d_share']['upper']['point'], 1, True).replace('+0.0%', '0.0%').replace('−0.0%', '0.0%')}, so selection alone"),
+        ("glance fee", f"| Flop or lost place, fee paid | {pts(lc['by_fee_band']['Any fee paid']['badf'])} |"),
+        ("glance starts", f"| Starts, 10 matches from first squad | {pts(lc['starts_in_first_10_after_joining']['starts10j'])} |"),
+        ("open own", f"do not fall ({ivc(rv['own_split']['d_own_open'])}) while his set-piece actions fall by {neg(rv['own_split']['d_own_set'])}"),
+        ("opta open own", f"his actions outside them fall by {neg(rvo['own_split']['d_own_open'])}"),
+        ("fam2", "Free or loan (adjusted {:.3f}), no fee on record (adjusted {:.3f}) and both starts measures (adjusted {:.3f})".format(
+            lc['post_hoc_family']['fee Free or loan']['p_holm'], lc['post_hoc_family']['fee No fee on record']['p_holm'],
+            max(lc['post_hoc_family']['starts, first 10 club matches']['p_holm'], lc['post_hoc_family']['starts, 10 matches from first squad']['p_holm']))),
+        ("fam2 paid", "none of the three paid bands" if not any(lc['post_hoc_family'][f'fee {b}']['survives'] for b in ['Under €10m', '€10m–30m', 'Over €30m']) else "SOME PAID BAND SURVIVES"),
+        ("without no fee", f"| Every move except those with no fee on record | {lc['no_fee_audit']['without_no_fee_moves']['n_movers']} | "
+                           f"{pts(lc['no_fee_audit']['without_no_fee_moves']['badf'], False)} |"),
+        ("audit", f"Of the {lc['no_fee_audit']['movers']}, {lc['no_fee_audit']['no_transfer_row']} have no Transfermarkt transfer row into "
+                  f"the new club at all, only {lc['no_fee_audit']['loan_returns']} is a loan ending, and "
+                  f"{lc['no_fee_audit']['no_transfer_history_at_all']} belong to players with no Transfermarkt transfer history anywhere"),
+        ("audit seasons", f"({lc['no_fee_audit']['by_first_season']['2014']} of {lc['no_fee_audit']['movers_by_first_season']['2014']} moves in 2014–15, "
+                          f"{lc['no_fee_audit']['by_first_season']['2023']} of {lc['no_fee_audit']['movers_by_first_season']['2023']} in 2023–24)"),
+        ("opta fee", f"On Opta the paid bands are less clean: {pts(rvo['lost_place']['by_fee_band']['Any fee paid']['badf'], False)} for any fee, "
+                     f"{pts(rvo['lost_place']['by_fee_band']['Under €10m']['badf'], False)} under €10m"),
+        ("loan endings", f"{lc['no_fee_audit']['loan_returns_only']['n_movers']} moves are a player going back to a club that had loaned him "
+                         f"out; without them the gap is {pts(lc['no_fee_audit']['without_loan_returns']['badf'], False)}"),
+        ("starts text", f"Movers start {p(lc['starts_after_joining_rates']['movers'], 0)} of the 10 league matches from their first matchday "
+                        f"squad at the new club, against {p(lc['starts_after_joining_rates']['stayers'], 0)} for stayers, matched "
+                        f"{pts(lc['starts_in_first_10_after_joining']['starts10j'])}; on Opta "
+                        f"{pts(rvo['lost_place']['starts_in_first_10_after_joining']['starts10j'], False)}"),
+        ("starts season", f"Counting the club's first 10 matches of the season instead gives {pts(lc['starts_in_first_10_matches']['starts10'], False)}, "
+                          f"but movers' first squad comes after {lc['matches_before_first_squad']['movers']:.1f} of those matches on average, "
+                          f"against {lc['matches_before_first_squad']['stayers']:.1f} for stayers"),
         # at a glance
         ("glance bad", f"| Flop or lost place | {pts(lp['regression']['bad_gap'])} |"),
-        ("glance starts", f"| Starts in first 10 matches | {pts(lc['starts_in_first_10_matches']['starts10'])} |"),
         ("glance share", f"| Share of shots and shot-assists | {iv(reg['d_share'])} |"),
-        ("glance own", f"| Own shots and shot-assists per 90 | {iv(reg['d_own'])} |"),
         ("glance out", f"| Output per 90 | {iv(reg['d_out'])} |"),
         ("lost movers", f"({p(lc['minutes_only_rates_ci']['movers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['movers']['lo'], 0)} to "
                         f"{p(lc['minutes_only_rates_ci']['movers']['hi'], 0)}), against one stayer in five "
                         f"({p(lc['minutes_only_rates_ci']['stayers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['stayers']['lo'], 0)} to "
                         f"{p(lc['minutes_only_rates_ci']['stayers']['hi'], 0)})"),
-        ("opta open own", f"his actions outside direct free kicks down {neg(rvo['own_split']['d_own_open'])}"),
-        ("starts14", f"{round(-lc['starts_in_first_10_matches']['starts10']['point'] * 100)} points fewer starts"),
-        ("fpl n", f"only {json.loads((OUT / 'fpl.json').read_text())['pairs']['2024-25 -> 2025-26']['FWD+MID']['n_movers']} Premier League movers"),
         # inference
         ("fam floor", "p at or below 0.0005; Holm-adjusted {:.3f})".format(
             rv['primary_family']['Understat: share of shots and shot-assists']['p_holm'])),
@@ -175,8 +192,6 @@ def checks() -> list[tuple[str, str]]:
         ("kept", f"{lp['n_movers_kept']} of the {lp['n_movers']} movers and {lp['n_stayers_kept']:,} of the "
                  f"{lp['n_stayers']:,} stayers"),
         # why it matters
-        ("open own", f"do not fall on Understat ({ivc(rv['own_split']['d_own_open'])})"),
-        ("set own", f"his set-piece actions per 90 fall by {neg(rv['own_split']['d_own_set'])}"),
         # inference
         ("fam us own", f"own actions survives (adjusted {rv['primary_family']['Understat: own actions per 90']['p_holm']:.3f})"),
         ("clusters", f"gives {iv(rv['cutoffs_clusters_position']['matched_buying_club_season_clusters']['d_share'])} "
@@ -245,17 +260,12 @@ def checks() -> list[tuple[str, str]]:
                    f"{rv['survival']['dropped_who_played_900_next_season']} of them 900 or more"),
         ("bounds text", f"The gap is {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} points if every "
                         f"dropout kept his place and {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]}"),
-        ("starts text", f"Movers start {p(lc['starts_in_first_10_rates']['movers'], 0)} of their new club's first 10 league matches, "
-                        f"against {p(lc['starts_in_first_10_rates']['stayers'], 0)} for stayers, matched "
-                        f"{pts(lc['starts_in_first_10_matches']['starts10'])[:-1].split(' points')[0]} points "
-                        f"({pts(lc['starts_in_first_10_matches']['starts10']).split('(')[1]}; on Opta "
-                        f"{pts(rvo['lost_place']['starts_in_first_10_matches']['starts10'], False)}"),
         ("late share", f"({p(lc['late_season_minutes_share']['movers'], 0)} of their club's minutes against "
                        f"{p(lc['late_season_minutes_share']['stayers'], 0)})"),
         ("full time", f"(median ratio {rv['full_time_check']['median_ratio']:.3f} across {rv['full_time_check']['players']} such seasons)"),
         ("limit range", f"Counting them moves the lost-place gap from {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} "
                         f"to {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
-        ("fee falsifier", f"It does: {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid"),
+        ("fee falsifier", f"Today it is {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid"),
         *[(f"fee row {b}", f"| {lab} | {lc['by_fee_band'][b]['n_movers']} | {pts(lc['by_fee_band'][b]['badf'], False)} |")
           for b, lab in (("Any fee paid", "Any fee paid"), ("Over €30m", "Over €30m"), ("€10m–30m", "€10–30m"),
                          ("Under €10m", "Under €10m"), ("Free or loan", "Free or loan"), ("No fee on record", "No fee on record"))],
@@ -301,7 +311,7 @@ def checks() -> list[tuple[str, str]]:
         ("fee", f"Moves over €30m flop {sl_iv('fee_band', 'Over €30m')} of the time, €10–30m moves "
                 f"{sl_iv('fee_band', '€10m–30m')}, moves under €10m {sl_iv('fee_band', 'Under €10m')}, and free "
                 f"or loan moves {sl_iv('fee_band', 'Free or loan')}"),
-        ("fee none", f"{int(sl[(sl.slice == 'fee_band') & (sl.level == 'No fee on record')].n.iloc[0])} moves "
+        ("fee none", f"{int(sl[(sl.slice == 'fee_band') & (sl.level == 'No fee on record')].n.iloc[0])} of these regulars' moves "
                      f"have no fee on record"),
         ("clubs", f"only {bc['clubs']} clubs made enough signings"),
         ("clubs rho", f"(rank correlation {bc['spearman_early_late']:.2f}, p = {bc['perm_p']:.2f})".replace("-", M)),
@@ -357,10 +367,12 @@ def checks() -> list[tuple[str, str]]:
         ("pairs", f"{s['n_pairs']:,} pairs of seasons from {int(ws.loc['on_pitch', 'n_players'])} players"),
         ("headline", f"chance quality {abs(s['headline_pct_of_median']['point']):.1f}% lower (95% interval "
                      f"{s['headline_pct_of_median']['lo']:.1f}% to {s['headline_pct_of_median']['hi']:.1f}%)".replace("-", M)),
-        ("scale", f"cuts a player's share by about {abs(g['His share of the ball']['point']) * s['median_usage_on_pitch'] * 100:.1f} "
-                  f"points ({abs(g['His share of the ball']['point']) * 100:.1f}% of a {s['median_usage_on_pitch'] * 100:.0f}% share), "
-                  f"which on this slope is worth about "
-                  f"{abs(g['His share of the ball']['point']) * s['median_usage_on_pitch'] * 100 / 5 * abs(s['headline_pct_of_median']['point']):.1f}%"),
+        ("scale", (lambda d, b: f"cuts a player's share by about {d * b * 100:.1f} points ({d * 100:.1f}% of a "
+                   f"{b * 100:.1f}% share, matched), which on this slope is worth about "
+                   f"{d * b * 100 / 5 * abs(s['headline_pct_of_median']['point']):.1f}%")(
+                   -reg['d_share']['point'], r['rtm']['movers_last_season']['share_movers'])),
+        ("baseline", "last season's output per 90 alone scores {} ({} to {})".format(
+            *(f"{rv['predictor_baseline']['output_only'][k]:.2f}" for k in ("auc", "auc_lo", "auc_hi")))),
         # details
         ("median quality", f"({s['median_efficiency']:.3f} xG+xA per action)"),
         ("part table share", "| His share of the ball | {} | {} |".format(*gi(g['His share of the ball']))),
@@ -469,6 +481,8 @@ def main():
     fails = 0
     for fname, fn in (("README.md", checks), ("docs/side_studies.md", side_checks)):
         text = (ROOT / fname).read_text().replace("**", "")  # bold does not change a number
+        if fname == "README.md":   # the README's checks also cover the results moved to docs/
+            text += (ROOT / "docs" / "more_results.md").read_text().replace("**", "")
         for name, want in fn():
             ok = want in text
             fails += not ok

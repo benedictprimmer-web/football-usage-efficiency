@@ -132,6 +132,25 @@ def starts_first_ten(a: pd.DataFrame) -> np.ndarray:
     key = list(zip(a.tm_player_id, a.club_id1, (a.yr + 1).astype(str) + "-" + (a.yr + 2).astype(str)))
     return st.reindex(key).fillna(0).to_numpy() / 10
 
+def starts_after_joining(a: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
+    """The same, counting the 10 league matches from his first matchday squad at the new
+    club (starting or on the bench), so matches before a late signing arrived do not count.
+    Also returns how many of the club's league matches came before that first squad."""
+    lu = pd.read_csv(SOURCE / "transfermarkt" / "game_lineups.csv.gz",
+                     usecols=["game_id", "player_id", "club_id", "type"])
+    iv = pd.read_parquet(WORK / "intervals.parquet", columns=["game_id", "club_id", "season"]).drop_duplicates()
+    d = pd.read_csv(SOURCE / "transfermarkt" / "games.csv.gz", usecols=["game_id", "date"])
+    g = iv.merge(d, on="game_id").sort_values(["date", "game_id"])
+    g["k"] = g.groupby(["club_id", "season"]).cumcount()
+    sq = lu.merge(g, on=["game_id", "club_id"])
+    first = sq.groupby(["player_id", "club_id", "season"]).k.min()
+    sq = sq.join(first.rename("k0"), on=["player_id", "club_id", "season"])
+    st = sq[(sq.type == "starting_lineup") & (sq.k >= sq.k0) & (sq.k < sq.k0 + 10)]
+    n = st.groupby(["player_id", "club_id", "season"]).size()
+    key = list(zip(a.tm_player_id, a.club_id1, (a.yr + 1).astype(str) + "-" + (a.yr + 2).astype(str)))
+    return n.reindex(key).fillna(0).to_numpy() / 10, first.reindex(key).to_numpy()
+
+
 def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     a = flags(R.add_cells(a, m))
     cuts = np.quantile(m.minutes_share0, np.linspace(0, 1, 11)[1:-1])
@@ -175,13 +194,33 @@ def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     run("starts_in_first_10_matches", a, ["starts10"])
     out["starts_in_first_10_rates"] = {"movers": round(float(a.loc[a.mover, "starts10"].mean()), 4),
                                        "stayers": round(float(a.loc[~a.mover, "starts10"].mean()), 4)}
+    a["starts10j"], a["missed_before"] = starts_after_joining(a)
+    run("starts_in_first_10_after_joining", a, ["starts10j"])
+    out["starts_after_joining_rates"] = {"movers": round(float(a.loc[a.mover, "starts10j"].mean()), 4),
+                                         "stayers": round(float(a.loc[~a.mover, "starts10j"].mean()), 4)}
+    out["matches_before_first_squad"] = {"movers": round(float(a.loc[a.mover, "missed_before"].mean()), 2),
+                                         "stayers": round(float(a.loc[~a.mover, "missed_before"].mean()), 2),
+                                         "never_in_squad_movers": int(a.loc[a.mover, "missed_before"].isna().sum())}
     # by fee band and by whether the buying club made more shots the season before: is the
     # gap about squad fillers and step-ups to deeper squads?
     t = T.fees().merge(a.loc[a.mover, ["tm_player_id", "club_id1", "yr"]], on=["tm_player_id", "club_id1"])
     t = (t[(t.date >= pd.to_datetime(t.yr.astype(str) + "-07-01"))
            & (t.date <= pd.to_datetime((t.yr + 1).astype(str) + "-12-31"))]
          .sort_values("date").drop_duplicates(["tm_player_id", "club_id1", "yr"], keep="last"))
-    a = a.merge(t[["tm_player_id", "club_id1", "yr", "transfer_fee"]], on=["tm_player_id", "club_id1", "yr"], how="left")
+    a = a.merge(t[["tm_player_id", "club_id1", "yr", "transfer_fee"]].assign(has_row=True),
+                on=["tm_player_id", "club_id1", "yr"], how="left")
+    a["has_row"] = a.has_row.fillna(False).astype(bool)
+    # loan returns: he had earlier gone from the buying club to the selling club, so the
+    # "move" is a loan ending (the loan flag above only catches loans that end later)
+    tr = pd.read_csv(SOURCE / "transfermarkt" / "transfers.csv.gz",
+                     usecols=["player_id", "transfer_date", "from_club_id", "to_club_id"])
+    tr["date"] = pd.to_datetime(tr.transfer_date, errors="coerce")
+    e = a.loc[a.mover, ["tm_player_id", "club_id0", "club_id1", "yr"]].merge(
+        tr, left_on=["tm_player_id", "club_id1", "club_id0"], right_on=["player_id", "from_club_id", "to_club_id"])
+    e = e[(e.date >= pd.to_datetime((e.yr - 2).astype(str) + "-07-01"))
+          & (e.date <= pd.to_datetime((e.yr + 1).astype(str) + "-06-30"))]
+    lr = set(zip(e.tm_player_id, e.yr))
+    a["loan_return"] = np.array([(i, y) in lr for i, y in zip(a.tm_player_id, a.yr)]) & a.mover.to_numpy()
     a["fee_band"] = np.where(~a.mover, "stayer", pd.cut(a.transfer_fee.fillna(-1), [-2, -0.5, 0, 10e6, 30e6, 1e12],
                              labels=["No fee on record", "Free or loan", "Under €10m", "€10m–30m", "Over €30m"]).astype(str))
     out["by_fee_band"] = {}
@@ -189,7 +228,34 @@ def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     for b in ["Free or loan", "Under €10m", "€10m–30m", "Over €30m", "No fee on record", "Any fee paid"]:
         x = a[(a.fee_band.isin(paid) if b == "Any fee paid" else (a.fee_band == b)) | ~a.mover]
         p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
-        out["by_fee_band"][b] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0])}
+        out["by_fee_band"][b] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0]) | {"p": round(float(pv[0]), 4)},
+                                 "loan_returns": int((x.mover & x.loan_return).sum())}
+    nf = a.mover & (a.fee_band == "No fee on record")
+    out["no_fee_audit"] = {"movers": int(nf.sum()), "loan_returns": int((nf & a.loan_return).sum()),
+                           "transfer_row_without_fee": int((nf & a.has_row & ~a.loan_return).sum()),
+                           "no_transfer_row": int((nf & ~a.has_row & ~a.loan_return).sum()),
+                           # a player with no Transfermarkt transfer history at all: the mirror
+                           # holds transfers for players it still follows, so a missing history
+                           # mostly means a later career outside its coverage, known only after
+                           "no_transfer_history_at_all": int((nf & ~a.tm_player_id.isin(set(tr.player_id))).sum()),
+                           "by_first_season": {str(k): int(v) for k, v in a[nf].groupby("yr").size().items()},
+                           "movers_by_first_season": {str(k): int(v) for k, v in a[a.mover].groupby("yr").size().items()}}
+    for nm, keep in (("without_loan_returns", ~a.loan_return),
+                     ("no_fee_without_loan_returns", (nf & ~a.loan_return) | ~a.mover),
+                     ("without_no_fee_moves", ~nf),
+                     ("loan_returns_only", a.loan_return | ~a.mover)):
+        x = a[keep]
+        p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+        out["no_fee_audit"][nm] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0]) | {"p": round(float(pv[0]), 4)}}
+    # a second family, named after the results were seen: the five disjoint fee bands, the
+    # two starts measures and the loan-return split, Holm-corrected together
+    fam = {f"fee {b}": out["by_fee_band"][b]["badf"]["p"] for b in
+           ["Free or loan", "Under €10m", "€10m–30m", "Over €30m", "No fee on record"]}
+    fam["starts, first 10 club matches"] = out["starts_in_first_10_matches"]["starts10"]["p"]
+    fam["starts, 10 matches from first squad"] = out["starts_in_first_10_after_joining"]["starts10j"]["p"]
+    fam["no-fee moves without loan returns"] = out["no_fee_audit"]["no_fee_without_loan_returns"]["badf"]["p"]
+    adj = R.holm({k: max(v, 1 / N_BOOT) for k, v in fam.items()})
+    out["post_hoc_family"] = {k: {"p": fam[k], "p_holm": adj[k], "survives": bool(adj[k] < 0.05)} for k in fam}
     pp_ = pd.read_parquet(WORK / "panel.parquet", columns=["season", "club_id", "team_actions", "team_games"])
     pp_["yr"] = pp_.season.str[:4].astype(int)
     stg = (pp_.drop_duplicates(["club_id", "yr"]).set_index(["club_id", "yr"])
@@ -376,6 +442,18 @@ def lee_bounds(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     return res
 
 
+def predictor_baseline(a: pd.DataFrame) -> dict:
+    """The flop predictor against a one-input baseline: last season's output per 90 alone.
+    A flop is a fall from last season, so a big last season predicts one mechanically."""
+    mv = a[a.mover & ~a.lost].reset_index(drop=True)
+    X = R.features(mv)
+    y, yr = mv.flop.to_numpy(float), mv.yr.to_numpy()
+    full, _ = R.fit_score(X, y, yr)
+    base_, _ = R.fit_score(X[["log out per 90 last season"]], y, yr)
+    return {"full": {k: full[k] for k in ("auc", "auc_lo", "auc_hi", "test_moves")},
+            "output_only": {k: base_[k] for k in ("auc", "auc_lo", "auc_hi", "test_moves")}}
+
+
 def full_time_check() -> dict:
     """For a player on the pitch for every league minute, his team's actions while he was on
     must equal all its actions: the test that would have caught the stoppage-time bug."""
@@ -519,6 +597,7 @@ def main():
         res["min_detectable_points"] = {k: round(2.8 * (x["hi"] - x["lo"]) / 3.92 * 100, 1) for k, x in (
             ("flop", rr["rtm"]["regression"]["flopf"]), ("flop_or_lost", rr["lost_place"]["regression"]["bad_gap"]))}
         res["full_time_check"] = full_time_check()
+        res["predictor_baseline"] = predictor_baseline(a)
     (OUT / "rivals.json").write_text(json.dumps(res, indent=1, ensure_ascii=False) + "\n")
     print(json.dumps(res, indent=1, ensure_ascii=False))
 

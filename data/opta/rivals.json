@@ -119,54 +119,186 @@
    "movers": 0.3941,
    "stayers": 0.5555
   },
+  "starts_in_first_10_after_joining": {
+   "n_movers": 624,
+   "n_stayers": 1885,
+   "starts10j": {
+    "point": -0.0919,
+    "lo": -0.1212,
+    "hi": -0.0623,
+    "p": 0.0005
+   }
+  },
+  "starts_after_joining_rates": {
+   "movers": 0.4947,
+   "stayers": 0.5851
+  },
+  "matches_before_first_squad": {
+   "movers": 3.42,
+   "stayers": 0.83,
+   "never_in_squad_movers": 0
+  },
   "by_fee_band": {
    "Free or loan": {
     "n_movers": 216,
     "badf": {
      "point": 0.0864,
      "lo": 0.0157,
-     "hi": 0.1558
-    }
+     "hi": 0.1558,
+     "p": 0.006
+    },
+    "loan_returns": 41
    },
    "Under €10m": {
     "n_movers": 96,
     "badf": {
      "point": 0.1195,
      "lo": 0.0144,
-     "hi": 0.2241
-    }
+     "hi": 0.2241,
+     "p": 0.022
+    },
+    "loan_returns": 1
    },
    "€10m–30m": {
     "n_movers": 94,
     "badf": {
      "point": -0.0381,
      "lo": -0.1286,
-     "hi": 0.0591
-    }
+     "hi": 0.0591,
+     "p": 0.438
+    },
+    "loan_returns": 3
    },
    "Over €30m": {
     "n_movers": 62,
     "badf": {
      "point": 0.0712,
      "lo": -0.0592,
-     "hi": 0.2007
-    }
+     "hi": 0.2007,
+     "p": 0.276
+    },
+    "loan_returns": 0
    },
    "No fee on record": {
     "n_movers": 156,
     "badf": {
      "point": 0.3678,
      "lo": 0.2931,
-     "hi": 0.4434
-    }
+     "hi": 0.4434,
+     "p": 0.001
+    },
+    "loan_returns": 2
    },
    "Any fee paid": {
     "n_movers": 252,
     "badf": {
      "point": 0.0448,
      "lo": -0.0212,
-     "hi": 0.1062
+     "hi": 0.1062,
+     "p": 0.176
+    },
+    "loan_returns": 4
+   }
+  },
+  "no_fee_audit": {
+   "movers": 156,
+   "loan_returns": 2,
+   "transfer_row_without_fee": 5,
+   "no_transfer_row": 149,
+   "no_transfer_history_at_all": 108,
+   "by_first_season": {
+    "2017": 38,
+    "2018": 32,
+    "2019": 31,
+    "2020": 27,
+    "2021": 20,
+    "2022": 8
+   },
+   "movers_by_first_season": {
+    "2017": 95,
+    "2018": 112,
+    "2019": 99,
+    "2020": 101,
+    "2021": 116,
+    "2022": 101
+   },
+   "without_loan_returns": {
+    "n_movers": 577,
+    "badf": {
+     "point": 0.1401,
+     "lo": 0.0935,
+     "hi": 0.1877,
+     "p": 0.001
     }
+   },
+   "no_fee_without_loan_returns": {
+    "n_movers": 154,
+    "badf": {
+     "point": 0.364,
+     "lo": 0.2891,
+     "hi": 0.4363,
+     "p": 0.001
+    }
+   },
+   "without_no_fee_moves": {
+    "n_movers": 468,
+    "badf": {
+     "point": 0.0629,
+     "lo": 0.0132,
+     "hi": 0.1163,
+     "p": 0.008
+    }
+   },
+   "loan_returns_only": {
+    "n_movers": 47,
+    "badf": {
+     "point": 0.1504,
+     "lo": 0.017,
+     "hi": 0.2925,
+     "p": 0.024
+    }
+   }
+  },
+  "post_hoc_family": {
+   "fee Free or loan": {
+    "p": 0.006,
+    "p_holm": 0.024,
+    "survives": true
+   },
+   "fee Under €10m": {
+    "p": 0.022,
+    "p_holm": 0.066,
+    "survives": false
+   },
+   "fee €10m–30m": {
+    "p": 0.438,
+    "p_holm": 0.552,
+    "survives": false
+   },
+   "fee Over €30m": {
+    "p": 0.276,
+    "p_holm": 0.552,
+    "survives": false
+   },
+   "fee No fee on record": {
+    "p": 0.001,
+    "p_holm": 0.006,
+    "survives": true
+   },
+   "starts, first 10 club matches": {
+    "p": 0.0005,
+    "p_holm": 0.004,
+    "survives": true
+   },
+   "starts, 10 matches from first squad": {
+    "p": 0.0005,
+    "p_holm": 0.004,
+    "survives": true
+   },
+   "no-fee moves without loan returns": {
+    "p": 0.001,
+    "p_holm": 0.006,
+    "survives": true
    }
   },
   "by_buying_club_strength": {

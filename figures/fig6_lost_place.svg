@@ -29,10 +29,10 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 132.048 297.635 
-L 324.144 297.635 
-L 324.144 172.355 
-L 132.048 172.355 
+    <path d="M 132.048 318.26 
+L 324.144 318.26 
+L 324.144 192.98 
+L 132.048 192.98 
 z
 " style="fill: #ffffff"/>
    </g>
@@ -40,36 +40,36 @@ z
     <g id="xtick_1">
      <g id="line2d_1"/>
      <g id="text_1">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="132.048" y="311.131" transform="rotate(-0 132.048 311.131)">10%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="132.048" y="331.756" transform="rotate(-0 132.048 331.756)">10%</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_2"/>
      <g id="text_2">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="196.08" y="311.131" transform="rotate(-0 196.08 311.131)">20%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="196.08" y="331.756" transform="rotate(-0 196.08 331.756)">20%</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3"/>
      <g id="text_3">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="260.112" y="311.131" transform="rotate(-0 260.112 311.131)">30%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="260.112" y="331.756" transform="rotate(-0 260.112 331.756)">30%</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4"/>
      <g id="text_4">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="324.144" y="311.131" transform="rotate(-0 324.144 311.131)">40%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="324.144" y="331.756" transform="rotate(-0 324.144 331.756)">40%</text>
      </g>
     </g>
     <g id="text_5">
-     <text style="font-size: 8.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="228.096" y="325.4595" transform="rotate(-0 228.096 325.4595)">share of players under 900 league minutes</text>
+     <text style="font-size: 8.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="228.096" y="346.0845" transform="rotate(-0 228.096 346.0845)">share of players under 900 league minutes</text>
     </g>
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="line2d_5">
-    <path d="M 241.158528 193.235 
-L 281.690784 193.235 
-" clip-path="url(#p7ec55f9da7)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 241.158528 213.86 
+L 281.690784 213.86 
+" clip-path="url(#p3c8b8af54e)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_6">
     <defs>
@@ -85,14 +85,14 @@ C -2.338109 4.025852 -1.193414 4.5 0 4.5
 z
 " style="stroke: #1b64c2"/>
     </defs>
-    <g clip-path="url(#p7ec55f9da7)">
-     <use xlink:href="#mde4b343246" x="261.968928" y="193.235" style="fill: #1b64c2; stroke: #1b64c2"/>
+    <g clip-path="url(#p3c8b8af54e)">
+     <use xlink:href="#mde4b343246" x="261.968928" y="213.86" style="fill: #1b64c2; stroke: #1b64c2"/>
     </g>
    </g>
    <g id="line2d_7">
-    <path d="M 177.702816 219.335 
-L 198.449184 219.335 
-" clip-path="url(#p7ec55f9da7)" style="fill: none; stroke: #767671; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 177.702816 239.96 
+L 198.449184 239.96 
+" clip-path="url(#p3c8b8af54e)" style="fill: none; stroke: #767671; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_8">
     <defs>
@@ -108,58 +108,58 @@ C -2.338109 4.025852 -1.193414 4.5 0 4.5
 z
 " style="stroke: #767671"/>
     </defs>
-    <g clip-path="url(#p7ec55f9da7)">
-     <use xlink:href="#m902bc59d40" x="187.75584" y="219.335" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p3c8b8af54e)">
+     <use xlink:href="#m902bc59d40" x="187.75584" y="239.96" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_9">
-    <path d="M 253.324608 255.875 
-L 302.116992 255.875 
-" clip-path="url(#p7ec55f9da7)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 253.324608 276.5 
+L 302.116992 276.5 
+" clip-path="url(#p3c8b8af54e)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_10">
-    <g clip-path="url(#p7ec55f9da7)">
-     <use xlink:href="#mde4b343246" x="277.336608" y="255.875" style="fill: #1b64c2; stroke: #1b64c2"/>
+    <g clip-path="url(#p3c8b8af54e)">
+     <use xlink:href="#mde4b343246" x="277.336608" y="276.5" style="fill: #1b64c2; stroke: #1b64c2"/>
     </g>
    </g>
    <g id="line2d_11">
-    <path d="M 181.35264 281.975 
-L 205.428672 281.975 
-" clip-path="url(#p7ec55f9da7)" style="fill: none; stroke: #767671; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 181.35264 302.6 
+L 205.428672 302.6 
+" clip-path="url(#p3c8b8af54e)" style="fill: none; stroke: #767671; stroke-opacity: 0.2; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_12">
-    <g clip-path="url(#p7ec55f9da7)">
-     <use xlink:href="#m902bc59d40" x="193.006464" y="281.975" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p3c8b8af54e)">
+     <use xlink:href="#m902bc59d40" x="193.006464" y="302.6" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 132.048 297.635 
-L 324.144 297.635 
+    <path d="M 132.048 318.26 
+L 324.144 318.26 
 " style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_6">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="261.968928" y="184.584" transform="rotate(-0 261.968928 184.584)">30%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="261.968928" y="205.209" transform="rotate(-0 261.968928 205.209)">30%</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="196.93" transform="rotate(-0 132.048 196.93)">Understat, moved  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="217.555" transform="rotate(-0 132.048 217.555)">Understat, moved  </text>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="187.75584" y="210.684" transform="rotate(-0 187.75584 210.684)">19%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="187.75584" y="231.309" transform="rotate(-0 187.75584 231.309)">19%</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="223.03" transform="rotate(-0 132.048 223.03)">Understat, stayed  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="243.655" transform="rotate(-0 132.048 243.655)">Understat, stayed  </text>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="277.336608" y="247.224" transform="rotate(-0 277.336608 247.224)">33%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="277.336608" y="267.849" transform="rotate(-0 277.336608 267.849)">33%</text>
    </g>
    <g id="text_11">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="259.57" transform="rotate(-0 132.048 259.57)">Opta, moved  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="280.195" transform="rotate(-0 132.048 280.195)">Opta, moved  </text>
    </g>
    <g id="text_12">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="193.006464" y="273.324" transform="rotate(-0 193.006464 273.324)">20%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="193.006464" y="293.949" transform="rotate(-0 193.006464 293.949)">20%</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="285.67" transform="rotate(-0 132.048 285.67)">Opta, stayed  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="132.048" y="306.295" transform="rotate(-0 132.048 306.295)">Opta, stayed  </text>
    </g>
   </g>
   <g id="patch_4">
@@ -171,30 +171,31 @@ z
 " style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
   </g>
   <g id="text_14">
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 41.116523)">A third of movers fall below 900</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.199766)">league minutes the next season,</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">against a fifth of stayers</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 41.116523)">Three movers in ten fall below</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.199766)">900 league minutes the next</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">season, against one stayer in</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 114.871523)">five</text>
   </g>
   <g id="text_15">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 101.92125)">Attackers with 900 league minutes and 20 shots or</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 116.48375)">shot-assists in a season, and any Big-5 league appearance the</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 131.130625)">next. Share with under 900 league minutes the next season.</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 146.589219)">Bands: 95% intervals</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 122.54625)">Attackers with 900 league minutes and 20 shots or</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 137.10875)">shot-assists in a season, and any Big-5 league appearance the</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 151.755625)">next. Share with under 900 league minutes the next season.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 167.214219)">Bands: 95% intervals</text>
   </g>
   <g id="text_16">
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 407.886422)">Data: Understat, Opta via FBref, Transfermarkt</text>
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
   </g>
   <g id="text_17">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 342.00125)">Against stayers with the same last season, age and season,</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 356.648125)">the gap is +11.5 points (7.8 to 14.9) on Understat and +13.7</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 371.270781)">(9.5 to 17.8) on Opta, which shares Transfermarkt's minutes.</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 385.68875)">Players with no Big-5 league row next season are not counted.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 362.62625)">Against stayers with the same last season, age and season,</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 377.273125)">the gap is +11.5 points (7.8 to 14.9) on Understat and +13.7</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 391.895781)">(9.5 to 17.8) on Opta, which shares Transfermarkt's minutes.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 406.31375)">Players with no Big-5 league row next season are not counted.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="p7ec55f9da7">
-   <rect x="132.048" y="172.355" width="192.096" height="125.28"/>
+  <clipPath id="p3c8b8af54e">
+   <rect x="132.048" y="192.98" width="192.096" height="125.28"/>
   </clipPath>
  </defs>
 </svg>

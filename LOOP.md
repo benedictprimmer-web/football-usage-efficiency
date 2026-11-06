@@ -23,27 +23,27 @@ Lower of the two critics' scores. A dash means not yet scored.
 
 | Component | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| C1 First screen | 5 | 6 | 6 | – | – | – | – | – | – | – |
-| C2 Reproducibility | 7 | 7 | 7 | – | – | – | – | – | – | – |
-| C3 Inference | 4 | 5 | 6 | – | – | – | – | – | – | – |
-| C4 Alternative explanations | 5 | 5 | 5 | – | – | – | – | – | – | – |
-| C5 Leakage and look-ahead | 6 | 4 | 5 | – | – | – | – | – | – | – |
-| C6 Charts | 7 | 6 | 5 | – | – | – | – | – | – | – |
-| C7 Tradeability | 2 | 5 | 3 | – | – | – | – | – | – | – |
-| C8 Writing | 6 | 7 | 6 | – | – | – | – | – | – | – |
-| C9 Data and licences | 7 | 7 | 7 | – | – | – | – | – | – | – |
-| C10 Professional report | 5 | 6 | 6 | – | – | – | – | – | – | – |
+| C1 First screen | 5 | 6 | 6 | 5 | – | – | – | – | – | – |
+| C2 Reproducibility | 7 | 7 | 7 | 7 | – | – | – | – | – | – |
+| C3 Inference | 4 | 5 | 6 | 6 | – | – | – | – | – | – |
+| C4 Alternative explanations | 5 | 5 | 5 | 4 | – | – | – | – | – | – |
+| C5 Leakage and look-ahead | 6 | 4 | 5 | 6 | – | – | – | – | – | – |
+| C6 Charts | 7 | 6 | 5 | 6 | – | – | – | – | – | – |
+| C7 Tradeability | 2 | 5 | 3 | 4 | – | – | – | – | – | – |
+| C8 Writing | 6 | 7 | 6 | 6 | – | – | – | – | – | – |
+| C9 Data and licences | 7 | 7 | 7 | 7 | – | – | – | – | – | – |
+| C10 Professional report | 5 | 6 | 6 | 5 | – | – | – | – | – | – |
 
 ## Mechanical markers
 
-| Marker | Before round 1 (commit 51d7f74) | After round 1 | Before round 2 (8be91d6) | After round 2 | After round 3 |
-|---|---|---|---|---|---|
-| `./run_all.sh --quick` exits 0 | Pass | Pass | Pass | Pass | Pass (self-check failures now stop the build) |
-| `analysis/verify.py` prints no FAIL | Pass | Pass (122 checks, README and side studies) | Pass on `--quick`; the full rebuild FAILed 3 side-study checks (injuries) | Pass (149 checks) | Pass (181 checks) |
-| No em dashes in README, one-pager source or figure text | Pass | Pass | Pass | Pass | Pass |
-| No local home-directory paths in tracked files | Pass | Pass | Pass | Pass | Pass |
-| A second `./run_all.sh --quick` leaves `git status` clean | Fail: figures and the one-pager carried timestamps and random SVG ids | Pass | Pass | Pass | Pass |
-| A full `./run_all.sh` from raw data reproduces every committed table (added in round 2) | – | – | Fail: `injuries.json` changed | Pass: every file in `data/`, `figures/` and the one-pager byte for byte | Pass: a second full run reproduced every file; only `opta/rivals.json` changed, by gaining the pooled fee band added after the first |
+| Marker | Before round 1 (commit 51d7f74) | After round 1 | Before round 2 (8be91d6) | After round 2 | After round 3 | After round 4 |
+|---|---|---|---|---|---|---|
+| `./run_all.sh --quick` exits 0 | Pass | Pass | Pass | Pass | Pass (self-check failures now stop the build) | Pass |
+| `analysis/verify.py` prints no FAIL | Pass | Pass (122 checks, README and side studies) | Pass on `--quick`; the full rebuild FAILed 3 side-study checks (injuries) | Pass (149 checks) | Pass (181 checks) | Pass (185 checks, now also `docs/more_results.md`) |
+| No em dashes in README, one-pager source or figure text | Pass | Pass | Pass | Pass | Pass | Pass |
+| No local home-directory paths in tracked files | Pass | Pass | Pass | Pass | Pass | Pass |
+| A second `./run_all.sh --quick` leaves `git status` clean | Fail: figures and the one-pager carried timestamps and random SVG ids | Pass | Pass | Pass | Pass | Pass |
+| A full `./run_all.sh` from raw data reproduces every committed table (added in round 2) | – | – | Fail: `injuries.json` changed | Pass: every file in `data/`, `figures/` and the one-pager byte for byte | Pass: a second full run reproduced every file; only `opta/rivals.json` changed, by gaining the pooled fee band added after the first | Not rerun; only `rivals.json` changed, from a rerun of `rivals.py` on both sources |
 
 ## Round 1 council
 
@@ -115,3 +115,22 @@ Both critics found the "10 looks like" column of the component table overwritten
 - **Labels (C5, C8).** "Below 900 minutes" now uses the minutes-only measure where it says so; the sample is no longer called "known on the day"; the loan flag is named as using later information; Opta's AUC is "pseudo out of time"; the wrong commit message (5845cab) is cited next to the frozen file; causal verbs are gone from the title, headings and fig0.
 - **Charts (C6).** fig0 draws its intervals; fig2 has no highlight on a band that fails Holm; fig6 plots minutes-only rates with an axis label; fig1 drops its Opta sentence; fig3 names the specification it leaves out; the one-pager swaps the age panel for the lost-place checks and fixes a double negative.
 - **Report and data (C9, C10).** An "At a glance" table of each claim, whether it is conditional on keeping a place, its Holm status and whether its outcome was chosen before looking; review-process language moved out of the findings; player names removed from the predictions file; StatsBomb pinned to commit `4b73468`; the README says the Transfermarkt copy cannot be downloaded again and that the sources' terms, not this repo, govern commercial use.
+
+## Round 4 council
+
+On the headline as it stood on 6 November 2026: "After a move between two Big-5 clubs, an attacker is about 12 points more likely to flop or lose his place, almost all of it in moves where no fee was recorded; his share of his team's shots and shot-assists is about 4% lower; and if he keeps playing, his output per 90 is about where it was."
+
+- **Converged.** Every number matched `data/`. The minutes gap is real under every check; output among those who keep playing is flat; the work is observational and exploratory, and says so.
+- **Split.** "Flop or lose his place" is nearly all minutes; "almost all" overstates the no-fee share (about two thirds, with a quarter after free or loan moves); the share cut's selection bounds reach zero and the README did not say so; the starts gap counts matches before a late signing arrived; "no fee on record" had never been audited.
+- **Practice.** Plan for fewer minutes in a free or loan signing's first season; keep per-90 projections. Trading is untouched until a price is tested.
+- **Cannot be settled here.** Selling-club intent, any market edge, moves outside the Big-5.
+
+## Round 4 changes
+
+- **Starts from the day he joins (C4, C7).** Counting the 10 league matches from his first matchday squad at the new club, the starts gap is −8.2 points (−10.5 to −5.8), not −14.2: movers' first squad comes after 3.0 of the club's first 10 matches, against 0.8 for stayers. The headline uses the smaller number.
+- **The no-fee audit (C4, C5).** 272 of the 276 no-fee moves have no transfer row into the new club, 1 is a loan ending, and 233 belong to players with no Transfermarkt transfer history at all, concentrated in 2014–18. That may be information from after the move, so the fee split is labelled as possibly using hindsight. Without the no-fee moves the gap is +5.4 (+0.9 to +9.6); where a fee was paid, +1.8 (−3.8 to +7.4). Loan endings (55 moves) are now flagged; without them the gap is +12.0.
+- **Headline (C1).** It now leads with the fee qualifier, gives the starts gap from joining, and puts the share cut's Lee bounds (−9.0% to 0.0%) on the first screen, so it no longer claims more than selection allows.
+- **Inference (C3).** A second Holm family, named after looking, for the fee bands, both starts measures and the loan-ending split; the primary family's post-hoc naming is stated; the predictor gets a one-input baseline (last season's output alone scores 0.62 against 0.63).
+- **Charts (C6).** New fig7 for the fee bands, on the first screen next to fig6; fig0's subtitle is cut to two lines and its title says "no measurable change"; fig3 drops "Headline"; fig2 prints 0 rather than +0; the one-pager adds the fee rows to its checks panel and the fee qualifier to its text.
+- **Report and writing (C8, C10).** Method now comes before Inference; the luck benchmark, who flops, the predictor, midfielders, MLS and the within-player test moved to `docs/more_results.md` (still checked by `verify.py`); Holm, FBref and Lee bounds glossed at first use; process history cut from the findings; "three in ten" for 30%; the raw 33% labelled raw; the trading bullet now names what a bookmaker already knows and what is exposed.
+- **Data (C9).** `data/LICENSE.md` says the prediction file still identifies players through id, clubs and date, and that the headline tables rest on Understat, which publishes no licence.

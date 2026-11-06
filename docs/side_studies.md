@@ -40,7 +40,7 @@ The chemistry test again, on completed passes between new and established pairs 
 | Established pairs | 255, +0.1% | 1,531, −0.4% |
 | Gap | −0.6% (−7.9% to +6.3%) | −0.7% (−3.5% to +2.1%) |
 
-Three providers and three seasons agree: new pairs do not pass to each other more as a season goes on. Wyscout does not record who received a pass, so the receiver is the next player on the same team to touch the ball (92% of accurate open-play passes).
+Three providers and three seasons show no sign that new pairs pass to each other more as a season goes on. Wyscout does not record who received a pass, so the receiver is the next player on the same team to touch the ball (92% of accurate open-play passes).
 
 ## Stepping up from Portugal or the Eredivisie
 

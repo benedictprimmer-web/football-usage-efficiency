@@ -1,6 +1,6 @@
 # Licences for the files in `data/`
 
-Every committed file in `data/` is an aggregate or a small derived table; no raw third-party file is redistributed. This repository cannot grant rights over data derived from third parties: the sources' own terms apply, and the terms below say how this repo uses them. Each row says which sources a file is built from and the terms that follow from them. Where sources mix, the strictest terms apply. Code in this repository is MIT-licensed (see `../LICENSE`); these terms cover the data files only.
+Every committed file in `data/` is an aggregate or a small derived table; no raw third-party file is redistributed. This repository cannot grant rights over data derived from third parties: the sources' own terms apply, and the terms below say how this repo uses them. The headline tables rest on Understat, which publishes no licence, so they are shared at the owner's tolerance. Each row says which sources a file is built from and the terms that follow from them. Where sources mix, the strictest terms apply. Code in this repository is MIT-licensed (see `../LICENSE`); these terms cover the data files only.
 
 ## Sources and their terms
 
@@ -23,7 +23,7 @@ Every committed file in `data/` is an aggregate or a small derived table; no raw
 | `transfers.json`, `transfer_splits.csv`, `transfer_slices.csv`, `age_gaps.csv`, `buying_clubs.csv`, `noise_benchmark_draws_movers.csv`, `noise_benchmark_draws_stayers.csv` | Understat, Transfermarkt | Non-commercial, with credit |
 | `within_slopes.csv`, `within_bins.csv`, `curve_bins.csv`, `reliability.csv`, `summary.json` | Understat, Transfermarkt | Non-commercial, with credit |
 | `robustness.json`, `rivals.json`, `flop_model_frozen.json` | Understat, Transfermarkt | Non-commercial, with credit |
-| `predictions_2025_26.csv` | Understat, Transfermarkt (ids, clubs, transfer dates) | Research use, with credit. Player-level records: one row per Transfermarkt id with a model score; names removed on 6 November 2026 |
+| `predictions_2025_26.csv` | Understat, Transfermarkt (ids, clubs, transfer dates) | Research use, with credit. Player-level records: one row per Transfermarkt id with a model score; names were removed on 6 November 2026, but the id, clubs and transfer date still identify each player |
 | `frozen_score_2025_26.json` | Transfermarkt | Research use, with credit |
 | `case_studies.csv` | Understat, Transfermarkt (three players' season numbers) | Non-commercial, with credit |
 | `chemistry.json`, `chemistry_dose.csv`, `chemistry_top_pairs.csv` | Understat, Transfermarkt | Non-commercial, with credit |

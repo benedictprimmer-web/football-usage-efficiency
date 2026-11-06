@@ -119,54 +119,194 @@
    "movers": 0.4133,
    "stayers": 0.5561
   },
+  "starts_in_first_10_after_joining": {
+   "n_movers": 865,
+   "n_stayers": 2562,
+   "starts10j": {
+    "point": -0.0818,
+    "lo": -0.1054,
+    "hi": -0.0577,
+    "p": 0.0005
+   }
+  },
+  "starts_after_joining_rates": {
+   "movers": 0.5014,
+   "stayers": 0.584
+  },
+  "matches_before_first_squad": {
+   "movers": 2.96,
+   "stayers": 0.85,
+   "never_in_squad_movers": 0
+  },
   "by_fee_band": {
    "Free or loan": {
     "n_movers": 262,
     "badf": {
      "point": 0.0954,
      "lo": 0.0299,
-     "hi": 0.1642
-    }
+     "hi": 0.1642,
+     "p": 0.002
+    },
+    "loan_returns": 46
    },
    "Under €10m": {
     "n_movers": 115,
     "badf": {
      "point": 0.0332,
      "lo": -0.0604,
-     "hi": 0.134
-    }
+     "hi": 0.134,
+     "p": 0.5
+    },
+    "loan_returns": 3
    },
    "€10m–30m": {
     "n_movers": 126,
     "badf": {
      "point": 0.0248,
      "lo": -0.0577,
-     "hi": 0.1085
-    }
+     "hi": 0.1085,
+     "p": 0.558
+    },
+    "loan_returns": 5
    },
    "Over €30m": {
     "n_movers": 86,
     "badf": {
      "point": -0.0091,
      "lo": -0.1097,
-     "hi": 0.0957
-    }
+     "hi": 0.0957,
+     "p": 0.914
+    },
+    "loan_returns": 0
    },
    "No fee on record": {
     "n_movers": 276,
     "badf": {
      "point": 0.2525,
      "lo": 0.1878,
-     "hi": 0.3102
-    }
+     "hi": 0.3102,
+     "p": 0.001
+    },
+    "loan_returns": 1
    },
    "Any fee paid": {
     "n_movers": 327,
     "badf": {
      "point": 0.0179,
      "lo": -0.0376,
-     "hi": 0.0744
+     "hi": 0.0744,
+     "p": 0.51
+    },
+    "loan_returns": 8
+   }
+  },
+  "no_fee_audit": {
+   "movers": 276,
+   "loan_returns": 1,
+   "transfer_row_without_fee": 3,
+   "no_transfer_row": 272,
+   "no_transfer_history_at_all": 233,
+   "by_first_season": {
+    "2014": 59,
+    "2015": 49,
+    "2016": 44,
+    "2017": 34,
+    "2018": 28,
+    "2019": 21,
+    "2020": 18,
+    "2021": 13,
+    "2022": 8,
+    "2023": 2
+   },
+   "movers_by_first_season": {
+    "2014": 103,
+    "2015": 90,
+    "2016": 95,
+    "2017": 90,
+    "2018": 87,
+    "2019": 72,
+    "2020": 76,
+    "2021": 87,
+    "2022": 88,
+    "2023": 77
+   },
+   "without_loan_returns": {
+    "n_movers": 810,
+    "badf": {
+     "point": 0.12,
+     "lo": 0.0827,
+     "hi": 0.1581,
+     "p": 0.001
     }
+   },
+   "no_fee_without_loan_returns": {
+    "n_movers": 275,
+    "badf": {
+     "point": 0.2549,
+     "lo": 0.1905,
+     "hi": 0.3125,
+     "p": 0.001
+    }
+   },
+   "without_no_fee_moves": {
+    "n_movers": 589,
+    "badf": {
+     "point": 0.0543,
+     "lo": 0.0094,
+     "hi": 0.0961,
+     "p": 0.018
+    }
+   },
+   "loan_returns_only": {
+    "n_movers": 55,
+    "badf": {
+     "point": 0.0639,
+     "lo": -0.0654,
+     "hi": 0.2049,
+     "p": 0.374
+    }
+   }
+  },
+  "post_hoc_family": {
+   "fee Free or loan": {
+    "p": 0.002,
+    "p_holm": 0.008,
+    "survives": true
+   },
+   "fee Under €10m": {
+    "p": 0.5,
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "fee €10m–30m": {
+    "p": 0.558,
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "fee Over €30m": {
+    "p": 0.914,
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "fee No fee on record": {
+    "p": 0.001,
+    "p_holm": 0.006,
+    "survives": true
+   },
+   "starts, first 10 club matches": {
+    "p": 0.0005,
+    "p_holm": 0.004,
+    "survives": true
+   },
+   "starts, 10 matches from first squad": {
+    "p": 0.0005,
+    "p_holm": 0.004,
+    "survives": true
+   },
+   "no-fee moves without loan returns": {
+    "p": 0.001,
+    "p_holm": 0.006,
+    "survives": true
    }
   },
   "by_buying_club_strength": {
@@ -554,5 +694,19 @@
   "players": 269,
   "median_ratio": 1.0,
   "mean_ratio": 0.9994
+ },
+ "predictor_baseline": {
+  "full": {
+   "auc": 0.631,
+   "auc_lo": 0.548,
+   "auc_hi": 0.711,
+   "test_moves": 280
+  },
+  "output_only": {
+   "auc": 0.616,
+   "auc_lo": 0.536,
+   "auc_hi": 0.696,
+   "test_moves": 280
+  }
  }
 }
