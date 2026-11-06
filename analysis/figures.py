@@ -27,6 +27,7 @@ BG = "#FFFFFF"
 MINUS = "−"
 REPO = "github.com/benedictprimmer-web/football-usage-efficiency"
 SOURCE_LINE = f"Data: Understat, Transfermarkt\nBen Rimmer · {REPO}"
+SOURCE_BOTH = f"Data: Understat, Opta via FBref, Transfermarkt\nBen Rimmer · {REPO}"
 
 plt.rcParams.update({
     "font.family": ["Helvetica Neue", "Arial", "DejaVu Sans"], "font.size": 11.5,
@@ -147,13 +148,17 @@ def draw_move(ax, r, fs=1.0):
 
 
 def fig_move(r):
+    sh = r["rtm"]["movers_last_season"]["share_movers"]
     fig, top = frame("A move costs an attacker about 4% of his share of the ball, and his "
                      "output per 90 barely changes",
-                     f"Change in xG+xA per 90 after a club move, minus the change for players "
-                     f"who stayed and had the same last season (decile of share, decile of "
-                     f"output per 90, age band, season), split into four parts that multiply "
-                     f"to output. {r['n_movers']} moves, {r['n_stayers']:,} stays. "
-                     f"Brackets: 95% intervals")
+                     f"Change in xG+xA per 90 after a move between Big-5 clubs, minus the change "
+                     f"for players who stayed, adjusted for last season (decile of share, decile "
+                     f"of output per 90, age band, season), split into four parts that multiply "
+                     f"to output, in % change. The share is relative: {pct(r['rtm']['regression']['d_share']['point'])} "
+                     f"of a {pct(sh, 1, False)} share is about "
+                     f"{abs(r['rtm']['regression']['d_share']['point']) * sh * 100:.1f} of a point. "
+                     f"{r['n_movers']} moves, {r['n_stayers']:,} stays, all with 900 minutes in "
+                     f"both seasons. Brackets: 95% intervals")
     ax = fig.add_axes([L, 0.14, R - L, top - 0.15])
     draw_move(ax, r)
     save(fig, "fig0_what_a_move_does")
@@ -164,10 +169,10 @@ def draw_luck(ax, t, fs=1.0):
     nb, ns, mv = t["noise_benchmark"], t["noise_benchmark_stayers"], t["movers_vs_stayers"]
     rows = [
         ("Moved club", mv["flop_rate_movers"]["point"], mv["flop_rate_movers"]["lo"],
-         mv["flop_rate_movers"]["hi"], PLAYER),
-        ("Moved, luck only", *nb["flop_rate_noise_only"], BLUE),
+         mv["flop_rate_movers"]["hi"], BLUE),
+        ("Moved, luck only", *nb["flop_rate_noise_only"], TEXT2),
         ("Stayed", mv["flop_rate_stayers"]["point"], mv["flop_rate_stayers"]["lo"],
-         mv["flop_rate_stayers"]["hi"], TEXT2),
+         mv["flop_rate_stayers"]["hi"], PLAYER),
         ("Stayed, luck only", *ns["flop_rate_noise_only"], LIGHT),
     ]
     for i, (lab, p, lo, hi, c) in enumerate(rows):
@@ -186,18 +191,19 @@ def draw_luck(ax, t, fs=1.0):
 def fig_luck(t):
     nb = t["noise_benchmark"]
     p = nb["player_share_noise_only"]
-    fig, top = frame("Movers flop no more often than luck alone predicts",
-                     "Share of seasons where output per 90 fell by more than 25%. For \"luck "
-                     "only\", each season keeps its real change of team and role, and the "
-                     "player's chance quality is redrawn from his own shots with his quality "
-                     "against team-mates fixed (200 runs). Bands: 95% intervals")
-    ax = fig.add_axes([L + 0.3, top - 0.33, R - L - 0.3, 0.31])
+    pp_ = json.loads((OUT / "rivals.json").read_text())["player_part_among_flops"]["movers"]
+    fig, top = frame("Movers' flop rate sits inside a luck benchmark too noisy to see a small rise",
+                     "Regulars on Understat: share of seasons where output per 90 fell by more "
+                     "than 25%. For \"luck only\", each season keeps its real change of team and "
+                     "role, and his chance quality is redrawn from his own shots (200 runs). "
+                     "Bands: 95% intervals")
+    ax = fig.add_axes([L + 0.3, top - 0.31, R - L - 0.3, 0.29])
     draw_luck(ax, t)
-    wrapped(fig, L, top - 0.40,
-            f"The player's own part of a flop: {pct(nb['player_share_observed'], 0, False)} in "
-            f"the data, {pct(p[0], 0, False)} ({pct(p[1], 0, False)} to {pct(p[2], 0, False)}) "
-            f"from luck. The benchmark runs a point high on stayers, cannot see a rise of 1 to "
-            f"3 points, and counts only players with 900 minutes after the move.",
+    wrapped(fig, L, top - 0.38,
+            f"His own part of a flop: {pct(pp_['point'], 0, False)} ({pct(pp_['lo'], 0, False)} to "
+            f"{pct(pp_['hi'], 0, False)}) in the data, {pct(p[0], 0, False)} ({pct(p[1], 0, False)} to "
+            f"{pct(p[2], 0, False)}) from luck. The benchmark cannot see a rise of 1 to 3 points. "
+            f"On Opta, movers flop more often than stayers.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig1_flops_look_like_luck")
 
@@ -205,12 +211,12 @@ def fig_luck(t):
 AGES = ["Under 23", "23–25", "26–28", "29 and over"]
 
 
-def draw_age(ax, sl, ag, fs=1.0):
+def draw_age(ax, sl, ag, fs=1.0, highlight=True):
     """Movers minus stayers in flop rate, by age band, with 95% intervals."""
     for i, b in enumerate(AGES):
         y = len(AGES) - 1 - i
         g = ag[ag.age_band == b].iloc[0]
-        hl = b == "26–28"
+        hl = highlight and b == "26–28"
         c = BLUE if hl else LIGHT
         ax.plot([g.lo * 100, g.hi * 100], [y, y], color=c, lw=2.5, solid_capstyle="butt")
         ax.plot(g.gap * 100, y, "o", ms=8, color=BLUE if hl else TEXT2)
@@ -316,8 +322,9 @@ def fig_chem(ds, c):
     ax = fig.add_axes([L + 0.3, top - 0.38, R - L - 0.3, 0.36])
     draw_chem(ax, ds)
     wrapped(fig, L, top - 0.47,
-            f"New pairs, second half of their first season against the first: "
-            f"{pct(g['growth'])} {ci(g['lo'], g['hi'])}. The same pair a season later: "
+            f"The bars compare whole pair-seasons. Two separate tests within the same pairs: "
+            f"new pairs in the second half of their first season against the first, "
+            f"{pct(g['growth'])} {ci(g['lo'], g['hi'])}; the same pair a season later, "
             f"{pct(n['growth'])} {ci(n['lo'], n['hi'])}.",
             (R - L) * W, fontsize=10, color=TEXT, va="top")
     save(fig, "fig4_chemistry")
@@ -348,10 +355,10 @@ def draw_depay(axes, cs, fs=1.0):
 
 
 def fig_depay(cs):
-    fig, top = frame("Depay's share of the ball rose a little at Lyon, and his chances got "
-                     "much better",
-                     "Memphis Depay, measured over the minutes he was on the pitch. Hollow: "
-                     "a small sample")
+    fig, top = frame("Depay's share of the ball rose a little at Lyon, and his chance quality "
+                     "rose from a small first sample",
+                     "Memphis Depay, measured over the minutes he was on the pitch. Hollow: a "
+                     "small sample, whose chance quality is uncertain by about 0.015 either way")
     gap = (top - 0.16) / 2
     a1 = fig.add_axes([L + 0.02, 0.16 + gap * 1.08, R - L - 0.04, gap * 0.72])
     a2 = fig.add_axes([L + 0.02, 0.16, R - L - 0.04, gap * 0.72])
@@ -359,14 +366,12 @@ def fig_depay(cs):
     save(fig, "fig5_depay")
 
 
-def draw_positions(ax, t, tm, fs=1.0):
-    """Attackers against midfielders after a move: share of the ball and net output."""
+def draw_positions(ax, r, rm, fs=1.0):
+    """Attackers against midfielders after a move, matched: share of the ball and net output."""
     rows = []
-    for lab, key in (("Share of the ball", "share"), ("Output per 90, net", "net")):
-        for who, x, c in (("Attackers", t, PLAYER), ("Midfielders", tm, BLUE)):
-            mv = x["movers_vs_stayers"]
-            v = mv["mean_log_gap_by_part"]["His share of the ball"] if key == "share" else mv["mean_log_gap"]
-            rows.append((lab, who, v, c))
+    for lab, key in (("Share of the ball", "d_share"), ("Output per 90, net", "d_out")):
+        for who, x, c in (("Attackers", r, PLAYER), ("Midfielders", rm, BLUE)):
+            rows.append((lab, who, x["rtm"]["regression"][key], c))
     ys = [3.6, 2.9, 1.2, 0.5]
     for y, (lab, who, v, c) in zip(ys, rows):
         ax.plot([v["lo"] * 100, v["hi"] * 100], [y, y], color=c, lw=2, alpha=0.5)
@@ -383,9 +388,46 @@ def draw_positions(ax, t, tm, fs=1.0):
     flat(ax, [-10, -5, 0, 5], [f"{MINUS}10", f"{MINUS}5", "0", "+5%"])
 
 
+def draw_lost(ax, r, ro, fs=1.0):
+    """Share of each group below 900 league minutes the next season, both sources."""
+    rows = []
+    for src, x in (("Understat", r), ("Opta", ro)):
+        lp = x["lost_place"]
+        rows += [(f"{src}, moved", lp["lost_movers"], BLUE), (f"{src}, stayed", lp["lost_stayers"], TEXT2)]
+    for i, (lab, v, c) in enumerate(rows):
+        y = 3 - i - (0.4 if i >= 2 else 0)
+        ax.plot([v["lo"] * 100, v["hi"] * 100], [y, y], color=c, lw=7, alpha=0.2, solid_capstyle="round")
+        ax.plot(v["point"] * 100, y, "o", ms=9, color=c)
+        ax.text(v["point"] * 100, y + 0.24, pct(v["point"], 0, False), ha="center", va="bottom",
+                fontsize=11 * fs, fontweight="bold", color=c)
+        ax.text(0, y, lab + "  ", ha="right", va="center", fontsize=10 * fs, color=TEXT,
+                transform=ax.get_yaxis_transform())
+    ax.set_xlim(10, 40)
+    ax.set_ylim(-1.0, 3.8)
+    flat(ax, [20, 30], ["20%", "30%"])
+
+
+def fig_lost(r, ro):
+    g, go = r["lost_place"]["regression"]["lost_gap"], ro["lost_place"]["regression"]["lost_gap"]
+    fig, top = frame("A third of movers fall below 900 league minutes the next season, "
+                     "against a fifth of stayers",
+                     "Attackers with 900 league minutes and 20 shots or shot-assists in a season, "
+                     "and any Big-5 league appearance the next. Share with under 900 league "
+                     "minutes the next season. Bands: 95% intervals", source=SOURCE_BOTH)
+    ax = fig.add_axes([L + 0.33, top - 0.31, R - L - 0.34, 0.29])
+    draw_lost(ax, r, ro)
+    wrapped(fig, L, top - 0.39,
+            f"Against stayers with the same last season, age and season, the gap is "
+            f"{g['point'] * 100:+.1f} points {ci(g['lo'], g['hi'])} on Understat and "
+            f"{go['point'] * 100:+.1f} {ci(go['lo'], go['hi'])} on Opta. Players with no "
+            f"Big-5 league row at all the next season are not counted, for either group.",
+            (R - L) * W, fontsize=10, color=PLAYER, va="top")
+    save(fig, "fig6_lost_place")
+
+
 # ------------------------------------------------------------------ one-pager
 
-def onepager(t, s, c, ws, sl, ag, ds, tm, r, ro):
+def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
     """A4 portrait summary, built from the same draw_* functions."""
     import qrcode
     mm = 1 / 25.4
@@ -405,7 +447,7 @@ def onepager(t, s, c, ws, sl, ag, ds, tm, r, ro):
 
     fig.patches.append(plt.Rectangle((15 / 210, 1 - 13 / 297), 14 / 210, 1.2 / 297, color=BLUE,
                                      transform=fig.transFigure, figure=fig))
-    txt(15, 16, "Why do transfers fail?", fontsize=24, fontweight="bold", color=PLAYER)
+    txt(15, 16, "What a move costs an attacker", fontsize=24, fontweight="bold", color=PLAYER)
     txt(15, 27, "Usage, playing time and luck after a move, Big-5, 2014–15 to 2024–25",
         fontsize=11, color=TEXT2)
     txt(195, 16, "Ben Rimmer", fontsize=11, fontweight="bold", color=PLAYER, ha="right")
@@ -423,20 +465,20 @@ def onepager(t, s, c, ws, sl, ag, ds, tm, r, ro):
     def pts(x):
         return (f"{x['point'] * 100:+.1f} points ({x['lo'] * 100:+.1f} to "
                 f"{x['hi'] * 100:+.1f})").replace("-", MINUS)
-    answer = (f"Against stayers with the same last season, a move cuts an attacker's share "
-              f"of his team's shots and shot-assists by {iv(g['d_share'])} (Opta "
-              f"{pct(go['d_share']['point'])}), and output per 90 barely moves "
-              f"({pct(g['d_out']['point'])}; Opta {pct(go['d_out']['point'])}). The larger "
-              f"cost is his place: {pct(lp['bad_movers']['point'], 0, False)} of movers flop or "
-              f"drop below 900 league minutes, against {pct(lp['bad_stayers']['point'], 0, False)} "
-              f"of stayers ({pts(lp['regression']['bad_gap'])} matched; Opta "
-              f"{lpo['regression']['bad_gap']['point'] * 100:+.1f}). Regulars who keep their "
-              f"place flop about as often as luck predicts on Understat, less clearly on Opta.")
+    rv = json.loads((OUT / "rivals.json").read_text())
+    answer = (f"After a move between Big-5 clubs, {pct(lp['bad_movers']['point'], 0, False)} of attackers "
+              f"flop or fall below 900 league minutes the next season, against "
+              f"{pct(lp['bad_stayers']['point'], 0, False)} of stayers ({pts(lp['regression']['bad_gap'])} "
+              f"matched on last season; Opta {lpo['regression']['bad_gap']['point'] * 100:+.1f}). His share of "
+              f"his team's shots and shot-assists falls by {iv(g['d_share'])}, partly set pieces: in open play "
+              f"{pct(rv['own_split']['d_share_open']['point'])}. If he keeps playing, output per 90 holds "
+              f"({pct(g['d_out']['point'])}; Opta {pct(go['d_out']['point'])}).")
     txt(15, 37, answer, width=118, fontsize=9, color=TEXT)
-    stats = [(pct(g["d_share"]["point"]), "share of the ball after a move, matched"),
-             (f"{lp['regression']['bad_gap']['point'] * 100:+.1f} pts".replace("-", MINUS),
-              "flop or lost his place, movers v stayers"),
-             (pct(gch["growth"]), f"pair chemistry, second season v first {ci(gch['lo'], gch['hi'])}")]
+    stats = [(f"{lp['regression']['bad_gap']['point'] * 100:+.1f} pts".replace("-", MINUS),
+              "flop or lost his place, movers v stayers, matched"),
+             (f"{pct(lp['lost_movers']['point'], 0, False)} v {pct(lp['lost_stayers']['point'], 0, False)}",
+              "under 900 league minutes next season, movers v stayers"),
+             (pct(g["d_share"]["point"]), "share of shots and shot-assists, matched")]
     for i, (big, small) in enumerate(stats):
         y0 = 36 + i * 10.5
         txt(146, y0, big, fontsize=14.5, fontweight="bold", color=BLUE)
@@ -445,15 +487,16 @@ def onepager(t, s, c, ws, sl, ag, ds, tm, r, ro):
     head(15, 70, "What a move does, against stayers with the same last season (per 90)")
     draw_move(box(15, 77, 180, 62), r, fs=0.95)
 
-    head(15, 151, "Flop rates against luck alone")
-    draw_luck(box(45, 158, 50, 40), t, fs=0.85)
+    head(15, 151, "Below 900 league minutes the next season")
+    draw_lost(box(40, 158, 55, 40), r, ro, fs=0.85)
     head(110, 151, "Same player, 5 points more of the ball")
     draw_within(box(110, 158, 85, 54), ws, fs=0.8)
 
     head(15, 222, "Flop rate by age, moved minus stayed (points)")
-    draw_age(box(40, 229, 55, 36), sl, ag, fs=0.85)
-    head(110, 222, "After a move: attackers v midfielders (raw)")
-    draw_positions(box(140, 229, 55, 36), t, tm, fs=0.85)
+    draw_age(box(40, 229, 55, 30), sl, ag, fs=0.85, highlight=False)
+    txt(15, 268.5, "No age band survives the correction for 11 tests.", fontsize=7, color=TEXT2)
+    head(110, 222, "After a move: attackers v midfielders (matched)")
+    draw_positions(box(140, 229, 55, 36), r, rm, fs=0.85)
 
     fig.lines.append(plt.Line2D([15 / 210, 195 / 210], [1 - 274 / 297] * 2, color=RULE, lw=0.8,
                                 transform=fig.transFigure))
@@ -488,13 +531,14 @@ def main():
     r = json.loads((OUT / "robustness.json").read_text())
     ro = json.loads((OUT / "opta" / "robustness.json").read_text())
     fig_move(r)
+    fig_lost(r, ro)
     fig_luck(t)
     fig_age(sl, ag, r["slice_family"]["age 26–28: movers v stayers"])
     fig_within(ws, s)
     fig_chem(ds, c)
     fig_depay(cs)
-    tm = json.loads((OUT / "mid" / "transfers.json").read_text())
-    onepager(t, s, c, ws, sl, ag, ds, tm, r, ro)
+    rm = json.loads((OUT / "mid" / "robustness.json").read_text())
+    onepager(t, s, c, ws, sl, ag, ds, rm, r, ro)
     print("figures written to", FIG)
 
 

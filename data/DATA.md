@@ -25,9 +25,10 @@ All aggregates, plus season numbers for three case-study players.
 | `asa.json`, `fpl.json`, `injuries.json`, `pass_checks.json` | MLS replication, FPL 2025–26 check, injuries and free transfers, Impect and Wyscout pass checks |
 | `mid/`, `opta/mid/` | The same tables for midfielders who are not attacking midfielders (`SAMPLE=mid`) |
 | `robustness.json` (and in `opta/`, `mid/`, `opta/mid/`) | Matching for regression to the mean, the denominator, flop or lost place, loans and promoted or relegated clubs, the second luck benchmark, Holm-adjusted slice tests, the predictor on every move |
+| `rivals.json` (and in `opta/`) | Round 2 checks: the lost-place gap under each check, survival, set pieces and open-play share, the flop line, club-season intervals, line-up position, name match, data minus luck, the primary test family |
 | `flop_model_frozen.json` | The flop-or-lost-place model frozen on 3 November 2026: features, scaling, coefficients |
-| `predictions_2025_26.csv` | Its predictions for 80 moves into 2025–26, committed before any outcome was read |
-| `frozen_score_2025_26.json` | The one scoring of those predictions on lost places (Transfermarkt minutes) |
+| `predictions_2025_26.csv` | Its predictions for 80 moves into 2025–26, committed 19 minutes before they were scored, with the outcomes already on disk (not a prospective test) |
+| `frozen_score_2025_26.json` | The scoring of those predictions on lost places (Transfermarkt minutes), a labelled post-hoc rescoring on a cleaned test set, and a count of the summer 2026 transfer records |
 
 ## What you need to supply
 
@@ -54,7 +55,7 @@ The crosswalk between the two sources is built from these files by `analysis/cro
 
 - **Source:** [understat.com](https://understat.com), via the `.rds` archive in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `understat_shots`, last updated 18 September 2025, when the project was archived). Big-5 leagues plus the Russian Premier League; Russia is not used here, because Transfermarkt line-ups cover the Big-5.
 - **How:** download the six `.rds` files from the release, then `src/usage_model/understat.py` turns them into `shots.parquet` (`tidy_shots` on each file, then concatenate).
-- **Licence:** Understat publishes no open licence. The owner has said the data is free for non-commercial use with attribution.
+- **Licence:** Understat publishes no licence or terms of reuse. This repo ships only aggregates, for non-commercial research, and commercial use would need Understat's permission.
 
 ### Transfermarkt tables
 
@@ -64,19 +65,20 @@ The crosswalk between the two sources is built from these files by `analysis/cro
 ### StatsBomb open data
 
 - **Source:** [statsbomb/open-data](https://github.com/statsbomb/open-data), 2015–16 Premier League, La Liga, Serie A and Ligue 1 (the Bundesliga file holds only Leverkusen and is left out).
+- **Version:** `analysis/statsbomb.py` fetches from the repository's `master` branch, which is not pinned, so a later change upstream could move the side-study numbers.
 - **Licence:** free for non-commercial research with attribution to StatsBomb. Raw data is not redistributed here.
 
 ### FBref/Opta shots
 
-- **Source:** Opta xG as published by [FBref](https://fbref.com) until January 2026, archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017–18, Portugal and the Eredivisie from 2018–19, to early 2025.
-- **Licence:** FBref's data is Opta's (Stats Perform). Use for non-commercial research with credit to FBref and Opta; the raw files are not redistributed here.
+- **Source:** Opta xG as published by [FBref](https://fbref.com) until January 2026, archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017–18, Portugal and the Eredivisie from 2018–19, to 3 February 2025 (19 January for Portugal and the Eredivisie).
+- **Licence:** FBref's data is Opta's (Stats Perform), and FBref is governed by the [Sports Reference terms of use](https://www.sports-reference.com/termsofuse.html). This repo ships only aggregates, for non-commercial research, with credit to FBref and Opta; the raw files are not redistributed.
 
 ### Sources for the extra checks
 
 - **American Soccer Analysis** API (MLS, 2013 on): CC BY-SA 4.0, credit ASA. Fetched by `analysis/asa.py` into `$SOURCE_DATA/asa/`.
 - **Fantasy Premier League archive**, [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) (MIT): `merged_gw.csv`, `players_raw.csv`, `teams.csv` for 2023–24 to 2025–26 in `$SOURCE_DATA/fpl/<season>/`.
 - **salimt/football-datasets** (Transfermarkt injuries; no licence stated, so research use only and never redistributed): `$SOURCE_DATA/salimt/`.
-- **Impect open data**, Bundesliga 2023–24 ([ImpectAPI/open-data](https://github.com/ImpectAPI/open-data)): non-commercial, no redistribution, credit Impect with its logo. `$SOURCE_DATA/impect/`.
+- **Impect open data**, Bundesliga 2023–24 ([ImpectAPI/open-data](https://github.com/ImpectAPI/open-data), commit `d412b35`): non-commercial, no redistribution, credit Impect with its logo. `$SOURCE_DATA/impect/`.
 - **Wyscout public dataset**, Pappalardo et al. 2019 ([figshare](https://figshare.com/collections/Soccer_match_event_dataset/4415000), CC BY 4.0): 2017–18 Big-5 events and matches in `$SOURCE_DATA/wyscout/`.
 
 ## Raw input checksums
@@ -124,4 +126,4 @@ SHA-256 of the copies the full rebuild used on 3 November 2026. A different copy
 | `fpl/2025-26/players_raw.csv` | `412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b` |
 | `fpl/2025-26/teams.csv` | `b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5` |
 
-Not checksummed: the StatsBomb files, which `analysis/statsbomb.py` downloads from statsbomb/open-data on first run, and the Impect files, a sparse clone of ImpectAPI/open-data.
+Not checksummed: the StatsBomb files, which `analysis/statsbomb.py` downloads from the unpinned `master` branch of statsbomb/open-data on first run, and the Impect files, a sparse clone of ImpectAPI/open-data at commit `d412b35943340d50867a48deddf64fb7b65c6191`.

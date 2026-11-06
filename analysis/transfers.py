@@ -405,7 +405,9 @@ def age_gaps(m: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     m = season_pairs()
-    m.to_parquet(WORK / "season_pairs.parquet", index=False)
+    # attackers and midfielders share WORK, so each sample gets its own file (before
+    # round 2 the midfielder run overwrote the attackers' pairs that injuries.py reads)
+    m.to_parquet(WORK / f"season_pairs{'_mid' if GROUP == 'midfielder' else ''}.parquet", index=False)
     res = {"pairs": int(len(m)), "players": int(m.tm_player_id.nunique()),
            "seasons": f"{m.yr.min()}-{m.yr.min() + 1} to {m.yr.max() + 1}-{m.yr.max() + 2}"}
     res["movers_vs_stayers"] = movers_vs_stayers(m)

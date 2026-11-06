@@ -1,7 +1,8 @@
 {
  "scored_on": "2026-11-03",
  "source": "Transfermarkt appearances to 28 June 2026",
- "what_is_scored": "lost his place (under 900 Big-5 league minutes in 2025-26); flops wait for 2025-26 shot data",
+ "prospective": false,
+ "what_is_scored": "lost his place (under 900 Big-5 league minutes in 2025-26); flops need 2025-26 Understat shots, which no source here has",
  "moves": 80,
  "lost_place": 21,
  "lost_rate": 0.263,
@@ -10,5 +11,23 @@
  "auc_hi": 0.681,
  "lost_rate_riskier_half": 0.3,
  "lost_rate_safer_half": 0.225,
- "mean_predicted_flop_or_lost": 0.404
+ "mean_predicted_flop_or_lost": 0.404,
+ "post_hoc_clean_subset": {
+  "what": "summer moves (to 1 September 2025) to clubs with a 2025-26 Big-5 league appearance, minutes at the new club only; a correction made after the first score was seen",
+  "dropped_not_big5": 4,
+  "dropped_january": 8,
+  "moves": 70,
+  "lost_place": 20,
+  "lost_rate": 0.286,
+  "auc_lost_place": 0.521,
+  "auc_lo": 0.37,
+  "auc_hi": 0.676,
+  "lost_rate_riskier_half": 0.286,
+  "lost_rate_safer_half": 0.286,
+  "mean_predicted_flop_or_lost": 0.393
+ },
+ "summer_2026_records": {
+  "records_1_june_to_1_september": 2850,
+  "dated_30_june_or_1_july": 2799
+ }
 }

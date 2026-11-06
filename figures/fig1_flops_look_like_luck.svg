@@ -29,10 +29,10 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 121.68 298.15 
-L 327.6 298.15 
-L 327.6 164.23 
-L 121.68 164.23 
+    <path d="M 121.68 297.635 
+L 327.6 297.635 
+L 327.6 172.355 
+L 121.68 172.355 
 z
 " style="fill: #ffffff"/>
    </g>
@@ -40,52 +40,29 @@ z
     <g id="xtick_1">
      <g id="line2d_1"/>
      <g id="text_1">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="165.805714" y="311.646" transform="rotate(-0 165.805714 311.646)">15%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="165.805714" y="311.131" transform="rotate(-0 165.805714 311.131)">15%</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_2"/>
      <g id="text_2">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="239.348571" y="311.646" transform="rotate(-0 239.348571 311.646)">20%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="239.348571" y="311.131" transform="rotate(-0 239.348571 311.131)">20%</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3"/>
      <g id="text_3">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="312.891429" y="311.646" transform="rotate(-0 312.891429 311.646)">25%</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="312.891429" y="311.131" transform="rotate(-0 312.891429 311.131)">25%</text>
      </g>
     </g>
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="line2d_4">
-    <path d="M 183.014743 187.024894 
-L 272.589943 187.024894 
-" clip-path="url(#p072f281dc7)" style="fill: none; stroke: #1d1d1b; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 183.014743 193.679255 
+L 272.589943 193.679255 
+" clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_5">
-    <defs>
-     <path id="m2b6a40e2ac" d="M 0 4.5 
-C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
-C 4.025852 2.338109 4.5 1.193414 4.5 0 
-C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
-C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
-C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
-C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
-C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
-C -2.338109 4.025852 -1.193414 4.5 0 4.5 
-z
-" style="stroke: #1d1d1b"/>
-    </defs>
-    <g clip-path="url(#p072f281dc7)">
-     <use xlink:href="#m2b6a40e2ac" x="226.552114" y="187.024894" style="fill: #1d1d1b; stroke: #1d1d1b"/>
-    </g>
-   </g>
-   <g id="line2d_6">
-    <path d="M 233.9064 215.518511 
-L 304.9488 215.518511 
-" clip-path="url(#p072f281dc7)" style="fill: none; stroke: #1b64c2; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
-   </g>
-   <g id="line2d_7">
     <defs>
      <path id="mde4b343246" d="M 0 4.5 
 C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
@@ -99,16 +76,16 @@ C -2.338109 4.025852 -1.193414 4.5 0 4.5
 z
 " style="stroke: #1b64c2"/>
     </defs>
-    <g clip-path="url(#p072f281dc7)">
-     <use xlink:href="#mde4b343246" x="265.824" y="215.518511" style="fill: #1b64c2; stroke: #1b64c2"/>
+    <g clip-path="url(#pbd2b1142de)">
+     <use xlink:href="#mde4b343246" x="226.552114" y="193.679255" style="fill: #1b64c2; stroke: #1b64c2"/>
     </g>
    </g>
-   <g id="line2d_8">
-    <path d="M 183.603086 252.560213 
-L 229.788 252.560213 
-" clip-path="url(#p072f281dc7)" style="fill: none; stroke: #767671; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   <g id="line2d_6">
+    <path d="M 233.9064 220.334574 
+L 304.9488 220.334574 
+" clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #767671; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
    </g>
-   <g id="line2d_9">
+   <g id="line2d_7">
     <defs>
      <path id="m902bc59d40" d="M 0 4.5 
 C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
@@ -122,14 +99,37 @@ C -2.338109 4.025852 -1.193414 4.5 0 4.5
 z
 " style="stroke: #767671"/>
     </defs>
-    <g clip-path="url(#p072f281dc7)">
-     <use xlink:href="#m902bc59d40" x="206.695543" y="252.560213" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#pbd2b1142de)">
+     <use xlink:href="#m902bc59d40" x="265.824" y="220.334574" style="fill: #767671; stroke: #767671"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 183.603086 254.986489 
+L 229.788 254.986489 
+" clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #1d1d1b; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <defs>
+     <path id="m2b6a40e2ac" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #1d1d1b"/>
+    </defs>
+    <g clip-path="url(#pbd2b1142de)">
+     <use xlink:href="#m2b6a40e2ac" x="206.695543" y="254.986489" style="fill: #1d1d1b; stroke: #1d1d1b"/>
     </g>
    </g>
    <g id="line2d_10">
-    <path d="M 200.370857 281.05383 
-L 237.289371 281.05383 
-" clip-path="url(#p072f281dc7)" style="fill: none; stroke: #b9b8b3; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
+    <path d="M 200.370857 281.641809 
+L 237.289371 281.641809 
+" clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #b9b8b3; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_11">
     <defs>
@@ -145,38 +145,38 @@ C -2.338109 4.025852 -1.193414 4.5 0 4.5
 z
 " style="stroke: #b9b8b3"/>
     </defs>
-    <g clip-path="url(#p072f281dc7)">
-     <use xlink:href="#m57bad921ab" x="220.962857" y="281.05383" style="fill: #b9b8b3; stroke: #b9b8b3"/>
+    <g clip-path="url(#pbd2b1142de)">
+     <use xlink:href="#m57bad921ab" x="220.962857" y="281.641809" style="fill: #b9b8b3; stroke: #b9b8b3"/>
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 121.68 298.15 
-L 327.6 298.15 
+    <path d="M 121.68 297.635 
+L 327.6 297.635 
 " style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_4">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="226.552114" y="177.799426" transform="rotate(-0 226.552114 177.799426)">19%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="226.552114" y="184.894979" transform="rotate(-0 226.552114 184.894979)">19%</text>
    </g>
    <g id="text_5">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="190.719894" transform="rotate(-0 121.68 190.719894)">Moved club  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="197.374255" transform="rotate(-0 121.68 197.374255)">Moved club  </text>
    </g>
    <g id="text_6">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1b64c2" x="265.824" y="206.293043" transform="rotate(-0 265.824 206.293043)">22%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="265.824" y="211.550298" transform="rotate(-0 265.824 211.550298)">22%</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="219.213511" transform="rotate(-0 121.68 219.213511)">Moved, luck only  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="224.029574" transform="rotate(-0 121.68 224.029574)">Moved, luck only  </text>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="206.695543" y="243.334745" transform="rotate(-0 206.695543 243.334745)">18%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="206.695543" y="246.202213" transform="rotate(-0 206.695543 246.202213)">18%</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="256.255213" transform="rotate(-0 121.68 256.255213)">Stayed  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="258.681489" transform="rotate(-0 121.68 258.681489)">Stayed  </text>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #b9b8b3" x="220.962857" y="271.828362" transform="rotate(-0 220.962857 271.828362)">19%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #b9b8b3" x="220.962857" y="272.857532" transform="rotate(-0 220.962857 272.857532)">19%</text>
    </g>
    <g id="text_11">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="284.74883" transform="rotate(-0 121.68 284.74883)">Stayed, luck only  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="285.336809" transform="rotate(-0 121.68 285.336809)">Stayed, luck only  </text>
    </g>
   </g>
   <g id="patch_4">
@@ -188,30 +188,29 @@ z
 " style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
   </g>
   <g id="text_12">
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Movers flop no more often than</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">luck alone predicts</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Movers' flop rate sits inside a</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">luck benchmark too noisy to see a</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 90.286523)">small rise</text>
   </g>
   <g id="text_13">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 81.390781)">Share of seasons where output per 90 fell by more than 25%.</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 95.898594)">For "luck only", each season keeps its real change of team</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 110.47125)">and role, and the player's chance quality is redrawn from his</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 125.068125)">own shots with his quality against team-mates fixed (200</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 139.690781)">runs). Bands: 95% intervals</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 101.961094)">Regulars on Understat: share of seasons where output per 90</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 116.53375)">fell by more than 25%. For "luck only", each season keeps its</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 131.086094)">real change of team and role, and his chance quality is</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 145.753281)">redrawn from his own shots (200 runs). Bands: 95% intervals</text>
   </g>
   <g id="text_14">
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
   </g>
   <g id="text_15">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 338.290781)">The player's own part of a flop: 39% in the data, 33% (28% to</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 352.843125)">38%) from luck. The benchmark runs a point high on stayers,</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 367.37125)">cannot see a rise of 1 to 3 points, and counts only players</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 382.914219)">with 900 minutes after the move.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 337.825781)">His own part of a flop: 39% (30% to 48%) in the data, 33%</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 352.388281)">(28% to 38%) from luck. The benchmark cannot see a rise of 1</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 366.900781)">to 3 points. On Opta, movers flop more often than stayers.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="p072f281dc7">
-   <rect x="121.68" y="164.23" width="205.92" height="133.92"/>
+  <clipPath id="pbd2b1142de">
+   <rect x="121.68" y="172.355" width="205.92" height="125.28"/>
   </clipPath>
  </defs>
 </svg>

@@ -1,13 +1,13 @@
 # Licences for the files in `data/`
 
-Every committed file in `data/` is an aggregate or a small derived table; no raw third-party file is redistributed. Each row says which sources a file is built from and the terms that follow from them. Where sources mix, the strictest terms apply. Code in this repository is MIT-licensed (see `../LICENSE`); these terms cover the data files only.
+Every committed file in `data/` is an aggregate or a small derived table; no raw third-party file is redistributed. This repository cannot grant rights over data derived from third parties: the sources' own terms apply, and the terms below say how this repo uses them. Each row says which sources a file is built from and the terms that follow from them. Where sources mix, the strictest terms apply. Code in this repository is MIT-licensed (see `../LICENSE`); these terms cover the data files only.
 
 ## Sources and their terms
 
 | Source | What it gives | Terms | Credit |
 |---|---|---|---|
-| Understat, via JaseZiv/worldfootballR_data | Big-5 shots with xG and assister, 2014–15 to 15 September 2025 | No open licence; the owner allows non-commercial use with attribution | Understat; Jason Zivkovic (worldfootballR_data) |
-| FBref/Opta, via JaseZiv/worldfootballR_data | Shots with Opta xG, seven leagues, 2017–18 to early 2025 | Opta data belongs to Stats Perform; non-commercial research use with credit | FBref; Opta (Stats Perform) |
+| Understat, via JaseZiv/worldfootballR_data | Big-5 shots with xG and assister, 2014–15 to 15 September 2025 | Understat publishes no licence or terms of reuse. This repo ships aggregates only, for non-commercial research; commercial use needs Understat's permission | Understat; Jason Zivkovic (worldfootballR_data) |
+| FBref/Opta, via JaseZiv/worldfootballR_data | Shots with Opta xG, seven leagues, 2017–18 to 3 February 2025 | Opta data belongs to Stats Perform, and FBref's site is governed by the [Sports Reference terms of use](https://www.sports-reference.com/termsofuse.html). This repo ships aggregates only, for non-commercial research; commercial use needs the owners' permission | FBref; Opta (Stats Perform) |
 | Transfermarkt, via dcaribou/transfermarkt-datasets | Line-ups, substitutions, appearances, transfers, players, clubs | The mirror is tagged CC0; Transfermarkt's own terms restrict automated collection and commercial reuse, so research use only | Transfermarkt; David Cariboo |
 | StatsBomb open data | 2015–16 events for four leagues | StatsBomb's open-data user agreement: free for research and non-commercial use with attribution and the StatsBomb logo | StatsBomb (logo in the README) |
 | American Soccer Analysis (ASA) public API | MLS player and team seasons | CC BY-SA 4.0 | American Soccer Analysis |
@@ -22,7 +22,8 @@ Every committed file in `data/` is an aggregate or a small derived table; no raw
 |---|---|---|
 | `transfers.json`, `transfer_splits.csv`, `transfer_slices.csv`, `age_gaps.csv`, `buying_clubs.csv`, `noise_benchmark_draws_movers.csv`, `noise_benchmark_draws_stayers.csv` | Understat, Transfermarkt | Non-commercial, with credit |
 | `within_slopes.csv`, `within_bins.csv`, `curve_bins.csv`, `reliability.csv`, `summary.json` | Understat, Transfermarkt | Non-commercial, with credit |
-| `robustness.json`, `flop_model_frozen.json`, `predictions_2025_26.csv` | Understat, Transfermarkt | Non-commercial, with credit |
+| `robustness.json`, `rivals.json`, `flop_model_frozen.json` | Understat, Transfermarkt | Non-commercial, with credit |
+| `predictions_2025_26.csv` | Understat, Transfermarkt (names, clubs, transfer dates) | Research use, with credit. These are player-level records: one row per named player with a model score |
 | `frozen_score_2025_26.json` | Transfermarkt | Research use, with credit |
 | `case_studies.csv` | Understat, Transfermarkt (three players' season numbers) | Non-commercial, with credit |
 | `chemistry.json`, `chemistry_dose.csv`, `chemistry_top_pairs.csv` | Understat, Transfermarkt | Non-commercial, with credit |
@@ -38,4 +39,4 @@ Every committed file in `data/` is an aggregate or a small derived table; no raw
 
 ## Checked for redistribution limits
 
-Impect bars redistribution of its data, and Transfermarkt and the FPL service bar commercial reuse. No committed file holds their raw records: `pass_checks.json` has only aggregate rates, and the Transfermarkt-derived files hold aggregates plus, for named players, season-level numbers, clubs and transfer dates. Nothing was removed on these grounds in round 1 of the review; if a source objects, the file goes.
+Impect bars redistribution of its data, and Transfermarkt and the FPL service bar commercial reuse. No committed file holds their raw records: `pass_checks.json` has only aggregate rates, and the Transfermarkt-derived files hold aggregates plus, for named players, season-level numbers, clubs and transfer dates. The prediction file is the most granular: each names a player, his clubs, his transfer date and a model score. Nothing was removed on these grounds in rounds 1 or 2 of the review; if a source objects, the file goes.

@@ -201,7 +201,6 @@ def lost_place_tests(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     out["n_movers"], out["n_stayers"] = int(a.mover.sum()), int((~a.mover).sum())
     out["n_movers_kept"] = int((a.mover & ~a.lost).sum())
     out["n_stayers_kept"] = int((~a.mover & ~a.lost).sum())
-    # the same floor at 450 minutes, as a sensitivity check
     return out
 
 
@@ -495,9 +494,17 @@ def main():
         p, lo, hi = T.boot(m[m.mover], lambda x: [(sd_noise / x.d_rel.std()) ** 2])
         res["luck_spread_share_ci"] = ci(p[0], lo[0], hi[0])
     if not OPTA and not MID:
+        # the frozen files are written once and never rewritten: a rebuild only checks
+        # that it would produce the same predictions
         model, pred = freeze(a, X, mv, yr)
-        (OUT / "flop_model_frozen.json").write_text(json.dumps(model, indent=1) + "\n")
-        pred.to_csv(OUT / "predictions_2025_26.csv", index=False)
+        mf, pf = OUT / "flop_model_frozen.json", OUT / "predictions_2025_26.csv"
+        if not mf.exists():
+            mf.write_text(json.dumps(model, indent=1) + "\n")
+            pred.to_csv(pf, index=False)
+        else:
+            old = pd.read_csv(pf)
+            same = (len(old) == len(pred)) and np.allclose(old.p_flop_or_lost_place, pred.p_flop_or_lost_place)
+            print("frozen predictions reproduce" if same else "WARNING: rebuild differs from the frozen predictions")
         res["predictions_2025_26"] = int(len(pred))
     (OUT / "robustness.json").write_text(json.dumps(res, indent=1) + "\n")
     print(json.dumps(res, indent=1))

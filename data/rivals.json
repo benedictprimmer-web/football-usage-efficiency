@@ -1,0 +1,350 @@
+{
+ "lost_place": {
+  "matched": {
+   "n_movers": 865,
+   "n_stayers": 2562,
+   "badf": {
+    "point": 0.1176,
+    "lo": 0.0799,
+    "hi": 0.1543,
+    "p": 0.0005
+   }
+  },
+  "matched_with_minutes_share_decile": {
+   "n_movers": 865,
+   "n_stayers": 2562,
+   "badf": {
+    "point": 0.108,
+    "lo": 0.0701,
+    "hi": 0.1438,
+    "p": 0.0005
+   }
+  },
+  "without_promoted_or_relegated": {
+   "n_movers": 624,
+   "n_stayers": 2562,
+   "badf": {
+    "point": 0.0996,
+    "lo": 0.0556,
+    "hi": 0.1428,
+    "p": 0.0005
+   }
+  },
+  "without_likely_loans": {
+   "n_movers": 694,
+   "n_stayers": 2562,
+   "badf": {
+    "point": 0.1066,
+    "lo": 0.0661,
+    "hi": 0.1457,
+    "p": 0.0005
+   }
+  },
+  "without_either": {
+   "n_movers": 495,
+   "n_stayers": 2562,
+   "badf": {
+    "point": 0.0872,
+    "lo": 0.0407,
+    "hi": 0.1334,
+    "p": 0.0005
+   }
+  },
+  "minutes_only_floors": {
+   "n_movers": 865,
+   "n_stayers": 2562,
+   "lost450": {
+    "point": 0.0384,
+    "lo": 0.0128,
+    "hi": 0.0622,
+    "p": 0.003
+   },
+   "lost900": {
+    "point": 0.1148,
+    "lo": 0.0783,
+    "hi": 0.1489,
+    "p": 0.0005
+   },
+   "lost1350": {
+    "point": 0.1406,
+    "lo": 0.1011,
+    "hi": 0.1806,
+    "p": 0.0005
+   }
+  },
+  "rates_minutes_only": {
+   "lost450_movers": 0.1202,
+   "lost450_stayers": 0.0765,
+   "lost900_movers": 0.3029,
+   "lost900_stayers": 0.187,
+   "lost1350_movers": 0.4832,
+   "lost1350_stayers": 0.3419
+  },
+  "matched_buying_club_season_clusters": {
+   "badf": {
+    "point": 0.1176,
+    "lo": 0.0798,
+    "hi": 0.1563
+   }
+  }
+ },
+ "survival": {
+  "qualifying_seasons": 4272,
+  "no_big5_row_next_season": 845,
+  "share_dropped": 0.1978,
+  "dropped_with_transfer_away": 315,
+  "dropped_without_transfer": 530,
+  "bound_all_dropped_counted_lost": {
+   "raw_gap": {
+    "point": 0.1399,
+    "lo": 0.1046,
+    "hi": 0.174
+   },
+   "matched_gap": {
+    "point": 0.1526,
+    "lo": 0.1184,
+    "hi": 0.1863
+   }
+  }
+ },
+ "own_split": {
+  "pairs": 2676,
+  "set_piece_labels": "Understat: corners, set pieces and direct free kicks",
+  "d_own_shots": {
+   "point": -0.0408,
+   "lo": -0.0682,
+   "hi": -0.0146,
+   "p": 0.002
+  },
+  "d_own_assists": {
+   "point": 0.001,
+   "lo": -0.0329,
+   "hi": 0.0337,
+   "p": 0.959
+  },
+  "d_own_open": {
+   "point": -0.0031,
+   "lo": -0.0252,
+   "hi": 0.0183,
+   "p": 0.765
+  },
+  "d_own_set": {
+   "point": -0.1187,
+   "lo": -0.1713,
+   "hi": -0.063,
+   "p": 0.0005
+  },
+  "d_set_frac": {
+   "point": -0.0165,
+   "lo": -0.0236,
+   "hi": -0.0088,
+   "p": 0.0005
+  },
+  "d_share_open": {
+   "point": -0.0258,
+   "lo": -0.0444,
+   "hi": -0.0071,
+   "p": 0.006
+  },
+  "d_team_open": {
+   "point": 0.0227,
+   "lo": 0.0031,
+   "hi": 0.0429,
+   "p": 0.026
+  },
+  "set_frac_movers_last_season": 0.176
+ },
+ "cutoffs_clusters_position": {
+  "flop_line": {
+   "flop15": {
+    "point": 0.0223,
+    "lo": -0.0196,
+    "hi": 0.0635,
+    "p": 0.284
+   },
+   "flop25": {
+    "point": 0.0316,
+    "lo": -0.0034,
+    "hi": 0.0673,
+    "p": 0.077
+   },
+   "flop35": {
+    "point": 0.0373,
+    "lo": 0.0095,
+    "hi": 0.0634,
+    "p": 0.01
+   }
+  },
+  "flop_rates": {
+   "flop15_movers": 0.2912,
+   "flop15_stayers": 0.293,
+   "flop25_movers": 0.1913,
+   "flop25_stayers": 0.1778,
+   "flop35_movers": 0.1131,
+   "flop35_stayers": 0.0858
+  },
+  "matched_buying_club_season_clusters": {
+   "d_share": {
+    "point": -0.0423,
+    "lo": -0.0603,
+    "hi": -0.0238
+   },
+   "d_own": {
+    "point": -0.0249,
+    "lo": -0.047,
+    "hi": -0.0026
+   },
+   "d_out": {
+    "point": 0.0123,
+    "lo": -0.0209,
+    "hi": 0.0457
+   }
+  },
+  "attacking_line_up_position_both_seasons": {
+   "pairs": 2436,
+   "n_movers": 547,
+   "share_of_pairs_kept": 0.9103,
+   "d_share": {
+    "point": -0.0425,
+    "lo": -0.0586,
+    "hi": -0.0263,
+    "p": 0.0005
+   },
+   "d_own": {
+    "point": -0.0204,
+    "lo": -0.0395,
+    "hi": 0.0007,
+    "p": 0.057
+   },
+   "d_out": {
+    "point": 0.017,
+    "lo": -0.0153,
+    "hi": 0.0495,
+    "p": 0.288
+   }
+  }
+ },
+ "luck_minus_benchmark": {
+  "movers": {
+   "point": -0.0267,
+   "lo": -0.0667,
+   "hi": 0.0104
+  },
+  "stayers": {
+   "point": -0.0097,
+   "lo": -0.0283,
+   "hi": 0.0113
+  }
+ },
+ "player_part_among_flops": {
+  "movers": {
+   "point": 0.3919,
+   "lo": 0.305,
+   "hi": 0.4798
+  },
+  "stayers": {
+   "point": 0.4245,
+   "lo": 0.3793,
+   "hi": 0.4675
+  }
+ },
+ "name_match": {
+  "shots_by_matched_players": 0.9342,
+  "worst_league_season": {
+   "which": "ESP-La Liga 2017-2018",
+   "share": 0.8537
+  },
+  "players_matched": 0.9088,
+  "players": 7432
+ },
+ "primary_family": {
+  "Understat: share of shots and shot-assists": {
+   "estimate": {
+    "point": -0.0423,
+    "lo": -0.0597,
+    "hi": -0.0248
+   },
+   "p": 0.0005,
+   "p_at_floor": true,
+   "p_holm": 0.004,
+   "survives": true
+  },
+  "Understat: flop or lost place": {
+   "estimate": {
+    "point": 0.1176,
+    "lo": 0.0799,
+    "hi": 0.1543
+   },
+   "p": 0.0005,
+   "p_at_floor": true,
+   "p_holm": 0.004,
+   "survives": true
+  },
+  "Opta: share of shots and shot-assists": {
+   "estimate": {
+    "point": -0.0637,
+    "lo": -0.0844,
+    "hi": -0.0437
+   },
+   "p": 0.0005,
+   "p_at_floor": true,
+   "p_holm": 0.004,
+   "survives": true
+  },
+  "Opta: flop or lost place": {
+   "estimate": {
+    "point": 0.1395,
+    "lo": 0.0944,
+    "hi": 0.1836
+   },
+   "p": 0.0005,
+   "p_at_floor": true,
+   "p_holm": 0.004,
+   "survives": true
+  },
+  "Opta: own actions per 90": {
+   "estimate": {
+    "point": -0.0332,
+    "lo": -0.0581,
+    "hi": -0.0086
+   },
+   "p": 0.011,
+   "p_at_floor": false,
+   "p_holm": 0.044,
+   "survives": true
+  },
+  "Understat: own actions per 90": {
+   "estimate": {
+    "point": -0.0249,
+    "lo": -0.0467,
+    "hi": -0.0048
+   },
+   "p": 0.02,
+   "p_at_floor": false,
+   "p_holm": 0.06,
+   "survives": false
+  },
+  "Understat: output per 90": {
+   "estimate": {
+    "point": 0.0123,
+    "lo": -0.019,
+    "hi": 0.0439
+   },
+   "p": 0.444,
+   "p_at_floor": false,
+   "p_holm": 0.888,
+   "survives": false
+  },
+  "Opta: output per 90": {
+   "estimate": {
+    "point": -0.0068,
+    "lo": -0.0399,
+    "hi": 0.0248
+   },
+   "p": 0.706,
+   "p_at_floor": false,
+   "p_holm": 0.888,
+   "survives": false
+  }
+ }
+}
