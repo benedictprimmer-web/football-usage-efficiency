@@ -37,9 +37,9 @@ z
 " style="fill: #ffffff"/>
    </g>
    <g id="line2d_1">
-    <path d="M 74.208 216.505152 
-L 172.8 208.90176 
-L 271.392 215.87472 
+    <path d="M 74.208 218.6448 
+L 172.8 210.296352 
+L 271.392 217.59408 
 " clip-path="url(#p5ed8379828)" style="fill: none; stroke: #1d1d1b; stroke-width: 2.2; stroke-linecap: square"/>
    </g>
    <g id="matplotlib.axis_1">
@@ -69,7 +69,7 @@ z
 " style="stroke: #1d1d1b; stroke-width: 2"/>
     </defs>
     <g clip-path="url(#p5ed8379828)">
-     <use xlink:href="#m2c09d626aa" x="74.208" y="216.505152" style="fill: #ffffff; stroke: #1d1d1b; stroke-width: 2"/>
+     <use xlink:href="#m2c09d626aa" x="74.208" y="218.6448" style="fill: #ffffff; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_6">
@@ -87,12 +87,12 @@ z
 " style="stroke: #1d1d1b; stroke-width: 2"/>
     </defs>
     <g clip-path="url(#p5ed8379828)">
-     <use xlink:href="#mcaf456e62e" x="172.8" y="208.90176" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+     <use xlink:href="#mcaf456e62e" x="172.8" y="210.296352" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="line2d_7">
     <g clip-path="url(#p5ed8379828)">
-     <use xlink:href="#mcaf456e62e" x="271.392" y="215.87472" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
+     <use xlink:href="#mcaf456e62e" x="271.392" y="217.59408" style="fill: #1d1d1b; stroke: #1d1d1b; stroke-width: 2"/>
     </g>
    </g>
    <g id="patch_3">
@@ -101,13 +101,13 @@ L 320.688 259.7184
 " style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_1">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="74.208" y="211.0032" transform="rotate(-0 74.208 211.0032)">23%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="74.208" y="213.142848" transform="rotate(-0 74.208 213.142848)">22%</text>
    </g>
    <g id="text_2">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="172.8" y="203.399808" transform="rotate(-0 172.8 203.399808)">27%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="172.8" y="204.7944" transform="rotate(-0 172.8 204.7944)">26%</text>
    </g>
    <g id="text_3">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="271.392" y="210.372768" transform="rotate(-0 271.392 210.372768)">23%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1d1d1b" x="271.392" y="212.092128" transform="rotate(-0 271.392 212.092128)">22%</text>
    </g>
    <g id="text_4">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="24.912" y="184.944" transform="rotate(-0 24.912 184.944)">His share of the team's shots and shot-assists</text>

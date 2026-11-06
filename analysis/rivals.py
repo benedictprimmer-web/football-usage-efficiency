@@ -90,6 +90,48 @@ def flags(x: pd.DataFrame) -> pd.DataFrame:
 
 # ------------------------------------------------------------------ 1. lost place, checked
 
+def late_minutes_share() -> pd.Series:
+    """Share of his club's league minutes he played in the second half of its season, by
+    (player, club, season): a club that has stopped picking him before selling him shows here."""
+    iv = pd.read_parquet(WORK / "intervals.parquet", columns=["game_id", "player_id", "club_id", "season", "on", "off"])
+    d = pd.read_csv(SOURCE / "transfermarkt" / "games.csv.gz", usecols=["game_id", "date"])
+    iv = iv.merge(d, on="game_id")
+    g = iv.drop_duplicates(["game_id", "club_id"])[["game_id", "club_id", "season", "date"]].copy()
+    g["late"] = g.groupby(["club_id", "season"]).date.rank(method="first", pct=True) > 0.5
+    n_late = g[g.late].groupby(["club_id", "season"]).size()
+    iv = iv.merge(g[["game_id", "club_id", "late"]], on=["game_id", "club_id"])
+    mins = iv[iv.late].assign(m=lambda x: x.off - x.on).groupby(["player_id", "club_id", "season"]).m.sum()
+    den = n_late.reindex(mins.index.droplevel(0)).to_numpy() * 90
+    return (mins / den).clip(upper=1)
+
+
+def finishing() -> pd.Series:
+    """Goals minus xG per shot in a season, by (season, team, player): clubs buy on goals."""
+    s = pd.read_parquet(SOURCE / SHOTS_FILE, columns=["season", "team_shot", "player", "xg", "result", "situation"])
+    s = s[(s.result != "OwnGoal") & (s.situation != "Penalty")]
+    g = s.assign(goal=(s.result == "Goal").astype(float)).groupby(["season", "team_shot", "player"])
+    return (g.goal.sum() - g.xg.sum()) / g.size()
+
+
+def decile(x: pd.Series, ref: pd.Series) -> np.ndarray:
+    cuts = np.nanquantile(ref, np.linspace(0, 1, 11)[1:-1])
+    return np.searchsorted(cuts, x.fillna(np.nanmedian(ref)))
+
+
+def starts_first_ten(a: pd.DataFrame) -> np.ndarray:
+    """Share of his next club's first 10 league matches of the next season that he started."""
+    lu = pd.read_csv(SOURCE / "transfermarkt" / "game_lineups.csv.gz",
+                     usecols=["game_id", "player_id", "club_id", "type"])
+    lu = lu[lu.type == "starting_lineup"]
+    iv = pd.read_parquet(WORK / "intervals.parquet", columns=["game_id", "club_id", "season"]).drop_duplicates()
+    d = pd.read_csv(SOURCE / "transfermarkt" / "games.csv.gz", usecols=["game_id", "date"])
+    g = iv.merge(d, on="game_id").sort_values("date")
+    g["k"] = g.groupby(["club_id", "season"]).cumcount()
+    first = g[g.k < 10]
+    st = lu.merge(first, on=["game_id", "club_id"]).groupby(["player_id", "club_id", "season"]).size()
+    key = list(zip(a.tm_player_id, a.club_id1, (a.yr + 1).astype(str) + "-" + (a.yr + 2).astype(str)))
+    return st.reindex(key).fillna(0).to_numpy() / 10
+
 def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     a = flags(R.add_cells(a, m))
     cuts = np.quantile(m.minutes_share0, np.linspace(0, 1, 11)[1:-1])
@@ -112,6 +154,65 @@ def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
     run("without_likely_loans", a[~a.loan], ["badf"])
     run("without_either", a[~pr & ~a.loan], ["badf"])
     run("minutes_only_floors", a, ["lost450", "lost900", "lost1350"])
+    p, lo, hi, _ = R.boot_p(a, lambda z: [z[z.mover].lost900.mean(), z[~z.mover].lost900.mean()])
+    out["minutes_only_rates_ci"] = {"movers": ci(p[0], lo[0], hi[0]), "stayers": ci(p[1], lo[1], hi[1])}
+    p, lo, hi, _ = R.boot_p(a, lambda z: R.reweighted(z, ["badf"]))
+    out["reweighted_cells"] = {"badf": ci(p[0], lo[0], hi[0])}
+    # the selling side: was he already out of the side before the sale, and did he score
+    # above his xG (clubs buy on goals, and finishing regresses)
+    late = late_minutes_share()
+    a["late_share"] = late.reindex(list(zip(a.tm_player_id, a.club_id0,
+                                            a.yr.astype(str) + "-" + (a.yr + 1).astype(str)))).to_numpy()
+    a["late_dec"] = decile(a.late_share, a.late_share)
+    fin = finishing()
+    a["fin0"] = fin.reindex(list(zip(a.yr.astype(str) + "-" + (a.yr + 1).astype(str), a.team0, a.player))).to_numpy()
+    a["fin_dec"] = decile(a.fin0, a.fin0)
+    run("matched_with_late_season_minutes_and_finishing", a, ["badf"], base + ("min_dec", "late_dec", "fin_dec"))
+    out["late_season_minutes_share"] = {"movers": round(float(a.loc[a.mover, "late_share"].mean()), 4),
+                                        "stayers": round(float(a.loc[~a.mover, "late_share"].mean()), 4)}
+    # starts in the first 10 league matches at the next club: the input a match price uses
+    a["starts10"] = starts_first_ten(a)
+    run("starts_in_first_10_matches", a, ["starts10"])
+    out["starts_in_first_10_rates"] = {"movers": round(float(a.loc[a.mover, "starts10"].mean()), 4),
+                                       "stayers": round(float(a.loc[~a.mover, "starts10"].mean()), 4)}
+    # by fee band and by whether the buying club made more shots the season before: is the
+    # gap about squad fillers and step-ups to deeper squads?
+    t = T.fees().merge(a.loc[a.mover, ["tm_player_id", "club_id1", "yr"]], on=["tm_player_id", "club_id1"])
+    t = (t[(t.date >= pd.to_datetime(t.yr.astype(str) + "-07-01"))
+           & (t.date <= pd.to_datetime((t.yr + 1).astype(str) + "-12-31"))]
+         .sort_values("date").drop_duplicates(["tm_player_id", "club_id1", "yr"], keep="last"))
+    a = a.merge(t[["tm_player_id", "club_id1", "yr", "transfer_fee"]], on=["tm_player_id", "club_id1", "yr"], how="left")
+    a["fee_band"] = np.where(~a.mover, "stayer", pd.cut(a.transfer_fee.fillna(-1), [-2, -0.5, 0, 10e6, 30e6, 1e12],
+                             labels=["No fee on record", "Free or loan", "Under €10m", "€10m–30m", "Over €30m"]).astype(str))
+    out["by_fee_band"] = {}
+    paid = ["Under €10m", "€10m–30m", "Over €30m"]
+    for b in ["Free or loan", "Under €10m", "€10m–30m", "Over €30m", "No fee on record", "Any fee paid"]:
+        x = a[(a.fee_band.isin(paid) if b == "Any fee paid" else (a.fee_band == b)) | ~a.mover]
+        p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+        out["by_fee_band"][b] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0])}
+    pp_ = pd.read_parquet(WORK / "panel.parquet", columns=["season", "club_id", "team_actions", "team_games"])
+    pp_["yr"] = pp_.season.str[:4].astype(int)
+    stg = (pp_.drop_duplicates(["club_id", "yr"]).set_index(["club_id", "yr"])
+           .eval("team_actions / team_games"))
+    s0 = stg.reindex(list(zip(a.club_id0, a.yr))).to_numpy()
+    s1 = stg.reindex(list(zip(a.club_id1, a.yr))).to_numpy()
+    a["step_up"] = s1 > s0
+    out["by_buying_club_strength"] = {}
+    for nm, keep in (("stronger_buyer", a.step_up), ("not_stronger_buyer", ~a.step_up & np.isfinite(s1))):
+        x = a[(a.mover & keep) | ~a.mover]
+        p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+        out["by_buying_club_strength"][nm] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0])}
+    # injuries: injured (30+ days out in the next season) and fit, separately
+    import injuries as INJ
+    a["injured"] = INJ.days_out(a, INJ.load_spells()) >= INJ.DAYS_OUT
+    out["by_injury"] = {}
+    for nm, keep in (("fit", ~a.injured), ("injured", a.injured)):
+        x = a[keep]
+        p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+        out["by_injury"][nm] = {"n_movers": int(x.mover.sum()), "n_stayers": int((~x.mover).sum()),
+                                "badf": ci(p[0], lo[0], hi[0])}
+    out["injured_share"] = {"movers": round(float(a.loc[a.mover, "injured"].mean()), 4),
+                            "stayers": round(float(a.loc[~a.mover, "injured"].mean()), 4)}
     out["rates_minutes_only"] = {
         f"lost{f}_{w}": round(float(a.loc[a.mover == (w == "movers"), f"lost{f}"].mean()), 4)
         for f in (450, 900, 1350) for w in ("movers", "stayers")}
@@ -148,15 +249,38 @@ def survival(a: pd.DataFrame, m: pd.DataFrame) -> dict:
                                  "out900": gone.out90, "age0": gone.age})], ignore_index=True)
     x = R.add_cells(x, m)
     x["badf"] = x.bad.astype(float)
+    x["keptf"] = np.where(np.arange(len(x)) >= len(a), 0.0, x.badf)   # every dropout kept instead
+    # players who did play Big-5 league minutes next season but at two or more clubs (the
+    # 80% rule drops them): their Transfermarkt minutes say whether they kept a place
+    op = pd.read_parquet(WORK / "onpitch.parquet")
+    op["yr"] = op.season.str[:4].astype(int) - 1
+    nx = op.groupby(["player_id", "yr"]).agg(mins=("minutes_on", "sum"), clubs=("club_id", lambda c: set(c)))
+    k = list(zip(gone.tm_player_id, gone.yr))
+    rec = nx.reindex(k)
+    played = rec.mins.notna().to_numpy()
+    rec_bad = np.where(played, rec.mins.fillna(0).to_numpy() < MIN_MINUTES, True)
+    rec_mover = np.array([(len(cs) > 1 or c0 not in cs) if isinstance(cs, set) else mv
+                          for c0, cs, mv in zip(gone.club_id, rec.clubs, gone.mover)], dtype=bool)
+    x["recf"] = x.badf.copy()
+    x["mover_rec"] = x.mover.copy()
+    x.loc[len(a):, "recf"] = rec_bad.astype(float)
+    x.loc[len(a):, "mover_rec"] = rec_mover
+    xr = x.assign(mover=x.mover_rec)
     p, lo, hi, _ = R.boot_p(x, lambda z: [z[z.mover].badf.mean() - z[~z.mover].badf.mean(),
-                                          ols(z, ["badf"])[0]])
+                                          ols(z, ["badf"])[0], ols(z, ["keptf"])[0]])
+    pr_, lor, hir, _ = R.boot_p(xr, lambda z: [ols(z, ["recf"])[0]])
     n_q = len(a) + len(gone)
     return {"qualifying_seasons": int(n_q), "no_big5_row_next_season": int(len(gone)),
             "share_dropped": round(len(gone) / n_q, 4),
             "dropped_with_transfer_away": int(gone.mover.sum()),
             "dropped_without_transfer": int((~gone.mover).sum()),
             "bound_all_dropped_counted_lost": {"raw_gap": ci(p[0], lo[0], hi[0]),
-                                               "matched_gap": ci(p[1], lo[1], hi[1])}}
+                                               "matched_gap": ci(p[1], lo[1], hi[1])},
+            "bound_all_dropped_counted_kept": {"matched_gap": ci(p[2], lo[2], hi[2])},
+            "dropped_who_played_big5_next_season": int(played.sum()),
+            "dropped_who_played_900_next_season": int((played & ~rec_bad).sum()),
+            "split_season_players_recovered": {"matched_gap": ci(pr_[0], lor[0], hir[0]),
+                                               "rest_counted": "lost"}}
 
 
 # ------------------------------------------------------------------ 3. own actions, split
@@ -221,6 +345,45 @@ def own_split(m: pd.DataFrame) -> dict:
     out |= {y: ci(p[i], lo[i], hi[i]) | {"p": round(float(pv[i]), 4)} for i, y in enumerate(ys)}
     out["set_frac_movers_last_season"] = round(float(m.loc[m.mover, "set_frac0"].mean()), 4)
     return out
+
+
+# ------------------------------------------------------------------ Lee bounds
+
+def lee_bounds(a: pd.DataFrame, m: pd.DataFrame) -> dict:
+    """The share, own-actions and output gaps use only players who kept a 900-minute season,
+    and movers keep it less often. Lee (2009) trimming bounds: trim the stayers' outcome by
+    the excess share of stayers kept, from the top and then from the bottom, so both groups
+    have the same share kept. Raw gaps, intervals resample whole players."""
+    keep_m = 1 - a.loc[a.mover, "lost"].mean()
+    keep_s = 1 - a.loc[~a.mover, "lost"].mean()
+    q = (keep_s - keep_m) / keep_s
+    m = m.assign(d_own=m.d_team + m.d_share)
+    ys = ["d_share", "d_own", "d_out"]
+
+    def stat(z):
+        mv, st = z[z.mover], z[~z.mover]
+        out = []
+        for y in ys:
+            v = np.sort(st[y].to_numpy())
+            k = int(round(q * len(v)))
+            out += [mv[y].mean() - v[k:].mean(), mv[y].mean() - v[:len(v) - k].mean()]
+        return out
+    p, lo, hi, _ = R.boot_p(m, stat)
+    res = {"kept_movers": round(float(keep_m), 4), "kept_stayers": round(float(keep_s), 4),
+           "trim_share": round(float(q), 4)}
+    for i, y in enumerate(ys):
+        res[y] = {"lower": ci(p[2 * i], lo[2 * i], hi[2 * i]), "upper": ci(p[2 * i + 1], lo[2 * i + 1], hi[2 * i + 1])}
+    return res
+
+
+def full_time_check() -> dict:
+    """For a player on the pitch for every league minute, his team's actions while he was on
+    must equal all its actions: the test that would have caught the stoppage-time bug."""
+    d = pd.read_parquet(WORK / "panel.parquet", columns=["minutes", "team_games", "team_actions_on", "team_actions"])
+    full = d[(d.minutes >= d.team_games * 90 - 0.5) & (d.team_actions > 0)]
+    r = full.team_actions_on / full.team_actions
+    return {"players": int(len(full)), "median_ratio": round(float(r.median()), 4),
+            "mean_ratio": round(float(r.mean()), 4)}
 
 
 # ------------------------------------------------------------------ 4-6. cut-offs, clusters, position
@@ -301,9 +464,12 @@ def part_among_flops(m: pd.DataFrame) -> dict:
 
 # ------------------------------------------------------------------ 9. primary family
 
-def primary_family() -> dict:
+def primary_family(sources=(("Understat", OUT / "robustness.json"),)) -> dict:
+    """Four tests on one source. Opta is run as its own family, a sensitivity check: it shares
+    Transfermarkt's minutes, the sample rules and most seasons with Understat, so counting
+    both sources in one family would double-count the lost-place test."""
     ps, est = {}, {}
-    for src, path in (("Understat", OUT / "robustness.json"), ("Opta", OUT / "opta" / "robustness.json")):
+    for src, path in sources:
         r = json.loads(path.read_text())
         for k, lab in (("d_share", "share of shots and shot-assists"), ("d_own", "own actions per 90"),
                        ("d_out", "output per 90")):
@@ -340,12 +506,19 @@ def main():
                      ("cutoffs_clusters_position", lambda: cutoffs_clusters_position(m))):
         print(name, "...", flush=True)
         res[name] = fn()
+    res["lee_bounds"] = lee_bounds(a, m)
     if not MID:
         res["luck_minus_benchmark"] = luck_difference(m)
         res["player_part_among_flops"] = part_among_flops(m)
     if not OPTA and not MID:
         res["name_match"] = name_match()
         res["primary_family"] = primary_family()
+        res["opta_family"] = primary_family((("Opta", OUT / "opta" / "robustness.json"),))
+        rr = json.loads((OUT / "robustness.json").read_text())
+        # the smallest gap with 80% power at the 5% level: 2.8 standard errors
+        res["min_detectable_points"] = {k: round(2.8 * (x["hi"] - x["lo"]) / 3.92 * 100, 1) for k, x in (
+            ("flop", rr["rtm"]["regression"]["flopf"]), ("flop_or_lost", rr["lost_place"]["regression"]["bad_gap"]))}
+        res["full_time_check"] = full_time_check()
     (OUT / "rivals.json").write_text(json.dumps(res, indent=1, ensure_ascii=False) + "\n")
     print(json.dumps(res, indent=1, ensure_ascii=False))
 

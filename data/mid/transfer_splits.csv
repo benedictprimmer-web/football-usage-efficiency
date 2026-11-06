@@ -1,17 +1,17 @@
 group,split,part,share,lo,hi,n,flops
-movers,flop tail,Team chances per 90,0.0852,0.0318,0.1395,397,130
-movers,flop tail,His share of the ball,0.4425,0.3679,0.5149,397,130
-movers,flop tail,Team-mates' chance quality,0.0266,-0.0218,0.0763,397,130
-movers,flop tail,His quality relative to team-mates,0.4457,0.3729,0.5234,397,130
-movers,variance,Team chances per 90,0.1076,0.0663,0.1456,397,130
-movers,variance,His share of the ball,0.3297,0.2738,0.3855,397,130
-movers,variance,Team-mates' chance quality,0.0830,0.0461,0.1167,397,130
-movers,variance,His quality relative to team-mates,0.4798,0.4331,0.5314,397,130
-stayers,flop tail,Team chances per 90,0.0962,0.0729,0.1215,1616,396
-stayers,flop tail,His share of the ball,0.3643,0.3281,0.3963,1616,396
-stayers,flop tail,Team-mates' chance quality,0.0414,0.0129,0.0699,1616,396
-stayers,flop tail,His quality relative to team-mates,0.4981,0.4628,0.5326,1616,396
-stayers,variance,Team chances per 90,0.0735,0.0571,0.0896,1616,396
-stayers,variance,His share of the ball,0.3602,0.3340,0.3839,1616,396
-stayers,variance,Team-mates' chance quality,0.0581,0.0395,0.0774,1616,396
-stayers,variance,His quality relative to team-mates,0.5083,0.4818,0.5331,1616,396
+movers,flop tail,Team chances per 90,0.0872,0.0334,0.1427,397,130
+movers,flop tail,His share of the ball,0.4405,0.3671,0.5122,397,130
+movers,flop tail,Team-mates' chance quality,0.0268,-0.0224,0.0760,397,130
+movers,flop tail,His quality relative to team-mates,0.4455,0.3754,0.5214,397,130
+movers,variance,Team chances per 90,0.1128,0.0708,0.1513,397,130
+movers,variance,His share of the ball,0.3244,0.2703,0.3820,397,130
+movers,variance,Team-mates' chance quality,0.0828,0.0460,0.1162,397,130
+movers,variance,His quality relative to team-mates,0.4800,0.4333,0.5307,397,130
+stayers,flop tail,Team chances per 90,0.0956,0.0718,0.1209,1616,396
+stayers,flop tail,His share of the ball,0.3650,0.3271,0.3964,1616,396
+stayers,flop tail,Team-mates' chance quality,0.0434,0.0162,0.0709,1616,396
+stayers,flop tail,His quality relative to team-mates,0.4960,0.4602,0.5314,1616,396
+stayers,variance,Team chances per 90,0.0754,0.0596,0.0912,1616,396
+stayers,variance,His share of the ball,0.3583,0.3326,0.3805,1616,396
+stayers,variance,Team-mates' chance quality,0.0589,0.0405,0.0782,1616,396
+stayers,variance,His quality relative to team-mates,0.5074,0.4809,0.5324,1616,396

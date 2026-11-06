@@ -5,9 +5,9 @@
  "rtm": {
   "raw": {
    "d_share": {
-    "point": -0.0486,
-    "lo": -0.0697,
-    "hi": -0.0282,
+    "point": -0.0437,
+    "lo": -0.064,
+    "hi": -0.0229,
     "p": 0.0005
    },
    "d_own": {
@@ -17,28 +17,28 @@
     "p": 0.079
    },
    "d_team": {
-    "point": 0.0293,
-    "lo": 0.012,
-    "hi": 0.0476,
-    "p": 0.001
+    "point": 0.0243,
+    "lo": 0.0068,
+    "hi": 0.0426,
+    "p": 0.01
    },
    "d_team_ex": {
-    "point": 0.0404,
-    "lo": 0.0207,
-    "hi": 0.0605,
+    "point": 0.034,
+    "lo": 0.0144,
+    "hi": 0.0539,
     "p": 0.0005
    },
    "d_mates": {
-    "point": 0.0355,
-    "lo": 0.0175,
-    "hi": 0.0538,
+    "point": 0.0317,
+    "lo": 0.0135,
+    "hi": 0.0496,
     "p": 0.0005
    },
    "d_rel": {
-    "point": 0.0203,
-    "lo": -0.0041,
-    "hi": 0.0434,
-    "p": 0.099
+    "point": 0.0241,
+    "lo": 0.0003,
+    "hi": 0.0467,
+    "p": 0.048
    },
    "d_out": {
     "point": 0.0364,
@@ -55,109 +55,109 @@
   },
   "regression": {
    "d_share": {
-    "point": -0.0423,
-    "lo": -0.0597,
-    "hi": -0.0248,
+    "point": -0.0412,
+    "lo": -0.0583,
+    "hi": -0.0236,
     "p": 0.0005
    },
    "d_own": {
-    "point": -0.0249,
-    "lo": -0.0467,
-    "hi": -0.0048,
-    "p": 0.02
+    "point": -0.0265,
+    "lo": -0.0482,
+    "hi": -0.0063,
+    "p": 0.013
    },
    "d_team": {
-    "point": 0.0174,
-    "lo": -0.0001,
-    "hi": 0.0353,
-    "p": 0.052
+    "point": 0.0147,
+    "lo": -0.0022,
+    "hi": 0.0325,
+    "p": 0.087
    },
    "d_team_ex": {
-    "point": 0.0273,
-    "lo": 0.0087,
-    "hi": 0.046,
-    "p": 0.003
+    "point": 0.0239,
+    "lo": 0.0054,
+    "hi": 0.0426,
+    "p": 0.008
    },
    "d_mates": {
-    "point": 0.0301,
-    "lo": 0.0118,
-    "hi": 0.048,
-    "p": 0.002
+    "point": 0.0268,
+    "lo": 0.0092,
+    "hi": 0.0444,
+    "p": 0.004
    },
    "d_rel": {
-    "point": 0.0072,
-    "lo": -0.0169,
-    "hi": 0.0301,
-    "p": 0.522
+    "point": 0.0125,
+    "lo": -0.0098,
+    "hi": 0.0343,
+    "p": 0.271
    },
    "d_out": {
-    "point": 0.0123,
-    "lo": -0.019,
-    "hi": 0.0439,
-    "p": 0.444
+    "point": 0.0128,
+    "lo": -0.0186,
+    "hi": 0.0441,
+    "p": 0.418
    },
    "flopf": {
-    "point": 0.0316,
-    "lo": -0.0034,
-    "hi": 0.0673,
-    "p": 0.077
+    "point": 0.0319,
+    "lo": -0.0038,
+    "hi": 0.0676,
+    "p": 0.073
    }
   },
   "reweighted": {
    "d_share": {
-    "point": -0.0434,
-    "lo": -0.0614,
-    "hi": -0.0243,
+    "point": -0.0404,
+    "lo": -0.0584,
+    "hi": -0.0218,
     "p": 0.0005
    },
    "d_own": {
-    "point": -0.0214,
-    "lo": -0.044,
-    "hi": 0.0014,
-    "p": 0.067
+    "point": -0.022,
+    "lo": -0.045,
+    "hi": 0.0006,
+    "p": 0.056
    },
    "d_team": {
-    "point": 0.0221,
-    "lo": 0.0037,
-    "hi": 0.0411,
-    "p": 0.023
+    "point": 0.0184,
+    "lo": 0.0004,
+    "hi": 0.0369,
+    "p": 0.046
    },
    "d_team_ex": {
-    "point": 0.0321,
-    "lo": 0.0124,
-    "hi": 0.0522,
-    "p": 0.0005
+    "point": 0.0274,
+    "lo": 0.0082,
+    "hi": 0.0467,
+    "p": 0.004
    },
    "d_mates": {
-    "point": 0.0312,
-    "lo": 0.0106,
-    "hi": 0.0495,
-    "p": 0.003
+    "point": 0.0295,
+    "lo": 0.0096,
+    "hi": 0.0473,
+    "p": 0.002
    },
    "d_rel": {
-    "point": 0.0071,
-    "lo": -0.0161,
-    "hi": 0.0325,
-    "p": 0.49
+    "point": 0.0118,
+    "lo": -0.011,
+    "hi": 0.0367,
+    "p": 0.293
    },
    "d_out": {
-    "point": 0.017,
-    "lo": -0.0154,
-    "hi": 0.0514,
-    "p": 0.299
+    "point": 0.0193,
+    "lo": -0.0135,
+    "hi": 0.0538,
+    "p": 0.25
    },
    "flopf": {
-    "point": 0.032,
-    "lo": -0.0056,
-    "hi": 0.0672,
-    "p": 0.099
+    "point": 0.0325,
+    "lo": -0.0069,
+    "hi": 0.069,
+    "p": 0.1
    }
   },
-  "corr_team_share": -0.213,
-  "corr_rel_mates": -0.305,
+  "corr_team_share": -0.203,
+  "corr_rel_mates": -0.258,
   "movers_last_season": {
-   "share_movers": 0.1777,
-   "share_stayers": 0.1737,
+   "share_movers": 0.1693,
+   "share_stayers": 0.1661,
    "out90_movers": 0.4232,
    "out90_stayers": 0.4441,
    "age_movers": 25.07,
@@ -213,13 +213,13 @@
    "lost_gap": {
     "point": 0.1137,
     "lo": 0.077,
-    "hi": 0.1469,
+    "hi": 0.1473,
     "p": 0.0005
    },
    "bad_gap": {
-    "point": 0.1176,
-    "lo": 0.0799,
-    "hi": 0.1543,
+    "point": 0.1174,
+    "lo": 0.0789,
+    "hi": 0.1537,
     "p": 0.0005
    }
   },
@@ -235,9 +235,9 @@
   "without_loans": {
    "n_movers": 492,
    "share_gap": {
-    "point": -0.053,
-    "lo": -0.0751,
-    "hi": -0.0312
+    "point": -0.0478,
+    "lo": -0.0697,
+    "hi": -0.0263
    },
    "out_gap": {
     "point": 0.0294,
@@ -253,9 +253,9 @@
   "without_promoted_or_relegated": {
    "n_movers": 453,
    "share_gap": {
-    "point": -0.0461,
-    "lo": -0.0683,
-    "hi": -0.0239
+    "point": -0.0408,
+    "lo": -0.0624,
+    "hi": -0.0189
    },
    "out_gap": {
     "point": 0.0172,
@@ -271,9 +271,9 @@
   "without_any": {
    "n_movers": 368,
    "share_gap": {
-    "point": -0.0482,
-    "lo": -0.0727,
-    "hi": -0.0247
+    "point": -0.0432,
+    "lo": -0.0672,
+    "hi": -0.0198
    },
    "out_gap": {
     "point": 0.0115,
@@ -305,9 +305,9 @@
    "train_moves": 320,
    "test_moves": 280,
    "test_rate": 0.175,
-   "auc": 0.62,
-   "auc_lo": 0.539,
-   "auc_hi": 0.699,
+   "auc": 0.631,
+   "auc_lo": 0.548,
+   "auc_hi": 0.711,
    "p_auc_above_half": 0.002,
    "rate_top_fifth": 0.232,
    "rate_rest": 0.161
@@ -316,34 +316,34 @@
    "train_moves": 464,
    "test_moves": 400,
    "test_rate": 0.422,
-   "auc": 0.643,
-   "auc_lo": 0.589,
-   "auc_hi": 0.696,
+   "auc": 0.648,
+   "auc_lo": 0.595,
+   "auc_hi": 0.7,
    "p_auc_above_half": 0.0005,
-   "rate_top_fifth": 0.575,
-   "rate_rest": 0.384
+   "rate_top_fifth": 0.588,
+   "rate_rest": 0.381
   },
   "all_moves_lost_place_counted_as_not_flop": {
    "train_moves": 464,
    "test_moves": 400,
    "test_rate": 0.122,
-   "auc": 0.627,
-   "auc_lo": 0.549,
-   "auc_hi": 0.708,
+   "auc": 0.635,
+   "auc_lo": 0.556,
+   "auc_hi": 0.714,
    "p_auc_above_half": 0.004,
-   "rate_top_fifth": 0.175,
-   "rate_rest": 0.109
+   "rate_top_fifth": 0.188,
+   "rate_rest": 0.106
   },
   "all_moves_lost_place_only": {
    "train_moves": 464,
    "test_moves": 400,
    "test_rate": 0.3,
-   "auc": 0.674,
-   "auc_lo": 0.617,
-   "auc_hi": 0.732,
+   "auc": 0.678,
+   "auc_lo": 0.621,
+   "auc_hi": 0.735,
    "p_auc_above_half": 0.0005,
-   "rate_top_fifth": 0.5,
-   "rate_rest": 0.25
+   "rate_top_fifth": 0.512,
+   "rate_rest": 0.247
   },
   "n_moves_known_on_the_day": 865,
   "n_lost_place": 264
@@ -353,22 +353,22 @@
    "pairs": 601,
    "flop_rate_observed": 0.1913,
    "flop_rate_role_and_quality_fixed": [
-    0.2013,
-    0.1764,
-    0.228
+    0.2047,
+    0.1814,
+    0.2263
    ]
   },
   "stayers": {
    "pairs": 2075,
    "flop_rate_observed": 0.1778,
    "flop_rate_role_and_quality_fixed": [
-    0.1918,
-    0.1773,
-    0.2058
+    0.1865,
+    0.174,
+    0.2019
    ]
   }
  },
- "luck_spread_share": 0.686,
+ "luck_spread_share": 0.734,
  "slice_family": {
   "predictor: AUC above 0.5": {
    "estimate": null,
@@ -438,7 +438,7 @@
   },
   "buying clubs: early v late record": {
    "estimate": null,
-   "p": 0.57,
+   "p": 0.771,
    "p_holm": 1.0,
    "survives": false
   },
@@ -474,9 +474,9 @@
   }
  },
  "luck_spread_share_ci": {
-  "point": 0.6861,
-  "lo": 0.6045,
-  "hi": 0.7873
+  "point": 0.7339,
+  "lo": 0.6481,
+  "hi": 0.8437
  },
  "predictions_2025_26": 80
 }

@@ -26,7 +26,9 @@ import pandas as pd
 
 from config import SOURCE, WORK
 
-BASE = "https://raw.githubusercontent.com/statsbomb/open-data/master/data"
+# pinned on 6 November 2026; the cached copy used for the published numbers was fetched
+# earlier from master and not re-checked against this commit
+BASE = "https://raw.githubusercontent.com/statsbomb/open-data/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb/data"
 SEASON = 27  # 2015/2016
 COMPS = {2: "ENG-Premier League", 11: "ESP-La Liga", 12: "ITA-Serie A",
          9: "GER-Bundesliga", 7: "FRA-Ligue 1"}

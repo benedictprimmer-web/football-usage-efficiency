@@ -44,7 +44,7 @@ Three providers and three seasons agree: new pairs do not pass to each other mor
 
 ## Stepping up from Portugal or the Eredivisie
 
-On Opta, 38 attackers moved from those leagues into the Big-5 with 900 minutes either side. Their output per 90 fell by 28% (21% to 35%) and 53% of them flopped. The fall came from the situation (−29%): against their new team-mates their quality was unchanged (+0.6%, −6.7% to +7.9%). It is a small sample.
+On Opta, 38 attackers moved from those leagues into the Big-5 with 900 minutes either side. Their output per 90 fell by 28% (21% to 35%) and 53% of them flopped. The fall came from the situation (−29%): against their new team-mates their quality was unchanged (−0.5%, −7.1% to +6.2%). It is a small sample.
 
 ## FPL 2025–26 in the Premier League
 
@@ -61,8 +61,8 @@ From a Transfermarkt data lake ([salimt/football-datasets](https://github.com/sa
 
 <img src="../figures/fig5_depay.png" width="360" align="right" alt="Depay's share of the ball and chance quality at United and Lyon">
 
-Memphis Depay is the standard example of a flop who came good. Measured over his minutes on the pitch, his share of the ball was similar at United in 2015–16 (23%) and Lyon in 2017–18 (27%). His chance quality rose from 0.086 per action to 0.107, and to 0.124 in 2020–21, though the United figure rests on only 69 actions. He also played far more: 43% of United's league minutes, against 72% and 86% at Lyon. These are single seasons of one player, so they carry no interval.
+Memphis Depay is the standard example of a flop who came good. Measured over his minutes on the pitch, his share of the ball was similar at United in 2015–16 (22%) and Lyon in 2017–18 (26%). His chance quality rose from 0.086 per action to 0.107, and to 0.124 in 2020–21, though the United figure rests on only 69 actions. He also played far more: 43% of United's league minutes, against 72% and 86% at Lyon. These are single seasons of one player, so they carry no interval.
 
-Ronaldo went the other way. His chance quality held up at United in 2021–22 (0.145 per action, against 0.142 at Juventus the season before) on a smaller share (20%, against 23%). One season cannot say whether his share cost his team-mates.
+Ronaldo went the other way. His chance quality held up at United in 2021–22 (0.145 per action, against 0.142 at Juventus the season before) on a smaller share (18%, against 22%). One season cannot say whether his share cost his team-mates.
 
 <br clear="right">

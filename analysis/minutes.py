@@ -49,6 +49,10 @@ def intervals(games: pd.DataFrame) -> pd.DataFrame:
                       reds[["game_id", "player_id", "minute"]]])
              .groupby(["game_id", "player_id"]).minute.min().rename("off"))
     iv = on.join(off, on=["game_id", "player_id"]).join(end, on="game_id")
+    # a player still on at the final whistle is on for stoppage time too: Transfermarkt
+    # records the end as minute 90, but Understat dates stoppage-time shots 91, 92, ...
+    # (fixed in round 3 of the review; before, those shots fell out of his team's count)
+    iv["fin"] = iv.off.isna()
     iv["off"] = iv.off.fillna(iv.end).clip(upper=iv.end)
     iv = iv[iv.off > iv.on].drop(columns="end")
     return iv.merge(games[["game_id", "league", "season"]], on="game_id")
@@ -84,7 +88,8 @@ def onpitch(iv: pd.DataFrame, acts: pd.DataFrame) -> pd.DataFrame:
     """Per player-club-season: minutes, and the team's actions and value while he was on,
     in total and on odd and even matches separately."""
     m = iv.merge(acts, on=["game_id", "club_id"])
-    m = m[(m.minute >= m.on) & (m.minute < m.off)]
+    fin = m.fin if "fin" in m else False
+    m = m[(m.minute >= m.on) & ((m.minute < m.off) | fin)]
     on = m.groupby(["player_id", "club_id", "season"]).agg(
         team_actions_on=("n", "sum"), team_value_on=("v", "sum"))
     for h in (0, 1):
@@ -130,14 +135,16 @@ def build():
 
 def _check():
     iv = pd.DataFrame({"game_id": [1, 1, 1], "club_id": [9, 9, 9], "season": ["s"] * 3,
-                       "player_id": [1, 2, 3], "on": [0.0, 0.0, 60.0], "off": [94.0, 60.0, 94.0]})
-    acts = pd.DataFrame({"game_id": [1, 1, 1], "club_id": [9, 9, 9], "half": [0, 0, 0],
-                         "minute": [10, 60, 80], "n": [1, 2, 1], "v": [.1, .4, .3]})
+                       "player_id": [1, 2, 3], "on": [0.0, 0.0, 60.0], "off": [90.0, 60.0, 90.0],
+                       "fin": [True, False, True]})
+    acts = pd.DataFrame({"game_id": [1, 1, 1, 1], "club_id": [9, 9, 9, 9], "half": [0, 0, 0, 0],
+                         "minute": [10, 60, 80, 93], "n": [1, 2, 1, 1], "v": [.1, .4, .3, .2]})
     op = onpitch(iv, acts).set_index("player_id")
-    assert op.loc[1, "team_actions_on"] == 4 and op.loc[2, "team_actions_on"] == 1
-    assert op.loc[3, "team_actions_on"] == 3 and op.loc[3, "minutes_on"] == 34
+    # a player on for the whole match sees every one of his team's actions, stoppage included
+    assert op.loc[1, "team_actions_on"] == 5 and op.loc[2, "team_actions_on"] == 1
+    assert op.loc[3, "team_actions_on"] == 4 and op.loc[3, "minutes_on"] == 30
     pm = pair_minutes(iv).set_index(["player_id_a", "player_id_b"]).minutes_together
-    assert pm[(1, 2)] == 60 and pm[(1, 3)] == 34 and pm[(2, 3)] == 0
+    assert pm[(1, 2)] == 60 and pm[(1, 3)] == 30 and pm[(2, 3)] == 0
     print("ok")
 
 

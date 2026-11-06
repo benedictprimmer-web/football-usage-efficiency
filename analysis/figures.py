@@ -120,6 +120,7 @@ def draw_move(ax, r, fs=1.0):
         txt = BLUE if i == 0 else TEXT2
         p = v["point"] * 100
         ax.barh(y[i], p, height=0.55, color=col)
+        ax.plot([v["lo"] * 100, v["hi"] * 100], [y[i] - 0.42] * 2, color=col, lw=1.6, solid_capstyle="butt")
         side = 1 if p >= 0 else -1
         ax.text(p + 0.3 * side, y[i] + 0.02, pct(v["point"]), va="center",
                 ha="left" if side > 0 else "right", fontsize=11 * fs, fontweight="bold",
@@ -149,16 +150,17 @@ def draw_move(ax, r, fs=1.0):
 
 def fig_move(r):
     sh = r["rtm"]["movers_last_season"]["share_movers"]
-    fig, top = frame("A move costs an attacker about 4% of his share of the ball, and his "
-                     "output per 90 barely changes",
+    d = r["rtm"]["regression"]["d_share"]["point"]
+    fig, top = frame(f"A mover who keeps his place has about {abs(d) * 100:.0f}% less of the ball, "
+                     f"and the same output per 90",
                      f"Change in xG+xA per 90 after a move between Big-5 clubs, minus the change "
                      f"for players who stayed, adjusted for last season (decile of share, decile "
                      f"of output per 90, age band, season), split into four parts that multiply "
                      f"to output, in % change. The share is relative: {pct(r['rtm']['regression']['d_share']['point'])} "
                      f"of a {pct(sh, 1, False)} share is about "
                      f"{abs(r['rtm']['regression']['d_share']['point']) * sh * 100:.1f} of a point. "
-                     f"{r['n_movers']} moves, {r['n_stayers']:,} stays, all with 900 minutes in "
-                     f"both seasons. Brackets: 95% intervals")
+                     f"Only players who kept 900 minutes: {r['n_movers']} moves, "
+                     f"{r['n_stayers']:,} stays. Lines and brackets: 95% intervals")
     ax = fig.add_axes([L, 0.14, R - L, top - 0.15])
     draw_move(ax, r)
     save(fig, "fig0_what_a_move_does")
@@ -202,8 +204,7 @@ def fig_luck(t):
     wrapped(fig, L, top - 0.38,
             f"His own part of a flop: {pct(pp_['point'], 0, False)} ({pct(pp_['lo'], 0, False)} to "
             f"{pct(pp_['hi'], 0, False)}) in the data, {pct(p[0], 0, False)} ({pct(p[1], 0, False)} to "
-            f"{pct(p[2], 0, False)}) from luck. The benchmark cannot see a rise of 1 to 3 points. "
-            f"On Opta, movers flop more often than stayers.",
+            f"{pct(p[2], 0, False)}) from luck. The benchmark cannot see a rise of 1 to 3 points.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig1_flops_look_like_luck")
 
@@ -211,7 +212,7 @@ def fig_luck(t):
 AGES = ["Under 23", "23–25", "26–28", "29 and over"]
 
 
-def draw_age(ax, sl, ag, fs=1.0, highlight=True):
+def draw_age(ax, sl, ag, fs=1.0, highlight=False):
     """Movers minus stayers in flop rate, by age band, with 95% intervals."""
     for i, b in enumerate(AGES):
         y = len(AGES) - 1 - i
@@ -248,7 +249,7 @@ def fig_age(sl, ag, holm):
 
 
 SPEC_NAMES = {
-    "on_pitch_split_half": ("Headline: per 90, noise split", "share and quality from different matches"),
+    "on_pitch_split_half": ("Headline: per 90, split-half", "share and quality from different matches"),
     "on_pitch": ("Per 90, same matches", "shared noise left in"),
     "all_vs_mates": ("Against team-mates", "team quality cancels out"),
     "baseline": ("Plus last season's quality", "allows for regression to the mean"),
@@ -276,7 +277,7 @@ def draw_within(ax, ws, fs=1.0):
                 color=PLAYER if head else TEXT, fontweight="bold" if head else "normal")
         if note:
             ax.text(-14, y - 0.27, note, fontsize=8 * fs, va="center", color=TEXT2)
-        ax.text(5, y, f"{r.pct_of_median:+.1f}%".replace("-", MINUS), fontsize=9.5 * fs,
+        ax.text(5, y, (f"{r.pct_of_median:+.1f}%" if round(r.pct_of_median, 1) != 0 else "0.0%").replace("-", MINUS), fontsize=9.5 * fs,
                 va="center", ha="right", color=c, fontweight="bold" if head else "normal")
     ax.axvline(0, color=TEXT, lw=0.8)
     ax.set_xlim(-14, 5)
@@ -291,7 +292,9 @@ def fig_within(ws, s):
                      f"{abs(h['point']):.1f}% worse",
                      f"Same player, consecutive seasons: change in xG+xA per shot or "
                      f"shot-assist for 5 more points of his share of the team's, while on the "
-                     f"pitch. {s['n_pairs']:,} pairs of seasons, 95% intervals")
+                     f"pitch. {s['n_pairs']:,} pairs of seasons, 95% intervals. Not shown: season "
+                     f"share with minutes held fixed, {ws.set_index('spec').loc['minutes', 'pct_of_median']:+.1f}%"
+                     .replace("-", MINUS))
     ax = fig.add_axes([L, 0.12, R - L, top - 0.13])
     draw_within(ax, ws)
     save(fig, "fig3_within_player")
@@ -388,12 +391,12 @@ def draw_positions(ax, r, rm, fs=1.0):
     flat(ax, [-10, -5, 0, 5], [f"{MINUS}10", f"{MINUS}5", "0", "+5%"])
 
 
-def draw_lost(ax, r, ro, fs=1.0):
+def draw_lost(ax, rv, rvo, fs=1.0):
     """Share of each group below 900 league minutes the next season, both sources."""
     rows = []
-    for src, x in (("Understat", r), ("Opta", ro)):
-        lp = x["lost_place"]
-        rows += [(f"{src}, moved", lp["lost_movers"], BLUE), (f"{src}, stayed", lp["lost_stayers"], TEXT2)]
+    for src, x in (("Understat", rv), ("Opta", rvo)):
+        lp = x["lost_place"]["minutes_only_rates_ci"]
+        rows += [(f"{src}, moved", lp["movers"], BLUE), (f"{src}, stayed", lp["stayers"], TEXT2)]
     for i, (lab, v, c) in enumerate(rows):
         y = 3 - i - (0.4 if i >= 2 else 0)
         ax.plot([v["lo"] * 100, v["hi"] * 100], [y, y], color=c, lw=7, alpha=0.2, solid_capstyle="round")
@@ -404,25 +407,55 @@ def draw_lost(ax, r, ro, fs=1.0):
                 transform=ax.get_yaxis_transform())
     ax.set_xlim(10, 40)
     ax.set_ylim(-1.0, 3.8)
-    flat(ax, [20, 30], ["20%", "30%"])
+    flat(ax, [10, 20, 30, 40], ["10%", "20%", "30%", "40%"])
+    ax.set_xlabel("share of players under 900 league minutes", fontsize=8.5 * fs, color=TEXT2)
 
 
 def fig_lost(r, ro):
-    g, go = r["lost_place"]["regression"]["lost_gap"], ro["lost_place"]["regression"]["lost_gap"]
+    rv, rvo = (json.loads((d / "rivals.json").read_text()) for d in (OUT, OUT / "opta"))
+    g = rv["lost_place"]["minutes_only_floors"]["lost900"]
+    go = rvo["lost_place"]["minutes_only_floors"]["lost900"]
     fig, top = frame("A third of movers fall below 900 league minutes the next season, "
                      "against a fifth of stayers",
                      "Attackers with 900 league minutes and 20 shots or shot-assists in a season, "
                      "and any Big-5 league appearance the next. Share with under 900 league "
                      "minutes the next season. Bands: 95% intervals", source=SOURCE_BOTH)
     ax = fig.add_axes([L + 0.33, top - 0.31, R - L - 0.34, 0.29])
-    draw_lost(ax, r, ro)
+    draw_lost(ax, rv, rvo)
     wrapped(fig, L, top - 0.39,
             f"Against stayers with the same last season, age and season, the gap is "
             f"{g['point'] * 100:+.1f} points {ci(g['lo'], g['hi'])} on Understat and "
-            f"{go['point'] * 100:+.1f} {ci(go['lo'], go['hi'])} on Opta. Players with no "
-            f"Big-5 league row at all the next season are not counted, for either group.",
+            f"{go['point'] * 100:+.1f} {ci(go['lo'], go['hi'])} on Opta, which shares Transfermarkt's "
+            f"minutes. Players with no Big-5 league row next season are not counted.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig6_lost_place")
+
+
+CHECKS = [("Matched (headline)", lambda v: v["lost_place"]["matched"]["badf"]),
+          ("Plus minutes share", lambda v: v["lost_place"]["matched_with_minutes_share_decile"]["badf"]),
+          ("Plus late-season minutes, finishing", lambda v: v["lost_place"]["matched_with_late_season_minutes_and_finishing"]["badf"]),
+          ("No loans, promoted or relegated", lambda v: v["lost_place"]["without_either"]["badf"]),
+          ("Club-season intervals", lambda v: v["lost_place"]["matched_buying_club_season_clusters"]["badf"]),
+          ("Dropouts all counted kept", lambda v: v["survival"]["bound_all_dropped_counted_kept"]["matched_gap"]),
+          ("Dropouts all counted lost", lambda v: v["survival"]["bound_all_dropped_counted_lost"]["matched_gap"])]
+
+
+def draw_checks(ax, rv, fs=1.0):
+    """The flop-or-lost-place gap under each check, with 95% intervals."""
+    for i, (lab, f) in enumerate(CHECKS):
+        v = f(rv)
+        y = len(CHECKS) - 1 - i
+        c = BLUE if i == 0 else TEXT2
+        ax.plot([v["lo"] * 100, v["hi"] * 100], [y, y], color=c, lw=2)
+        ax.plot(v["point"] * 100, y, "o", ms=6, color=c)
+        ax.text(0, y, lab + "  ", transform=ax.get_yaxis_transform(), ha="right", va="center",
+                fontsize=8.5 * fs, color=TEXT)
+        ax.text(24, y, f"{v['point'] * 100:+.1f}".replace("-", MINUS), ha="right", va="center",
+                fontsize=8.5 * fs, color=c, fontweight="bold")
+    ax.axvline(0, color=TEXT, lw=0.8)
+    ax.set_xlim(-2, 24)
+    ax.set_ylim(-0.6, len(CHECKS) - 0.4)
+    flat(ax, [0, 5, 10, 15, 20], ["0", "+5", "+10", "+15", "+20"])
 
 
 # ------------------------------------------------------------------ one-pager
@@ -447,7 +480,7 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
 
     fig.patches.append(plt.Rectangle((15 / 210, 1 - 13 / 297), 14 / 210, 1.2 / 297, color=BLUE,
                                      transform=fig.transFigure, figure=fig))
-    txt(15, 16, "What a move costs an attacker", fontsize=24, fontweight="bold", color=PLAYER)
+    txt(15, 16, "An attacker after a move", fontsize=24, fontweight="bold", color=PLAYER)
     txt(15, 27, "Usage, playing time and luck after a move, Big-5, 2014–15 to 2024–25",
         fontsize=11, color=TEXT2)
     txt(195, 16, "Ben Rimmer", fontsize=11, fontweight="bold", color=PLAYER, ha="right")
@@ -469,14 +502,15 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
     answer = (f"After a move between Big-5 clubs, {pct(lp['bad_movers']['point'], 0, False)} of attackers "
               f"flop or fall below 900 league minutes the next season, against "
               f"{pct(lp['bad_stayers']['point'], 0, False)} of stayers ({pts(lp['regression']['bad_gap'])} "
-              f"matched on last season; Opta {lpo['regression']['bad_gap']['point'] * 100:+.1f}). His share of "
-              f"his team's shots and shot-assists falls by {iv(g['d_share'])}, partly set pieces: in open play "
-              f"{pct(rv['own_split']['d_share_open']['point'])}. If he keeps playing, output per 90 holds "
-              f"({pct(g['d_out']['point'])}; Opta {pct(go['d_out']['point'])}).")
+              f"matched on last season). If he keeps playing, his share of his team's shots and "
+              f"shot-assists changes by {iv(g['d_share'])}, {pct(rv['own_split']['d_share_open']['point'])} in "
+              f"open play, and his output per 90 by {pct(g['d_out']['point'])}. Observational: clubs may sell "
+              f"players they no longer plan to pick.")
     txt(15, 37, answer, width=118, fontsize=9, color=TEXT)
     stats = [(f"{lp['regression']['bad_gap']['point'] * 100:+.1f} pts".replace("-", MINUS),
               "flop or lost his place, movers v stayers, matched"),
-             (f"{pct(lp['lost_movers']['point'], 0, False)} v {pct(lp['lost_stayers']['point'], 0, False)}",
+             (f"{pct(rv['lost_place']['minutes_only_rates_ci']['movers']['point'], 0, False)} v "
+              f"{pct(rv['lost_place']['minutes_only_rates_ci']['stayers']['point'], 0, False)}",
               "under 900 league minutes next season, movers v stayers"),
              (pct(g["d_share"]["point"]), "share of shots and shot-assists, matched")]
     for i, (big, small) in enumerate(stats):
@@ -488,13 +522,13 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
     draw_move(box(15, 77, 180, 62), r, fs=0.95)
 
     head(15, 151, "Below 900 league minutes the next season")
-    draw_lost(box(40, 158, 55, 40), r, ro, fs=0.85)
+    rv_, rvo_ = (json.loads((d / "rivals.json").read_text()) for d in (OUT, OUT / "opta"))
+    draw_lost(box(40, 158, 55, 40), rv_, rvo_, fs=0.85)
     head(110, 151, "Same player, 5 points more of the ball")
     draw_within(box(110, 158, 85, 54), ws, fs=0.8)
 
-    head(15, 222, "Flop rate by age, moved minus stayed (points)")
-    draw_age(box(40, 229, 55, 30), sl, ag, fs=0.85, highlight=False)
-    txt(15, 268.5, "No age band survives the correction for 11 tests.", fontsize=7, color=TEXT2)
+    head(15, 222, "Flop or lost place under each check (points)")
+    draw_checks(box(62, 229, 40, 38), rv_, fs=0.8)
     head(110, 222, "After a move: attackers v midfielders (matched)")
     draw_positions(box(140, 229, 55, 36), r, rm, fs=0.85)
 

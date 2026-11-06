@@ -6,16 +6,16 @@ This repo is being pushed toward done by a review loop, started on 3 November 20
 
 | # | Component | 10 looks like |
 |---|---|---|
-| C1 | First screen | 6 |
-| C2 | Reproducibility | 7 |
-| C3 | Inference | 5 |
-| C4 | Alternative explanations | 5 |
-| C5 | Leakage and look-ahead | 4 |
-| C6 | Charts | 6 |
-| C7 | Tradeability | 5 |
-| C8 | Writing | 7 |
-| C9 | Data and licences | 7 |
-| C10 | Professional report | 6 |
+| C1 | First screen | The README's first screen (about 25 lines) states the finding with its size and interval, the method in one sentence and the main limit. A reader who stops there is not misled. |
+| C2 | Reproducibility | `run_all.sh` rebuilds every result, figure and the one-pager from the committed inputs; the README check script passes; seeds fixed; pinned versions; runtime stated. |
+| C3 | Inference | Every number in the README carries an interval, and every test says whether it was pre-registered and whether it passes after multiple-testing correction. Exploratory results are labelled. |
+| C4 | Alternative explanations | For the headline, the obvious rival stories (confounds, mechanical artefacts, selection, data errors) are named and each is tested or bounded. A sceptic cannot name an untested one that would overturn it. |
+| C5 | Leakage and look-ahead | Nothing in a prediction or a normal uses data from its own period or later; held-out data were not looked at before the freeze; the commit history shows the order. |
+| C6 | Charts | Each chart's message reads in five seconds: a sentence headline that states the finding, one highlight colour, labelled axes with units, the null or benchmark drawn in, source line. Readable on a phone. |
+| C7 | Tradeability | Wherever a result could be read as a trade, costs, turnover and capacity are stated, or the README says plainly that it is not a trade. Nothing implies money that the numbers do not support. |
+| C8 | Writing | Ben's voice: plain words and whole sentences, en dashes only, no "not X but Y", every code or acronym glossed on first use, absolute dates. The one-pager matches the README. |
+| C9 | Data and licences | No raw data committed where the licence bars it, sources credited, licence files present, no local paths or secrets. |
+| C10 | Professional report | It reads like a short research note a desk would circulate. Every bullet starts with the point itself (the number or the conclusion), never the set-up. No waffle: no sentence a reader would skip loses anything. Headings say what the section shows. Standard parts in the standard order (finding, why it matters, method, results, robustness, limits, reproduce). Clear enough that a non-specialist founder follows it on one read. |
 
 ## Scorecard
 
@@ -23,27 +23,27 @@ Lower of the two critics' scores. A dash means not yet scored.
 
 | Component | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| C1 First screen | 5 | 6 | – | – | – | – | – | – | – | – |
-| C2 Reproducibility | 7 | 7 | – | – | – | – | – | – | – | – |
-| C3 Inference | 4 | 5 | – | – | – | – | – | – | – | – |
-| C4 Alternative explanations | 5 | 5 | – | – | – | – | – | – | – | – |
-| C5 Leakage and look-ahead | 6 | 4 | – | – | – | – | – | – | – | – |
-| C6 Charts | 7 | 6 | – | – | – | – | – | – | – | – |
-| C7 Tradeability | 2 | 5 | – | – | – | – | – | – | – | – |
-| C8 Writing | 6 | 7 | – | – | – | – | – | – | – | – |
-| C9 Data and licences | 7 | 7 | – | – | – | – | – | – | – | – |
-| C10 Professional report | 5 | 6 | – | – | – | – | – | – | – | – |
+| C1 First screen | 5 | 6 | 6 | – | – | – | – | – | – | – |
+| C2 Reproducibility | 7 | 7 | 7 | – | – | – | – | – | – | – |
+| C3 Inference | 4 | 5 | 6 | – | – | – | – | – | – | – |
+| C4 Alternative explanations | 5 | 5 | 5 | – | – | – | – | – | – | – |
+| C5 Leakage and look-ahead | 6 | 4 | 5 | – | – | – | – | – | – | – |
+| C6 Charts | 7 | 6 | 5 | – | – | – | – | – | – | – |
+| C7 Tradeability | 2 | 5 | 3 | – | – | – | – | – | – | – |
+| C8 Writing | 6 | 7 | 6 | – | – | – | – | – | – | – |
+| C9 Data and licences | 7 | 7 | 7 | – | – | – | – | – | – | – |
+| C10 Professional report | 5 | 6 | 6 | – | – | – | – | – | – | – |
 
 ## Mechanical markers
 
-| Marker | Before round 1 (commit 51d7f74) | After round 1 | Before round 2 (8be91d6) | After round 2 |
-|---|---|---|---|---|
-| `./run_all.sh --quick` exits 0 | Pass | Pass | Pass | Pass |
-| `analysis/verify.py` prints no FAIL | Pass | Pass (122 checks, README and side studies) | Pass on `--quick`; the full rebuild FAILed 3 side-study checks (injuries) | Pass (149 checks) |
-| No em dashes in README, one-pager source or figure text | Pass | Pass | Pass | Pass |
-| No local home-directory paths in tracked files | Pass | Pass | Pass | Pass |
-| A second `./run_all.sh --quick` leaves `git status` clean | Fail: figures and the one-pager carried timestamps and random SVG ids | Pass | Pass | Pass |
-| A full `./run_all.sh` from raw data reproduces every committed table (added in round 2) | – | – | Fail: `injuries.json` changed | Pass: every file in `data/`, `figures/` and the one-pager byte for byte |
+| Marker | Before round 1 (commit 51d7f74) | After round 1 | Before round 2 (8be91d6) | After round 2 | After round 3 |
+|---|---|---|---|---|---|
+| `./run_all.sh --quick` exits 0 | Pass | Pass | Pass | Pass | Pass (self-check failures now stop the build) |
+| `analysis/verify.py` prints no FAIL | Pass | Pass (122 checks, README and side studies) | Pass on `--quick`; the full rebuild FAILed 3 side-study checks (injuries) | Pass (149 checks) | Pass (181 checks) |
+| No em dashes in README, one-pager source or figure text | Pass | Pass | Pass | Pass | Pass |
+| No local home-directory paths in tracked files | Pass | Pass | Pass | Pass | Pass |
+| A second `./run_all.sh --quick` leaves `git status` clean | Fail: figures and the one-pager carried timestamps and random SVG ids | Pass | Pass | Pass | Pass |
+| A full `./run_all.sh` from raw data reproduces every committed table (added in round 2) | – | – | Fail: `injuries.json` changed | Pass: every file in `data/`, `figures/` and the one-pager byte for byte | Pass: a second full run reproduced every file; only `opta/rivals.json` changed, by gaining the pooled fee band added after the first |
 
 ## Round 1 council
 
@@ -92,3 +92,26 @@ The two critics agreed on two factual errors, and both are fixed: the README sai
 - **Tradeability (C7).** The props bullet now says plainly that this is not a trade, why the effect is small for match props, and that no price was tested.
 - **Writing and report (C1, C8, C10).** New title; the first screen leads with the largest result, names "moves between Big-5 clubs", glosses Understat and Opta, and gives the share in points; the "two fifths" heading now uses the matched ratio (three fifths); absolute dates for FBref (3 February 2025); "about twice" is now "about 1.6 times"; the MLS line no longer says "no richer clubs"; the private-model paragraph is cut.
 - **Data and licences (C9).** The unsourced claim that Understat's owner allows non-commercial use is gone; Sports Reference's terms are linked for FBref; the repo says it cannot grant rights over derived data; the prediction file is flagged as player-level; Impect is pinned to commit `d412b35` and the unpinned StatsBomb fetch is stated.
+
+## Round 3 council
+
+On the headline as it stood on 6 November 2026: "After a move between two Big-5 clubs, an attacker is 12 to 14 points more likely to flop or lose his place, his share of his team's shots and shot-assists falls by 4–6%, and if he keeps playing his output per 90 stays about level."
+
+- **Converged.** Every number matched `data/`. Lost places drive the gap; it holds with a minutes-share decile, club-season intervals and age adjustment; output is flat for players who reach 900 minutes again.
+- **Split.** A flop alone is +3.2 points on Understat (interval includes zero), and "flop or lost place" was chosen after looking; at a 450-minute floor the gap is small, so most movers play less rather than vanish; on clean moves it is +8.6; "the rest is set pieces" holds on Understat only; Opta shares Transfermarkt's minutes, so it is not an independent replication; "4–6%" reads as points.
+- **Practice.** Recruitment should price minutes, not output; trading changes nothing until a price is tested.
+- **Cannot be settled here.** Whether the selling club sold a player it expected to fade; any market edge; a prospective test.
+
+## Round 3 changes
+
+Both critics found the "10 looks like" column of the component table overwritten with round 2 scores (a builder script matched the wrong table); it is restored from round 1.
+
+- **Measurement bug (C2).** Transfermarkt ends every match at minute 90, so Understat's stoppage-time shots (91 and later) fell out of a player's team total while he was on. A player who finishes the match now counts them, a self-check asserts that a player on for every minute sees all his team's actions (median ratio 0.944 before, 1.000 after), and everything was rebuilt from raw data. The share gap moved from −4.2% to −4.1%, the flop-or-lost-place gap from +11.8 to +11.7 points; the base share from 17.8% to 16.9%. The frozen 2025–26 predictions are kept as committed.
+- **The self-checks can now fail the build (C2).** Under `set -e`, a failure inside `&& echo ok` was silently skipped.
+- **The falsifier was run, and it bites (C4).** The lost-place gap is +1.8 points (−3.8 to +7.4) where a fee was paid, +9.5 after free or loan moves and +25.2 where no fee is on record. The headline now says so.
+- **Starts (C7).** Movers start 41% of their new club's first 10 league matches against 56% for stayers, −14.2 points matched: the quantity a pre-match player price uses. The bookmaker-margin sentence, which had no source, is cut.
+- **Selection (C3, C4).** Lee bounds for the gaps among players who kept their place (output −4.9% to +12.1%), the survival range from +5.7 (every dropout kept) to +15.3 (every dropout lost), split-season players brought back on their Transfermarkt minutes (+7.7), and checks on late-season minutes, finishing (goals minus xG), buying-club strength, injuries and exact-cell reweighting.
+- **Inference (C3).** The primary family is four Understat tests; Opta is its own family, named as a sensitivity check that shares Transfermarkt's minutes. Minimum detectable effects (about 5 points), a list of the specifications tried, and "p at or below 0.0005" for the bootstrap floor.
+- **Labels (C5, C8).** "Below 900 minutes" now uses the minutes-only measure where it says so; the sample is no longer called "known on the day"; the loan flag is named as using later information; Opta's AUC is "pseudo out of time"; the wrong commit message (5845cab) is cited next to the frozen file; causal verbs are gone from the title, headings and fig0.
+- **Charts (C6).** fig0 draws its intervals; fig2 has no highlight on a band that fails Holm; fig6 plots minutes-only rates with an axis label; fig1 drops its Opta sentence; fig3 names the specification it leaves out; the one-pager swaps the age panel for the lost-place checks and fixes a double negative.
+- **Report and data (C9, C10).** An "At a glance" table of each claim, whether it is conditional on keeping a place, its Holm status and whether its outcome was chosen before looking; review-process language moved out of the findings; player names removed from the predictions file; StatsBomb pinned to commit `4b73468`; the README says the Transfermarkt copy cannot be downloaded again and that the sources' terms, not this repo, govern commercial use.

@@ -1,11 +1,11 @@
 spec,label,subset,n_pairs,n_players,slope_per_5pp,ci_lo,ci_hi,pct_of_median,ci_lo_pct,ci_hi_pct
 naive,"Season usage share, nothing held fixed",all,2693,897,-0.00037,-0.00180,0.00106,-0.31632,-1.54890,0.90955
 minutes,"Season usage share, minutes held fixed",all,2693,897,-0.00402,-0.00686,-0.00124,-3.46510,-5.91729,-1.06979
-on_pitch,Per 90: share while on the pitch,all,2693,897,-0.00291,-0.00481,-0.00102,-2.50487,-4.14860,-0.88147
-on_pitch_split_half,"Per 90, split-half: shared noise removed (headline)",all,2693,897,-0.00201,-0.00350,-0.00057,-1.73189,-3.02118,-0.49089
+on_pitch,Per 90: share while on the pitch,all,2693,897,-0.00248,-0.00448,-0.00046,-2.13929,-3.86093,-0.39265
+on_pitch_split_half,"Per 90, split-half: shared noise removed (headline)",all,2693,897,-0.00174,-0.00336,-0.00015,-1.50086,-2.89644,-0.13317
 split_half,"Season share split-half, minutes fixed",all,2693,897,-0.00240,-0.00460,-0.00029,-2.07023,-3.96344,-0.25233
 baseline,Split-half plus last season's efficiency,all,2693,897,-0.00237,-0.00459,-0.00027,-2.04621,-3.95361,-0.23351
-stayers,"Per 90, same club both seasons",stayers,2088,805,-0.00222,-0.00438,-0.00000,-1.91496,-3.77262,-0.00062
-movers,"Per 90, club changers",movers,605,431,-0.00235,-0.00559,0.00099,-2.02273,-4.81830,0.85498
-movers_vs_mates,"Per 90, club changers against new team-mates",movers,605,431,-0.00009,-0.00311,0.00305,-0.07918,-2.68259,2.62859
-all_vs_mates,"Per 90, everyone against team-mates",all,2693,897,-0.00220,-0.00419,-0.00021,-1.89860,-3.61323,-0.17774
+stayers,"Per 90, same club both seasons",stayers,2088,805,-0.00156,-0.00374,0.00075,-1.34590,-3.22341,0.64776
+movers,"Per 90, club changers",movers,605,431,-0.00236,-0.00592,0.00123,-2.03634,-5.09923,1.06207
+movers_vs_mates,"Per 90, club changers against new team-mates",movers,605,431,0.00001,-0.00306,0.00320,0.01049,-2.63629,2.76241
+all_vs_mates,"Per 90, everyone against team-mates",all,2693,897,-0.00221,-0.00410,-0.00034,-1.90240,-3.53829,-0.29442

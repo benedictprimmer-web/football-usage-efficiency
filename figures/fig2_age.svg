@@ -99,24 +99,11 @@ L 205.671789 231.600714
    <g id="line2d_9">
     <path d="M 176.127158 268.629286 
 L 273.160421 268.629286 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #1b64c2; stroke-width: 2.5"/>
+" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_10">
-    <defs>
-     <path id="mad3448399a" d="M 0 4 
-C 1.060812 4 2.078319 3.578535 2.828427 2.828427 
-C 3.578535 2.078319 4 1.060812 4 0 
-C 4 -1.060812 3.578535 -2.078319 2.828427 -2.828427 
-C 2.078319 -3.578535 1.060812 -4 0 -4 
-C -1.060812 -4 -2.078319 -3.578535 -2.828427 -2.828427 
-C -3.578535 -2.078319 -4 -1.060812 -4 0 
-C -4 1.060812 -3.578535 2.078319 -2.828427 2.828427 
-C -2.078319 3.578535 -1.060812 4 0 4 
-z
-" style="stroke: #1b64c2"/>
-    </defs>
     <g clip-path="url(#p763a2d6357)">
-     <use xlink:href="#mad3448399a" x="224.702526" y="268.629286" style="fill: #1b64c2; stroke: #1b64c2"/>
+     <use xlink:href="#m25c8d08dfc" x="224.702526" y="268.629286" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_11">
@@ -152,7 +139,7 @@ L 324.144 327.875
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="235.295714" transform="rotate(-0 100.944 235.295714)">23–25  </text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1b64c2" x="324.144" y="272.608786" transform="rotate(-0 324.144 272.608786)">+9</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="272.608786" transform="rotate(-0 324.144 272.608786)">+9</text>
    </g>
    <g id="text_10">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="272.324286" transform="rotate(-0 100.944 272.324286)">26–28  </text>

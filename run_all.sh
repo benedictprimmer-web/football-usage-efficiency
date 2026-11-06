@@ -35,10 +35,12 @@ fi
 
 # self-checks: small synthetic cases with known answers
 for m in crosswalk minutes chemistry asa fpl injuries pass_checks robustness rivals score_frozen; do
-  (cd analysis && "$PY" "$m.py" check > /dev/null) && echo "self-check ok: $m"
+  (cd analysis && "$PY" "$m.py" check > /dev/null) || { echo "self-check FAILED: $m"; exit 1; }
+  echo "self-check ok: $m"
 done
 for m in usage wowy understat talent; do
-  PYTHONPATH=src "$PY" -m "usage_model.$m" > /dev/null && echo "self-check ok: $m"
+  PYTHONPATH=src "$PY" -m "usage_model.$m" > /dev/null || { echo "self-check FAILED: $m"; exit 1; }
+  echo "self-check ok: $m"
 done
 # every number quoted in the README against the tables in data/
 "$PY" analysis/verify.py

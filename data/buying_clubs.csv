@@ -1,26 +1,26 @@
 club_id1,n,mean,team,league,shrunk
-1050,12,-0.1247,Villarreal,ESP-La Liga,0.0040
-430,10,-0.0780,Fiorentina,ITA-Serie A,0.0075
-150,11,-0.0698,Real Betis,ESP-La Liga,0.0076
-29,14,-0.0471,Everton,ENG-Premier League,0.0080
-46,10,-0.0572,Inter,ITA-Serie A,0.0086
-583,12,-0.0448,Paris Saint Germain,FRA-Ligue 1,0.0087
-873,8,-0.0706,Crystal Palace,ENG-Premier League,0.0087
-3709,8,-0.0629,Getafe,ESP-La Liga,0.0090
-681,8,-0.0291,Real Sociedad,ESP-La Liga,0.0104
-131,8,-0.0171,Barcelona,ESP-La Liga,0.0108
-5,12,-0.0048,AC Milan,ITA-Serie A,0.0110
-631,10,-0.0077,Chelsea,ENG-Premier League,0.0110
-368,12,0.0008,Sevilla,ESP-La Liga,0.0114
-281,9,-0.0023,Manchester City,ENG-Premier League,0.0114
-416,8,0.0016,Torino,ITA-Serie A,0.0116
-379,9,0.0050,West Ham,ENG-Premier League,0.0117
-12,12,0.0071,Roma,ITA-Serie A,0.0117
-969,10,0.0196,Montpellier,FRA-Ligue 1,0.0124
-506,11,0.0284,Juventus,ITA-Serie A,0.0129
-6574,9,0.0855,Sassuolo,ITA-Serie A,0.0153
-82,8,0.1099,Wolfsburg,GER-Bundesliga,0.0159
-1038,9,0.1226,Sampdoria,ITA-Serie A,0.0170
-800,9,0.1256,Atalanta,ITA-Serie A,0.0171
-985,8,0.1807,Manchester United,ENG-Premier League,0.0188
-13,13,0.1581,Atletico Madrid,ESP-La Liga,0.0213
+1050,12,-0.1247,Villarreal,ESP-La Liga,-0.0046
+873,8,-0.0892,Crystal Palace,ENG-Premier League,0.0049
+150,11,-0.0625,Real Betis,ESP-La Liga,0.0050
+3709,8,-0.0870,Getafe,ESP-La Liga,0.0051
+430,10,-0.0647,Fiorentina,ITA-Serie A,0.0056
+46,10,-0.0532,Inter,ITA-Serie A,0.0070
+583,12,-0.0362,Paris Saint Germain,FRA-Ligue 1,0.0079
+29,14,-0.0218,Everton,ENG-Premier League,0.0093
+681,8,-0.0217,Real Sociedad,ESP-La Liga,0.0116
+131,8,-0.0166,Barcelona,ESP-La Liga,0.0121
+368,12,-0.0069,Sevilla,ESP-La Liga,0.0121
+416,8,-0.0028,Torino,ITA-Serie A,0.0134
+281,9,0.0002,Manchester City,ENG-Premier League,0.0136
+5,12,0.0053,AC Milan,ITA-Serie A,0.0138
+12,12,0.0058,Roma,ITA-Serie A,0.0139
+631,10,0.0064,Chelsea,ENG-Premier League,0.0142
+506,11,0.0254,Juventus,ITA-Serie A,0.0166
+379,9,0.0357,West Ham,ENG-Premier League,0.0175
+969,10,0.0547,Montpellier,FRA-Ligue 1,0.0200
+6574,9,0.0799,Sassuolo,ITA-Serie A,0.0224
+82,8,0.1045,Wolfsburg,GER-Bundesliga,0.0241
+800,9,0.1223,Atalanta,ITA-Serie A,0.0270
+1038,9,0.1254,Sampdoria,ITA-Serie A,0.0274
+985,8,0.1847,Manchester United,ENG-Premier League,0.0320
+13,13,0.1320,Atletico Madrid,ESP-La Liga,0.0329

@@ -38,40 +38,40 @@ z
    </g>
    <g id="patch_3">
     <path d="M 172.8 231.82455 
-L 88.850769 231.82455 
-L 88.850769 220.48396 
+L 91.033846 231.82455 
+L 91.033846 220.48396 
 L 172.8 220.48396 
 z
 " clip-path="url(#p9cc254d4f2)" style="fill: #1b64c2"/>
    </g>
    <g id="patch_4">
     <path d="M 172.8 261.722469 
-L 207.332308 261.722469 
-L 207.332308 250.381879 
+L 201.973846 261.722469 
+L 201.973846 250.381879 
 L 172.8 250.381879 
 z
 " clip-path="url(#p9cc254d4f2)" style="fill: #b9b8b3"/>
    </g>
    <g id="patch_5">
     <path d="M 172.8 291.620388 
-L 232.536923 291.620388 
-L 232.536923 280.279798 
+L 225.987692 291.620388 
+L 225.987692 280.279798 
 L 172.8 280.279798 
 z
 " clip-path="url(#p9cc254d4f2)" style="fill: #b9b8b3"/>
    </g>
    <g id="patch_6">
     <path d="M 172.8 321.518307 
-L 187.089231 321.518307 
-L 187.089231 310.177717 
+L 197.607692 321.518307 
+L 197.607692 310.177717 
 L 172.8 310.177717 
 z
 " clip-path="url(#p9cc254d4f2)" style="fill: #b9b8b3"/>
    </g>
    <g id="patch_7">
     <path d="M 172.8 361.725854 
-L 197.210769 361.725854 
-L 197.210769 350.385264 
+L 198.203077 361.725854 
+L 198.203077 350.385264 
 L 172.8 350.385264 
 z
 " clip-path="url(#p9cc254d4f2)" style="fill: #767671"/>
@@ -110,56 +110,81 @@ z
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="line2d_6">
+    <path d="M 57.096923 234.814342 
+L 125.963077 234.814342 
+" clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #1b64c2; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 168.433846 264.712261 
+L 237.3 264.712261 
+" clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #b9b8b3; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 191.058462 294.61018 
+L 260.916923 294.61018 
+" clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #b9b8b3; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 153.350769 324.508099 
+L 240.872308 324.508099 
+" clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #b9b8b3; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 135.886154 364.715646 
+L 260.321538 364.715646 
+" clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #767671; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_11">
     <path d="M 172.8 371.52 
 L 172.8 205.535 
 " clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #3d3d3a; stroke-width: 0.9; stroke-linecap: square"/>
    </g>
-   <g id="line2d_7">
+   <g id="line2d_12">
     <path d="M 18 334.920823 
 L 327.6 334.920823 
 " clip-path="url(#p9cc254d4f2)" style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="text_6">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1b64c2" x="82.896923" y="229.91087" transform="rotate(-0 82.896923 229.91087)">−4.2%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1b64c2" x="85.08" y="229.91087" transform="rotate(-0 85.08 229.91087)">−4.1%</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="178.753846" y="228.69787" transform="rotate(-0 178.753846 228.69787)">(−6.0 to −2.5)</text>
+    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="178.753846" y="228.69787" transform="rotate(-0 178.753846 228.69787)">(−5.8 to −2.4)</text>
    </g>
    <g id="text_8">
     <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1b64c2" x="18" y="216.561323" transform="rotate(-0 18 216.561323)">His share of the ball</text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="213.286154" y="259.808789" transform="rotate(-0 213.286154 259.808789)">+1.7%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="207.927692" y="259.808789" transform="rotate(-0 207.927692 259.808789)">+1.5%</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="257.286154" y="258.595789" transform="rotate(-0 257.286154 258.595789)">(0.0 to 3.5)</text>
+    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="251.927692" y="258.595789" transform="rotate(-0 251.927692 258.595789)">(−0.2 to 3.2)</text>
    </g>
    <g id="text_11">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #3d3d3a" x="18" y="246.499242" transform="rotate(-0 18 246.499242)">Chances his team creates</text>
    </g>
    <g id="text_12">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="238.490769" y="289.706708" transform="rotate(-0 238.490769 289.706708)">+3.0%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="231.941538" y="289.706708" transform="rotate(-0 231.941538 289.706708)">+2.7%</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="282.490769" y="288.493708" transform="rotate(-0 282.490769 288.493708)">(1.2 to 4.8)</text>
+    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="275.941538" y="288.493708" transform="rotate(-0 275.941538 288.493708)">(0.9 to 4.4)</text>
    </g>
    <g id="text_14">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #3d3d3a" x="18" y="276.397161" transform="rotate(-0 18 276.397161)">Quality of team-mates' chances</text>
    </g>
    <g id="text_15">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="193.043077" y="319.604627" transform="rotate(-0 193.043077 319.604627)">+0.7%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="203.561538" y="319.604627" transform="rotate(-0 203.561538 319.604627)">+1.2%</text>
    </g>
    <g id="text_16">
-    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="237.043077" y="318.391627" transform="rotate(-0 237.043077 318.391627)">(−1.7 to 3.0)</text>
+    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="247.561538" y="318.391627" transform="rotate(-0 247.561538 318.391627)">(−1.0 to 3.4)</text>
    </g>
    <g id="text_17">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #3d3d3a" x="18" y="306.295081" transform="rotate(-0 18 306.295081)">His own quality v team-mates</text>
    </g>
    <g id="text_18">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="203.164615" y="359.812174" transform="rotate(-0 203.164615 359.812174)">+1.2%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="204.156923" y="359.812174" transform="rotate(-0 204.156923 359.812174)">+1.3%</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="247.164615" y="358.599174" transform="rotate(-0 247.164615 358.599174)">(−1.9 to 4.4)</text>
+    <text style="font-size: 8px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #767671" x="248.156923" y="358.599174" transform="rotate(-0 248.156923 358.599174)">(−1.9 to 4.4)</text>
    </g>
    <g id="text_20">
     <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1d1d1b" x="18" y="346.462627" transform="rotate(-0 18 346.462627)">Output per 90, net</text>
@@ -180,18 +205,18 @@ z
 " style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
   </g>
   <g id="text_23">
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 41.116523)">A move costs an attacker about 4%</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.447266)">of his share of the ball, and his</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.784766)">output per 90 barely changes</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">A mover who keeps his place has</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.513008)">about 4% less of the ball, and</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.900781)">the same output per 90</text>
   </g>
   <g id="text_24">
    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 102.005625)">Change in xG+xA per 90 after a move between Big-5 clubs,</text>
    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 116.523594)">minus the change for players who stayed, adjusted for last</text>
    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 131.130625)">season (decile of share, decile of output per 90, age band,</text>
    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 145.703281)">season), split into four parts that multiply to output, in %</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 160.211094)">change. The share is relative: −4.2% of a 17.8% share is</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 174.78375)">about 0.8 of a point. 601 moves, 2,075 stays, all with 900</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 190.276719)">minutes in both seasons. Brackets: 95% intervals</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 160.211094)">change. The share is relative: −4.1% of a 16.9% share is</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 174.828281)">about 0.7 of a point. Only players who kept 900 minutes: 601</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 189.34625)">moves, 2,075 stays. Lines and brackets: 95% intervals</text>
   </g>
   <g id="text_25">
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>

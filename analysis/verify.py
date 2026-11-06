@@ -84,6 +84,7 @@ def checks() -> list[tuple[str, str]]:
     tmo = json.loads((OUT / "opta" / "mid" / "transfers.json").read_text())
     fz = json.loads((OUT / "frozen_score_2025_26.json").read_text())
     rv, rvo = json.loads((OUT / "rivals.json").read_text()), json.loads((OUT / "opta" / "rivals.json").read_text())
+    fams = rv["primary_family"] | rv.get("opta_family", {})
     s = json.loads((OUT / "summary.json").read_text())
     mv, nb, nbs = t["movers_vs_stayers"], t["noise_benchmark"], t["noise_benchmark_stayers"]
     g = mv["mean_log_gap_by_part"]
@@ -128,43 +129,56 @@ def checks() -> list[tuple[str, str]]:
         return (f"| {label} | {iv(raw[key])} | {iv(reg[key])} | {iv(rawo[key])} | {iv(rego[key])} |")
 
     holm_age = sf["age 26–28: movers v stayers"]
+    lc = rv["lost_place"]
     out = [
         # first screen
-        ("bad matched", f"Flop or lost place: {pp(lp['regression']['bad_gap'])[0]} points (95% interval "
-                        f"{pp(lp['regression']['bad_gap'])[1]} to {pp(lp['regression']['bad_gap'])[2]}) on Understat, "
-                        f"{pts(lpo['regression']['bad_gap'], False)} on Opta"),
-        ("headline range", f"{round(lp['regression']['bad_gap']['point'] * 100)} to "
-                           f"{round(lpo['regression']['bad_gap']['point'] * 100)} points more likely"),
-        ("headline share range", f"falls by {round(-reg['d_share']['point'] * 100)}–{round(-rego['d_share']['point'] * 100)}%"),
-        ("share matched", f"Share of shots and shot-assists: {iv(reg['d_share'])} on Understat, {iv(rego['d_share'])} on Opta"),
+        ("headline", f"about {round(lp['regression']['bad_gap']['point'] * 100)} points more likely to flop or lose his place"),
+        ("headline share", f"is about {round(-reg['d_share']['point'] * 100)}% lower"),
+        ("bad matched", f"Flop or lost place: {pts(lp['regression']['bad_gap'])}".replace("points (", "points (95% interval ")),
+        ("fee paid", f"Where a fee was paid the gap is {pts(lc['by_fee_band']['Any fee paid']['badf'])}; after free or loan "
+                     f"moves it is {pts(lc['by_fee_band']['Free or loan']['badf'], False).split(' (')[0]}, and where Transfermarkt "
+                     f"has no fee, {pts(lc['by_fee_band']['No fee on record']['badf'], False).split(' (')[0]}"),
+        ("starts", f"Starts: {p(lc['starts_in_first_10_rates']['movers'], 0)} of his new club's first 10 league matches, against "
+                   f"{p(lc['starts_in_first_10_rates']['stayers'], 0)} for stayers, a matched gap of "
+                   f"{pts(lc['starts_in_first_10_matches']['starts10'])}"),
+        ("share matched", f"Share of shots and shot-assists: {iv(reg['d_share'])}"),
+        ("open share", f"In open play alone it is {iv(rv['own_split']['d_share_open'])}; the rest is set pieces"),
+        ("output first", f"Output per 90: {iv(reg['d_out'])} for the {lp['n_movers_kept']} of {lp['n_movers']} movers"),
+        ("lee", f"bounds for that selection run from {p(rv['lee_bounds']['d_out']['lower']['point'], 1, True)} to "
+                f"{p(rv['lee_bounds']['d_out']['upper']['point'], 1, True)}"),
+        ("sample", f"{lp['n_movers']} moves and {lp['n_stayers']:,} stays"),
+        ("dropped", f"how the {rv['survival']['no_big5_row_next_season']} seasons with no Big-5 row next season are counted "
+                    f"moves the gap from {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} to "
+                    f"{pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
+        # at a glance
+        ("glance bad", f"| Flop or lost place | {pts(lp['regression']['bad_gap'])} |"),
+        ("glance starts", f"| Starts in first 10 matches | {pts(lc['starts_in_first_10_matches']['starts10'])} |"),
+        ("glance share", f"| Share of shots and shot-assists | {iv(reg['d_share'])} |"),
+        ("glance own", f"| Own shots and shot-assists per 90 | {iv(reg['d_own'])} |"),
+        ("glance out", f"| Output per 90 | {iv(reg['d_out'])} |"),
+        ("lost movers", f"({p(lc['minutes_only_rates_ci']['movers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['movers']['lo'], 0)} to "
+                        f"{p(lc['minutes_only_rates_ci']['movers']['hi'], 0)}), against one stayer in five "
+                        f"({p(lc['minutes_only_rates_ci']['stayers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['stayers']['lo'], 0)} to "
+                        f"{p(lc['minutes_only_rates_ci']['stayers']['hi'], 0)})"),
+        ("opta open own", f"his actions outside direct free kicks down {neg(rvo['own_split']['d_own_open'])}"),
+        ("starts14", f"{round(-lc['starts_in_first_10_matches']['starts10']['point'] * 100)} points fewer starts"),
+        ("fpl n", f"only {json.loads((OUT / 'fpl.json').read_text())['pairs']['2024-25 -> 2025-26']['FWD+MID']['n_movers']} Premier League movers"),
+        # inference
+        ("fam floor", "p at or below 0.0005; Holm-adjusted {:.3f})".format(
+            rv['primary_family']['Understat: share of shots and shot-assists']['p_holm'])),
+        ("fam out", f"output does not (adjusted {rv['primary_family']['Understat: output per 90']['p_holm']:.3f})"),
+        ("mde", f"({rv['min_detectable_points']['flop']} for flops, {rv['min_detectable_points']['flop_or_lost']} for flop or lost place)"),
         ("share points", f"about {-reg['d_share']['point'] * r['rtm']['movers_last_season']['share_movers'] * 100:.1f} of a point "
                          f"off a {p(r['rtm']['movers_last_season']['share_movers'])} share"),
-        ("open share", f"In open play alone it is {iv(rv['own_split']['d_share_open'])} on Understat"),
-        ("output matched", f"{iv(reg['d_out'])} on Understat, {iv(rego['d_out'])} on Opta"),
         ("lost headline", f"{p(lp['bad_movers']['point'], 0)} of movers flop or fall below 900 league minutes "
                           f"the next season, against {p(lp['bad_stayers']['point'], 0)} of stayers"),
-        ("lost headline 2", f"{p(lp['lost_movers']['point'], 0)} of movers fall below 900 minutes, against "
-                            f"{p(lp['lost_stayers']['point'], 0)} of stayers"),
-        ("dropped", f"{rv['survival']['no_big5_row_next_season']} of {rv['survival']['qualifying_seasons']:,} "
-                    f"qualifying seasons ({p(rv['survival']['share_dropped'], 0)})"),
-        ("dropped bound", f"widen the gap to {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
-        ("sample", f"{lp['n_movers']} moves with {lp['n_stayers']:,} stays"),
         ("kept", f"{lp['n_movers_kept']} of the {lp['n_movers']} movers and {lp['n_stayers_kept']:,} of the "
                  f"{lp['n_stayers']:,} stayers"),
         # why it matters
-        ("lost movers", f"({p(lp['lost_movers']['point'], 0)}, {p(lp['lost_movers']['lo'], 0)} to "
-                        f"{p(lp['lost_movers']['hi'], 0)}), against one stayer in five "
-                        f"({p(lp['lost_stayers']['point'], 0)}, {p(lp['lost_stayers']['lo'], 0)} to "
-                        f"{p(lp['lost_stayers']['hi'], 0)})"),
         ("open own", f"do not fall on Understat ({ivc(rv['own_split']['d_own_open'])})"),
         ("set own", f"his set-piece actions per 90 fall by {neg(rv['own_split']['d_own_set'])}"),
-        ("shots", f"His shots per 90 fall {neg(rv['own_split']['d_own_shots'])} against matched stayers"),
         # inference
-        ("fam floor", "p below 0.0005, the bootstrap's floor; Holm-adjusted {:.3f})".format(
-            rv['primary_family']['Understat: share of shots and shot-assists']['p_holm'])),
-        ("fam opta own", f"Opta's own-actions gap (adjusted {rv['primary_family']['Opta: own actions per 90']['p_holm']:.3f})"),
-        ("fam us own", f"(adjusted {rv['primary_family']['Understat: own actions per 90']['p_holm']:.3f})"),
-        ("fam out", f"neither output gap does (adjusted {rv['primary_family']['Understat: output per 90']['p_holm']:.3f})"),
+        ("fam us own", f"own actions survives (adjusted {rv['primary_family']['Understat: own actions per 90']['p_holm']:.3f})"),
         ("clusters", f"gives {iv(rv['cutoffs_clusters_position']['matched_buying_club_season_clusters']['d_share'])} "
                      f"for the share gap and {pts(rv['lost_place']['matched_buying_club_season_clusters']['badf'])}"),
         # status of tests
@@ -180,6 +194,9 @@ def checks() -> list[tuple[str, str]]:
         ("rtm out", row("Output per 90", "d_out")),
         ("rtm flop", f"| Flop rate, points | {pts(raw['flopf'], False)} | {pts(reg['flopf'], False)} | "
                      f"{pts(rawo['flopf'], False)} | {pts(rego['flopf'], False)} |"),
+        ("team map", f"while he is on ({p(reg['d_team']['point'], 1, True)} matched, a part in fig0), the same without his own "
+                     f"actions ({p(reg['d_team_ex']['point'], 1, True)} matched, the table), and the buying club's shots and "
+                     f"shot-assists per match the season before the move ({p(st['team_actions_per_match_change']['point'], 1, True)})"),
         ("fifths", f"His own actions per 90 fall by {p(-reg['d_own']['point'])} against a share fall of "
                    f"{p(-reg['d_share']['point'])}"),
         ("reweighted", f"{iv(rw['d_share'])} on Understat and {iv(rwo['d_share'])} on Opta"),
@@ -189,20 +206,20 @@ def checks() -> list[tuple[str, str]]:
                           f"({ivc(rv['own_split']['d_own_assists'])})"),
         ("open share 2", f"his share falls by {neg(rv['own_split']['d_share_open'])} on Understat, while the team's "
                          f"open-play actions per 90 with him on rise by {p(rv['own_split']['d_team_open']['point'])} "
-                         f"({p(rv['own_split']['d_team_open']['lo'], 1, True)} to {p(rv['own_split']['d_team_open']['hi'], 1, True)})"),
+                         + _z(f"({p(rv['own_split']['d_team_open']['lo'], 1, True)} to {p(rv['own_split']['d_team_open']['hi'], 1, True)})")),
         ("strength", f"made {p(st['team_actions_per_match_change']['point'])} "
                      f"({p(st['team_actions_per_match_change']['lo'])} to {p(st['team_actions_per_match_change']['hi'])}) more"),
         ("strength opta", f"(Opta {p(sto['team_actions_per_match_change']['point'])}, "
                           f"{p(sto['team_actions_per_match_change']['lo'])} to {p(sto['team_actions_per_match_change']['hi'])})"),
         ("stronger", f"{r0(st['share_joining_stronger'])} of movers joined"),
         # lost place table
-        ("lost row", f"| Below 900 minutes the next season | {r0(lp['lost_movers'])} | {r0(lp['lost_stayers'])} | "
+        ("lost row", f"| No 900-minute season next (under 900 minutes or 20 actions, or split between clubs) | {r0(lp['lost_movers'])} | {r0(lp['lost_stayers'])} | "
                      f"{r0(lpo['lost_movers'])} | {r0(lpo['lost_stayers'])} |"),
         ("bad row", f"| Flop or below 900 minutes | {r0(lp['bad_movers'])} | {r0(lp['bad_stayers'])} | "
                     f"{r0(lpo['bad_movers'])} | {r0(lpo['bad_stayers'])} |"),
         ("gap row", f"| Gap, matched | {pts(lp['regression']['bad_gap'])} | | {pts(lpo['regression']['bad_gap'])} | |"),
         ("lost age", "age adjustment ({} points, {} to {})".format(*pp(lp['age_adjusted']['bad_gap']))),
-        ("lost only", f"the matched gap is {pts(lp['regression']['lost_gap'])} on Understat"),
+        ("lost only", f"the matched gap is {pts(rv['lost_place']['minutes_only_floors']['lost900'])} on Understat"),
         ("chk minutes", f"| Also matched on last season's share of his club's minutes | "
                         f"{pts(rv['lost_place']['matched_with_minutes_share_decile']['badf'], False)} |"),
         ("chk promo", f"| Without moves to promoted or from relegated clubs | "
@@ -213,6 +230,35 @@ def checks() -> list[tuple[str, str]]:
         ("chk 1350", f"| Floor at 1,350 minutes, minutes only | {pts(rv['lost_place']['minutes_only_floors']['lost1350'], False)} |"),
         ("chk drop", f"| Every season with no Big-5 row next season counted as lost | "
                      f"{pts(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'], False)} |"),
+        ("chk kept", f"| Every season with no Big-5 row next season counted as kept | "
+                     f"{pts(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'], False)} |"),
+        ("chk rec", f"| Split-season players brought back on their Transfermarkt minutes, the rest counted as lost | "
+                    f"{pts(rv['survival']['split_season_players_recovered']['matched_gap'], False)} |"),
+        ("chk late", f"| Also matched on his share of minutes in the second half of last season, and on goals minus xG | "
+                     f"{pts(lc['matched_with_late_season_minutes_and_finishing']['badf'], False)} |"),
+        ("chk rw", f"| Stayers reweighted to the movers' mix of cells | {pts(lc['reweighted_cells']['badf'], False)} |"),
+        ("chk stronger", f"| Buying club made more shots the season before | {pts(lc['by_buying_club_strength']['stronger_buyer']['badf'], False)} |"),
+        ("chk weaker", f"| Buying club did not | {pts(lc['by_buying_club_strength']['not_stronger_buyer']['badf'], False)} |"),
+        ("chk fit", f"| Fit all next season (under 30 days out) | {pts(lc['by_injury']['fit']['badf'], False)} |"),
+        ("chk inj", f"| Injured 30 days or more | {pts(lc['by_injury']['injured']['badf'], False)} |"),
+        ("played", f"{rv['survival']['dropped_who_played_big5_next_season']} played Big-5 league minutes the next season, "
+                   f"{rv['survival']['dropped_who_played_900_next_season']} of them 900 or more"),
+        ("bounds text", f"The gap is {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} points if every "
+                        f"dropout kept his place and {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]}"),
+        ("starts text", f"Movers start {p(lc['starts_in_first_10_rates']['movers'], 0)} of their new club's first 10 league matches, "
+                        f"against {p(lc['starts_in_first_10_rates']['stayers'], 0)} for stayers, matched "
+                        f"{pts(lc['starts_in_first_10_matches']['starts10'])[:-1].split(' points')[0]} points "
+                        f"({pts(lc['starts_in_first_10_matches']['starts10']).split('(')[1]}; on Opta "
+                        f"{pts(rvo['lost_place']['starts_in_first_10_matches']['starts10'], False)}"),
+        ("late share", f"({p(lc['late_season_minutes_share']['movers'], 0)} of their club's minutes against "
+                       f"{p(lc['late_season_minutes_share']['stayers'], 0)})"),
+        ("full time", f"(median ratio {rv['full_time_check']['median_ratio']:.3f} across {rv['full_time_check']['players']} such seasons)"),
+        ("limit range", f"Counting them moves the lost-place gap from {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} "
+                        f"to {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
+        ("fee falsifier", f"It does: {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid"),
+        *[(f"fee row {b}", f"| {lab} | {lc['by_fee_band'][b]['n_movers']} | {pts(lc['by_fee_band'][b]['badf'], False)} |")
+          for b, lab in (("Any fee paid", "Any fee paid"), ("Over €30m", "Over €30m"), ("€10m–30m", "€10–30m"),
+                         ("Under €10m", "Under €10m"), ("Free or loan", "Free or loan"), ("No fee on record", "No fee on record"))],
         ("drop n", f"{rv['survival']['no_big5_row_next_season']} of {rv['survival']['qualifying_seasons']:,} qualifying "
                    f"seasons have no Big-5 row"),
         ("drop transfer", f"{rv['survival']['dropped_with_transfer_away']} of them show a Transfermarkt transfer"),
@@ -273,8 +319,9 @@ def checks() -> list[tuple[str, str]]:
          if False else f"AUC of {fz['auc_lost_place']:.2f} ({fz['auc_lo']:.2f} to {fz['auc_hi']:.2f})"),
         ("frozen clean", f"it is {fz['post_hoc_clean_subset']['auc_lost_place']:.2f} ({fz['post_hoc_clean_subset']['auc_lo']:.2f} "
                          f"to {fz['post_hoc_clean_subset']['auc_hi']:.2f}) on {fz['post_hoc_clean_subset']['moves']} moves"),
-        ("frozen dropped", f"found two buying clubs outside the Big-5 and {fz['post_hoc_clean_subset']['dropped_january']} "
-                           f"January moves" if fz['post_hoc_clean_subset']['dropped_not_big5'] in (2, 4) else "no"),
+        ("frozen dropped", f"{fz['post_hoc_clean_subset']['dropped_not_big5']} moves to clubs outside the Big-5 and "
+                           f"{fz['post_hoc_clean_subset']['dropped_january']} January moves ("
+                           f"{fz['post_hoc_clean_subset']['dropped_not_big5'] + fz['post_hoc_clean_subset']['dropped_january'] - (fz['moves'] - fz['post_hoc_clean_subset']['moves'])} moves were both)"),
         ("summer 2026", f"Of the {fz['summer_2026_records']['records_1_june_to_1_september']:,} transfers this copy dates "
                         f"1 June to 1 September 2026, {fz['summer_2026_records']['dated_30_june_or_1_july']:,} are dated"),
         # robustness
@@ -282,13 +329,14 @@ def checks() -> list[tuple[str, str]]:
         ("opta out", f"({p(rawo['d_out']['point'], 1, True)}, {p(rawo['d_out']['lo'], 1, True)} to "
                      f"{p(rawo['d_out']['hi'], 1, True)})"),
         ("opta auc", f"{o['predict_flops']['auc']:.2f} ({o['predict_flops']['auc_lo']:.2f} to "
-                     f"{o['predict_flops']['auc_hi']:.2f}) out of time"),
+                     f"{o['predict_flops']['auc_hi']:.2f}) pseudo out of time"),
         ("opta open", f"in open play it is {iv(rvo['own_split']['d_share_open'])}"),
         ("position", f"({p(rv['cutoffs_clusters_position']['attacking_line_up_position_both_seasons']['share_of_pairs_kept'], 0)} "
                      f"of pairs), the share gap is {iv(rv['cutoffs_clusters_position']['attacking_line_up_position_both_seasons']['d_share'])}"),
         ("name match", f"{p(rv['name_match']['shots_by_matched_players'], 0)} of Understat's non-penalty shots"),
         ("name worst", f"La Liga 2017–18, at {p(rv['name_match']['worst_league_season']['share'], 0)}"
          if rv['name_match']['worst_league_season']['which'] == "ESP-La Liga 2017-2018" else "worst?"),
+        ("vs new mates", "against their new team-mates the slope is {} ({})".format(*spec("movers_vs_mates"))),
         ("mid ratio", f"lose about {rm['rtm']['regression']['d_share']['point'] / reg['d_share']['point']:.1f} times as much"),
         ("mid share", f"share falls by {neg(tm['movers_vs_stayers']['mean_log_gap_by_part']['His share of the ball'])} "
                       f"raw and {neg(rm['rtm']['regression']['d_share'])} matched"),
@@ -301,8 +349,8 @@ def checks() -> list[tuple[str, str]]:
                      + "({} points matched, {} to {})".format(*pp(rm['lost_place']['regression']['bad_gap']))),
         ("mid opta", f"On Opta the share falls by "
                      f"{neg(tmo['movers_vs_stayers']['mean_log_gap_by_part']['His share of the ball'])}"),
-        ("loans", f"({r['moves']['n_loans']} moves). Without them the share gap is "
-                  f"{iv(r['moves']['without_loans']['share_gap'])}"),
+        ("loans", f"({r['moves']['n_loans']} moves). The flag uses what happened later"),
+        ("loans gap", f"Without them the share gap is {iv(r['moves']['without_loans']['share_gap'])}"),
         ("promoted", f"Without the {r['moves']['n_promoted_buyer']} moves to promoted clubs and "
                      f"{r['moves']['n_relegated_seller']} from relegated clubs it is "
                      f"{iv(r['moves']['without_promoted_or_relegated']['share_gap'])}"),

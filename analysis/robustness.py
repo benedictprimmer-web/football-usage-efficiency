@@ -66,8 +66,11 @@ def boot_p(df, stat, n=N_BOOT, seed=SEED):
 # ------------------------------------------------------------------ the samples
 
 def all_moves() -> pd.DataFrame:
-    """Every qualifying season (900 minutes, 20 actions) followed by any league row the next
-    season: the moves and stays known on the day, before we know who keeps his place."""
+    """Every qualifying season (900 minutes, 20 actions) followed by a Big-5 row the next
+    season: at least one Understat shot or shot-assist, at one club holding 80% of his
+    actions. This is not quite the set known on the day: a stayer's next-season row is not
+    known in advance, and players sold out of the Big-5 or split across clubs drop out
+    (rivals.survival bounds what that does)."""
     d = pd.read_parquet(WORK / "panel.parquet")
     d["yr"] = d.season.str[:4].astype(int)
     q = d[d[GROUP] & (d.minutes >= MIN_MINUTES) & (d.actions >= T.MIN_ACTIONS)
@@ -438,7 +441,7 @@ def freeze(a: pd.DataFrame, X: pd.DataFrame, mv: pd.DataFrame, yr: np.ndarray) -
                       "league1": p.domestic_competition_id.map(tm_league)})
     Z = (features(x)[FEATS] - mu) / sd
     pr = 1 / (1 + np.exp(-(b[0] + Z.to_numpy() @ b[1:])))
-    pred = pd.DataFrame({"tm_player_id": p.tm_player_id, "player": p.player, "age": p.age.round(1),
+    pred = pd.DataFrame({"tm_player_id": p.tm_player_id, "age": p.age.round(1),
                          "from_team": p.team, "to_club": p.to_club_name,
                          "to_league": x.league1, "transfer_date": p.date.dt.date.astype(str),
                          "p_flop_or_lost_place": pr.round(4)})

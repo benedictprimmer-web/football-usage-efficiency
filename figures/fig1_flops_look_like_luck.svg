@@ -81,8 +81,8 @@ z
     </g>
    </g>
    <g id="line2d_6">
-    <path d="M 233.9064 220.334574 
-L 304.9488 220.334574 
+    <path d="M 229.052571 220.334574 
+L 300.094971 220.334574 
 " clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #767671; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_7">
@@ -127,8 +127,8 @@ z
     </g>
    </g>
    <g id="line2d_10">
-    <path d="M 200.370857 281.641809 
-L 237.289371 281.641809 
+    <path d="M 198.164571 281.641809 
+L 235.818514 281.641809 
 " clip-path="url(#pbd2b1142de)" style="fill: none; stroke: #b9b8b3; stroke-opacity: 0.18; stroke-width: 7; stroke-linecap: round"/>
    </g>
    <g id="line2d_11">
@@ -146,7 +146,7 @@ z
 " style="stroke: #b9b8b3"/>
     </defs>
     <g clip-path="url(#pbd2b1142de)">
-     <use xlink:href="#m57bad921ab" x="220.962857" y="281.641809" style="fill: #b9b8b3; stroke: #b9b8b3"/>
+     <use xlink:href="#m57bad921ab" x="218.021143" y="281.641809" style="fill: #b9b8b3; stroke: #b9b8b3"/>
     </g>
    </g>
    <g id="patch_3">
@@ -173,7 +173,7 @@ L 327.6 297.635
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="258.681489" transform="rotate(-0 121.68 258.681489)">Stayed  </text>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #b9b8b3" x="220.962857" y="272.857532" transform="rotate(-0 220.962857 272.857532)">19%</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #b9b8b3" x="218.021143" y="272.857532" transform="rotate(-0 218.021143 272.857532)">19%</text>
    </g>
    <g id="text_11">
     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="121.68" y="285.336809" transform="rotate(-0 121.68 285.336809)">Stayed, luck only  </text>
@@ -203,9 +203,9 @@ z
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
   </g>
   <g id="text_15">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 337.825781)">His own part of a flop: 39% (30% to 48%) in the data, 33%</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 352.388281)">(28% to 38%) from luck. The benchmark cannot see a rise of 1</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 366.900781)">to 3 points. On Opta, movers flop more often than stayers.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 337.825781)">His own part of a flop: 36% (28% to 45%) in the data, 33%</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 352.388281)">(27% to 39%) from luck. The benchmark cannot see a rise of 1</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 366.866406)">to 3 points.</text>
   </g>
  </g>
  <defs>

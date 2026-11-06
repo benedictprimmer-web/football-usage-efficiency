@@ -23,7 +23,7 @@ Every committed file in `data/` is an aggregate or a small derived table; no raw
 | `transfers.json`, `transfer_splits.csv`, `transfer_slices.csv`, `age_gaps.csv`, `buying_clubs.csv`, `noise_benchmark_draws_movers.csv`, `noise_benchmark_draws_stayers.csv` | Understat, Transfermarkt | Non-commercial, with credit |
 | `within_slopes.csv`, `within_bins.csv`, `curve_bins.csv`, `reliability.csv`, `summary.json` | Understat, Transfermarkt | Non-commercial, with credit |
 | `robustness.json`, `rivals.json`, `flop_model_frozen.json` | Understat, Transfermarkt | Non-commercial, with credit |
-| `predictions_2025_26.csv` | Understat, Transfermarkt (names, clubs, transfer dates) | Research use, with credit. These are player-level records: one row per named player with a model score |
+| `predictions_2025_26.csv` | Understat, Transfermarkt (ids, clubs, transfer dates) | Research use, with credit. Player-level records: one row per Transfermarkt id with a model score; names removed on 6 November 2026 |
 | `frozen_score_2025_26.json` | Transfermarkt | Research use, with credit |
 | `case_studies.csv` | Understat, Transfermarkt (three players' season numbers) | Non-commercial, with credit |
 | `chemistry.json`, `chemistry_dose.csv`, `chemistry_top_pairs.csv` | Understat, Transfermarkt | Non-commercial, with credit |
@@ -39,4 +39,4 @@ Every committed file in `data/` is an aggregate or a small derived table; no raw
 
 ## Checked for redistribution limits
 
-Impect bars redistribution of its data, and Transfermarkt and the FPL service bar commercial reuse. No committed file holds their raw records: `pass_checks.json` has only aggregate rates, and the Transfermarkt-derived files hold aggregates plus, for named players, season-level numbers, clubs and transfer dates. The prediction file is the most granular: each names a player, his clubs, his transfer date and a model score. Nothing was removed on these grounds in rounds 1 or 2 of the review; if a source objects, the file goes.
+Impect bars redistribution of its data, and Transfermarkt and the FPL service bar commercial reuse. No committed file holds their raw records: `pass_checks.json` has only aggregate rates, and the Transfermarkt-derived files hold aggregates plus, for named players, season-level numbers, clubs and transfer dates. The prediction file is the most granular: each row holds a Transfermarkt player id, his clubs, his transfer date and a model score (names were removed in round 3). Apart from those names, nothing was removed on these grounds; if a source objects, the file goes.
