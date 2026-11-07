@@ -29,10 +29,10 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 163.152 286.11 
-L 324.144 286.11 
-L 324.144 139.23 
-L 163.152 139.23 
+    <path d="M 163.152 320.25 
+L 324.144 320.25 
+L 324.144 173.37 
+L 163.152 173.37 
 z
 " style="fill: #ffffff"/>
    </g>
@@ -40,39 +40,42 @@ z
     <g id="xtick_1">
      <g id="line2d_1"/>
      <g id="text_1">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="173.214" y="299.606" transform="rotate(-0 173.214 299.606)">−10</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="173.214" y="333.746" transform="rotate(-0 173.214 333.746)">−10</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_2"/>
      <g id="text_2">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="198.369" y="299.606" transform="rotate(-0 198.369 299.606)">0</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="198.369" y="333.746" transform="rotate(-0 198.369 333.746)">0</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3"/>
      <g id="text_3">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="223.524" y="299.606" transform="rotate(-0 223.524 299.606)">+10</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="223.524" y="333.746" transform="rotate(-0 223.524 333.746)">+10</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4"/>
      <g id="text_4">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="248.679" y="299.606" transform="rotate(-0 248.679 299.606)">+20</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="248.679" y="333.746" transform="rotate(-0 248.679 333.746)">+20</text>
      </g>
     </g>
     <g id="xtick_5">
      <g id="line2d_5"/>
      <g id="text_5">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="273.834" y="299.606" transform="rotate(-0 273.834 299.606)">+30</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="273.834" y="333.746" transform="rotate(-0 273.834 333.746)">+30</text>
      </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 8.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="243.648" y="348.0745" transform="rotate(-0 243.648 348.0745)">points, movers minus stayers</text>
     </g>
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="line2d_6">
-    <path d="M 188.91072 152.788154 
-L 217.08432 152.788154 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #1b64c2; stroke-width: 2.5"/>
+    <path d="M 188.91072 186.928154 
+L 217.08432 186.928154 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #1b64c2; stroke-width: 2.5"/>
    </g>
    <g id="line2d_7">
     <defs>
@@ -88,14 +91,14 @@ C -2.078319 3.578535 -1.060812 4 0 4
 z
 " style="stroke: #1b64c2"/>
     </defs>
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#mad3448399a" x="202.871745" y="152.788154" style="fill: #1b64c2; stroke: #1b64c2"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#mad3448399a" x="202.871745" y="186.928154" style="fill: #1b64c2; stroke: #1b64c2"/>
     </g>
    </g>
    <g id="line2d_8">
-    <path d="M 170.773965 184.423846 
-L 222.442335 184.423846 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
+    <path d="M 170.773965 218.563846 
+L 222.442335 218.563846 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
    </g>
    <g id="line2d_9">
     <defs>
@@ -111,44 +114,44 @@ C -2.078319 3.578535 -1.060812 4 0 4
 z
 " style="stroke: #767671"/>
     </defs>
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#m25c8d08dfc" x="196.079895" y="184.423846" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#m25c8d08dfc" x="196.079895" y="218.563846" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_10">
-    <path d="M 183.854565 207.020769 
-L 225.662175 207.020769 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
+    <path d="M 183.854565 241.160769 
+L 225.662175 241.160769 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
    </g>
    <g id="line2d_11">
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#m25c8d08dfc" x="204.60744" y="207.020769" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#m25c8d08dfc" x="204.60744" y="241.160769" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_12">
-    <path d="M 183.17538 229.617692 
-L 232.0767 229.617692 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
+    <path d="M 183.17538 263.757692 
+L 232.0767 263.757692 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
    </g>
    <g id="line2d_13">
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#m25c8d08dfc" x="206.72046" y="229.617692" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#m25c8d08dfc" x="206.72046" y="263.757692" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_14">
-    <path d="M 205.890345 252.214615 
-L 239.67351 252.214615 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
+    <path d="M 205.890345 286.354615 
+L 239.67351 286.354615 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #767671; stroke-width: 2.5"/>
    </g>
    <g id="line2d_15">
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#m25c8d08dfc" x="222.36687" y="252.214615" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#m25c8d08dfc" x="222.36687" y="286.354615" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_16">
-    <path d="M 245.61009 274.811538 
-L 276.39981 274.811538 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
+    <path d="M 245.61009 308.951538 
+L 276.39981 308.951538 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_17">
     <defs>
@@ -164,56 +167,56 @@ C -2.078319 3.578535 -1.060812 4 0 4
 z
 " style="stroke: #b9b8b3"/>
     </defs>
-    <g clip-path="url(#p8d79bfd09c)">
-     <use xlink:href="#mb23a641882" x="261.885375" y="274.811538" style="fill: #b9b8b3; stroke: #b9b8b3"/>
+    <g clip-path="url(#p125c1bf9e6)">
+     <use xlink:href="#mb23a641882" x="261.885375" y="308.951538" style="fill: #b9b8b3; stroke: #b9b8b3"/>
     </g>
    </g>
    <g id="line2d_18">
-    <path d="M 198.369 286.11 
-L 198.369 139.23 
-" clip-path="url(#p8d79bfd09c)" style="fill: none; stroke: #3d3d3a; stroke-width: 0.9; stroke-linecap: square"/>
+    <path d="M 198.369 320.25 
+L 198.369 173.37 
+" clip-path="url(#p125c1bf9e6)" style="fill: none; stroke: #3d3d3a; stroke-width: 0.9; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
-    <path d="M 163.152 286.11 
-L 324.144 286.11 
+    <path d="M 163.152 320.25 
+L 324.144 320.25 
 " style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
-   <g id="text_6">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1d1d1b" x="163.152" y="155.400654" transform="rotate(-0 163.152 155.400654)">Any fee paid (327)  </text>
-   </g>
    <g id="text_7">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1b64c2" x="324.144" y="156.578154" transform="rotate(-0 324.144 156.578154)">+1.8</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1d1d1b" x="163.152" y="189.540654" transform="rotate(-0 163.152 189.540654)">Any fee paid (327)  </text>
    </g>
    <g id="text_8">
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="186.959901" transform="rotate(-0 163.152 186.959901)">Over €30m (86)  </text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #1b64c2" x="324.144" y="190.718154" transform="rotate(-0 324.144 190.718154)">+1.8</text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="188.213846" transform="rotate(-0 324.144 188.213846)">−0.9</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="221.099901" transform="rotate(-0 163.152 221.099901)">Over €30m (86)  </text>
    </g>
    <g id="text_10">
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="209.556824" transform="rotate(-0 163.152 209.556824)">€10–30m (126)  </text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="222.353846" transform="rotate(-0 324.144 222.353846)">−0.9</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="210.810769" transform="rotate(-0 324.144 210.810769)">+2.5</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="243.696824" transform="rotate(-0 163.152 243.696824)">€10–30m (126)  </text>
    </g>
    <g id="text_12">
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="232.153747" transform="rotate(-0 163.152 232.153747)">Under €10m (115)  </text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="244.950769" transform="rotate(-0 324.144 244.950769)">+2.5</text>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="233.407692" transform="rotate(-0 324.144 233.407692)">+3.3</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="266.293747" transform="rotate(-0 163.152 266.293747)">Under €10m (115)  </text>
    </g>
    <g id="text_14">
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="254.75067" transform="rotate(-0 163.152 254.75067)">Free or loan (262)  </text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="267.547692" transform="rotate(-0 324.144 267.547692)">+3.3</text>
    </g>
    <g id="text_15">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="256.004615" transform="rotate(-0 324.144 256.004615)">+9.5</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="163.152" y="288.89067" transform="rotate(-0 163.152 288.89067)">Free or loan (262)  </text>
    </g>
    <g id="text_16">
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(69.710594 271.170663)">No fee, and mostly no</text>
-    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(48.261375 283.387218)">transfer history at all (276)  </text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="290.144615" transform="rotate(-0 324.144 290.144615)">+9.5</text>
    </g>
    <g id="text_17">
-    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #b9b8b3" x="324.144" y="278.601538" transform="rotate(-0 324.144 278.601538)">+25.2</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(69.710594 305.310663)">No fee, and mostly no</text>
+    <text style="font-size: 9.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(48.261375 317.527218)">transfer history at all (276)  </text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #b9b8b3" x="324.144" y="312.741538" transform="rotate(-0 324.144 312.741538)">+25.2</text>
    </g>
   </g>
   <g id="patch_4">
@@ -224,29 +227,31 @@ L 18 12.96
 z
 " style="fill: #1b64c2; stroke: #1b64c2; stroke-linejoin: miter"/>
   </g>
-  <g id="text_18">
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Where a fee was paid, the</text>
-   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.199766)">lost-place gap is within noise</text>
-  </g>
   <g id="text_19">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 81.39625)">Flop or lost place the next season, movers in each fee band</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 95.868906)">minus all stayers, matched on last season. Movers in</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 111.401719)">brackets. Lines: 95% intervals</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 39.730781)">Where a fee was paid, too few</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 64.315781)">movers lose their place to tell</text>
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 88.900781)">from stayers</text>
   </g>
   <g id="text_20">
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 110.43625)">Flop or lost place the next season, movers in each fee band</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 124.908906)">minus all stayers, matched on last season. Movers in</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 140.441719)">brackets. Lines: 95% intervals</text>
+  </g>
+  <g id="text_21">
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
   </g>
-  <g id="text_21">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 326.300781)">Fee paid: +1.8 points (−3.8 to 7.4). Most moves with no fee</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 340.758594)">on record belong to players with no Transfermarkt transfer</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 355.33125)">history at all. That may reflect a later career outside the</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 369.84375)">data, so that bar may use hindsight.</text>
+  <g id="text_22">
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 360.440781)">Fee paid: +1.8 points (−3.8 to +7.4), too few to rule out</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 374.898594)">about 7. Most moves with no fee on record belong to players</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 389.47125)">with no Transfermarkt transfer history at all. That may</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 404.03375)">reflect a later career outside the data, so that bar may use</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 418.54625)">hindsight.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="p8d79bfd09c">
-   <rect x="163.152" y="139.23" width="160.992" height="146.88"/>
+  <clipPath id="p125c1bf9e6">
+   <rect x="163.152" y="173.37" width="160.992" height="146.88"/>
   </clipPath>
  </defs>
 </svg>

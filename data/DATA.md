@@ -70,7 +70,7 @@ The crosswalk between the two sources is built from these files by `analysis/cro
 
 ### FBref/Opta shots
 
-- **Source:** Opta xG as published by [FBref](https://fbref.com) until January 2026, archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017–18, Portugal and the Eredivisie from 2018–19, to 3 February 2025 (19 January for Portugal and the Eredivisie).
+- **Source:** Opta xG as published by [FBref](https://fbref.com), which carried Opta data until January 2026 (the archive used here stops on 3 February 2025), archived in [JaseZiv/worldfootballR_data](https://github.com/JaseZiv/worldfootballR_data) (release `fb_match_shooting`, the `*_M_1st_match_shooting.csv` files). Big-5 from 2017–18, Portugal and the Eredivisie from 2018–19, to 3 February 2025 (19 January for Portugal and the Eredivisie).
 - **Licence:** FBref's data is Opta's (Stats Perform), and FBref is governed by the [Sports Reference terms of use](https://www.sports-reference.com/termsofuse.html). This repo ships only aggregates, for non-commercial research, with credit to FBref and Opta; the raw files are not redistributed.
 
 ### Sources for the extra checks

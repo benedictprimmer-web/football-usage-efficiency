@@ -52,7 +52,8 @@ def pct(v, dp=1, sign=True):
 def ci(lo, hi, dp=1):
     """'(1.1 to 4.8)' in percentage points, with proper minus signs."""
     z = f"{0:.{dp}f}"
-    return (f"({lo * 100:.{dp}f} to {hi * 100:.{dp}f})".replace(f"-{z} ", f"{z} ")
+    hs = "+" if lo < 0 < hi else ""   # a sign on the upper end when the interval spans zero
+    return (f"({lo * 100:.{dp}f} to {hs}{hi * 100:.{dp}f})".replace(f"-{z} ", f"{z} ")
             .replace(f"-{z})", f"{z})").replace("-", MINUS))
 
 
@@ -66,7 +67,9 @@ def wrapped(fig, x, y, s, width_in, fontsize=10.5, **kw):
     """Figure text wrapped to a fixed width; returns its height as a figure fraction."""
     t = fill(s, width_in, fontsize, kw.get("fontweight") == "bold")
     fig.text(x, y, t, fontsize=fontsize, linespacing=1.25, **kw)
-    return (t.count("\n") + 1) * fontsize * 1.25 / 72 / fig.get_figheight()
+    # matplotlib's line pitch is about 1.4 x the font size at linespacing 1.25, so measure
+    # with that, or a wrapped title runs into the text under it
+    return (t.count("\n") + 1) * fontsize * 1.42 / 72 / fig.get_figheight()
 
 
 def frame(title: str, sub: str, source: str = SOURCE_LINE, w=W, h=H):
@@ -342,7 +345,7 @@ def draw_depay(axes, cs, fs=1.0):
         ax.plot(x, v, color=colour, lw=2.2, zorder=1)
         for i, vi in enumerate(v):
             ax.plot(i, vi, "o", ms=10, mfc=BG if i == 0 else colour, mec=colour, mew=2, zorder=2)
-            ax.text(i, vi + lim[1] * 0.08, fmt(vi), ha="center", fontsize=11 * fs,
+            ax.text(i, vi + lim[1] * 0.12, fmt(vi), ha="center", fontsize=11 * fs,
                     fontweight="bold", color=colour)
         ax.set_ylim(*lim)
         ax.set_xlim(-0.5, len(d) - 0.5)
@@ -410,18 +413,18 @@ def fig_lost(r, ro):
     rv, rvo = (json.loads((d / "rivals.json").read_text()) for d in (OUT, OUT / "opta"))
     g = rv["lost_place"]["minutes_only_floors"]["lost900"]
     go = rvo["lost_place"]["minutes_only_floors"]["lost900"]
-    fig, top = frame("Three movers in ten fall below 900 league minutes the next season, "
+    fig, top = frame("Three movers in ten fall below 900 league minutes, "
                      "against one stayer in five",
                      "Attackers with 900 league minutes and 20 shots or shot-assists in a season, "
-                     "and any Big-5 league appearance the next. Share with under 900 league "
-                     "minutes the next season. Bands: 95% intervals", source=SOURCE_BOTH)
-    ax = fig.add_axes([L + 0.33, top - 0.31, R - L - 0.34, 0.29])
+                     "and a Big-5 row the next (at least one shot or shot-assist). Share with under "
+                     "900 league minutes the next season. Bands: 95% intervals", source=SOURCE_BOTH)
+    ax = fig.add_axes([L + 0.33, top - 0.28, R - L - 0.34, 0.26])
     draw_lost(ax, rv, rvo)
-    wrapped(fig, L, top - 0.39,
+    wrapped(fig, L, top - 0.36,
             f"Against stayers with the same last season, age and season, the gap is "
             f"{g['point'] * 100:+.1f} points {ci(g['lo'], g['hi'])} on Understat and "
             f"{go['point'] * 100:+.1f} {ci(go['lo'], go['hi'])} on Opta, which shares Transfermarkt's "
-            f"minutes. Players with no Big-5 league row next season are not counted.",
+            f"minutes.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig6_lost_place")
 
@@ -448,18 +451,19 @@ def draw_fees(ax, rv, fs=1.0):
     ax.set_xlim(-14, 50)
     ax.set_ylim(-0.9, len(FEE_ROWS) - 0.4)
     flat(ax, [-10, 0, 10, 20, 30], [f"{MINUS}10", "0", "+10", "+20", "+30"])
+    ax.set_xlabel("points, movers minus stayers", fontsize=8.5 * fs, color=TEXT2)
 
 
 def fig_fees():
     rv = json.loads((OUT / "rivals.json").read_text())
     v = rv["lost_place"]["by_fee_band"]["Any fee paid"]["badf"]
-    fig, top = frame("Where a fee was paid, the lost-place gap is within noise",
+    fig, top = frame("Where a fee was paid, too few movers lose their place to tell from stayers",
                      "Flop or lost place the next season, movers in each fee band minus all stayers, "
                      "matched on last season. Movers in brackets. Lines: 95% intervals", source=SOURCE_LINE)
     ax = fig.add_axes([L + 0.42, top - 0.36, R - L - 0.43, 0.34])
     draw_fees(ax, rv)
     wrapped(fig, L, top - 0.43,
-            f"Fee paid: {pct(v['point'])[:-1]} points {ci(v['lo'], v['hi'])}. Most moves with no fee on record "
+            f"Fee paid: {pct(v['point'])[:-1]} points {ci(v['lo'], v['hi'])}, too few to rule out about 7. Most moves with no fee on record "
             f"belong to players with no Transfermarkt transfer history at all. That may reflect a later "
             f"career outside the data, so that bar may use hindsight.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
@@ -492,7 +496,7 @@ def draw_checks(ax, rv, fs=1.0):
     ax.axvline(0, color=TEXT, lw=0.8)
     ax.set_xlim(-6, 24)
     ax.set_ylim(-0.6, len(CHECKS) - 0.4)
-    flat(ax, [0, 5, 10, 15, 20], ["0", "+5", "+10", "+15", "+20"])
+    flat(ax, [0, 10, 20], ["0", "+10", "+20"])
 
 
 # ------------------------------------------------------------------ one-pager
@@ -537,20 +541,22 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
                 f"{x['hi'] * 100:+.1f})").replace("-", MINUS)
     rv = json.loads((OUT / "rivals.json").read_text())
     fp = rv["lost_place"]["by_fee_band"]["Any fee paid"]["badf"]
-    answer = (f"After a move between Big-5 clubs, {pct(lp['bad_movers']['point'], 0, False)} of attackers "
-              f"flop or fall below 900 league minutes the next season, against "
-              f"{pct(lp['bad_stayers']['point'], 0, False)} of stayers ({pts(lp['regression']['bad_gap'])} "
-              f"matched on last season), but where a fee was paid the gap is {pct(fp['point'])[:-1]} "
-              f"{ci(fp['lo'], fp['hi'])}. If he keeps playing, his share of his team's shots and "
-              f"shot-assists changes by {iv(g['d_share'])}, {pct(rv['own_split']['d_share_open']['point'])} in "
-              f"open play, and his output per 90 by {pct(g['d_out']['point'])}. Observational and exploratory.")
-    txt(15, 37, answer, width=118, fontsize=9, color=TEXT)
+    nf = rv["lost_place"]["no_fee_audit"]["without_no_fee_moves"]["badf"]
+    sj = rv["lost_place"]["starts_in_first_10_after_joining"]["starts10j"]
+    answer = (f"After a move between Big-5 clubs, an attacker is {pct(lp['regression']['bad_gap']['point'])[:-1]} points "
+              f"{ci(lp['regression']['bad_gap']['lo'], lp['regression']['bad_gap']['hi'])} more likely to flop or lose his "
+              f"place than a stayer with the same last season; without moves Transfermarkt records no fee for, which "
+              f"may carry hindsight, {pct(nf['point'])[:-1]} {ci(nf['lo'], nf['hi'])}. Paid and free moves cannot yet "
+              f"be told apart. He starts {abs(sj['point']) * 100:.1f} points fewer of his first 10 matches after joining. "
+              f"If he keeps his place, output per 90 changes by {pct(g['d_out']['point'])} "
+              f"{ci(g['d_out']['lo'], g['d_out']['hi'])}. Observational and exploratory.")
+    txt(15, 37, answer, width=120, fontsize=8.5, color=TEXT)
     stats = [(f"{lp['regression']['bad_gap']['point'] * 100:+.1f} pts".replace("-", MINUS),
               "flop or lost his place, movers v stayers, matched"),
              (f"{pct(rv['lost_place']['minutes_only_rates_ci']['movers']['point'], 0, False)} v "
               f"{pct(rv['lost_place']['minutes_only_rates_ci']['stayers']['point'], 0, False)}",
               "under 900 league minutes next season, movers v stayers"),
-             (pct(g["d_share"]["point"]), "share of shots and shot-assists, matched")]
+             (f"{sj['point'] * 100:+.1f} pts".replace("-", MINUS), "starts in 10 matches from first squad, matched")]
     for i, (big, small) in enumerate(stats):
         y0 = 36 + i * 10.5
         txt(146, y0, big, fontsize=14.5, fontweight="bold", color=BLUE)

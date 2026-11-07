@@ -29,10 +29,10 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 100.944 327.875 
-L 324.144 327.875 
-L 324.144 172.355 
-L 100.944 172.355 
+    <path d="M 100.944 343.09 
+L 324.144 343.09 
+L 324.144 187.57 
+L 100.944 187.57 
 z
 " style="fill: #ffffff"/>
    </g>
@@ -40,33 +40,33 @@ z
     <g id="xtick_1">
      <g id="line2d_1"/>
      <g id="text_1">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="112.691368" y="341.371" transform="rotate(-0 112.691368 341.371)">−10</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="112.691368" y="356.586" transform="rotate(-0 112.691368 356.586)">−10</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_2"/>
      <g id="text_2">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="171.428211" y="341.371" transform="rotate(-0 171.428211 341.371)">0</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="171.428211" y="356.586" transform="rotate(-0 171.428211 356.586)">0</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3"/>
      <g id="text_3">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="230.165053" y="341.371" transform="rotate(-0 230.165053 341.371)">+10</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="230.165053" y="356.586" transform="rotate(-0 230.165053 356.586)">+10</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4"/>
      <g id="text_4">
-      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="288.901895" y="341.371" transform="rotate(-0 288.901895 341.371)">+20 points</text>
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #767671" x="288.901895" y="356.586" transform="rotate(-0 288.901895 356.586)">+20 points</text>
      </g>
     </g>
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="line2d_5">
-    <path d="M 120.973263 194.572143 
-L 189.342947 194.572143 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
+    <path d="M 120.973263 209.787143 
+L 189.342947 209.787143 
+" clip-path="url(#p0bc92f4c32)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_6">
     <defs>
@@ -82,73 +82,73 @@ C -2.078319 3.578535 -1.060812 4 0 4
 z
 " style="stroke: #767671"/>
     </defs>
-    <g clip-path="url(#p763a2d6357)">
-     <use xlink:href="#m25c8d08dfc" x="154.923158" y="194.572143" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p0bc92f4c32)">
+     <use xlink:href="#m25c8d08dfc" x="154.923158" y="209.787143" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_7">
-    <path d="M 137.772 231.600714 
-L 205.671789 231.600714 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
+    <path d="M 137.772 246.815714 
+L 205.671789 246.815714 
+" clip-path="url(#p0bc92f4c32)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_8">
-    <g clip-path="url(#p763a2d6357)">
-     <use xlink:href="#m25c8d08dfc" x="171.486947" y="231.600714" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p0bc92f4c32)">
+     <use xlink:href="#m25c8d08dfc" x="171.486947" y="246.815714" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_9">
-    <path d="M 176.127158 268.629286 
-L 273.160421 268.629286 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
+    <path d="M 176.127158 283.844286 
+L 273.160421 283.844286 
+" clip-path="url(#p0bc92f4c32)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_10">
-    <g clip-path="url(#p763a2d6357)">
-     <use xlink:href="#m25c8d08dfc" x="224.702526" y="268.629286" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p0bc92f4c32)">
+     <use xlink:href="#m25c8d08dfc" x="224.702526" y="283.844286" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_11">
-    <path d="M 138.183158 305.657857 
-L 263.762526 305.657857 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
+    <path d="M 138.183158 320.872857 
+L 263.762526 320.872857 
+" clip-path="url(#p0bc92f4c32)" style="fill: none; stroke: #b9b8b3; stroke-width: 2.5"/>
    </g>
    <g id="line2d_12">
-    <g clip-path="url(#p763a2d6357)">
-     <use xlink:href="#m25c8d08dfc" x="198.447158" y="305.657857" style="fill: #767671; stroke: #767671"/>
+    <g clip-path="url(#p0bc92f4c32)">
+     <use xlink:href="#m25c8d08dfc" x="198.447158" y="320.872857" style="fill: #767671; stroke: #767671"/>
     </g>
    </g>
    <g id="line2d_13">
-    <path d="M 171.428211 327.875 
-L 171.428211 172.355 
-" clip-path="url(#p763a2d6357)" style="fill: none; stroke: #3d3d3a; stroke-width: 0.8; stroke-linecap: square"/>
+    <path d="M 171.428211 343.09 
+L 171.428211 187.57 
+" clip-path="url(#p0bc92f4c32)" style="fill: none; stroke: #3d3d3a; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
-    <path d="M 100.944 327.875 
-L 324.144 327.875 
+    <path d="M 100.944 343.09 
+L 324.144 343.09 
 " style="fill: none; stroke: #dddcd7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_5">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="198.551643" transform="rotate(-0 324.144 198.551643)">−3</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="213.766643" transform="rotate(-0 324.144 213.766643)">−3</text>
    </g>
    <g id="text_6">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="198.267143" transform="rotate(-0 100.944 198.267143)">Under 23  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="213.482143" transform="rotate(-0 100.944 213.482143)">Under 23  </text>
    </g>
    <g id="text_7">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="235.580214" transform="rotate(-0 324.144 235.580214)">0</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="250.795214" transform="rotate(-0 324.144 250.795214)">0</text>
    </g>
    <g id="text_8">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="235.295714" transform="rotate(-0 100.944 235.295714)">23–25  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="250.510714" transform="rotate(-0 100.944 250.510714)">23–25  </text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="272.608786" transform="rotate(-0 324.144 272.608786)">+9</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="287.823786" transform="rotate(-0 324.144 287.823786)">+9</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="272.324286" transform="rotate(-0 100.944 272.324286)">26–28  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="287.539286" transform="rotate(-0 100.944 287.539286)">26–28  </text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="309.637357" transform="rotate(-0 324.144 309.637357)">+5</text>
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #767671" x="324.144" y="324.852357" transform="rotate(-0 324.144 324.852357)">+5</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="309.352857" transform="rotate(-0 100.944 309.352857)">29 and over  </text>
+    <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #3d3d3a" x="100.944" y="324.567857" transform="rotate(-0 100.944 324.567857)">29 and over  </text>
    </g>
   </g>
   <g id="patch_4">
@@ -165,23 +165,23 @@ z
    <text style="font-weight: 700; font-size: 16.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #1d1d1b" transform="translate(18 90.286523)">for 11 tests</text>
   </g>
   <g id="text_14">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 102.015781)">Flop rate (output per 90 down by more than 25%) after a club</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 116.523594)">move, minus the rate for players of the same age who stayed,</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 131.130625)">in percentage points. Age on 1 September of the first season.</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 146.589219)">Lines: 95% intervals</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 110.430781)">Flop rate (output per 90 down by more than 25%) after a club</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 124.938594)">move, minus the rate for players of the same age who stayed,</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 139.545625)">in percentage points. Age on 1 September of the first season.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 155.004219)">Lines: 95% intervals</text>
   </g>
   <g id="text_15">
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 408.034078)">Data: Understat, Transfermarkt</text>
    <text style="font-size: 7px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #767671" transform="translate(18 418.445812)">Ben Rimmer · github.com/benedictprimmer-web/football-usage-efficiency</text>
   </g>
   <g id="text_16">
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(18 368.065781)">At 26–28: +9 points (+1 to +17), p = 0.029, or 0.29 after the</text>
-   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(18 383.474375)">Holm correction. A lead to test on new seasons.</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(18 383.280781)">At 26–28: +9 points (+1 to +17), p = 0.029, or 0.29 after the</text>
+   <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #3d3d3a" transform="translate(18 398.689375)">Holm correction. A lead to test on new seasons.</text>
   </g>
  </g>
  <defs>
-  <clipPath id="p763a2d6357">
-   <rect x="100.944" y="172.355" width="223.2" height="155.52"/>
+  <clipPath id="p0bc92f4c32">
+   <rect x="100.944" y="187.57" width="223.2" height="155.52"/>
   </clipPath>
  </defs>
 </svg>

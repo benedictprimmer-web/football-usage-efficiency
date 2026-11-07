@@ -133,20 +133,8 @@ def checks() -> list[tuple[str, str]]:
     out = [
         # first screen
         ("headline", f"about {round(lp['regression']['bad_gap']['point'] * 100)} points more likely to flop or lose his place"),
-        ("headline share", f"is about {round(-reg['d_share']['point'] * 100)}% lower"),
         ("bad matched", f"Flop or lost place: {pts(lp['regression']['bad_gap'])}".replace("points (", "points (95% interval ")),
         ("sample", f"{lp['n_movers']} moves and {lp['n_stayers']:,} stays"),
-        ("fee bands", f"By fee: {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid, "
-                      f"{pts(lc['by_fee_band']['Free or loan']['badf'], False)} after free or loan moves, "
-                      f"{pts(lc['by_fee_band']['No fee on record']['badf'], False)} where Transfermarkt has no fee"),
-        ("no history", f"{lc['no_fee_audit']['no_transfer_history_at_all']} of those {lc['no_fee_audit']['movers']} no-fee movers"),
-        ("starts j", f"Starts: {p(lc['starts_after_joining_rates']['movers'], 0)} of his new club's first 10 league matches after "
-                     f"he joins its squad, against {p(lc['starts_after_joining_rates']['stayers'], 0)} for stayers, a matched gap of "
-                     f"{pts(lc['starts_in_first_10_after_joining']['starts10j'])}"),
-        ("share kept", f"for the {lp['n_movers_kept']} of {lp['n_movers']} movers who keep 900 minutes: {iv(reg['d_share'])}"),
-        ("lee share", f"run from {p(rv['lee_bounds']['d_share']['lower']['point'], 1, True)} to "
-                      f"{p(rv['lee_bounds']['d_share']['upper']['point'], 1, True).replace('+0.0%', '0.0%').replace('−0.0%', '0.0%')}, so selection alone"),
-        ("glance fee", f"| Flop or lost place, fee paid | {pts(lc['by_fee_band']['Any fee paid']['badf'])} |"),
         ("glance starts", f"| Starts, 10 matches from first squad | {pts(lc['starts_in_first_10_after_joining']['starts10j'])} |"),
         ("open own", f"do not fall ({ivc(rv['own_split']['d_own_open'])}) while his set-piece actions fall by {neg(rv['own_split']['d_own_set'])}"),
         ("opta open own", f"his actions outside them fall by {neg(rvo['own_split']['d_own_open'])}"),
@@ -172,21 +160,44 @@ def checks() -> list[tuple[str, str]]:
         ("starts season", f"Counting the club's first 10 matches of the season instead gives {pts(lc['starts_in_first_10_matches']['starts10'], False)}, "
                           f"but movers' first squad comes after {lc['matches_before_first_squad']['movers']:.1f} of those matches on average, "
                           f"against {lc['matches_before_first_squad']['stayers']:.1f} for stayers"),
+        ("r5 bad", f"Flop or lost place: {pts(lp['regression']['bad_gap']).replace('points (', 'points (95% interval ')}; without no-fee moves, "
+                   f"{pts(lc['no_fee_audit']['without_no_fee_moves']['badf'], False)}"),
+        ("r5 half", f"without them the gap is about {round(lc['no_fee_audit']['without_no_fee_moves']['badf']['point'] * 100)} points"),
+        ("r5 paid free", f"Paid moves show {pts(lc['by_fee_band']['Any fee paid']['badf'])} and free or loan moves "
+                         f"{pts(lc['by_fee_band']['Free or loan']['badf'], False)}, but the difference between them, "
+                         f"{pts(lc['paid_minus_free_or_loan']['badf'], False)}, includes zero"
+                         if lc['paid_minus_free_or_loan']['badf']['lo'] < 0 < lc['paid_minus_free_or_loan']['badf']['hi'] else "DIFFERENCE CLEARS ZERO"),
+        ("r5 starts", f"Starts: {p(lc['starts_after_joining_rates']['movers'], 0)} of the 10 league matches from his first matchday squad, "
+                      f"against {p(lc['starts_after_joining_rates']['stayers'], 0)} for stayers, a matched gap of "
+                      f"{pts(lc['starts_in_first_10_after_joining']['starts10j'])}"),
+        ("r5 share", f"if he keeps his place: {iv(reg['d_share'])}"),
+        ("r5 lee", f"(bounds {p(rv['lee_bounds']['d_share']['lower']['point'], 1, True)} to "
+                   f"{p(rv['lee_bounds']['d_share']['upper']['point'], 1, True).replace('+0.0%', '0.0%').replace('−0.0%', '0.0%')})"),
+        ("r5 glance clean", f"| Flop or lost place, without no-fee moves | {pts(lc['no_fee_audit']['without_no_fee_moves']['badf'])} |"),
+        ("r5 glance diff", f"| Paid minus free or loan moves | {pts(lc['paid_minus_free_or_loan']['badf'])} |"),
+        ("r5 lost movers", f"({p(lc['minutes_only_rates_ci']['movers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['movers']['lo'], 0)} to "
+                           f"{p(lc['minutes_only_rates_ci']['movers']['hi'], 0)}, minutes only), against one stayer in five "
+                           f"({p(lc['minutes_only_rates_ci']['stayers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['stayers']['lo'], 0)} to "
+                           f"{p(lc['minutes_only_rates_ci']['stayers']['hi'], 0)})"),
+        ("r5 mde paid", f"within the paid band is about {round(lc['min_detectable_by_band']['Any fee paid'])} points"),
+        ("r5 opta lost", f"and {pts(rvo['lost_place']['minutes_only_floors']['lost900'], False)} on Opta"),
+        ("r5 limit", f"between {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} (all kept) and "
+                     f"{pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} (all lost) points"),
+        ("r5 three ways", f"among movers: {pts(lc['paid_minus_free_or_loan']['badf'])}. From 2018–19 on, where no-fee moves are rarer: paid "
+                          f"{pts(lc['by_fee_band_2018_on']['Any fee paid']['badf'], False)}, free or loan "
+                          f"{pts(lc['by_fee_band_2018_on']['Free or loan']['badf'], False)}. Paid movers against stayers who also have a "
+                          f"Transfermarkt transfer history: {pts(lc['paid_v_stayers_with_history']['badf'], False)}"),
+        ("r5 starts fee", f"Starts from his first squad: {pts(lc['starts_after_joining_by_fee']['Any fee paid']['starts10j'])} after paid moves, "
+                          f"{pts(lc['starts_after_joining_by_fee']['Free or loan']['starts10j'], False)} after free or loan moves"),
         # at a glance
         ("glance bad", f"| Flop or lost place | {pts(lp['regression']['bad_gap'])} |"),
         ("glance share", f"| Share of shots and shot-assists | {iv(reg['d_share'])} |"),
         ("glance out", f"| Output per 90 | {iv(reg['d_out'])} |"),
-        ("lost movers", f"({p(lc['minutes_only_rates_ci']['movers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['movers']['lo'], 0)} to "
-                        f"{p(lc['minutes_only_rates_ci']['movers']['hi'], 0)}), against one stayer in five "
-                        f"({p(lc['minutes_only_rates_ci']['stayers']['point'], 0)}, {p(lc['minutes_only_rates_ci']['stayers']['lo'], 0)} to "
-                        f"{p(lc['minutes_only_rates_ci']['stayers']['hi'], 0)})"),
         # inference
         ("fam floor", "p at or below 0.0005; Holm-adjusted {:.3f})".format(
             rv['primary_family']['Understat: share of shots and shot-assists']['p_holm'])),
         ("fam out", f"output does not (adjusted {rv['primary_family']['Understat: output per 90']['p_holm']:.3f})"),
         ("mde", f"({rv['min_detectable_points']['flop']} for flops, {rv['min_detectable_points']['flop_or_lost']} for flop or lost place)"),
-        ("share points", f"about {-reg['d_share']['point'] * r['rtm']['movers_last_season']['share_movers'] * 100:.1f} of a point "
-                         f"off a {p(r['rtm']['movers_last_season']['share_movers'])} share"),
         ("lost headline", f"{p(lp['bad_movers']['point'], 0)} of movers flop or fall below 900 league minutes "
                           f"the next season, against {p(lp['bad_stayers']['point'], 0)} of stayers"),
         ("kept", f"{lp['n_movers_kept']} of the {lp['n_movers']} movers and {lp['n_stayers_kept']:,} of the "
@@ -263,8 +274,6 @@ def checks() -> list[tuple[str, str]]:
         ("late share", f"({p(lc['late_season_minutes_share']['movers'], 0)} of their club's minutes against "
                        f"{p(lc['late_season_minutes_share']['stayers'], 0)})"),
         ("full time", f"(median ratio {rv['full_time_check']['median_ratio']:.3f} across {rv['full_time_check']['players']} such seasons)"),
-        ("limit range", f"Counting them moves the lost-place gap from {pp(rv['survival']['bound_all_dropped_counted_kept']['matched_gap'])[0]} "
-                        f"to {pp(rv['survival']['bound_all_dropped_counted_lost']['matched_gap'])[0]} points"),
         ("fee falsifier", f"Today it is {pts(lc['by_fee_band']['Any fee paid']['badf'])} where a fee was paid"),
         *[(f"fee row {b}", f"| {lab} | {lc['by_fee_band'][b]['n_movers']} | {pts(lc['by_fee_band'][b]['badf'], False)} |")
           for b, lab in (("Any fee paid", "Any fee paid"), ("Over €30m", "Over €30m"), ("€10m–30m", "€10–30m"),

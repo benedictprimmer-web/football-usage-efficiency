@@ -267,6 +267,93 @@
     }
    }
   },
+  "paid_minus_free_or_loan": {
+   "n_paid": 327,
+   "n_free_or_loan": 262,
+   "badf": {
+    "point": -0.0778,
+    "lo": -0.1566,
+    "hi": 0.0029,
+    "p": 0.056
+   }
+  },
+  "min_detectable_by_band": {
+   "Free or loan": 9.6,
+   "Under €10m": 13.9,
+   "€10m–30m": 11.9,
+   "Over €30m": 14.7,
+   "No fee on record": 8.7,
+   "Any fee paid": 8.0
+  },
+  "by_fee_band_2018_on": {
+   "Any fee paid": {
+    "n_movers": 208,
+    "badf": {
+     "point": 0.0167,
+     "lo": -0.0492,
+     "hi": 0.0886
+    }
+   },
+   "Free or loan": {
+    "n_movers": 189,
+    "badf": {
+     "point": 0.1055,
+     "lo": 0.0241,
+     "hi": 0.1826
+    }
+   },
+   "No fee on record": {
+    "n_movers": 90,
+    "badf": {
+     "point": 0.3707,
+     "lo": 0.2745,
+     "hi": 0.4624
+    }
+   }
+  },
+  "paid_v_stayers_with_history": {
+   "n_movers": 327,
+   "n_stayers": 1901,
+   "badf": {
+    "point": 0.0522,
+    "lo": -0.003,
+    "hi": 0.1011
+   }
+  },
+  "free_or_loan_without_loan_endings": {
+   "n_movers": 216,
+   "badf": {
+    "point": 0.0949,
+    "lo": 0.0276,
+    "hi": 0.1602
+   }
+  },
+  "starts_after_joining_by_fee": {
+   "Any fee paid": {
+    "n_movers": 327,
+    "starts10j": {
+     "point": -0.0434,
+     "lo": -0.0795,
+     "hi": -0.0098
+    }
+   },
+   "Free or loan": {
+    "n_movers": 262,
+    "starts10j": {
+     "point": -0.1345,
+     "lo": -0.1733,
+     "hi": -0.0907
+    }
+   },
+   "No fee on record": {
+    "n_movers": 276,
+    "starts10j": {
+     "point": -0.082,
+     "lo": -0.1172,
+     "hi": -0.0424
+    }
+   }
+  },
   "post_hoc_family": {
    "fee Free or loan": {
     "p": 0.002,

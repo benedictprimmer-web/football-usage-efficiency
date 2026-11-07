@@ -247,6 +247,44 @@ def lost_checks(a: pd.DataFrame, m: pd.DataFrame) -> dict:
         x = a[keep]
         p, lo, hi, pv = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
         out["no_fee_audit"][nm] = {"n_movers": int(x.mover.sum()), "badf": ci(p[0], lo[0], hi[0]) | {"p": round(float(pv[0]), 4)}}
+    # paid against unpaid as one test: movers only, a paid flag on top of the same cells,
+    # so "significant there, not here" is not read off two overlapping intervals
+    a["paid"] = a.fee_band.isin(paid)
+    a["unpaid"] = a.mover & ~a.paid
+    mvx = a[a.mover & (a.fee_band != "No fee on record")]
+    def diff(z):
+        X = np.column_stack([R.design(z.assign(mover=z.paid), base)])
+        b_, *_ = np.linalg.lstsq(X, z.badf.to_numpy(float), rcond=None)
+        return [b_[1]]
+    p_, lo_, hi_, pv_ = R.boot_p(mvx, diff, n=N_BOOT // 2)
+    out["paid_minus_free_or_loan"] = {"n_paid": int(mvx.paid.sum()), "n_free_or_loan": int((~mvx.paid).sum()),
+                                      "badf": ci(p_[0], lo_[0], hi_[0]) | {"p": round(float(pv_[0]), 4)}}
+    # the smallest gap each band could see with 80% power (2.8 standard errors)
+    out["min_detectable_by_band"] = {b: round(2.8 * (v["badf"]["hi"] - v["badf"]["lo"]) / 3.92 * 100, 1)
+                                     for b, v in out["by_fee_band"].items()}
+    # fee bands from 2018-19 on, where moves with no fee on record are rare
+    out["by_fee_band_2018_on"] = {}
+    for b in ["Any fee paid", "Free or loan", "No fee on record"]:
+        sel = a.fee_band.isin(paid) if b == "Any fee paid" else (a.fee_band == b)
+        x = a[(sel | ~a.mover) & (a.yr >= 2018)]
+        p2, lo2, hi2, _ = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+        out["by_fee_band_2018_on"][b] = {"n_movers": int(x.mover.sum()), "badf": ci(p2[0], lo2[0], hi2[0])}
+    # paid movers against stayers who also have a Transfermarkt transfer history, since a
+    # fee row may itself need the player to stay in the mirror's coverage
+    hist = a.tm_player_id.isin(set(tr.player_id))
+    x = a[(a.paid & a.mover) | (~a.mover & hist)]
+    p2, lo2, hi2, _ = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+    out["paid_v_stayers_with_history"] = {"n_movers": int(x.mover.sum()), "n_stayers": int((~x.mover).sum()),
+                                          "badf": ci(p2[0], lo2[0], hi2[0])}
+    x = a[(a.mover & (a.fee_band == "Free or loan") & ~a.loan_return) | ~a.mover]
+    p2, lo2, hi2, _ = R.boot_p(x, lambda z: ols(z, ["badf"], base), n=N_BOOT // 2)
+    out["free_or_loan_without_loan_endings"] = {"n_movers": int(x.mover.sum()), "badf": ci(p2[0], lo2[0], hi2[0])}
+    out["starts_after_joining_by_fee"] = {}
+    for b in ["Any fee paid", "Free or loan", "No fee on record"]:
+        sel = a.fee_band.isin(paid) if b == "Any fee paid" else (a.fee_band == b)
+        x = a[sel | ~a.mover]
+        p2, lo2, hi2, _ = R.boot_p(x, lambda z: ols(z, ["starts10j"], base), n=N_BOOT // 2)
+        out["starts_after_joining_by_fee"][b] = {"n_movers": int(x.mover.sum()), "starts10j": ci(p2[0], lo2[0], hi2[0])}
     # a second family, named after the results were seen: the five disjoint fee bands, the
     # two starts measures and the loan-return split, Holm-corrected together
     fam = {f"fee {b}": out["by_fee_band"][b]["badf"]["p"] for b in
