@@ -1,16 +1,64 @@
-# An attacker after a move: fewer minutes in his first season
+# Attacking transfers: why do they often fail?
 
 **When an attacker's output falls after a move, did he get worse, or did the move change his situation?**
 
-**After a move between two Big-5 clubs, an attacker is about 12 points more likely to flop or lose his place than a stayer with the same last season. About half of that sits in moves Transfermarkt records no fee for, a group that may carry hindsight; without them the gap is about 5 points.**
+I compared attackers who changed club with attackers who stayed where they were, across 11 seasons in Europe's top 5 leagues. When a new signing keeps playing, his output holds up. The bigger risk is that he plays less.
 
-- **Flop or lost place: +11.7 points (95% interval +7.9 to +15.4); without no-fee moves, +5.4 (+0.9 to +9.6).** 44% of movers flop or fall below 900 league minutes the next season, against 33% of stayers (raw rates). Most of the gap is minutes: a flop, output per 90 down by more than 25%, adds little.
-- **Paid and free moves cannot be told apart yet.** Paid moves show +1.8 points (−3.8 to +7.4) and free or loan moves +9.5 (+3.0 to +16.4), but the difference between them, −7.8 (−15.7 to +0.3), includes zero.
-- **Starts: 50% of the 10 league matches from his first matchday squad, against 58% for stayers,** a matched gap of −8.2 points (−10.5 to −5.8).
-- **Share of shots and shot-assists, if he keeps his place: −4.1% (−5.8% to −2.4%),** but selection could explain all of it (bounds −9.0% to 0.0%).
+## Before the numbers
 
-**Method.** 865 moves and 2,562 stays by attackers in the Big-5 (the top divisions of England, Spain, Italy, Germany and France), 2014–15 to 2024–25, each after a season of 900 league minutes. Output is xG+xA per 90 (expected goals plus the expected goals of the shots he set up) from Understat, a public xG site. Movers are compared with stayers who had the same last season (decile of share and of output per 90, age band, season) in a regression.
-**Limits.** Observational and exploratory: nothing was pre-registered, and clubs may sell players they no longer plan to pick. Only moves between Big-5 clubs are in it. No price was tested, so nothing here is a trading signal.
+- **The Big-5** are the top divisions of England, Spain, Italy, Germany and France.
+- **A mover** is an attacker who changed club between two seasons, and **a stayer** is one who stayed at the same club.
+- **Output** is the chances he produces per 90 minutes: his expected goals (xG, how likely his shots were to go in) plus the xG of the shots he set up (xA).
+- **A flop** is a player whose output per 90 falls by more than 25% the next season.
+- **Losing his place** means he falls below 900 league minutes the next season, which is 10 full matches.
+- **A stayer with the same last season** is one I matched to the mover on age and on how he played the year before. I need this because a player coming off a great year tends to drop back whether he moves or not.
+- **A point** is a percentage point, so 40% against 30% is a gap of 10 points.
+- **The numbers in brackets** are a 95% confidence interval. +11.7 (7.9, 15.4) means my best estimate is 11.7 and the data are consistent with anything from 7.9 to 15.4. When the brackets include 0, I can't tell the result from no effect.
+
+## What I found
+
+**He is more likely to lose his place**
+
+- After a move between two Big-5 clubs, an attacker is about 12 points more likely to flop or lose his place than a stayer with the same last season: +11.7 points (7.9, 15.4).
+- In the raw numbers, 44% of movers flop or fall below 900 league minutes the next season, against 33% of stayers.
+- Among players who keep their place, movers are only slightly more likely to flop: +3.2 points (−0.4, 6.8). Most of the gap is lost minutes.
+
+**The fee may matter, and I can't pin it down yet**
+
+- About half of those 12 points come from moves where Transfermarkt, the transfer database I use, records no fee.
+- I trust those 276 moves less: 233 of them belong to players with no Transfermarkt history at all. A history can go missing because a career faded after the move, so this group may carry hindsight.
+- Without those moves, the gap is about 5 points: +5.4 points (0.9, 9.6).
+- When a fee was paid, the gap is +1.8 points (−3.8, 7.4).
+- After free or loan moves, the gap is +9.5 points (3.0, 16.4).
+- I can't tell paid and free moves apart yet: the difference between them is −7.8 points (−15.7, 0.3), which includes 0.
+
+**He starts fewer matches**
+
+- In the 10 league matches after he first makes the matchday squad, a mover starts 50% of them, and a stayer 58%.
+- After matching, the gap is −8.2 points (−10.5, −5.8).
+
+**If he keeps his place, little changes**
+
+- His share of his team's shots and shot-assists changes by −4.1% (−5.8%, −2.4%).
+- Selection could explain all of that, because the movers who keep their place are an unusual group: the bounds that allow for it are (−9.0%, 0.0%).
+- His output per 90 changes by +1.3% (−1.9%, 4.4%), which I can't tell from no change.
+
+<img src="figures/fig6_lost_place.png" width="49%" alt="Three movers in ten fall below 900 league minutes, against one stayer in five"> <img src="figures/fig7_fee_bands.png" width="49%" alt="Where a fee was paid, too few movers lose their place to tell from stayers">
+
+## How I did it, in short
+
+- I took every attacker in the Big-5 from 2014–15 to 2024–25 who played at least 900 league minutes in a season.
+- That gives me 865 moves and 2,562 stays.
+- I got each player's output from Understat, a public xG site.
+- I compared each mover with stayers who had the same last season: same decile of share, same decile of output per 90, same age band and same season. A regression does the comparison.
+
+## What this can't tell you
+
+- I only observed what happened, so I can show a pattern and can't prove the move caused it.
+- I chose these tests after looking at the data. Nothing was pre-registered.
+- Clubs may sell players they no longer plan to pick.
+- I only see moves between two Big-5 clubs.
+- I tested no prices, so nothing here is a trading signal.
 
 <img src="figures/fig6_lost_place.png" width="49%" alt="Three movers in ten fall below 900 league minutes, against one stayer in five"> <img src="figures/fig7_fee_bands.png" width="49%" alt="Where a fee was paid, too few movers lose their place to tell from stayers">
 
@@ -18,37 +66,102 @@
 
 | Claim (Understat, matched) | Estimate | Only players who kept 900 minutes? | Survives Holm? | Uses information from after the move? |
 |---|--:|---|---|---|
-| Flop or lost place | +11.7 points (+7.9 to +15.4) | No | Yes | No |
-| Flop or lost place, without no-fee moves | +5.4 points (+0.9 to +9.6) | No | Not in a family | Yes: the fee record |
-| Paid minus free or loan moves | −7.8 points (−15.7 to +0.3) | No | Not in a family | Yes: the fee record |
-| Starts, 10 matches from first squad | −8.2 points (−10.5 to −5.8) | No | Yes | No |
-| Share of shots and shot-assists | −4.1% (−5.8% to −2.4%) | Yes | Yes | No |
-| Output per 90 | +1.3% (−1.9% to +4.4%) | Yes | No | No |
+| Flop or lost place | +11.7 points (7.9, 15.4) | No | Yes | No |
+| Flop or lost place, without no-fee moves | +5.4 points (0.9, 9.6) | No | Not in a family | Yes: the fee record |
+| Paid minus free or loan moves | −7.8 points (−15.7, 0.3) | No | Not in a family | Yes: the fee record |
+| Starts, 10 matches from first squad | −8.2 points (−10.5, −5.8) | No | Yes | No |
+| Share of shots and shot-assists | −4.1% (−5.8%, −2.4%) | Yes | Yes | No |
+| Output per 90 | +1.3% (−1.9%, 4.4%) | Yes | No | No |
 
 Holm is a correction for running several tests at once: it controls the chance of any false positive in a family. Every family here was named on 6 November 2026, after the results were seen, and no outcome was fixed in advance.
 
 ## Why it matters
 
-- **For a recruitment team planning a new attacker's first season, minutes are the risk to budget for.** Three movers in ten fall below 900 league minutes (30%, 27% to 33%, minutes only), against one stayer in five (19%, 17% to 20%), and movers start fewer matches once they arrive. The gap looks larger after free or loan moves, but a sample this size cannot yet separate them from paid moves (the smallest gap it could see within the paid band is about 8 points).
-- **The volume loss among those who keep their place is small, and the sources disagree on why.** On Understat his own open-play shots and shot-assists per 90 do not fall (−0.5%, −2.7% to +1.7%) while his set-piece actions fall by 11.9% (−17.3% to −6.3%). On Opta, which marks only direct free kicks, his actions outside them fall by 3.3% (−5.9% to −0.7%).
-- **This is not a trade.** A bookmaker sees the signing date, the registration and the first line-ups, so only start-or-bench risk before team news is exposed, and no price, margin or cost was tested here.
+**If you recruit attackers, budget for minutes.**
+
+- Three movers in ten fall below 900 league minutes: 30% (27%, 33%) on minutes only.
+- One stayer in five does: 19% (17%, 20%).
+- Movers also start fewer matches once they arrive.
+- The gap looks larger after free or loan moves, but my sample can't separate them from paid moves yet. The smallest gap I could detect within the paid band is about 8 points.
+
+**If he keeps his place, the volume he loses is small, and my two sources disagree on why.**
+
+- On Understat, his own open-play shots and shot-assists per 90 do not fall: −0.5% (−2.7%, 1.7%).
+- On Understat, his set-piece actions fall by 11.9% (−17.3%, −6.3%).
+- On Opta, which marks only direct free kicks, his actions outside them fall by 3.3% (−5.9%, −0.7%).
+
+**I haven't tested a trade.**
+
+- A bookmaker sees the signing date, the registration and the first line-ups, so the only risk left exposed is whether he starts or sits on the bench before team news.
+- I tested no price, margin or cost.
 
 ## Method
 
-- **Sample.** Attackers (centre-forwards, wingers and attacking midfielders on Transfermarkt, a public transfer and line-up database) with 900 league minutes and 20 shots or shot-assists in a season, followed by a Big-5 league row the next season. A move is a change of club between the two seasons. 601 of the 865 movers and 2,075 of the 2,562 stayers also reach 900 minutes the next season; the share and output tests use those.
-- **Usage.** His share is his shots and shot-assists as a share of his team's while he is on the pitch, with minutes measured match by match from Transfermarkt line-ups and substitutions. Understat gives every shot, its assister and whether it came from open play or a set piece. Penalties are left out.
-- **Four parts.** Output per 90 = team actions per 90 while he is on × his share × team-mates' xG+xA per action × his xG+xA per action relative to team-mates. Each change is a log change, 100 times the difference in logs, close to a percentage change for small moves, so the four parts add up to the change in output. The split is accounting, so credit can move between parts.
-- **Matching for regression to the mean.** A regression of each change on a mover flag plus dummies for the decile of last season's share, the decile of last season's output per 90, age band and season. A second version reweights stayers to the movers' mix of cells.
-- **Second source.** Every test is rerun on Opta's xG, as the stats site FBref published it, for the Big-5 plus Portugal and the Eredivisie, 2017–18 to 3 February 2025. Opta shares Transfermarkt's minutes, fees and most seasons, so it is a sensitivity check and adds little independent evidence on minutes.
+**Who I included**
 
-## Inference
+- I took attackers: centre-forwards, wingers and attacking midfielders on Transfermarkt, a public transfer and line-up database.
+- A player needs 900 league minutes and 20 shots or shot-assists in a season, and then a Big-5 league row the next season.
+- I count a move when he changes club between the two seasons.
+- 601 of the 865 movers and 2,075 of the 2,562 stayers also reach 900 minutes the next season, and I use those for the share and output tests.
 
-- **Primary family: four tests on Understat, Holm-corrected, named on 6 November 2026 after the results had been seen.** The matched gaps in share, own actions per 90, output per 90 and flop or lost place. Share and flop-or-lost-place reach the bootstrap's floor (p at or below 0.0005; Holm-adjusted 0.002), and own actions survives (adjusted 0.026); output does not (adjusted 0.418). An earlier version counted the same tests on both sources as eight; Opta is now its own family, which gives the same pattern.
-- **A second family, also chosen after looking: the five fee bands, both starts measures and the no-fee moves without loan returns.** Free or loan (adjusted 0.008), no fee on record (adjusted 0.006) and both starts measures (adjusted 0.004) survive; none of the three paid bands does.
-- **Nothing was pre-registered.** "Flop or lost place" was added after a first look showed the 900-minute floor hid lost places. Since then the floor (450, 900, 1,350 minutes), the flop line (15%, 25%, 35%), several exclusions, two luck benchmarks and the fee and starts splits have been tried; the tables show all of them. Every result here is exploratory.
-- **The smallest gap the matched comparison could see with 80% power is about 5 points** (5.1 for flops, 5.3 for flop or lost place), and more within a fee band.
-- **The slice family: 11 tests (age bands, fee bands among regulars, league path, buying clubs, the predictor), also Holm-corrected.** On Understat only the predictor survives (p = 0.002, adjusted 0.022); the 26–28 age gap has p = 0.029, adjusted 0.29. On Opta the predictor (adjusted 0.005) and the league path (adjusted 0.009) survive.
-- **Intervals resample whole players, 2,000 times.** Resampling whole buying club-seasons instead, since team-mates at a new club share its changes, gives −4.1% (−5.9% to −2.3%) for the share gap and +11.7 points (+7.9 to +15.6) for flop or lost place.
+**How I measure usage**
+
+- His share is his shots and shot-assists as a share of his team's while he is on the pitch.
+- I measure minutes match by match from Transfermarkt line-ups and substitutions.
+- Understat gives me every shot, its assister and whether it came from open play or a set piece.
+- I leave out penalties.
+
+**How I split output into 4 parts**
+
+- Output per 90 = team actions per 90 while he is on × his share × team-mates' xG+xA per action × his xG+xA per action relative to team-mates.
+- I measure each change as a log change: 100 times the difference in logs, which is close to a percentage change for small moves.
+- Using logs means the 4 parts add up to the change in output.
+- The split is accounting, so credit can move between the parts.
+
+**How I allow for regression to the mean**
+
+- Regression to the mean is the tendency of a player coming off an unusually good or bad season to drift back towards his normal level.
+- I run a regression of each change on a mover flag, plus dummies for the decile of last season's share, the decile of last season's output per 90, age band and season.
+- In a second version, I reweight stayers to the movers' mix of those groups.
+
+**My second source**
+
+- I rerun every test on Opta's xG, as the stats site FBref published it, for the Big-5 plus Portugal and the Eredivisie, 2017–18 to 3 February 2025.
+- Opta shares Transfermarkt's minutes, fees and most seasons, so I treat it as a sensitivity check, and it adds little independent evidence on minutes.
+
+## How sure I am
+
+I pre-registered nothing, so every result here is exploratory.
+
+- I added "flop or lost place" after a first look showed the 900-minute floor hid lost places.
+- Since then I have tried 3 floors (450, 900 and 1,350 minutes), 3 flop lines (15%, 25% and 35%), several exclusions, 2 luck benchmarks and the fee and starts splits. The tables show all of them.
+
+**My main family: 4 Understat tests, which I named on 6 November 2026 after I had seen the results**
+
+- I tested the matched gaps in share, own actions per 90, output per 90 and flop or lost place, with a Holm correction.
+- Share and flop-or-lost-place reach the bootstrap's floor (p at or below 0.0005; Holm-adjusted 0.002).
+- The test on his own actions survives (adjusted 0.026).
+- The test on output does not (adjusted 0.418).
+- Opta is its own family, and it gives the same pattern.
+
+**My second family, also chosen after looking: fee bands and starts**
+
+- It holds the 5 fee bands, both starts measures and the no-fee moves without loan returns.
+- Free or loan (adjusted 0.008), no fee on record (adjusted 0.006) and both starts measures (adjusted 0.004) survive.
+- Among the moves with a fee, none of the three paid bands survives.
+
+**My slice family: 11 tests**
+
+- I tested age bands, fee bands among regulars, league path, buying clubs and the predictor, again with a Holm correction.
+- On Understat only the predictor survives (p = 0.002, adjusted 0.022).
+- The 26–28 age gap has p = 0.029, adjusted 0.29.
+- On Opta the predictor (adjusted 0.005) and the league path (adjusted 0.009) survive.
+
+**How small a gap I could see, and how I built the intervals**
+
+- The smallest gap the matched comparison could see with 80% power is about 5 points (5.1 for flops, 5.3 for flop or lost place). Within a fee band it is larger.
+- I build each interval by resampling whole players, 2,000 times.
+- Team-mates at a new club share its changes, so I also resampled whole buying club-seasons. That gives −4.1% (−5.9%, −2.3%) for the share gap and +11.7 points (7.9, 15.6) for flop or lost place.
 
 ## Results
 
@@ -56,86 +169,157 @@ Holm is a correction for running several tests at once: it controls the chance o
 
 | Movers minus stayers | Understat, raw | Understat, matched | Opta, raw | Opta, matched |
 |---|--:|--:|--:|--:|
-| His share of the ball | −4.4% (−6.4% to −2.3%) | −4.1% (−5.8% to −2.4%) | −6.5% (−8.9% to −4.1%) | −6.1% (−8.2% to −4.1%) |
-| His own shots and shot-assists per 90 | −1.9% (−4.3% to +0.2%) | −2.6% (−4.8% to −0.6%) | −3.3% (−6.0% to −0.5%) | −3.5% (−6.0% to −1.1%) |
-| His team's actions per 90, without him | +3.4% (+1.4% to +5.4%) | +2.4% (+0.5% to +4.3%) | +4.7% (+2.4% to +7.0%) | +4.0% (+1.8% to +6.1%) |
-| Output per 90 | +3.6% (+0.2% to +6.9%) | +1.3% (−1.9% to +4.4%) | +0.4% (−3.4% to +4.1%) | −0.7% (−4.1% to +2.4%) |
-| Flop rate, points | +1.4 (−2.1 to +4.9) | +3.2 (−0.4 to +6.8) | +4.2 (−0.1 to +8.7) | +5.1 (+1.0 to +9.4) |
+| His share of the ball | −4.4% (−6.4%, −2.3%) | −4.1% (−5.8%, −2.4%) | −6.5% (−8.9%, −4.1%) | −6.1% (−8.2%, −4.1%) |
+| His own shots and shot-assists per 90 | −1.9% (−4.3%, 0.2%) | −2.6% (−4.8%, −0.6%) | −3.3% (−6.0%, −0.5%) | −3.5% (−6.0%, −1.1%) |
+| His team's actions per 90, without him | +3.4% (1.4%, 5.4%) | +2.4% (0.5%, 4.3%) | +4.7% (2.4%, 7.0%) | +4.0% (1.8%, 6.1%) |
+| Output per 90 | +3.6% (0.2%, 6.9%) | +1.3% (−1.9%, 4.4%) | +0.4% (−3.4%, 4.1%) | −0.7% (−4.1%, 2.4%) |
+| Flop rate, points | +1.4 (−2.1, 4.9) | +3.2 (−0.4, 6.8) | +4.2 (−0.1, 8.7) | +5.1 (1.0, 9.4) |
 
-"His share of the ball" means his share of the team's shots and shot-assists while he is on; possession and touches are not measured. Three team numbers appear in this section: the chances his team creates while he is on (+1.5% matched, a part in fig0), the same without his own actions (+2.4% matched, the table), and the buying club's shots and shot-assists per match the season before the move (+2.9%).
+- "His share of the ball" means his share of the team's shots and shot-assists while he is on. I don't measure possession or touches.
+- 3 team numbers appear in this section: the chances his team creates while he is on (+1.5% matched, a part in fig0), the same without his own actions (+2.4% matched, the table), and the buying club's shots and shot-assists per match the season before the move (+2.9%).
 
-- **About three fifths of the matched share fall is fewer actions of his own, and two fifths is a team that does more.** His own actions per 90 fall by 2.6% against a share fall of 4.1%. Reweighting instead of regression gives −4.0% (−5.8% to −2.2%) on Understat and −6.6% (−8.8% to −4.2%) on Opta.
-- **On Understat, his own fall is set pieces.** Matched, his open-play actions per 90 change by −0.5% (−2.7% to +1.7%) and his set-piece actions by −11.9% (−17.3% to −6.3%). His shots fall by 4.2% (−7.0% to −1.7%) and his shot-assists do not change (−0.1%, −3.5% to +3.1%). Opta marks only direct free kicks, and outside them his actions still fall, so on Opta set pieces explain less of it.
-- **His share of open play still falls, because the new team makes more.** Measured match by match on open-play actions only, his share falls by 2.4% (−4.2% to −0.6%) on Understat, while the team's open-play actions per 90 with him on rise by 1.9% (0.0% to +3.9%), an interval that reaches zero.
-- **The better team is visible before the move.** The clubs movers join made 2.9% (1.2% to 4.4%) more shots and shot-assists per match the season before than the clubs they left (Opta 2.6%, 0.7% to 4.5%). That is a small step up: 54% (50% to 58%) of movers joined a club that made more, close to an even split.
+**About three fifths of the matched share fall is fewer actions of his own, and two fifths is a team that does more**
+
+- His own actions per 90 fall by 2.6% against a share fall of 4.1%.
+- When I reweight instead of running the regression, I get −4.0% (−5.8%, −2.2%) on Understat and −6.6% (−8.8%, −4.2%) on Opta.
+
+**On Understat, the fall in his own actions is set pieces**
+
+- Matched, his open-play actions per 90 change by −0.5% (−2.7%, 1.7%).
+- His set-piece actions change by −11.9% (−17.3%, −6.3%).
+- His shots fall by 4.2% (−7.0%, −1.7%).
+- His shot-assists do not change: −0.1% (−3.5%, 3.1%).
+- Opta marks only direct free kicks, and outside them his actions still fall, so on Opta set pieces explain less of it.
+
+**His share of open play still falls, because the new team makes more**
+
+- Measured match by match on open-play actions only, his share falls by 2.4% (−4.2%, −0.6%) on Understat.
+- The team's open-play actions per 90 with him on rise by 1.9% (0.0%, 3.9%), an interval that reaches 0.
+
+**I can see the better team before the move**
+
+- The clubs movers join made 2.9% (1.2%, 4.4%) more shots and shot-assists per match the season before than the clubs they left.
+- On Opta the figure is 2.6% (0.7%, 4.5%).
+- That is a small step up: 54% (50%, 58%) of movers joined a club that made more, close to an even split.
 
 ### Playing time: three movers in ten lose their place, mostly after free, loan or unrecorded moves
 
 | | Understat movers | Understat stayers | Opta movers | Opta stayers |
 |---|--:|--:|--:|--:|
-| No 900-minute season next (under 900 minutes or 20 actions, or split between clubs) | 31% (27% to 33%) | 19% (17% to 21%) | 33% (29% to 37%) | 20% (18% to 22%) |
-| Flop or below 900 minutes | 44% (41% to 47%) | 33% (32% to 35%) | 49% (45% to 52%) | 35% (33% to 38%) |
-| Gap, matched | +11.7 points (+7.9 to +15.4) | | +14.1 points (+9.6 to +18.6) | |
+| No 900-minute season next (under 900 minutes or 20 actions, or split between clubs) | 31% (27%, 33%) | 19% (17%, 21%) | 33% (29%, 37%) | 20% (18%, 22%) |
+| Flop or below 900 minutes | 44% (41%, 47%) | 33% (32%, 35%) | 49% (45%, 52%) | 35% (33%, 38%) |
+| Gap, matched | +11.7 points (7.9, 15.4) | | +14.1 points (9.6, 18.6) | |
 
-- **This is the largest and clearest gap in the study.** It survives matching on last season, age adjustment (+11.8 points, +7.9 to +15.7) and the Opta rerun. On minutes alone (under 900 league minutes), the matched gap is +11.5 points (+7.8 to +14.9) on Understat and +13.7 (+9.5 to +17.8) on Opta.
-- **It holds under the checks the share gap gets** (Understat, matched, flop or lost place):
+**This is the largest and clearest gap in my study**
+
+- It survives matching on last season, age adjustment, at +11.8 points (7.9, 15.7), and the Opta rerun.
+- On minutes alone (under 900 league minutes), the matched gap is +11.5 points (7.8, 14.9) on Understat and +13.7 (9.5, 17.8) on Opta.
+
+**It holds under the same checks I ran on the share gap** (Understat, matched, flop or lost place):
 
 | Check | Gap, points |
 |---|--:|
-| Also matched on last season's share of his club's minutes | +10.7 (+7.0 to +14.3) |
-| Without moves to promoted or from relegated clubs | +9.9 (+5.5 to +14.2) |
-| Without likely loans | +10.6 (+6.5 to +14.5) |
-| Without either | +8.6 (+3.9 to +13.2) |
-| Floor at 450 minutes, minutes only | +3.8 (+1.3 to +6.1) |
-| Floor at 1,350 minutes, minutes only | +14.0 (+10.1 to +18.0) |
-| Every season with no Big-5 row next season counted as lost | +15.3 (+11.9 to +18.7) |
-| Every season with no Big-5 row next season counted as kept | +5.7 (+2.5 to +8.7) |
-| Split-season players brought back on their Transfermarkt minutes, the rest counted as lost | +7.7 (+4.2 to +11.0) |
-| Also matched on his share of minutes in the second half of last season, and on goals minus xG | +10.2 (+6.3 to +13.7) |
-| Stayers reweighted to the movers' mix of cells | +11.1 (+7.0 to +15.0) |
-| Buying club made more shots the season before | +8.1 (+3.2 to +13.5) |
-| Buying club did not | +13.0 (+6.8 to +18.6) |
-| Fit all next season (under 30 days out) | +12.4 (+7.8 to +17.4) |
-| Injured 30 days or more | +11.0 (+4.8 to +17.1) |
+| Also matched on last season's share of his club's minutes | +10.7 (7.0, 14.3) |
+| Without moves to promoted or from relegated clubs | +9.9 (5.5, 14.2) |
+| Without likely loans | +10.6 (6.5, 14.5) |
+| Without either | +8.6 (3.9, 13.2) |
+| Floor at 450 minutes, minutes only | +3.8 (1.3, 6.1) |
+| Floor at 1,350 minutes, minutes only | +14.0 (10.1, 18.0) |
+| Every season with no Big-5 row next season counted as lost | +15.3 (11.9, 18.7) |
+| Every season with no Big-5 row next season counted as kept | +5.7 (2.5, 8.7) |
+| Split-season players brought back on their Transfermarkt minutes, the rest counted as lost | +7.7 (4.2, 11.0) |
+| Also matched on his share of minutes in the second half of last season, and on goals minus xG | +10.2 (6.3, 13.7) |
+| Stayers reweighted to the movers' mix of cells | +11.1 (7.0, 15.0) |
+| Buying club made more shots the season before | +8.1 (3.2, 13.5) |
+| Buying club did not | +13.0 (6.8, 18.6) |
+| Fit all next season (under 30 days out) | +12.4 (7.8, 17.4) |
+| Injured 30 days or more | +11.0 (4.8, 17.1) |
 
-- **Who drops out decides the range.** 845 of 4,272 qualifying seasons have no Big-5 row the next season: sold abroad or down a division, relegated with the club, injured all season, not matched, or split between two clubs (the sample keeps a season only when one club holds 80% of his actions). 315 of them show a Transfermarkt transfer away from his club, and 191 played Big-5 league minutes the next season, 125 of them 900 or more. The gap is +5.7 points if every dropout kept his place and +15.3 if every one lost it.
-- **By fee band, the gap is largest after free, loan and unrecorded moves, though the bands overlap.** Each fee band against all stayers, matched (also fig7):
+**Who drops out decides the range**
+
+- 845 of 4,272 qualifying seasons have no Big-5 row the next season.
+- Those players were sold abroad or down a division, relegated with the club, injured all season, not matched, or split between two clubs. I keep a season only when one club holds 80% of his actions.
+- 315 of them show a Transfermarkt transfer away from his club.
+- 191 played Big-5 league minutes the next season, 125 of them 900 or more.
+- The gap is +5.7 points if every dropout kept his place and +15.3 if every one lost it.
+
+**By fee band, the gap is largest after free, loan and unrecorded moves, though the bands overlap.** I compare each fee band against all stayers, matched (also fig7):
 
 | Moves | Movers | Gap, points |
 |---|--:|--:|
-| Any fee paid | 327 | +1.8 (−3.8 to +7.4) |
-| Over €30m | 86 | −0.9 (−11.0 to +9.6) |
-| €10–30m | 126 | +2.5 (−5.8 to +10.8) |
-| Under €10m | 115 | +3.3 (−6.0 to +13.4) |
-| Free or loan | 262 | +9.5 (+3.0 to +16.4) |
-| No fee on record | 276 | +25.2 (+18.8 to +31.0) |
-| Every move except those with no fee on record | 589 | +5.4 (+0.9 to +9.6) |
+| Any fee paid | 327 | +1.8 (−3.8, 7.4) |
+| Over €30m | 86 | −0.9 (−11.0, 9.6) |
+| €10–30m | 126 | +2.5 (−5.8, 10.8) |
+| Under €10m | 115 | +3.3 (−6.0, 13.4) |
+| Free or loan | 262 | +9.5 (3.0, 16.4) |
+| No fee on record | 276 | +25.2 (18.8, 31.0) |
+| Every move except those with no fee on record | 589 | +5.4 (0.9, 9.6) |
 
-- **What a "no fee on record" move is.** Of the 276, 272 have no Transfermarkt transfer row into the new club at all, only 1 is a loan ending, and 233 belong to players with no Transfermarkt transfer history anywhere. They cluster in early seasons (59 of 103 moves in 2014–15, 2 of 77 in 2023–24). The mirror is built from players it still follows, so a missing history may mean a career that later left its coverage, which is information from after the move. On Opta the paid bands are less clean: +4.5 (−2.1 to +10.6) for any fee, +11.9 (+1.4 to +22.4) under €10m.
-- **The fee split, three more ways.** Paid minus free or loan moves, among movers: −7.8 points (−15.7 to +0.3). From 2018–19 on, where no-fee moves are rarer: paid +1.7 (−4.9 to +8.9), free or loan +10.5 (+2.4 to +18.3). Paid movers against stayers who also have a Transfermarkt transfer history: +5.2 (−0.3 to +10.1), so the paid band's small gap partly reflects which stayers it is compared with. Starts from his first squad: −4.3 points (−8.0 to −1.0) after paid moves, −13.5 (−17.3 to −9.1) after free or loan moves.
-- **Loan endings.** 55 moves are a player going back to a club that had loaned him out; without them the gap is +12.0 (+8.3 to +15.8).
-- **Starts.** Movers start 50% of the 10 league matches from their first matchday squad at the new club, against 58% for stayers, matched −8.2 points (−10.5 to −5.8); on Opta −9.2 (−12.1 to −6.2). Counting the club's first 10 matches of the season instead gives −14.2 (−16.8 to −11.6), but movers' first squad comes after 3.0 of those matches on average, against 0.8 for stayers, so about two fifths of that larger gap is matches played before he arrived. Movers had played slightly less in the second half of their last season too (58% of their club's minutes against 60%), which the matching on late-season minutes allows for.
+**What a "no fee on record" move is**
 
-## Robustness
+- Of the 276, 272 have no Transfermarkt transfer row into the new club at all, only 1 is a loan ending, and 233 belong to players with no Transfermarkt transfer history anywhere.
+- They cluster in early seasons (59 of 103 moves in 2014–15, 2 of 77 in 2023–24).
+- My copy of Transfermarkt is built from players it still follows, so a missing history may mean a career that later left its coverage. That would be information from after the move.
+- On Opta the paid bands are less clean: +4.5 (−2.1, 10.6) for any fee, +11.9 (1.4, 22.4) under €10m.
 
-- **Opta, seven leagues.** The usage cost holds and is larger (−6.5% raw, −6.1% matched), and in open play it is −6.0% (−8.2% to −4.0%). Output per 90 roughly breaks even (+0.4%, −3.4% to +4.1%). The predictor scores 0.70 (0.64 to 0.77) pseudo out of time, helped by easy cases: moves up from Portugal and the Eredivisie, which the change-of-league input picks up. FBref's 2024–25 files stop on 3 February 2025.
-- **Position on the team sheet.** Transfermarkt gives one position per player, as of 2026. Keeping only pairs where his starting line-up position was an attacking one in both seasons (91% of pairs), the share gap is −4.1% (−5.7% to −2.5%).
-- **Name matching.** Understat and Transfermarkt are joined by names within each league-season, using club to settle clashes. 93% of Understat's non-penalty shots belong to a player matched to Transfermarkt; the worst league-season is La Liga 2017–18, at 85%.
-- **Loans, promoted and relegated clubs.** Transfermarkt does not flag loans, so a move counts as a likely loan when the player went back to the selling club within two seasons (109 moves). The flag uses what happened later, so it is a check, never an input to a prediction. Without them the share gap is −4.8% (−7.0% to −2.6%). Without the 52 moves to promoted clubs and 114 from relegated clubs it is −4.1% (−6.2% to −1.9%).
+**I tested the fee split 4 more ways**
 
+- Paid minus free or loan moves, among movers: −7.8 points (−15.7, 0.3).
+- From 2018–19 on, where no-fee moves are rarer: paid +1.7 (−4.9, 8.9), free or loan +10.5 (2.4, 18.3).
+- Paid movers against stayers who also have a Transfermarkt transfer history: +5.2 (−0.3, 10.1), so the paid band's small gap partly reflects which stayers I compare it with.
+- Starts from his first squad: −4.3 points (−8.0, −1.0) after paid moves, −13.5 (−17.3, −9.1) after free or loan moves.
+
+**Loan endings**
+
+- 55 moves are a player going back to a club that had loaned him out; without them the gap is +12.0 (8.3, 15.8).
+
+**Starts**
+
+- Movers start 50% of the 10 league matches from their first matchday squad at the new club, against 58% for stayers.
+- Matched, the gap is −8.2 points (−10.5, −5.8).
+- On Opta it is −9.2 (−12.1, −6.2).
+- Counting the club's first 10 matches of the season instead gives −14.2 (−16.8, −11.6), but movers' first squad comes after 3.0 of those matches on average, against 0.8 for stayers. About two fifths of that larger gap is matches played before he arrived.
+- Movers had played slightly less in the second half of their last season too (58% of their club's minutes against 60%), which the matching on late-season minutes allows for.
+
+## How the results hold up
+
+**Opta, 7 leagues**
+
+- The usage cost holds and is larger (−6.5% raw, −6.1% matched).
+- In open play it is −6.0% (−8.2%, −4.0%).
+- Output per 90 roughly breaks even: +0.4% (−3.4%, 4.1%).
+- The predictor scores 0.70 (0.64, 0.77) pseudo out of time, helped by easy cases: moves up from Portugal and the Eredivisie, which the change-of-league input picks up.
+- FBref's 2024–25 files stop on 3 February 2025.
+
+**Position on the team sheet**
+
+- Transfermarkt gives one position per player, as of 2026.
+- When I keep only pairs where his starting line-up position was an attacking one in both seasons (91% of pairs), the share gap is −4.1% (−5.7%, −2.5%).
+
+**Name matching**
+
+- I join Understat and Transfermarkt by names within each league-season, using club to settle clashes.
+- 93% of Understat's non-penalty shots belong to a player I matched to Transfermarkt.
+- The worst league-season is La Liga 2017–18, at 85%.
+
+**Loans, promoted and relegated clubs**
+
+- Transfermarkt does not flag loans, so I count a move as a likely loan when the player went back to the selling club within two seasons (109 moves). The flag uses what happened later, so I use it as a check and never feed it into a prediction.
+- Without them the share gap is −4.8% (−7.0%, −2.6%).
+- Without the 52 moves to promoted clubs and 114 from relegated clubs it is −4.1% (−6.2%, −1.9%).
 
 ## Limits
 
-- **Observational.** Clubs choose whom to buy and coaches choose a player's share; matching removes only what last season's numbers show.
-- **Only moves between Big-5 clubs.** Players sold to the Championship, Turkey, Saudi Arabia or MLS (Major League Soccer) have no Big-5 row the next season and drop out, as do stayers relegated with their club. Counting them puts the lost-place gap between +5.7 (all kept) and +15.3 (all lost) points.
-- **Who is sold.** A selling club may let go a player it no longer plans to pick. Matching on his minutes in the second half of last season catches part of that; what the club knew and the data do not is untested.
-- **League minutes only.** A player at a club in Europe can lose league minutes to rotation without losing his place.
-- **January moves.** A first season counts only when one club holds 80% or more of a player's actions, so a player who changed club mid-season drops out. A player split between clubs in the next season counts as having lost his place; bringing those players back on their Transfermarkt minutes gives +7.7, in the table above.
-- **Position is today's.** The sample uses Transfermarkt's position as of 2026; the line-up check above covers it for attackers.
-- **Shots and shot-assists only.** Carries, pressing and build-up passes are invisible, so this suits attackers.
-- **The four-part split is accounting.** His own actions count in the team's total, and his quality is measured against team-mates', so credit shifts between parts, and the parts' changes correlate.
-- **Leagues and years.** Understat covers the Big-5 to 15 September 2025; the Opta rerun adds Portugal and the Eredivisie to 3 February 2025. Moves from the Championship, Belgium or Brazil are invisible.
-- **Not a trading signal.** No betting, fantasy or player-prop market was tested, and no costs or capacity are estimated. The market test would be whether pre-team-news anytime-scorer or shots prices for a signing's first 10 matches already allow for the 8-point gap in starts; that needs odds history this repo does not have.
+- **I only observed what happened.** Clubs choose whom to buy and coaches choose a player's share, and my matching removes only what last season's numbers show.
+- **I only see moves between Big-5 clubs.** Players sold to the Championship, Turkey, Saudi Arabia or MLS (Major League Soccer) have no Big-5 row the next season and drop out, as do stayers relegated with their club. Counting them puts the lost-place gap between +5.7 (all kept) and +15.3 (all lost) points.
+- **I can't see who the seller wanted rid of.** A selling club may let go a player it no longer plans to pick. Matching on his minutes in the second half of last season catches part of that, and I haven't tested what the club knew that the data don't show.
+- **I only count league minutes.** A player at a club in Europe can lose league minutes to rotation and still have his place.
+- **January moves are awkward.** A first season counts only when one club holds 80% or more of a player's actions, so a player who changed club mid-season drops out. A player split between clubs in the next season counts as having lost his place. When I bring those players back on their Transfermarkt minutes, the gap is +7.7 (in the table above).
+- **I use today's position.** The sample takes Transfermarkt's position as of 2026, and the line-up check above covers it for attackers.
+- **I only count shots and shot-assists.** Carries, pressing and build-up passes are invisible to me, so this suits attackers.
+- **The four-part split is accounting.** His own actions count in the team's total, and I measure his quality against team-mates', so credit shifts between the parts and their changes correlate.
+- **My leagues and years are limited.** Understat covers the Big-5 to 15 September 2025, and the Opta rerun adds Portugal and the Eredivisie to 3 February 2025. I can't see moves from the Championship, Belgium or Brazil.
+- **I tested no market.** I looked at no betting, fantasy or player-prop prices, and I estimated no costs or capacity. The market test would be whether pre-team-news anytime-scorer or shots prices for a signing's first 10 matches already allow for the 8-point gap in starts. That needs odds history I don't have.
 
 ## What would change my mind
 
@@ -143,7 +327,7 @@ Holm is a correction for running several tests at once: it controls the chance o
 - If the share and starts gaps vanish once each player's intended role at the buying club is known (scouting reports, contract length), they are about which players are bought, and the move itself changes little.
 - If predictions frozen before 2026–27 do no better than chance on lost places, the predictor is noise.
 - If a fresh Transfermarkt copy with full transfer histories shows the no-fee moves are ordinary paid moves, the fee split above is a data artefact, and the gap for paid moves would need retesting.
-- If the lost-place gap among paid moves stays within noise on a larger sample, the minutes risk belongs to free, loan and unrecorded moves rather than to moving as such. Today it is +1.8 points (−3.8 to +7.4) where a fee was paid.
+- If the lost-place gap among paid moves stays within noise on a larger sample, the minutes risk belongs to free, loan and unrecorded moves rather than to moving as such. Today it is +1.8 points (−3.8, 7.4) where a fee was paid.
 
 ## Reproduce
 
@@ -154,7 +338,22 @@ export SOURCE_DATA=/path/to/your/raw/data          # layout and checksums in dat
 ./run_all.sh                                        # everything from raw data
 ```
 
-The full run rebuilds every number and figure, runs the self-checks, and checks every number quoted in this README, `docs/more_results.md` and `docs/side_studies.md` against the tables in `data/` (`analysis/verify.py` prints PASS or FAIL for each). It takes about 30 minutes on a laptop, most of it the StatsBomb files and the bootstraps. A self-check asserts that a player on for every league minute sees all his team's actions, stoppage time included (median ratio 1.000 across 269 such seasons). Full runs on 6 and 7 November 2026 reproduced every committed table byte for byte. The Transfermarkt copy (built 5 September 2026) cannot be downloaded again, so a third party can rebuild from raw data only with a copy whose checksums match `data/DATA.md`. A second `./run_all.sh --quick` leaves `git status` clean: figures and the one-pager carry no timestamps. Python 3.14, versions pinned in `requirements.txt`.
+The full run does this:
+
+- It rebuilds every number and figure and runs the self-checks.
+- It checks every number quoted in this README, `docs/more_results.md` and `docs/side_studies.md` against the tables in `data/` (`analysis/verify.py` prints PASS or FAIL for each).
+- It takes about 30 minutes on a laptop, most of it the StatsBomb files and the bootstraps.
+
+What I checked:
+
+- A self-check asserts that a player on for every league minute sees all his team's actions, stoppage time included (median ratio 1.000 across 269 such seasons).
+- My full runs on 6 and 7 November 2026 reproduced every committed table byte for byte.
+- A second `./run_all.sh --quick` leaves `git status` clean, because the figures and the one-pager carry no timestamps.
+
+What you need:
+
+- Python 3.14, with versions pinned in `requirements.txt`.
+- For a rebuild from raw data, a Transfermarkt copy whose checksums match `data/DATA.md`. Mine was built on 5 September 2026 and can't be downloaded again.
 
 ## Data and licences
 
@@ -186,11 +385,11 @@ An action is a shot or a shot-assist. Penalties and own goals are excluded. An a
 
 | Part | Movers minus stayers | 95% interval |
 |---|--:|--:|
-| His share of the ball | −4.4% | −6.4% to −2.3% |
-| Chances his team creates | +2.4% | +0.7% to +4.3% |
-| Quality of team-mates' chances | +3.2% | +1.4% to +5.0% |
-| His own quality against team-mates | +2.4% | +0.0% to +4.7% |
-| Output per 90 | +3.6% | +0.2% to +6.9% |
+| His share of the ball | −4.4% | (−6.4%, −2.3%) |
+| Chances his team creates | +2.4% | (0.7%, 4.3%) |
+| Quality of team-mates' chances | +3.2% | (1.4%, 5.0%) |
+| His own quality against team-mates | +2.4% | (0.0%, 4.7%) |
+| Output per 90 | +3.6% | (0.2%, 6.9%) |
 
 *Differences in mean log change. Intervals from 2,000 bootstrap draws resampling whole players. Tables in `data/transfers.json`, `data/transfer_splits.csv` and, for the matched versions and the later checks, `data/robustness.json` and `data/rivals.json`.*
 
@@ -213,15 +412,15 @@ Each pair of seasons is weighted by the precision of its change in quality, `1 /
 
 | Specification | Pairs | Per +5 points of share | 95% interval |
 |---|--:|--:|--:|
-| **Per 90, split-half (headline)** | 2,693 | **−1.5%** | **−2.9% to −0.1%** |
-| Per 90, same matches | 2,693 | −2.1% | −3.9% to −0.4% |
-| Per 90, against team-mates | 2,693 | −1.9% | −3.5% to −0.3% |
-| Season share split-half, plus last season's quality | 2,693 | −2.0% | −4.0% to −0.2% |
-| Season share, minutes held fixed | 2,693 | −3.5% | −5.9% to −1.1% |
-| Season share, nothing held fixed | 2,693 | −0.3% | −1.5% to +0.9% |
-| Per 90, same club both seasons | 2,088 | −1.3% | −3.2% to +0.6% |
-| Per 90, changed club | 605 | −2.0% | −5.1% to +1.1% |
-| Per 90, changed club, against new team-mates | 605 | 0.0% | −2.6% to +2.8% |
+| **Per 90, split-half (headline)** | 2,693 | **−1.5%** | **(−2.9%, −0.1%)** |
+| Per 90, same matches | 2,693 | −2.1% | (−3.9%, −0.4%) |
+| Per 90, against team-mates | 2,693 | −1.9% | (−3.5%, −0.3%) |
+| Season share split-half, plus last season's quality | 2,693 | −2.0% | (−4.0%, −0.2%) |
+| Season share, minutes held fixed | 2,693 | −3.5% | (−5.9%, −1.1%) |
+| Season share, nothing held fixed | 2,693 | −0.3% | (−1.5%, 0.9%) |
+| Per 90, same club both seasons | 2,088 | −1.3% | (−3.2%, 0.6%) |
+| Per 90, changed club | 605 | −2.0% | (−5.1%, 1.1%) |
+| Per 90, changed club, against new team-mates | 605 | 0.0% | (−2.6%, 2.8%) |
 
 ### The luck benchmarks
 

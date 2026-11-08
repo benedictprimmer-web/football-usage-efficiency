@@ -50,10 +50,9 @@ def pct(v, dp=1, sign=True):
 
 
 def ci(lo, hi, dp=1):
-    """'(1.1 to 4.8)' in percentage points, with proper minus signs."""
+    """'(1.1, 4.8)' in percentage points, with proper minus signs."""
     z = f"{0:.{dp}f}"
-    hs = "+" if lo < 0 < hi else ""   # a sign on the upper end when the interval spans zero
-    return (f"({lo * 100:.{dp}f} to {hs}{hi * 100:.{dp}f})".replace(f"-{z} ", f"{z} ")
+    return (f"({lo * 100:.{dp}f}, {hi * 100:.{dp}f})".replace(f"-{z},", f"{z},")
             .replace(f"-{z})", f"{z})").replace("-", MINUS))
 
 
@@ -200,8 +199,8 @@ def fig_luck(t):
     ax = fig.add_axes([L + 0.3, top - 0.31, R - L - 0.3, 0.29])
     draw_luck(ax, t)
     wrapped(fig, L, top - 0.38,
-            f"His own part of a flop: {pct(pp_['point'], 0, False)} ({pct(pp_['lo'], 0, False)} to "
-            f"{pct(pp_['hi'], 0, False)}) in the data, {pct(p[0], 0, False)} ({pct(p[1], 0, False)} to "
+            f"His own part of a flop: {pct(pp_['point'], 0, False)} ({pct(pp_['lo'], 0, False)}, "
+            f"{pct(pp_['hi'], 0, False)}) in the data, {pct(p[0], 0, False)} ({pct(p[1], 0, False)}, "
             f"{pct(p[2], 0, False)}) from luck. The benchmark cannot see a rise of 1 to 3 points.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig1_flops_look_like_luck")
@@ -238,7 +237,7 @@ def fig_age(sl, ag, holm):
     ax = fig.add_axes([L + 0.24, top - 0.38, R - L - 0.25, 0.36])
     draw_age(ax, sl, ag)
     wrapped(fig, L, top - 0.45,
-            f"At 26–28: {g.gap * 100:+.0f} points ({g.lo * 100:+.0f} to {g.hi * 100:+.0f}), "
+            f"At 26–28: {g.gap * 100:+.0f} points ({g.lo * 100:.0f}, {g.hi * 100:.0f}), "
             f"p = {holm['p']:.3f}, or {holm['p_holm']:.2f} after the Holm correction. A lead "
             f"to test on new seasons."
             .replace("-", MINUS),
@@ -463,9 +462,8 @@ def fig_fees():
     ax = fig.add_axes([L + 0.42, top - 0.36, R - L - 0.43, 0.34])
     draw_fees(ax, rv)
     wrapped(fig, L, top - 0.43,
-            f"Fee paid: {pct(v['point'])[:-1]} points {ci(v['lo'], v['hi'])}, too few to rule out about 7. Most moves with no fee on record "
-            f"belong to players with no Transfermarkt transfer history at all. That may reflect a later "
-            f"career outside the data, so that bar may use hindsight.",
+            f"Fee paid: {pct(v['point'])[:-1]} points {ci(v['lo'], v['hi'])}, too few to rule out about 7. Most no-fee moves "
+            f"belong to players with no Transfermarkt history, so that bar may use hindsight.",
             (R - L) * W, fontsize=10, color=PLAYER, va="top")
     save(fig, "fig7_fee_bands")
 
@@ -521,7 +519,7 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
 
     fig.patches.append(plt.Rectangle((15 / 210, 1 - 13 / 297), 14 / 210, 1.2 / 297, color=BLUE,
                                      transform=fig.transFigure, figure=fig))
-    txt(15, 16, "An attacker after a move", fontsize=24, fontweight="bold", color=PLAYER)
+    txt(15, 16, "Attacking transfers: why do they often fail?", fontsize=17, fontweight="bold", color=PLAYER)
     txt(15, 27, "Usage, playing time and luck after a move, Big-5, 2014–15 to 2024–25",
         fontsize=11, color=TEXT2)
     txt(195, 16, "Ben Rimmer", fontsize=11, fontweight="bold", color=PLAYER, ha="right")
@@ -534,11 +532,11 @@ def onepager(t, s, c, ws, sl, ag, ds, rm, r, ro):
     gch = c["growth_next_season"]
 
     def iv(x, dp=1):
-        return f"{pct(x['point'], dp)} ({pct(x['lo'], dp)} to {pct(x['hi'], dp)})"
+        return f"{pct(x['point'], dp)} ({pct(x['lo'], dp).lstrip('+')}, {pct(x['hi'], dp).lstrip('+')})"
 
     def pts(x):
-        return (f"{x['point'] * 100:+.1f} points ({x['lo'] * 100:+.1f} to "
-                f"{x['hi'] * 100:+.1f})").replace("-", MINUS)
+        return (f"{x['point'] * 100:+.1f} points ({x['lo'] * 100:.1f}, "
+                f"{x['hi'] * 100:.1f})").replace("-", MINUS)
     rv = json.loads((OUT / "rivals.json").read_text())
     fp = rv["lost_place"]["by_fee_band"]["Any fee paid"]["badf"]
     nf = rv["lost_place"]["no_fee_audit"]["without_no_fee_moves"]["badf"]
